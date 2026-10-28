@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="960" height="240" viewBox="0 0 960 240" role="img" aria-label="Botón de respuesta sin letra ni texto normal"><defs>
+ <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#123FBB"/><stop offset=".53" stop-color="#2179EF"/><stop offset="1" stop-color="#1A2C78"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#74D6FF" stop-opacity=".36"/><stop offset="1" stop-color="#74D6FF" stop-opacity="0"/></radialGradient>
+ <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".72" stop-color="#F4FAFF"/><stop offset="1" stop-color="#DCEFFF"/></linearGradient>
+ <linearGradient id="button" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".76" stop-color="#EEF7FF"/><stop offset="1" stop-color="#CEE7FF"/></linearGradient>
+ <linearGradient id="bluechip" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2AD4FF"/><stop offset=".50" stop-color="#007BFB"/><stop offset="1" stop-color="#0751C7"/></linearGradient>
+ <linearGradient id="bluepanel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#257CFA"/><stop offset=".50" stop-color="#095FD3"/><stop offset="1" stop-color="#0B358F"/></linearGradient>
+ <linearGradient id="correct" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#E4FFF1"/><stop offset="1" stop-color="#8CF6C4"/></linearGradient>
+ <linearGradient id="wrong" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF0F0"/><stop offset="1" stop-color="#FFB8C9"/></linearGradient>
+ <linearGradient id="selected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#D7FCFF"/><stop offset="1" stop-color="#68C3FF"/></linearGradient>
+ </defs><rect x="15" y="29" width="930" height="194" rx="31" fill="#0B245F" opacity=".23"/>
+<rect x="15" y="12" width="930" height="196" rx="34" fill="url(#button)" stroke="#A4D6FF" stroke-width="11"/>
+<rect x="40" y="33" width="157" height="153" rx="28" fill="url(#bluechip)" stroke="#FFFFFF" stroke-opacity=".75" stroke-width="5"/>
+<path d="M72 49 Q113 36 170 48" stroke="#FFFFFF" stroke-opacity=".65" stroke-width="6" stroke-linecap="round" fill="none"/>
+<path d="M238 186 H902" stroke="#4A9ED9" stroke-opacity=".3" stroke-width="4"/>
+<rect x="26" y="22" width="908" height="174" rx="27" fill="none" stroke="#FFFFFF" stroke-opacity=".55" stroke-width="2"/></svg>

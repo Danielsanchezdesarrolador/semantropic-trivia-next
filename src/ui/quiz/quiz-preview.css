@@ -1,0 +1,105 @@
+:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#12346e;font-synthesis:none}
+*{box-sizing:border-box}
+html{background:#e9f3ff}body{margin:0;min-width:300px}
+button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px solid #ffca35;outline-offset:3px}
+.b03-preview-page{min-height:100dvh;max-width:1500px;margin:auto;padding:22px clamp(12px,2vw,32px) 40px}
+.b03-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 8px 15px}
+.b03-preview-eyebrow{margin:0 0 5px;color:#3767af;font-size:.72rem;letter-spacing:.09em;font-weight:900}
+.b03-preview-heading h1{font-size:clamp(1.35rem,3vw,2.15rem);margin:0 0 5px;font-weight:950}
+.b03-preview-headingp:not(.b03-preview-eyebrow){margin:0;color:#50688e;font-size:.85rem}
+.b03-to-lobby{display:inline-flex;align-items:center;justify-content:center;min-height:43px;flex:none;border-radius:13px;background:#184a9c;color:#fff;text-decoration:none;font-size:.83rem;font-weight:800;padding:10px 16px}
+.b03-qa-controls{padding:15px 17px;background:#f8fbff;border:1px solid #d3e6ff;border-radius:18px;margin-bottom:15px;box-shadow:0 3px 10px #15366d10}
+.b03-control-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:11px}
+.b03-control-heading strong{font-size:.91rem}.b03-control-heading span{font-size:.74rem;color:#57739b}
+.b03-category-pills{display:flex;flex-wrap:wrap;gap:8px}
+.b03-category-pill{--pill-accent:#00c2ff;--pill-dark:#085bd9;display:inline-flex;gap:7px;align-items:center;background:#fff;color:#253d6d;border:2px solid #d8e4f4;border-radius:12px;padding:5px 9px;min-height:42px;font-size:.76rem;font-weight:850;cursor:pointer}
+.b03-category-pill img{width:28px;height:28px;object-fit:contain}
+.b03-category-pill.is-active{border-color:var(--pill-dark);background:color-mix(in srgb,var(--pill-accent) 16%,white);box-shadow:0 0 0 2px color-mix(in srgb,var(--pill-accent) 14%,transparent)}
+.b03-arena{--quiz-accent:#00c2ff;--quiz-deep:#085bd9;position:relative;isolation:isolate;min-height:min(61vw,740px);overflow:hidden;border-radius:25px;border:2px solid #96ddff;box-shadow:0 16px 37px #0b2a6c34;background:#146dd7}
+.b03-arena::before{content:'';position:absolute;inset:0;z-index:-2;background-image:var(--quiz-background-desktop);background-position:center;background-size:cover;background-repeat:no-repeat}
+.b03-arena::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#ffffff05,#07174707 70%,#061c6420)}
+.b03-arena-top{position:relative;display:grid;grid-template-columns:minmax(100px,1fr) minmax(260px,590px) minmax(86px,1fr);gap:10px;align-items:center;min-height:129px;padding:20px clamp(18px,2.8vw,44px) 2px}
+.b03-back-visual{position:relative;display:grid;align-items:center;width:clamp(90px,10vw,145px);height:56px;white-space:nowrap;color:#fff;text-shadow:0 2px 3px #07327b;font-size:clamp(.85rem,1.5vw,1.2rem);font-weight:900}
+.b03-back-visual img{position:absolute;width:100%;height:100%;object-fit:fill;inset:0}
+.b03-back-visual span{position:relative;z-index:1;padding-left:45%}
+.b03-category-header{position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;height:83px;padding:0 15px 0 20px;min-width:0;color:#fff;text-shadow:0 2px 5px#0a3166}
+.b03-category-header-skin{position:absolute;inset:0;width:100%;height:100%;z-index:-1;object-fit:fill}
+.b03-category-icon{width:50px;height:50px;flex:none;object-fit:contain}
+.b03-category-title{font-size:clamp(.9rem,2vw,1.52rem);font-weight:950;text-transform:uppercase;min-width:0;line-height:1.1;overflow-wrap:anywhere;flex:1}
+.b03-category-count{display:grid;place-items:center;min-width:84px;height:64%;background:#061d58a1;border-radius:28px;padding:0 10px;font-size:clamp(.95rem,1.8vw,1.4rem);font-weight:950;white-space:nowrap}
+.b03-timer{position:relative;display:grid;place-items:center;justify-self:end;width:clamp(72px,8.5vw,118px);aspect-ratio:1;color:#fff;text-shadow:0 3px 5px #0f2c64;font-size:clamp(1.6rem,3vw,2.7rem);font-weight:950;font-variant-numeric:tabular-nums}
+.b03-timer img{position:absolute;inset:0;width:100%;height:100%}.b03-timer span{position:relative;z-index:1}
+.b03-question{position:relative;width:min(69%,930px);min-height:clamp(174px,19vw,275px);margin:22px auto 28px;display:grid;place-items:center;padding:35px 42px;text-align:center}
+.b03-question-skin{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+.b03-question-content{position:relative;z-index:1;color:#14356c;max-width:100%}
+.b03-question-kicker{font-size:.73rem;letter-spacing:.095em;font-weight:850;color:#497cbb}
+.b03-question h2{font-size:clamp(1.4rem,3.1vw,2.55rem);font-weight:950;line-height:1.23;max-width:28ch;overflow-wrap:anywhere;margin:10px auto}
+.b03-answer-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(8px,1.9vw,20px) clamp(10px,2.4vw,30px);width:min(68%,925px);margin:0 auto;}
+.b03-answer{position:relative;display:flex;align-items:center;gap:14px;min-height:clamp(70px,7.7vw,99px);padding:9px 14px;color:#173364;overflow:hidden}
+.b03-answer-skin{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
+.b03-answer-letter{z-index:1;display:grid;place-items:center;min-width:clamp(45px,5vw,70px);height:clamp(43px,5.4vw,70px);padding:0 6px;font-size:clamp(1.3rem,2.4vw,2.3rem);font-weight:1000;color:#fff;text-shadow:0 2px #0a4bb0}
+.b03-answer-text{z-index:1;font-size:clamp(1.03rem,1.8vw,1.62rem);font-weight:900;line-height:1.2;overflow-wrap:anywhere}
+.b03-answer-feedback{position:relative;z-index:2;width:35px;height:35px;margin-left:auto;object-fit:contain}
+.b03-progress{position:relative;display:flex;justify-content:center;gap:4px;width:min(48%,660px);margin:25px auto 22px;z-index:3}
+.b03-progress img{width:calc((100% -36px)/10);height:19px;object-fit:fill;min-width:0;flex:1}
+.b03-crystal{position:absolute;width:clamp(37px,6vw,75px);height:auto;bottom:8%;pointer-events:none;opacity:.89}
+.b03-crystal--cyan{left:4%}.b03-crystal--violet{right:4%}
+.b03-qa-controls--bottom{margin-top:16px}
+.b03-state-rows{display:flex;flex-wrap:wrap;gap:15px;justify-content:space-between}
+.b03-state-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.b03-state-row>span{font-size:.78rem;font-weight:850;margin-right:4px}
+.b03-state-row button{cursor:pointer;border:1.5px solid #b4cdef;padding:8px 12px;border-radius:11px;background:white;color:#234575;font-size:.76rem;font-weight:800}
+.b03-state-row button[aria-pressed=true]{background:#165bc4;color:#fff;border-color:#165bc4}
+.b03-warning{margin:14px 0 0;padding:11px;background:#edf5ff;border-left:4px solid #579fee;border-radius:8px;font-size:.76rem;line-height:1.5;color:#4d638a}
+@media(max-width:860px){
+  .b03-arena{min-height:630px}
+  .b03-arena-top{grid-template-columns:93px minmax(0,1fr) 74px;padding:17px 12px;min-height:98px;gap:5px}
+  .b03-category-header{height:65px;gap:5px;padding:0 8px}
+  .b03-category-icon{width:36px;height:36px}
+  .b03-category-count{min-width:56px;font-size:.95rem}
+  .b03-question{width:84%;min-height:205px;margin:40px auto 29px;padding:22px}
+  .b03-answer-grid{width:85%}
+  .b03-progress{width:60%}
+}
+@media(max-width:600px){
+  .b03-preview-page{padding:12px 9px 24px}
+  .b03-preview-heading{display:block;padding:4px 7px 14px}
+  .b03-preview-heading h1{font-size:1.42rem}
+  .b03-preview-heading p:not(.b03-preview-eyebrow){font-size:.77rem}
+  .b03-to-lobby{margin-top:10px;font-size:.75rem;min-height:40px}
+  .b03-qa-controls{padding:11px;margin-bottom:9px}
+  .b03-category-pills{gap:5px}
+  .b03-category-pill{font-size:.7rem;min-height:38px;padding:4px 6px}
+  .b03-category-pill img{width:23px;height:23px}
+  .b03-arena{border-radius:18px;min-height:760px}
+  .b03-arena::before{background-image:var(--quiz-background-mobile);background-position:center;background-size:cover}
+  .b03-arena-top{grid-template-columns:minmax(62px,1fr) minmax(0,2.9fr);grid-template-rows:70px 70px;gap:4px;padding:14px 10px 0;min-height:160px}
+  .b03-back-visual{width:75px;height:48px;font-size:.78rem}
+  .b03-category-header{grid-column:2;grid-row:1;height:58px;min-width:0;padding:0 7px;gap:4px}
+  .b03-category-icon{width:32px;height:32px}
+  .b03-category-title{font-size:clamp(.67rem,2.8vw,.92rem)}
+  .b03-category-count{min-width:44px;height:59%;padding:0 3px;font-size:.75rem}
+  .b03-timer{grid-column:1/3;grid-row:2;justify-self:center;width:75px;font-size:1.7rem}
+  .b03-question{width:98%;min-height:158px;margin:16px auto 18px;padding:17px 21px}
+  .b03-question h2{font-size:clamp(1.14rem,5.1vw,1.55rem);line-height:1.25}
+  .b03-question-kicker{font-size:.61rem}
+  .b03-answer-grid{width:98%;grid-template-columns:1fr;gap:8px}
+  .b03-answer{min-height:72px;padding:7px 12px;gap:8px}
+.b03-answer-letter{min-width:50px;height:50px;font-size:1.35rem}
+  .b03-answer-text{font-size:1.07rem}
+  .b03-progress{margin:18px auto 12px;width:86%;gap:2px}
+  .b03-progress img{height:14px}
+  .b03-crystal{width:36px;bottom:1%;opacity:.43}
+  .b03-crystal--cyan{left:5%}.b03-crystal--violet{right:5%}
+}
+@media(max-width:355px){
+  .b03-arena{min-height:728px}
+  .b03-arena-top{grid-template-columns:67px minmax(0,1fr)}
+  .b03-category-title{font-size:.62rem}
+  .b03-category-icon{width:28px;height:28px}
+  .b03-category-count{min-width:38px;font-size:.66rem}
+  .b03-question{min-height:150px;margin:11px auto 15px}
+  .b03-answer{min-height:67px}
+  .b03-answer-letter{height:45px;min-width:45px}
+}
+@media(prefers-reduced-motion:reduce){.b03-category-pill,.b03-state-row button{transition:none}}
