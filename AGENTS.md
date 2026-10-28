@@ -52,7 +52,7 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 
 ## 8. Orden de ejecución
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
-**B02 (portada aprobada):** lobby visual publicado; microbloque B02-NAV: permitir pulsar y explorar los accesos de la home y volver, SIN comenzar la partida trivia B03 ni simular sistemas online. Publicar tras CI/QA y verificación real de Render.
+**B02 (portada aprobada):** lobby visual publicado y menús navegables; microbloque B02-FS: botón de pantalla completa para PC/Android compatible y alternativa PWA instalable desde pantalla de inicio en móviles donde Fullscreen API no funcione. No iniciar partida trivia B03 ni simular sistemas online. Publicar tras CI/QA y verificación real de Render.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.
 **B04:** autenticación, perfil y base de datos real.
 **B05:** online casual 1v1 con servidor autoritativo; fallback IA **revelado, opcional**.

@@ -277,3 +277,84 @@ body { margin:0; }
   .st-preview-page--official .st-sheet-action,
   .st-lobby-panel__option {transition:none!important;transform:none!important;}
 }
+
+
+/* B02-FS: control de pantalla completa sin alterar arte ni controles del lobby. */
+.st-home__header-actions {display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.st-fullscreen-control {position:relative;z-index:35;isolation:isolate;flex:none;}
+.st-fullscreen-control__button {
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  min-height:40px;min-width:40px;padding:7px 10px;
+  border:1.5px solid #c7efff;border-radius:999px;
+  background:linear-gradient(150deg,#1b74bcf2,#102d76ed);
+  box-shadow:0 4px 10px #09174188,inset 0 2px 0 #ffffff3d;
+  color:#fff;font:inherit;font-size:.72rem;font-weight:850;
+  text-shadow:0 2px 5px #081347;
+  cursor:pointer;touch-action:manipulation;
+}
+.st-fullscreen-control__button svg {display:block;flex:none;}
+.st-fullscreen-control__button:focus-visible,
+.st-fullscreen-control__help-top button:focus-visible {outline:3px solid #ffdc77;outline-offset:3px;}
+.st-fullscreen-control__help {
+  position:absolute;right:0;top:calc(100% + 10px);width:min(310px,calc(100vw - 90px));
+  padding:12px;background:#0c214efa;color:#fff;text-align:left;
+  border:2px solid #9ee3ff;border-radius:13px;
+  box-shadow:0 12px 25px #08113bbc;line-height:1.45;
+}
+.st-fullscreen-control__help-top {display:flex;justify-content:space-between;align-items:center;gap:7px;}
+.st-fullscreen-control__help-top strong {font-size:.88rem;}
+.st-fullscreen-control__help-top button {
+  min-width:32px;min-height:32px;cursor:pointer;border:1px solid #fff7;
+  border-radius:9px;color:#fff;background:#ffffff18;font-size:1.2rem;
+}
+.st-fullscreen-control__help p {font-size:.76rem;font-weight:500;margin:8px 0 0;}
+.st-fullscreen-control__help b {color:#ffe3a2;}
+.st-home__header .st-fullscreen-control__help span {background:none;}
+
+/* Desktop: entrar a fullscreen expande el JUEGO al 100% de la pantalla. */
+html:fullscreen {background:#101d4a;}
+html:fullscreen body {margin:0;}
+html:fullscreen .st-preview-page--official {
+  padding:0;width:100%;min-height:100vh;min-height:100dvh;
+}
+html:fullscreen .st-preview-page--official .st-home {
+  width:100%;max-width:none;min-height:100vh;min-height:100dvh;
+  border:0;border-radius:0;box-shadow:none;
+}
+html:fullscreen .st-preview-page--official .st-home__content {
+  min-height:100vh;min-height:100dvh;
+}
+@media(display-mode:fullscreen) {
+  .st-preview-page--official {padding:0;}
+  .st-preview-page--official .st-home {
+    width:100%;max-width:none;border:0;border-radius:0;
+  }
+}
+
+/* Evitar que la interfaz quede tapada por notch/safe areas en web app móvil. */
+@media(max-width:700px) {
+  .st-home__header-actions {justify-content:center;gap:5px;}
+  .st-fullscreen-control__button {min-height:38px;min-width:38px;padding:7px;}
+  .st-fullscreen-control__label {display:none;}
+  .st-preview-page--official .st-home__sidebar {
+    padding-top:max(12px, env(safe-area-inset-top, 0px));
+    padding-bottom:max(12px, env(safe-area-inset-bottom, 0px));
+  }
+  .st-preview-page--official .st-home__content {
+    padding-top:max(9px, env(safe-area-inset-top, 0px));
+    padding-bottom:max(9px, env(safe-area-inset-bottom, 0px));
+  }
+}
+@media(max-width:360px) {
+  .st-home__header-actions {gap:4px;}
+  .st-fullscreen-control__button {min-width:36px;min-height:36px;padding:6px;}
+  .st-fullscreen-control__help {width:min(255px,calc(100vw - 65px));}
+}
+@media(hover:hover) {
+ .st-fullscreen-control__button:hover {filter:brightness(1.13);}
+}
+
+/* Los spans anidados del botón no deben heredar las píldoras del header. */
+.st-home__header .st-fullscreen-control__label {
+  background:none;border:0;padding:0;border-radius:0;
+}

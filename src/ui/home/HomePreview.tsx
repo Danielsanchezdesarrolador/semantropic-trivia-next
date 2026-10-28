@@ -1,5 +1,6 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
 import LobbySection from './LobbySection';
+import FullscreenControl from './FullscreenControl';
 import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
@@ -117,7 +118,10 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
         <div className={'st-home__content' + (!isHome ? ' st-home__content--section' : '')}>
           <header className="st-home__header">
             <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
-            <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
+            <div className="st-home__header-actions">
+              <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
+              {official ? <FullscreenControl /> : null}
+            </div>
           </header>
           {isHome ? <>
           <div className="st-home__brand">

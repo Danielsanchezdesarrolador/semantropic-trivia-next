@@ -1,0 +1,30 @@
+{
+  "name": "SEMANTROPIC TRIVIA 1.0",
+  "short_name": "Semantropic",
+  "description": "Trivia social, familiar y competitiva. Modos de juego en desarrollo.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "fullscreen",
+  "display_override": [
+    "fullscreen",
+    "standalone"
+  ],
+  "background_color": "#131c45",
+  "theme_color": "#182a65",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
-Fecha: 2026-10-28 · Estado actualizado: **B01 completado; B02 diseño y lobby oficial publicados; B02-NAV navegación de menús autorizada antes de B03.** Las fases de partida y multijugador siguen pendientes.
+Fecha: 2026-10-28 · Estado actualizado: **B01 completado; B02 lobby y navegación oficiales publicados; B02-FS pantalla completa PC/celular autorizada antes de B03.** Las fases de partida y multijugador siguen pendientes.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
 |---|---|---|---|
@@ -34,8 +34,8 @@ Fecha: 2026-10-28 · Estado actualizado: **B01 completado; B02 diseño y lobby o
 - **Gate 07**: clasificatorias legítimas.
 - **Gate 08**: publicación Android/iOS.
 
-## Prioridad actual — B02-NAV: Menús navegables
-El Director quiere poder pulsar los botones del lobby **antes de autorizar el núcleo de trivia B03**. Activar navegación real dentro de la interfaz oficial: Jugar Online → Normal/Clasificatoria, Jugar con Amigos → 1v1/2v2/3v3/FFA, y navegación lateral Inicio/Colección/Tienda/Amigos/Ranking. Todos llevan a pantallas explicativas y permiten volver; no mostrar actividad, usuarios, partidas ni datos simulados. Conservar el mockup y accesibilidad táctil. Validar PC y móviles emulados, publicar solo después de QA. B03 permanece como próximo bloque jugable real.
+## Prioridad actual — B02-FS: pantalla completa PC y celular
+El Director solicitó permitir pantalla completa antes de B03. Se añade botón reversible Fullscreen API en navegadores compatibles; para iPhone y navegadores embebidos con Fullscreen API no soportada o denegada, se añade una configuración de web app (manifest e iconos oficiales) y ayuda para abrir desde pantalla de inicio en modo aplicación. No prometer ocultación de barras del sistema si el dispositivo no la admite. Conservar el diseño aprobado, el lobby navegable y las funciones B03-B09 pendientes. Validar pantalla completa y salida, fallback, manifest, PC y celulares emulados, QA y Render LIVE.
 
 ## Gestión del esfuerzo y prevención del agotamiento
 Un bloque/PR cada vez, no rework artístico interminable. Aprobar antes de producir 100 assets. Reusar componentes, no simplificar mockups aprobados, sin multiplicar sistemas antes de que se pruebe lo central. «MVP» significa producto que funciona, no todo el catálogo futuro.

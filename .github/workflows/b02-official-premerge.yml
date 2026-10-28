@@ -1,7 +1,7 @@
 name: B02 - validar lobby oficial antes de fusionar
 on:
   push:
-    branches: [release/b02-home-oficial, feat/b02-lobby-navegable]
+    branches: [release/b02-home-oficial, feat/b02-lobby-navegable, feat/b02-fullscreen-pc-mobile]
   pull_request:
     branches: [main]
 jobs:
