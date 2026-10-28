@@ -14,3 +14,10 @@
 | D-009 | Workspace Render `My Workspace` encontrado por conector | CONFIRMADO por el Director 2026-10-28 |
 
 No interpretar la creación local de una estructura como repositorio existente, servicio creado o deploy online. Actualizar este registro con enlaces, SHA y resultados cuando existan.
+
+## Actualización oficial 2026-10-28 · B02
+- D-010: **B01 finalizado**: repo independiente, pruebas CI, Render Live y confirmación del Director de que abre desde dispositivos. Estado: VERIFICADO y APROBADO.
+- D-011: dirección **SEMANTROPIC POP — Fantasía Social** (Plaza de Ideas + Noche Galáctica), paleta viva y legibilidad. Estado: APROBADO para la pantalla principal.
+- D-012: mockup vertical híbrido de pantalla principal, tamaño de referencia 1024x1536. Estado: **MOCKUP VISUAL APROBADO, NO IMPLEMENTADO**.
+- D-013: **B02-C1** autoriza solo diseño de arquitectura de assets, tokens y componentes reutilizables en rama/PR; prohíbe fusión a main y cambios en Render/producción. Estado: AUTORIZADO, EN DESARROLLO.
+- D-014: modos oficiales y prohibiciones B01/B02 continúan; Torneo CPU, pase de temporada y cifras ilustradas del mockup no son funcionalidades aprobadas.
