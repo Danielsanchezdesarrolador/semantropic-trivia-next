@@ -1,0 +1,29 @@
+name: B03-B02 - Validar Render laboratorio público
+on:
+  push:
+    branches: [feat/b03-b02-arena-preview]
+  workflow_dispatch:
+jobs:
+  public-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Preparar Chromium
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Validar URL Render en PC y móvil emulado
+        env:
+          B03_URL: https://semantropic-trivia-b03-quiz-preview.onrender.com/
+        run: node scripts/b03-b02-browser-smoke.mjs
+      - name: Capturas del sitio público
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B03-B02-Render-Publico-PC-Mobile
+          path: artifacts/b03-b02/
+          if-no-files-found: ignore
