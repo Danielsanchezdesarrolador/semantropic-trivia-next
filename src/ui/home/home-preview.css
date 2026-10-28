@@ -173,6 +173,9 @@ body { margin:0; }
   width:100%;color:#fff;font:inherit;cursor:pointer;user-select:none;
   padding:6px 2px;border:0;
 }
+.st-preview-page--official .st-home__nav:is(button):not(.st-home__nav--active) {
+  background:transparent;appearance:none;-webkit-appearance:none;
+}
 .st-preview-page--official .st-home__nav--active:is(button) {
   border:2px solid #b9edff;
 }
