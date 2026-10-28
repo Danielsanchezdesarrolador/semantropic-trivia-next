@@ -30,3 +30,12 @@ test('B02 oficial: fondo y logotipo aprobados, dos modos únicamente', () => {
   assert.match(home,/type="button" disabled/);
   assert.match(css,/st-home__approved-background \{[^}]*height:100%;object-fit:cover/);
 });
+
+test('B02 oficial llena el viewport móvil y evita franja inferior fuera del fondo', () => {
+  const css = read('src/ui/home/home-preview.css');
+  assert.match(css, /st-preview-page--official/);
+  assert.match(css, /min-height: 100dvh/);
+  assert.match(css, /st-preview-page--official \.st-home/);
+  const app = read('src/App.tsx');
+  assert.match(app, /HomePreview official showLibrary=\{false\}/);
+});
