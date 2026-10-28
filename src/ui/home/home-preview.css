@@ -146,3 +146,22 @@ body { margin:0; }
 @media (max-width: 360px) {
   .st-home, .st-home__content { min-height: 650px; }
 }
+
+/* B02 — publicación oficial: completar altura visible cuando se oculta la biblioteca.
+   Se aplica SOLO a /, no a b02-preview.html ni a las clases compartidas del laboratorio. */
+.st-preview-page--official {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: 0;
+}
+.st-preview-page--official .st-home,
+.st-preview-page--official .st-home__content {
+  min-height: max(850px, calc(100dvh - 36px));
+}
+@media (max-width:700px) {
+  .st-preview-page--official .st-home,
+  .st-preview-page--official .st-home__content {
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}

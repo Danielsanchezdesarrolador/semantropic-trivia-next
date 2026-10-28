@@ -94,7 +94,9 @@ try {
       const stage = document.querySelector('.st-home__scene');
       return {
         viewport: window.innerWidth,
+        viewportHeight: window.innerHeight,
         scrollWidth: document.documentElement.scrollWidth,
+        lobbyHeight: document.querySelector('.st-home')?.getBoundingClientRect().height,
         background: background instanceof HTMLImageElement
           ? { width: background.naturalWidth, height: background.naturalHeight, renderedHeight: background.getBoundingClientRect().height, fit: getComputedStyle(background).objectFit, complete: background.complete }
           : null,
@@ -110,6 +112,9 @@ try {
     assert.equal(state.background.fit, 'cover');
     assert.ok(Math.abs(state.background.renderedHeight - state.sceneHeight) <= 2, 'Fondo debe cubrir todo el lobby: ' + JSON.stringify(state));
     assert.equal(state.heading, 'SEMANTROPIC TRIVIA');
+    if (device.isMobile) {
+      assert.ok(state.lobbyHeight >= state.viewportHeight - 1, 'El lobby debe cubrir pantalla móvil completa: ' + JSON.stringify(state));
+    }
     assert.ok(state.scrollWidth <= state.viewport + 1, 'Overflow horizontal: ' + JSON.stringify(state));
     assert.deepEqual(errors, [], 'Errores JavaScript: ' + device.name);
     const screenshot = 'artifacts/b02-official/' + device.name + '.png';
