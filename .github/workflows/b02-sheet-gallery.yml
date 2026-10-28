@@ -1,7 +1,7 @@
 name: B02-C2 — galeria y home con assets de lamina
 on:
   push:
-    branches: [feat/b02-c2-lamina-assets-preview]
+    branches: [feat/b02-c2-lamina-assets-preview, feat/b02-c2-fondo-total-ui-nitida]
   workflow_dispatch:
 jobs:
   validate:
