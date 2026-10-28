@@ -1,0 +1,11 @@
+# Blueprint informativo para la futura publicación en el workspace autorizado.
+# No crear el servicio antes de confirmar el workspace con el Director.
+services:
+  - type: web
+    runtime: static
+    name: semantropic-trivia-next-web
+    repo: https://github.com/Danielsanchezdesarrolador/semantropic-trivia-next
+    branch: main
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    autoDeployTrigger: commit

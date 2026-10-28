@@ -1,0 +1,21 @@
+CODEX — SEMANTROPIC TRIVIA / NUEVA ETAPA / B01 FUNDACIÓN
+
+Lee AGENTS.md y docs/01_VISION.md hasta docs/06_DECISIONES.md antes de editar.
+
+El Director aprobó la dirección de producto y quiere avanzar por microbloques. Solo está autorizado B01: arquitectura inicial React/TypeScript/Vite; Phaser 4.2.1 queda instalado pero no se usa para dibujar interfaces aún. Verifica instalación, compilación y visualización mobile-first y desktop. No diseñar identidad final, no inventar partidas, no implementar bots ni servidor todavía. No traer código Unity o Legacy sin auditoría específica.
+
+TAREAS
+1) Audita la base entregada; corrige únicamente los defectos necesarios para tener una página técnica responsive y compilable.
+2) Ejecuta comprobación de tipos y build.
+3) Crea PR en rama `feat/b01-fundacion-web` si corresponde; reporta cambios y limita el alcance.
+4) Cuando GitHub/Render estén conectados, comprueba el sitio real en PC y teléfono (emulado o físico, etiquetado correctamente).
+5) Devuelve evidencia y no afirmes "online" hasta probar el deploy.
+
+PROHIBICIONES
+- No generar identidad visual ni mockups finales sin aprobación.
+- No crear bots que se hagan pasar por personas reales.
+- No añadir clasificatorias, pagos, registro real, tienda, backend o inventario en B01.
+- No modificar otros repositorios existentes.
+- No inventar pantallas funcionando ni usuarios conectados.
+
+CRITERIO: repo nuevo + documentación completa + página de estado visible + build y tests verificados + link Render comprobado. Si no puedes publicar por falta de acceso, reporta bloqueador exacto, sin declarar terminado.
