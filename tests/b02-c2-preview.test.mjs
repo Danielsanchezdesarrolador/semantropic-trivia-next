@@ -54,9 +54,9 @@ test('B02-C2: logotipo aprobado en PNG RGBA con transparencia real', () => {
   assert.match(registry, /semantropic-trivia-logo-v1\.png/);
 });
 
-test('B02-C2: preview aislada del tablero B01 y sin deploy', () => {
+test('B02-C2: portada oficial y galería técnica se renderizan por separado', () => {
   const app = read('src/App.tsx');
-  assert.doesNotMatch(app, /HomePreview|b02-preview/);
+  assert.match(app, /HomePreview official showLibrary=\{false\}/);
   assert.match(read('b02-preview.html'), /id="preview-root"/);
   assert.match(read('vite.config.ts'), /b02-preview\.html/);
   assert.match(read('src/ui/assets/previewAssets.ts'), /candidate-not-approved/);

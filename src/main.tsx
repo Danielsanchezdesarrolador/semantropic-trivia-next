@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import './styles.css';
+// HomePreview carga el estilo oficial de SEMANTROPIC POP; el CSS B01 queda archivado sin afectar la portada.
 
 const root = document.getElementById('root');
 if (!root) throw new Error('Falta el contenedor #root');

@@ -4,10 +4,11 @@ import test from 'node:test';
 
 const get = (path) => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 
-test('B02-C1 conserva pantalla B01 aislada', () => {
+test('B02-C1 arquitectura reutilizada sin importar los estilos antiguos de B01', () => {
   const app = get('src/App.tsx');
-  assert.match(app, /Tablero de estado/);
-  assert.doesNotMatch(app, /from ['"]\.\/ui/);
+  const main = get('src/main.tsx');
+  assert.match(app, /HomePreview official showLibrary=\{false\}/);
+  assert.doesNotMatch(main, /^import ['"]\.\/styles\.css['"]/m);
 });
 
 test('B02-C1 registra referencia sin falsear assets terminados', () => {

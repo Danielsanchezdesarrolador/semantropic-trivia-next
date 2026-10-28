@@ -79,13 +79,13 @@ function ResourceLibrary() {
   );
 }
 
-export default function HomePreview() {
+export default function HomePreview({ official = false, showLibrary = true }: { official?: boolean; showLibrary?: boolean } = {}) {
   const approvedBackground = getApprovedAsset('environment/home-main');
   const approvedLogo = getApprovedAsset('brand/logo');
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
   return (
-    <main className="st-preview-page">
-      <section className="st-home" aria-label="Vista de prueba de Semantropic Trivia con assets separados">
+    <main className={'st-preview-page' + (official ? ' st-preview-page--official' : '')}>
+      <section className="st-home" aria-label={official ? 'Pantalla principal de Semantropic Trivia' : 'Vista de prueba de Semantropic Trivia con assets separados'}>
         <div className="st-home__scene" aria-hidden="true">
           <img className="st-home__asset st-home__approved-background" src={approvedBackground} width={1672} height={941} alt="" fetchPriority="high" />
           <div className="st-home__veil" />
@@ -98,7 +98,10 @@ export default function HomePreview() {
           </div>)}
         </aside>
         <div className="st-home__content">
-          <header className="st-home__header"><span>B02-C2 · PRUEBA DE ASSETS</span><span>Sin partidas operativas</span></header>
+          <header className="st-home__header">
+            <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
+            <span>{official ? 'Modos próximamente' : 'Sin partidas operativas'}</span>
+          </header>
           <div className="st-home__brand">
             <h1 className="st-sr-only">SEMANTROPIC TRIVIA</h1>
             <img className="st-home__official-logo" src={approvedLogo} width={585} height={370} alt="" fetchPriority="high" decoding="async" />
@@ -124,10 +127,14 @@ export default function HomePreview() {
             <div><b>Jugar Online</b><span>1v1 normal y clasificatoria solo entre personas.</span></div>
             <div><b>Jugar con Amigos</b><span>Salas privadas 1v1, 2v2, 3v3 y FFA.</span></div>
           </section>
-          <div className="st-home__notice">Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.</div>
+          <div className="st-home__notice">
+            {official
+              ? 'Estamos preparando las partidas. Esta versión presenta el lobby oficial; los modos todavía no están disponibles.'
+              : 'Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.'}
+          </div>
         </div>
       </section>
-      <ResourceLibrary />
+      {showLibrary ? <ResourceLibrary /> : null}
     </main>
   );
 }

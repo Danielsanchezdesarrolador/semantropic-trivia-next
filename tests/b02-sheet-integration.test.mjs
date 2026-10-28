@@ -40,9 +40,11 @@ test('Las imágenes extraídas se clasifican expresamente como candidatas o refe
   assert.match(list,/sheetPalette/);
   assert.match(list,/sheetAssets/);
 });
-test('Vista B01 continua aislada',()=>{
+test('La home aprobada se publica en / y la biblioteca permanece fuera de portada',()=>{
   const app=text('src/App.tsx');
-  assert.doesNotMatch(app,/HomePreview|sheetAssets/);
+  assert.match(app,/HomePreview official showLibrary=\{false\}/);
+  const home=text('src/ui/home/HomePreview.tsx');
+  assert.match(home,/showLibrary \? <ResourceLibrary \/>/);
   assert.match(text('vite.config.ts'),/b02-preview\.html/);
 });
 

@@ -21,12 +21,14 @@ test('B01: sitio estático Render, sin backend', () => {
   assert.doesNotMatch(render, /runtime: node/);
 });
 
-test('B01: tablero técnico no presume juego funcional', () => {
-  const page = text('src/App.tsx');
-  assert.match(page, /Aún no es una partida/);
-  assert.match(page, /No implementados ni desplegados/);
-  assert.match(page, /todavía no jugables/);
-  assert.doesNotMatch(page, /import .*phaser/i);
+test('B02: portada oficial del lobby no presume juego operativo', () => {
+  const app = text('src/App.tsx');
+  const home = text('src/ui/home/HomePreview.tsx');
+  assert.match(app, /HomePreview official showLibrary=\{false\}/);
+  assert.match(home, /type="button" disabled/);
+  assert.match(home, /Modos próximamente/);
+  assert.match(home, /showLibrary \? <ResourceLibrary \/>/);
+  assert.doesNotMatch(app, /import .*phaser/i);
 });
 
 test('B01: documentación y autoridad de dirección presentes', () => {
