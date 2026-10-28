@@ -59,7 +59,7 @@ try {
       assert.equal(await page.getByRole('button',{name:category,exact:true}).getAttribute('aria-pressed'),'true');
       const img=await page.locator('.b03-category-icon').getAttribute('src');
       assert.ok(img?.includes('icono_categoria_'));
-      assert.equal(await page.locator('.b03-category-title').innerText(), category);
+      assert.equal((await page.locator('.b03-category-title').textContent())?.trim(), category);
       const bg=await page.locator('.b03-arena').evaluate(el=>getComputedStyle(el,'::before').backgroundImage);
       assert.notEqual(bg,baseBackground,'Cambio de fondo al elegir '+category);
     }
