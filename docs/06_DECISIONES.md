@@ -21,3 +21,5 @@ No interpretar la creación local de una estructura como repositorio existente, 
 - D-012: mockup vertical híbrido de pantalla principal, tamaño de referencia 1024x1536. Estado: **MOCKUP VISUAL APROBADO, NO IMPLEMENTADO**.
 - D-013: **B02-C1** autoriza solo diseño de arquitectura de assets, tokens y componentes reutilizables en rama/PR; prohíbe fusión a main y cambios en Render/producción. Estado: AUTORIZADO, EN DESARROLLO.
 - D-014: modos oficiales y prohibiciones B01/B02 continúan; Torneo CPU, pase de temporada y cifras ilustradas del mockup no son funcionalidades aprobadas.
+
+- D-015: El Director **APRUEBA** como fondo oficial de home la ilustración de plaza fantástica y cielo galáctico sin interfaz, 1672×941. Se integra WebP optimizado en B02-C2 y se conserva el original PNG; logotipo, personajes y UI final siguen pendientes. **FONDO APROBADO, PREVIEW EN DESARROLLO, NO PRODUCCIÓN.**

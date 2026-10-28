@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420">
+<defs><linearGradient id="gem" x2=".8" y2="1"><stop stop-color="#e8fdff"/><stop offset=".3" stop-color="#56e7fb"/><stop offset=".65" stop-color="#0791ec"/><stop offset="1" stop-color="#4543c2"/></linearGradient><linearGradient id="word" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".65" stop-color="#e7f4ff"/><stop offset="1" stop-color="#8bd0ff"/></linearGradient><linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff9af"/><stop offset=".45" stop-color="#ffd44e"/><stop offset="1" stop-color="#ff8b29"/></linearGradient><filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="8" flood-color="#191665" flood-opacity=".57"/></filter></defs>
+<g filter="url(#shadow)">
+<path d="M380 9 498 112 457 301 380 383 296 301 258 112Z" fill="#263ba1" stroke="#94f9ff" stroke-width="11"/>
+<path d="M380 9 498 112 380 167 258 112Z" fill="#7afcff"/><path d="M258 112 380 167 296 301Z" fill="#00a5ed"/><path d="M498 112 380 167 457 301Z" fill="#13cdf8"/><path d="M380 167 457 301 380 383 296 301Z" fill="url(#gem)"/><path d="M380 9v374M258 112h240" stroke="#b4faff" stroke-opacity=".62" stroke-width="5"/>
+<path d="m184 67 52 17-31 56-58-20ZM559 53l59 25-30 66-56-40Z" fill="#febd38" stroke="#fff0ab" stroke-width="6"/>
+<path d="m108 245 70-34 55 60-75 33Zm553-41 45 61-67 54-57-44Z" fill="#a75bfa" stroke="#fa9eff" stroke-width="6"/>
+<path d="M92 148Q376 90 666 145L649 259Q386 297 108 257Z" fill="#07276d" stroke="#0a6dc8" stroke-width="14"/>
+<path d="M118 152Q371 109 641 158" fill="none" stroke="#5c9cff" stroke-width="9"/>
+<text x="380" y="200" font-family="Arial Black, system-ui, sans-serif" font-size="65" text-anchor="middle" font-weight="1000" letter-spacing="-4" paint-order="stroke fill" stroke="#072365" stroke-width="16" fill="#072365" textLength="565" lengthAdjust="spacingAndGlyphs">SEMANTROPIC</text>
+<text x="380" y="200" font-family="Arial Black, system-ui, sans-serif" font-size="65" text-anchor="middle" font-weight="1000" letter-spacing="-4" paint-order="stroke fill" stroke="#1686e9" stroke-width="6" fill="url(#word)" textLength="565" lengthAdjust="spacingAndGlyphs">SEMANTROPIC</text>
+<text x="381" y="286" font-family="Arial Black, system-ui, sans-serif" font-size="112" font-weight="1000" text-anchor="middle" letter-spacing="1" paint-order="stroke fill" stroke="#152376" stroke-width="19" fill="#152376" textLength="376" lengthAdjust="spacingAndGlyphs">TRIVIA</text>
+<text x="381" y="286" font-family="Arial Black, system-ui, sans-serif" font-size="112" font-weight="1000" text-anchor="middle" letter-spacing="1" paint-order="stroke fill" stroke="#e97825" stroke-width="6" fill="url(#gold)" textLength="376" lengthAdjust="spacingAndGlyphs">TRIVIA</text>
+</g>
+<path d="M145 45v34m-17-17h34M640 290v40m-20-20h40" stroke="#fff9c8" stroke-width="6" stroke-linecap="round"/>
+</svg>
