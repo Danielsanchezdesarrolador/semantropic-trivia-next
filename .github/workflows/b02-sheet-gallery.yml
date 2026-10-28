@@ -1,0 +1,37 @@
+name: B02-C2 — galeria y home con assets de lamina
+on:
+  push:
+    branches: [feat/b02-c2-lamina-assets-preview]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Dependencias
+        run: npm install --no-audit --no-fund
+      - name: TypeScript
+        run: npm run check
+      - name: Tests
+        run: npm test
+      - name: Build Vite
+        run: npm run build
+      - name: Verificar previsualizacion
+        run: test -f dist/b02-preview.html
+      - name: Playwright temporal
+        run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - name: Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Capturar desktop y moviles emulados
+        run: node scripts/b02-sheet-browser-smoke.mjs
+      - name: Capturas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Semantropic-B02-Sheet-Home-PC-Mobile
+          path: artifacts/b02-sheet/
+          if-no-files-found: ignore
