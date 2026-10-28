@@ -15,11 +15,34 @@ const categories: readonly SheetCategory[] = [
 ];
 const asset = (id: string) => sheetById(id).path;
 
+function ModeIcon({ id }: { id: 'online' | 'friends' }) {
+  if (id === 'online') {
+    return (
+      <svg viewBox="0 0 80 80" role="presentation" aria-hidden="true" focusable="false">
+        <circle cx="40" cy="40" r="29" fill="#f7fcff" stroke="#c7ecff" strokeWidth="3" />
+        <path d="M11 40h58M40 11v58M18 23h44M18 57h44" fill="none" stroke="#1478cf" strokeWidth="3.6" strokeLinecap="round" />
+        <ellipse cx="40" cy="40" rx="12" ry="29" fill="none" stroke="#167de0" strokeWidth="3.6" />
+        <circle cx="40" cy="40" r="30" fill="none" stroke="#fff" strokeOpacity=".74" strokeWidth="2" />
+      </svg>
+    );
+  }
+  return (
+    <svg viewBox="0 0 80 80" role="presentation" aria-hidden="true" focusable="false">
+      <g fill="#fff7fc" stroke="#ffd6e9" strokeWidth="2.5" strokeLinejoin="round">
+        <circle cx="40" cy="24" r="12"/><circle cx="17" cy="32" r="9"/><circle cx="63" cy="32" r="9"/>
+        <path d="M17 44c-10 0-15 8-15 21v3h24V55c0-4-4-8-9-11ZM63 44c10 0 15 8 15 21v3H54V55c0-4 4-8 9-11Z"/>
+        <path d="M40 40c-16 0-23 12-23 29v4h46v-4c0-17-7-29-23-29Z" strokeWidth="3"/>
+      </g>
+    </svg>
+  );
+}
+
 function ModeButton({ name, id }: {name:string; id:'online'|'friends'}) {
   return (
-    <button className="st-sheet-action" type="button" disabled aria-label={`${name}: en desarrollo, no disponible`}>
-      <img src={asset(id)} alt="" width={id==='online'?144:145} height={105} />
-      <span className="st-sr-only">{name} — próximamente</span>
+    <button className={`st-sheet-action st-sheet-action--${id}`} type="button" disabled aria-label={`${name}: en desarrollo, no disponible`}>
+      <span className="st-sheet-action__icon"><ModeIcon id={id}/></span>
+      <span className="st-sheet-action__title">{id === 'online' ? <>JUGAR<br/>ONLINE</> : <>JUGAR<br/>CON AMIGOS</>}</span>
+      <span className="st-sheet-action__caption">{id === 'online' ? 'Reta a jugadores' : 'Crea salas privadas'}</span>
     </button>
   );
 }
@@ -58,7 +81,8 @@ function ResourceLibrary() {
 
 export default function HomePreview() {
   const approvedBackground = getApprovedAsset('environment/home-main');
-  if (!approvedBackground) throw new Error('Fondo aprobado no registrado');
+  const approvedLogo = getApprovedAsset('brand/logo');
+  if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
   return (
     <main className="st-preview-page">
       <section className="st-home" aria-label="Vista de prueba de Semantropic Trivia con assets separados">
@@ -77,7 +101,7 @@ export default function HomePreview() {
           <header className="st-home__header"><span>B02-C2 · PRUEBA DE ASSETS</span><span>Sin partidas operativas</span></header>
           <div className="st-home__brand">
             <h1 className="st-sr-only">SEMANTROPIC TRIVIA</h1>
-            <img className="st-home__official-logo" src={asset('logo')} width={235} height={161} alt="" fetchPriority="high" />
+            <img className="st-home__official-logo" src={approvedLogo} width={585} height={370} alt="" fetchPriority="high" decoding="async" />
             <img className="st-home__crystal st-home__crystal--one" src={asset('crystal-blue')} alt="" />
             <img className="st-home__crystal st-home__crystal--two" src={asset('crystal-violet')} alt="" />
           </div>

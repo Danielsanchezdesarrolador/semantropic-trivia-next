@@ -22,3 +22,12 @@ El Director solicitó implementar y observar en el juego los recursos aislados e
 - Capturas de PC y móvil guardadas como artefactos de GitHub Actions para revisión del Director.
 - **No modificar Render de producción**. Se puede levantar Static Site de preview independiente en el mismo workspace autorizado si se permite crear sin modificar servicios existentes, sujeto a revisión y límites del plan.
 - El Director evaluará los recortes visuales antes de aprobar su promoción a assets comerciales.
+
+
+## 28-10-2026 · Hotfix de fidelidad autorizado: fondo continuo + logo/botones nítidos
+- Causa observada: fondo fijado a 610px escritorio / 345px móvil, y velo con colores opacos azul sólido; detrás no se mostraba el paisaje.
+- Ahora se adapta el asset oficial `semantropic-pop-bg-v1.webp` a todo el alto del contenedor con `height: 100%; object-fit: cover`, sin degradados opacos que oculten la zona inferior. El recorte lateral en móviles verticales se acepta como respuesta responsive inicial; no se estira la proporción de la imagen.
+- Logotipo del lobby: se vuelve al PNG alfa de mayor resolución ya aprobado, `brand/logo` 585 × 370 px, en lugar de agrandar el logo de la lámina de solo 235 × 161; este último permanece conservado en la galería.
+- Jugar Online / Jugar con Amigos: las tarjetas comprimidas de 144×105 px se mantienen en la biblioteca, pero el lobby las dibuja con gradientes CSS, iconos SVG originales y texto React a tamaño real, sin pérdida de nitidez por ampliación ni falsas funcionalidades.
+- Los dos CTA permanecen `disabled`, sin backend. Torneo CPU y Modo Ranked independiente no se incluyen.
+- Las mejoras se validan en rama hija independiente, se fusionarán **solo con la rama del preview** después de CI y QA; main y Render oficial B01 continúan intactos.

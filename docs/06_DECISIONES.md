@@ -25,3 +25,5 @@ No interpretar la creación local de una estructura como repositorio existente, 
 - D-015: El Director **APRUEBA** como fondo oficial de home la ilustración de plaza fantástica y cielo galáctico sin interfaz, 1672×941. Se integra WebP optimizado en B02-C2 y se conserva el original PNG; logotipo, personajes y UI final siguen pendientes. **FONDO APROBADO, PREVIEW EN DESARROLLO, NO PRODUCCIÓN.**
 
 - D-016: el Director **APRUEBA el logotipo SEMANTROPIC TRIVIA del mockup** y solicita su integración como asset independiente. Se emplea extracción PNG RGBA del mockup aprobado, sin reimaginar tipografía ni sustituirlo por un logotipo nuevo. Estado: **LOGOTIPO APROBADO, INTEGRADO EN PREVIEW B02-C2, NO PUBLICADO**.
+
+- D-017: el Director pide que el escenario cubra todo el lobby y que el logotipo y los dos botones autorizados ganen nitidez. Se corrige altura fija del fondo y degradado opaco; el logo en la home usa el PNG oficial 585×370, los botones se renderizan mediante CSS + SVG + texto React. Las imágenes pequeñas originales permanecen solo como referencias de la biblioteca. **Hotfix visual de preview, no producción; pendiente revisión del Director.**

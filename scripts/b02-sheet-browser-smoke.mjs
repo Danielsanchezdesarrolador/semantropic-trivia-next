@@ -35,12 +35,30 @@ try{
     const imageData=await page.locator('img').evaluateAll(xs=>xs.map(x=>({src:x.getAttribute('src'),complete:x.complete,width:x.naturalWidth})));
     assert.ok(imageData.every(x=>x.complete&&x.width>0),'Image broken '+JSON.stringify(imageData.filter(x=>!x.complete||!x.width)));
     assert.ok(imageData.some(x=>x.src?.includes('semantropic-pop-bg-v1.webp')));
-    assert.ok(imageData.some(x=>x.src?.includes('logo-lamina.png')));
+    assert.ok(imageData.some(x=>x.src?.includes('logo-lamina.png')), 'Logo pequeño conservado solo en galería');
+    const logo=page.locator('.st-home__official-logo');
+    assert.ok((await logo.getAttribute('src'))?.includes('semantropic-trivia-logo-v1.png'));
+    assert.equal(await logo.evaluate(img=>img.naturalWidth),585,'Logotipo aprobado en alta definición');
+    assert.equal(await page.locator('.st-sheet-action svg').count(),2,'Iconos de botones vectoriales');
+    assert.equal(await page.locator('.st-sheet-action img').count(),0,'No ampliar botones rasterizados pequeños');
+    assert.equal(await actions.nth(0).innerText().then(s=>s.includes('ONLINE')),true);
+    assert.equal(await actions.nth(1).innerText().then(s=>s.includes('AMIGOS')),true);
+    const stageBackground=await page.evaluate(()=>{
+      const bg=document.querySelector('.st-home__approved-background');
+      const root=document.querySelector('.st-home');
+      if(!(bg instanceof HTMLImageElement)||!(root instanceof HTMLElement))return null;
+      return {bgHeight:bg.getBoundingClientRect().height,stageHeight:root.getBoundingClientRect().height,
+              objectFit:getComputedStyle(bg).objectFit,source:bg.currentSrc,
+              veil:getComputedStyle(document.querySelector('.st-home__veil')).backgroundImage};
+    });
+    assert.ok(stageBackground,'No hay fondo');
+    assert.ok(Math.abs(stageBackground.bgHeight-stageBackground.stageHeight)<2, 'El fondo debe cubrir TODO el lobby: '+JSON.stringify(stageBackground));
+    assert.equal(stageBackground.objectFit,'cover');
     const geometry=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,stageWidth:document.querySelector('.st-home')?.getBoundingClientRect().width}));
     assert.ok(geometry.scrollWidth<=geometry.viewport+1,'Horizontal overflow: '+JSON.stringify(geometry));
     assert.deepEqual(errors,[],'JS errors '+d.name);
     await page.screenshot({path:`artifacts/b02-sheet/${d.name}.png`,fullPage:true});
-    console.log('PASS B02-SHEET',d.name,'HTTP',r.status(),JSON.stringify(geometry),'loadedImages',imageData.length);
+    console.log('PASS B02-SHEET',d.name,'HTTP',r.status(),JSON.stringify(geometry),'bg-height',stageBackground.bgHeight,'stage-height',stageBackground.stageHeight,'logo',585,'svg-buttons',2,'loadedImages',imageData.length);
     await ctx.close();
   }
 }catch(e){console.error('FAIL B02-SHEET:',e);process.exitCode=1;}
