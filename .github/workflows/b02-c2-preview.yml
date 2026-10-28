@@ -1,0 +1,37 @@
+name: B02-C2 — home visual aislado
+on:
+  push:
+    branches: [feat/b02-c2-home-preview, feat/b02-c2-logo-aprobado]
+  workflow_dispatch:
+jobs:
+  visual-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Instalar dependencias
+        run: npm install --no-audit --no-fund
+      - name: Verificar tipos
+        run: npm run check
+      - name: Probar contratos y arquitectura
+        run: npm test
+      - name: Construir ambas entradas
+        run: npm run build
+      - name: Verificar HTML de previsualización en dist
+        run: test -f dist/b02-preview.html
+      - name: Instalar Playwright de pruebas
+        run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: QA visual PC y móvil emulado
+        run: node scripts/b02-c2-browser-smoke.mjs
+      - name: Publicar capturas como artefacto de CI
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B02-C2-Home-Preview-PC-Mobile
+          path: artifacts/b02-c2/
+          if-no-files-found: ignore

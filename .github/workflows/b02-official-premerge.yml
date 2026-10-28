@@ -1,0 +1,38 @@
+name: B02 - validar lobby oficial antes de fusionar
+on:
+  push:
+    branches: [release/b02-home-oficial]
+  pull_request:
+    branches: [main]
+jobs:
+  official-home:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Instalar paquetes npm
+        run: npm install --no-audit --no-fund
+      - name: TypeScript
+        run: npm run check
+      - name: Pruebas unitarias
+        run: npm test
+      - name: Construir Vite
+        run: npm run build
+      - name: Confirmar index oficial
+        run: test -f dist/index.html
+      - name: Instalar Playwright
+        run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - name: Instalar Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Navegar portada compilada desde PC y móvil emulado
+        run: node scripts/b02-home-official-smoke.mjs
+      - name: Guardar capturas de prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B02-Lobby-Oficial-PC-Mobile
+          path: artifacts/b02-official/
+          if-no-files-found: ignore

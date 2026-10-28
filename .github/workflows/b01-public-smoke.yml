@@ -1,30 +1,29 @@
-name: B01 - smoke sitio publico
+name: B02 - validar sitio oficial publicado
 on:
   push:
-    branches: [feat/b01-qa-sitio-publico]
-  pull_request:
     branches: [main]
+  workflow_dispatch:
 jobs:
-  browser-smoke:
+  public-smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22.16.0'
-      - name: Instalar dependencias y Playwright de prueba
+      - name: Instalar Playwright
         run: npm install --no-save --no-audit --no-fund playwright@1.56.1
-      - name: Instalar navegador Chromium
+      - name: Instalar Chromium
         run: npx playwright install --with-deps chromium
-      - name: HTTP + React + JS + viewport escritorio/movil
+      - name: Verificar Render LIVE en PC y móvil emulado
         env:
-          B01_PUBLIC_URL: https://semantropic-trivia-next-web.onrender.com/
-        run: node scripts/b01-smoke.mjs
-      - name: Guardar capturas reales de Chromium
+          ST_OFFICIAL_URL: https://semantropic-trivia-next-web.onrender.com/
+        run: node scripts/b02-home-official-smoke.mjs
+      - name: Guardar capturas reales de producción
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: b01-capturas-chromium
-          path: artifacts/
+          name: B02-Publicado-PC-Mobile
+          path: artifacts/b02-official/
           if-no-files-found: ignore

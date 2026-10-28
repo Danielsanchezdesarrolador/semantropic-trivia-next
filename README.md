@@ -1,6 +1,6 @@
 # SEMANTROPIC TRIVIA 1.0 — Fundación B01
 
-**Estado:** starter técnico; NO juego jugable ni despliegue confirmado. Fuente de autoridad: `AGENTS.md`, `docs/01_VISION.md` a `docs/06_DECISIONES.md` y decisiones posteriores del Director.
+**Estado:** B01 fundación publicada y verificada; lobby visual B02 aprobado para la portada oficial. **Todavía no hay partidas operativas.** Fuente de autoridad: `AGENTS.md`, `docs/01_VISION.md` a `docs/06_DECISIONES.md` y decisiones posteriores del Director.
 
 ## Objetivo
 Preparar un frontend móvil/desktop para pruebas en PC y teléfono; el único componente de UI es un tablero técnico neutro. Phaser 4.2.1 se instala como dependencia, pero no se usa aún. No hay backend ni datos reales.
@@ -24,7 +24,7 @@ La primera instalación generará `package-lock.json`: **guardarlo en GitHub** y
 3. Trabajar en rama `feat/b01-fundacion-web` para correcciones y PR; no fusionar sin pruebas/revisión.
 
 ## Render (solo con workspace previamente confirmado)
-- Tipo: **Static Site**; nombre propuesto: `semantropic-trivia-next-web`.
+- Tipo: **Static Site**; servicio oficial existente: `semantropic-trivia-next-web`.
 - Repo: `https://github.com/Danielsanchezdesarrolador/semantropic-trivia-next`.
 - Branch: `main`.
 - Build Command: `npm install && npm run build`.
@@ -33,3 +33,6 @@ La primera instalación generará `package-lock.json`: **guardarlo en GitHub** y
 
 ## Límites
 No mockups, identidad final, usuarios, inicio de sesión, bots, matchmaking, economía, juego real, backend, ranking o publicación móvil en B01. No declarar PASS a una prueba no ejecutada.
+
+## B02 — Portada artística aprobada (2026-10-28)
+El Director aprobó publicar en la URL oficial el lobby SEMANTROPIC POP — Fantasía Social, integrado previamente en el laboratorio Render B02. La ruta `/` monta `<HomePreview official showLibrary={false} />`: conserva fondo, logo, personajes y los dos botones principales aprobados, pero oculta la galería técnica de extracción. Los botones permanecen deshabilitados mientras se implementa B03/B05/B06. La biblioteca técnica sigue en `/b02-preview.html` solo para referencia y QA; no es parte de la portada principal. Ver `docs/art/B02_PUBLICACION_HOME.md`.

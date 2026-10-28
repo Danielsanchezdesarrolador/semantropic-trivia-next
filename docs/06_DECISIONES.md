@@ -14,3 +14,18 @@
 | D-009 | Workspace Render `My Workspace` encontrado por conector | CONFIRMADO por el Director 2026-10-28 |
 
 No interpretar la creación local de una estructura como repositorio existente, servicio creado o deploy online. Actualizar este registro con enlaces, SHA y resultados cuando existan.
+
+## Actualización oficial 2026-10-28 · B02
+- D-010: **B01 finalizado**: repo independiente, pruebas CI, Render Live y confirmación del Director de que abre desde dispositivos. Estado: VERIFICADO y APROBADO.
+- D-011: dirección **SEMANTROPIC POP — Fantasía Social** (Plaza de Ideas + Noche Galáctica), paleta viva y legibilidad. Estado: APROBADO para la pantalla principal.
+- D-012: mockup vertical híbrido de pantalla principal, tamaño de referencia 1024x1536. Estado: **MOCKUP VISUAL APROBADO, NO IMPLEMENTADO**.
+- D-013: **B02-C1** autoriza solo diseño de arquitectura de assets, tokens y componentes reutilizables en rama/PR; prohíbe fusión a main y cambios en Render/producción. Estado: AUTORIZADO, EN DESARROLLO.
+- D-014: modos oficiales y prohibiciones B01/B02 continúan; Torneo CPU, pase de temporada y cifras ilustradas del mockup no son funcionalidades aprobadas.
+
+- D-015: El Director **APRUEBA** como fondo oficial de home la ilustración de plaza fantástica y cielo galáctico sin interfaz, 1672×941. Se integra WebP optimizado en B02-C2 y se conserva el original PNG; logotipo, personajes y UI final siguen pendientes. **FONDO APROBADO, PREVIEW EN DESARROLLO, NO PRODUCCIÓN.**
+
+- D-016: el Director **APRUEBA el logotipo SEMANTROPIC TRIVIA del mockup** y solicita su integración como asset independiente. Se emplea extracción PNG RGBA del mockup aprobado, sin reimaginar tipografía ni sustituirlo por un logotipo nuevo. Estado: **LOGOTIPO APROBADO, INTEGRADO EN PREVIEW B02-C2, NO PUBLICADO**.
+
+- D-017: el Director pide que el escenario cubra todo el lobby y que el logotipo y los dos botones autorizados ganen nitidez. Se corrige altura fija del fondo y degradado opaco; el logo en la home usa el PNG oficial 585×370, los botones se renderizan mediante CSS + SVG + texto React. Las imágenes pequeñas originales permanecen solo como referencias de la biblioteca. **Hotfix visual de preview, no producción; pendiente revisión del Director.**
+
+- D-018: el Director aprueba el lobby visual corregido (fondo continuo, logotipo nítido y botones vectoriales) y autoriza su publicación en la portada oficial de SEMANTROPIC TRIVIA. El home público debe ocultar la galería técnica y mantener todos los modos deshabilitados. Estado: **PUBLICACIÓN AUTORIZADA, SUJETA A CI/QA Y VERIFICACIÓN DE RENDER**.
