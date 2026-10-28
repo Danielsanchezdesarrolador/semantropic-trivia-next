@@ -11,7 +11,7 @@ test('B02 oficial: React monta el lobby aprobado sin galería técnica', () => {
   assert.match(home, /st-preview-page--official/);
   assert.match(home, /showLibrary \? <ResourceLibrary \/>/);
   assert.match(home, /Modos próximamente/);
-  assert.match(home, /Estamos preparando las partidas/);
+  assert.match(home, /Los menús ya se pueden explorar/);
   assert.match(read('index.html'), /SEMANTROPIC TRIVIA 1\.0/);
   assert.doesNotMatch(read('src/main.tsx'), /^import ['"]\.\/styles\.css['"]/m);
 });
@@ -27,7 +27,7 @@ test('B02 oficial: fondo y logotipo aprobados, dos modos únicamente', () => {
   assert.match(home,/ModeButton id="online"/);
   assert.match(home,/ModeButton id="friends"/);
   assert.doesNotMatch(home,/id="cpu"|id="ranked"/);
-  assert.match(home,/type="button" disabled/);
+  assert.match(home,/disabled=\{!onOpen\}/);
   assert.match(css,/st-home__approved-background \{[^}]*height:100%;object-fit:cover/);
 });
 

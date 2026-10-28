@@ -21,7 +21,7 @@ test('Conserva los dos modos oficiales y no incorpora CPU/Ranked como botones ce
   assert.match(home,/id="friends"/);
   assert.equal((home.match(/<ModeButton id=/g)||[]).length,2);
   assert.doesNotMatch(home, /id="cpu"|id="ranked"/);
-  assert.match(home,/type="button" disabled aria-label/);
+  assert.match(home,/disabled=\{!onOpen\}/);
   assert.match(home,/st-sheet-action__icon/);
   assert.match(home,/st-sheet-action__title/);
   assert.match(home,/<ModeIcon id=\{id\}/);

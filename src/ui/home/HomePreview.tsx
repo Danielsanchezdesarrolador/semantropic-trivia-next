@@ -1,13 +1,15 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
+import LobbySection from './LobbySection';
+import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
 
 const nav = [
-  { label: 'Inicio', icon: '⌂' },
-  { label: 'Colección', icon: '▣' },
-  { label: 'Tienda', icon: '✦' },
-  { label: 'Amigos', icon: '♧' },
-  { label: 'Ranking', icon: '♛' },
+  { label: 'Inicio', icon: '⌂', screen: 'home' },
+  { label: 'Colección', icon: '▣', screen: 'collection' },
+  { label: 'Tienda', icon: '✦', screen: 'shop' },
+  { label: 'Amigos', icon: '♧', screen: 'friends' },
+  { label: 'Ranking', icon: '♛', screen: 'ranking' },
 ] as const;
 const categories: readonly SheetCategory[] = [
   'Marca y personajes','Cristales y objetos','Botones de referencia',
@@ -37,9 +39,9 @@ function ModeIcon({ id }: { id: 'online' | 'friends' }) {
   );
 }
 
-function ModeButton({ name, id }: {name:string; id:'online'|'friends'}) {
+function ModeButton({ name, id, onOpen }: {name:string; id:'online'|'friends'; onOpen?: () => void}) {
   return (
-    <button className={`st-sheet-action st-sheet-action--${id}`} type="button" disabled aria-label={`${name}: en desarrollo, no disponible`}>
+    <button className={`st-sheet-action st-sheet-action--${id}`} type="button" disabled={!onOpen} onClick={onOpen} aria-label={onOpen ? 'Abrir ' + name : name + ': en desarrollo, no disponible'}>
       <span className="st-sheet-action__icon"><ModeIcon id={id}/></span>
       <span className="st-sheet-action__title">{id === 'online' ? <>JUGAR<br/>ONLINE</> : <>JUGAR<br/>CON AMIGOS</>}</span>
       <span className="st-sheet-action__caption">{id === 'online' ? 'Reta a jugadores' : 'Crea salas privadas'}</span>
@@ -82,6 +84,8 @@ function ResourceLibrary() {
 export default function HomePreview({ official = false, showLibrary = true }: { official?: boolean; showLibrary?: boolean } = {}) {
   const approvedBackground = getApprovedAsset('environment/home-main');
   const approvedLogo = getApprovedAsset('brand/logo');
+  const { screen, navigate } = useLobbyNavigation(official);
+  const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
   return (
     <main className={'st-preview-page' + (official ? ' st-preview-page--official' : '')}>
@@ -90,18 +94,32 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
           <img className="st-home__asset st-home__approved-background" src={approvedBackground} width={1672} height={941} alt="" fetchPriority="high" />
           <div className="st-home__veil" />
         </div>
-        <aside className="st-home__sidebar" aria-label="Navegación ilustrativa aún no disponible">
+        <aside className="st-home__sidebar" aria-label={official ? 'Navegación principal' : 'Navegación ilustrativa aún no disponible'}>
           <div className="st-home__sidebar-mark" aria-hidden="true">✦</div>
-          {nav.map((n,i)=><div className={'st-home__nav '+(i===0?'st-home__nav--active':'')} key={n.label}>
-            <span className="st-home__nav-icon" aria-hidden="true">{n.icon}</span>
-            <span className="st-home__nav-label">{n.label}</span>
-          </div>)}
+          {nav.map(n => {
+            const selected = activeSidebarScreen(screen) === n.screen;
+            const className = 'st-home__nav ' + (selected ? 'st-home__nav--active' : '');
+            const iconAndLabel = <>
+              <span className="st-home__nav-icon" aria-hidden="true">{n.icon}</span>
+              <span className="st-home__nav-label">{n.label}</span>
+            </>;
+            return official
+              ? <button
+                  key={n.label}
+                  type="button"
+                  className={className}
+                  onClick={() => navigate(n.screen)}
+                  aria-current={selected ? 'page' : undefined}
+                >{iconAndLabel}</button>
+              : <div className={className} key={n.label}>{iconAndLabel}</div>;
+          })}
         </aside>
-        <div className="st-home__content">
+        <div className={'st-home__content' + (!isHome ? ' st-home__content--section' : '')}>
           <header className="st-home__header">
             <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
-            <span>{official ? 'Modos próximamente' : 'Sin partidas operativas'}</span>
+            <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
           </header>
+          {isHome ? <>
           <div className="st-home__brand">
             <h1 className="st-sr-only">SEMANTROPIC TRIVIA</h1>
             <img className="st-home__official-logo" src={approvedLogo} width={585} height={370} alt="" fetchPriority="high" decoding="async" />
@@ -114,8 +132,8 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <img className="st-home__character st-home__character--robot" src={asset('robot')} alt="Robot ilustrativo, no modo CPU" width={142} height={158} />
           </div>
           <div className="st-home__actions" aria-label="Modos oficiales previstos">
-            <ModeButton id="online" name="Jugar Online" />
-            <ModeButton id="friends" name="Jugar con Amigos" />
+            <ModeButton id="online" name="Jugar Online" onOpen={official ? () => navigate('online') : undefined} />
+            <ModeButton id="friends" name="Jugar con Amigos" onOpen={official ? () => navigate('friends') : undefined} />
           </div>
           <div className="st-home__ornaments" aria-hidden="true">
             <img className="st-home__ornament st-home__ornament--flowers" src={asset('flowers')} alt="" />
@@ -129,9 +147,10 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
           </section>
           <div className="st-home__notice">
             {official
-              ? 'Estamos preparando las partidas. Esta versión presenta el lobby oficial; los modos todavía no están disponibles.'
+              ? 'Los menús ya se pueden explorar. Las partidas y el multijugador se incorporarán en los próximos bloques.'
               : 'Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.'}
           </div>
+          </> : <LobbySection screen={screen} onNavigate={navigate} logoSrc={approvedLogo} />}
         </div>
       </section>
       {showLibrary ? <ResourceLibrary /> : null}

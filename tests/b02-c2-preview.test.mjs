@@ -71,7 +71,8 @@ test('B02-C2: solo dos CTA principales y sin actividades simuladas', () => {
   assert.match(home, /1v1, 2v2, 3v3 y FFA/);
   assert.doesNotMatch(home, /TORNEO CPU|PASE DE TEMPORADA|12\.450|680 monedas/);
   assert.equal((home.match(/<ModeButton id=/g) || []).length, 2);
-  assert.doesNotMatch(home, /onClick=/);
+  assert.match(home, /onClick=\{onOpen\}/);
+  assert.match(home, /disabled=\{!onOpen\}/);
 });
 
 test('B02-C2: responsive y movimiento reducido', () => {
