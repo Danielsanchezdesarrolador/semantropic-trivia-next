@@ -1,11 +1,11 @@
 import { ActionTile, GameFrame } from '../components/visual-primitives';
-import { previewAssets } from '../assets/previewAssets';
+import { getApprovedAsset } from '../assets/assetRegistry';
 
-/** Solo vista gráfica: no contiene rutas de gameplay ni datos de usuario ficticios. */
-function Scene({ src, className }: { src: string; className: string }) {
-  return <img aria-hidden="true" className={'st-home__asset ' + className} src={src} alt="" draggable={false} />;
-}
-
+/**
+ * B02-C2 / iteración 2: fondo ilustrado aprobado como recurso independiente.
+ * La composición contiene UI React real, pero NO habilita juego.
+ * Logotipo y personajes continúan pendientes de producción/aprobación.
+ */
 const navItems = [
   { icon: '⌂', label: 'Inicio', current: true },
   { icon: '✧', label: 'Colección', current: false },
@@ -15,15 +15,25 @@ const navItems = [
 ] as const;
 
 export default function HomePreview() {
+  const approvedBackground = getApprovedAsset('environment/home-main');
+  if (!approvedBackground) {
+    throw new Error('El fondo visual aprobado debe estar registrado antes de montar la home');
+  }
   return (
     <div className="st-home-preview-page">
-      <GameFrame className="st-home" aria-label="Previsualización visual SEMANTROPIC TRIVIA">
+      <GameFrame className="st-home st-home--approved-bg" aria-label="Previsualización visual SEMANTROPIC TRIVIA">
         <div className="st-home__scene" aria-hidden="true">
-          <Scene src={previewAssets.plaza} className="st-home__plaza" />
-          <Scene src={previewAssets.night} className="st-home__night" />
-          <Scene src={previewAssets.islands} className="st-home__islands" />
-          <Scene src={previewAssets.crystalCyan} className="st-home__crystal st-home__crystal--one" />
-          <Scene src={previewAssets.crystalWarm} className="st-home__crystal st-home__crystal--two" />
+          <img
+            className="st-home__asset st-home__approved-background"
+            src={approvedBackground}
+            alt=""
+            width={1672}
+            height={941}
+            fetchPriority="high"
+            decoding="async"
+            draggable={false}
+          />
+          <div className="st-home__background-veil" />
         </div>
         <aside className="st-home__sidebar" aria-label="Secciones ilustrativas, todavía no navegables">
           <div className="st-home__sidebar-mark" aria-hidden="true">✦</div>
@@ -38,17 +48,18 @@ export default function HomePreview() {
         </aside>
         <div className="st-home__content">
           <header className="st-home__header">
-            <span className="st-home__stamp">B02-C2 · Vista artística</span>
-            <span className="st-home__availability">Solo previsualización · Sin partidas</span>
+            <span className="st-home__stamp">B02-C2 · Fondo aprobado</span>
+            <span className="st-home__availability">Previsualización · Sin partidas</span>
           </header>
-          <section className="st-home__hero" aria-label="Marca y ambiente visual del juego">
-            <Scene src={previewAssets.logo} className="st-home__logo" />
-            <Scene src={previewAssets.leftHero} className="st-home__character st-home__character--left" />
-            <Scene src={previewAssets.rightHero} className="st-home__character st-home__character--right" />
-            <Scene src={previewAssets.robot} className="st-home__character st-home__character--robot" />
+          <section className="st-home__hero st-home__hero--text" aria-label="Marca y ambiente visual del juego">
+            <div className="st-home__brand-placeholder">
+              <p className="st-home__brand-kicker">FANTASÍA SOCIAL</p>
+              <h1>SEMANTROPIC <span>TRIVIA</span></h1>
+              <p>Logotipo y personajes: próximos assets individuales</p>
+            </div>
           </section>
           <section className="st-home__actions" aria-labelledby="st-home-modes-title">
-            <h1 id="st-home-modes-title" className="st-home__sr-only">Modalidades oficiales previstas</h1>
+            <h2 id="st-home-modes-title" className="st-home__sr-only">Modalidades oficiales previstas</h2>
             <ActionTile
               label="JUGAR ONLINE"
               description="Normal 1v1 y clasificatoria 1v1 · En desarrollo"
@@ -77,7 +88,7 @@ export default function HomePreview() {
             <div className="st-home__footer-card"><span aria-hidden="true">♡</span><strong>COMPARTE</strong><small>Reúnete con amigos</small></div>
             <div className="st-home__footer-card"><span aria-hidden="true">◇</span><strong>DESTACA</strong><small>Tu propia identidad</small></div>
           </section>
-          <p className="st-home__disclaimer">Prototipo visual B02-C2 · Recursos ilustrativos candidatos, pendientes de aprobación · No hay partidas ni usuarios conectados.</p>
+          <p className="st-home__disclaimer">Prototipo visual B02-C2 · Solo el fondo ha sido aprobado como asset oficial. No hay partidas ni usuarios conectados.</p>
         </div>
       </GameFrame>
     </div>

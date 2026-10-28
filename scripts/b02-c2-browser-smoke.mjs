@@ -50,8 +50,12 @@ try {
       src: i.getAttribute('src'),
       complete: i.complete,
       naturalWidth: i.naturalWidth,
+      naturalHeight: i.naturalHeight,
     })));
-    assert.equal(imgs.length, 9);
+    assert.equal(imgs.length, 1, 'Solo fondo oficial integrado por ahora');
+    assert.ok(imgs[0].src?.endsWith('/assets/home/environment/semantropic-pop-bg-v1.webp'));
+    assert.equal(imgs[0].naturalWidth, 1672);
+    assert.equal(imgs[0].naturalHeight, 941);
     assert.ok(imgs.every(x => x.complete && x.naturalWidth > 0), 'Falta ilustración ' + JSON.stringify(imgs));
     const layout = await page.evaluate(() => ({
       vw: window.innerWidth,

@@ -16,7 +16,8 @@ test('B02-C1 registra referencia sin falsear assets terminados', () => {
   assert.match(data, /nativeWidth: 1024/);
   assert.match(data, /nativeHeight: 1536/);
   assert.match(data, /state: 'pending-art'/);
-  assert.doesNotMatch(data, /state: 'approved', src: ['"]\//);
+  assert.match(data, /'environment\/home-main'[\s\S]*?state: 'approved'/);
+  assert.match(data, /src: '\/assets\/home\/environment\/semantropic-pop-bg-v1.webp'/);
   assert.match(data, /return asset.state === 'approved' \? asset.src : null/);
 });
 

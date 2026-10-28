@@ -1,6 +1,6 @@
 /**
  * B02-C1: catálogo de capas del mockup aprobado.
- * Ningún asset está disponible todavía: nunca fingir que un PNG está integrado.
+ * El fondo ilustrado B02-C2 fue aprobado por el Director; el resto sigue pendiente.
  * La captura completa del mockup es REFERENCIA, no fondo de interfaz.
  */
 export type AssetState = 'pending-art' | 'approved';
@@ -26,6 +26,14 @@ export const referenceMockup = {
 } as const;
 
 export const artAssets = {
+  'environment/home-main': {
+    kind: 'environment',
+    role: 'Fondo oficial híbrido de plaza diurna y cielo galáctico, sin interfaz',
+    format: 'webp',
+    state: 'approved',
+    src: '/assets/home/environment/semantropic-pop-bg-v1.webp',
+    transparent: false,
+  },
   'environment/plaza-day': {
     kind: 'environment', role: 'Arquitectura cálida, cascadas y plaza diurna sin UI',
     format: 'webp', state: 'pending-art', src: null, transparent: false,

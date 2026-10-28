@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const read = path => readFileSync(new URL('../' + path, import.meta.url), 'utf8');
 const assets = [
@@ -25,6 +26,19 @@ test('B02-C2: nueve recursos vectoriales separados sin UI rasterizada', () => {
     assert.doesNotMatch(svg, /<image[\s>]/, 'No incrustar captura completa');
     assert.doesNotMatch(svg, /data:image\//, 'No rasterizar la interfaz');
   }
+});
+
+test('B02-C2: fondo oficial WebP es binario real y conserva identidad', () => {
+  const path = new URL('../public/assets/home/environment/semantropic-pop-bg-v1.webp', import.meta.url);
+  const data = readFileSync(path);
+  assert.equal(data.toString('ascii', 0, 4), 'RIFF');
+  assert.equal(data.toString('ascii', 8, 12), 'WEBP');
+  assert.equal(data.length, 299220);
+  assert.equal(createHash('sha256').update(data).digest('hex'), '9763919bd271eded2fdcdf39c638d0d74bc93c93a303e7c5b53d6783b7340349');
+  const registry = read('src/ui/assets/assetRegistry.ts');
+  assert.match(registry, /'environment\/home-main'/);
+  assert.match(registry, /state: 'approved'/);
+  assert.match(registry, /src: '\/assets\/home\/environment\/semantropic-pop-bg-v1.webp'/);
 });
 
 test('B02-C2: preview aislada del tablero B01 y sin deploy', () => {
@@ -58,8 +72,8 @@ test('B02-C2: responsive y movimiento reducido', () => {
 test('B02-C2: el mockup original sigue siendo referencia, nunca textura de pantalla', () => {
   const home = read('src/ui/home/HomePreview.tsx');
   assert.doesNotMatch(home, /mockup.*(png|jpg|webp)/i);
-  assert.match(home, /previewAssets.logo/);
-  assert.match(home, /previewAssets.leftHero/);
-  assert.match(home, /previewAssets.rightHero/);
-  assert.match(home, /previewAssets.plaza/);
+  assert.match(home, /getApprovedAsset\('environment\/home-main'\)/);
+  assert.match(home, /st-home__approved-background/);
+  assert.doesNotMatch(home, /previewAssets\./, 'Candidatos de arte aún no aprobados');
+
 });

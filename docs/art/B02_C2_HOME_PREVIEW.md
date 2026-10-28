@@ -36,3 +36,18 @@ La navegación restante es solo representación ornamental, no botones falsos op
 ## Relación con PRs
 PR #3 = B02-C1, draft hacia main.
 PR B02-C2 = rama derivada de B02-C1, base B02-C1 para revisar diff limpio. Ambos permanecen sin fusionar hasta orden del Director.
+
+
+## Actualización — fondo aprobado 2026-10-28
+
+El Director aprobó la segunda imagen limpia de paisaje (plaza fantástica, cascadas, islas, castillo y cielo galáctico) respondiendo «APRUEBO».
+
+- Fuente original: a_wide_vibrant_high_fantasy_cartoon_anime_style.png, 1672 × 941 px.
+- Recurso web: public/assets/home/environment/semantropic-pop-bg-v1.webp, 1672 × 941 px, 299.220 bytes, calidad 80.
+- SHA-256 binario: 9763919bd271eded2fdcdf39c638d0d74bc93c93a303e7c5b53d6783b7340349.
+- Git blob SHA: 5bc386d9eeab7d62d1534c1a76c786e2f19000b2.
+- Registro técnico: environment/home-main, estado approved; todos los otros candidatos de arte conservan estado pending-art.
+- HomePreview monta el recurso aprobado como imagen de fondo y mantiene botones y textos como DOM, no parte de una captura plana.
+- Logotipo, personajes y otros ornamentos generados anteriormente no se muestran aún: requieren aprobación individual.
+- En móvil vertical se recortan los bordes por la relación 16:9 del fondo y el encuadre cover; validar eventualmente una variante de retrato.
+- main y Render no se modifican; prohibida integración a producción sin orden del Director.

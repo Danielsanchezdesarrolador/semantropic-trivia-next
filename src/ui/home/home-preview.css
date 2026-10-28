@@ -139,3 +139,88 @@ body { margin: 0; }
   .st-home__info-card small { font-size: .61rem; }
 }
 @media (prefers-reduced-motion: reduce) { .st-home *, .st-home *::before, .st-home *::after { transition: none !important; animation: none !important; } }
+
+/* B02-C2 · 28-10-2026 — imagen de escenario OFICIAL aprobada por el Director.
+   Se reemplazan exclusivamente las ilustraciones provisionales de fondo.
+   Los nuevos componentes son DOM/React, no texto pintado en una captura. */
+.st-home--approved-bg {
+  background: #243579;
+}
+.st-home--approved-bg .st-home__scene {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+}
+.st-home__approved-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+.st-home__background-veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 23, 78, .18), rgba(10, 30, 74, .12) 33%, rgba(9, 28, 78, .14) 60%, rgba(8, 25, 70, .42) 100%);
+}
+.st-home--approved-bg .st-home__hero--text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: min(16vh, 115px);
+}
+.st-home__brand-placeholder {
+  width: min(92%, 740px);
+  padding: 1.6rem 1rem 1.3rem;
+  border-radius: 24px;
+  text-align: center;
+  color: white;
+  background: linear-gradient(160deg, rgba(13, 33, 95, .74), rgba(26, 36, 103, .46));
+  border: 2px solid rgba(210, 245, 255, .8);
+  box-shadow: 0 13px 38px rgba(12, 25, 69, .39), inset 0 0 35px rgba(111, 200, 255, .18);
+  backdrop-filter: blur(5px);
+}
+.st-home__brand-kicker {
+  margin: 0 0 .5rem;
+  color: #f9dc86;
+  font-size: .75rem;
+  font-weight: 850;
+  letter-spacing: .22em;
+}
+.st-home__brand-placeholder h1 {
+  margin: 0;
+  font-size: clamp(1.7rem, 5.25vw, 3.7rem);
+  font-weight: 1000;
+  letter-spacing: -.04em;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  text-shadow: 0 4px 0 #071b65, 0 9px 22px #05164d;
+}
+.st-home__brand-placeholder h1 span {
+  display: block;
+  color: #ffda51;
+  font-size: 1.28em;
+}
+.st-home__brand-placeholder > p:last-child {
+  margin: .7rem 0 0;
+  font-size: .81rem;
+  line-height: 1.4;
+  font-weight: 650;
+  color: #e8edff;
+}
+@media (max-width: 720px) {
+  .st-home__approved-background { object-position: 50% 42%; }
+  .st-home--approved-bg .st-home__hero--text { padding-top: 110px; }
+  .st-home__brand-placeholder { width: 100%; padding: 1rem .5rem; border-radius: 18px; }
+  .st-home__brand-placeholder h1 { font-size: clamp(1.1rem, 5.25vw, 1.85rem); }
+  .st-home__brand-placeholder > p:last-child { font-size: .68rem; }
+}
+@media (max-width: 420px) {
+  .st-home__approved-background { object-position: center 45%; }
+  .st-home--approved-bg .st-home__hero--text { padding-top: 78px; }
+  .st-home__brand-placeholder { padding: .85rem .35rem; border-radius: 13px; }
+  .st-home__brand-placeholder h1 { font-size: clamp(.98rem, 5.1vw, 1.3rem); }
+  .st-home__brand-kicker { font-size: .58rem; }
+}
