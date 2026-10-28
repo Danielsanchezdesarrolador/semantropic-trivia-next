@@ -52,10 +52,32 @@ try {
       naturalWidth: i.naturalWidth,
       naturalHeight: i.naturalHeight,
     })));
-    assert.equal(imgs.length, 1, 'Solo fondo oficial integrado por ahora');
+    assert.equal(imgs.length, 1, 'Solo fondo decorativo bajo .st-home__asset');
     assert.ok(imgs[0].src?.endsWith('/assets/home/environment/semantropic-pop-bg-v1.webp'));
     assert.equal(imgs[0].naturalWidth, 1672);
     assert.equal(imgs[0].naturalHeight, 941);
+    const logos = await page.locator('img.st-home__official-logo').evaluateAll(items => items.map(i => ({
+      src: i.getAttribute('src'),
+      complete: i.complete,
+      naturalWidth: i.naturalWidth,
+      naturalHeight: i.naturalHeight,
+    })));
+    assert.equal(logos.length, 1, 'Solo un logotipo oficial');
+    assert.ok(logos[0].src?.endsWith('/assets/home/brand/semantropic-trivia-logo-v1.png'));
+    assert.ok(logos[0].complete, 'Carga de logotipo');
+    assert.equal(logos[0].naturalWidth, 585);
+    assert.equal(logos[0].naturalHeight, 370);
+    const alpha = await page.locator('img.st-home__official-logo').evaluate(async i => {
+      const canvas = document.createElement('canvas');
+      canvas.width = i.naturalWidth;
+      canvas.height = i.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return null;
+      ctx.drawImage(i, 0, 0);
+      return { corner: ctx.getImageData(0, 0, 1, 1).data[3],
+               center: ctx.getImageData(250, 200, 1, 1).data[3] };
+    });
+    assert.deepEqual(alpha, {corner: 0, center: 255}, 'Logo sin fondo rectangular, centro opaco');
     assert.ok(imgs.every(x => x.complete && x.naturalWidth > 0), 'Falta ilustración ' + JSON.stringify(imgs));
     const layout = await page.evaluate(() => ({
       vw: window.innerWidth,
@@ -67,7 +89,7 @@ try {
     assert.deepEqual(errors, [], 'Errores JS/console ' + device.name);
     const shot = 'artifacts/b02-c2/' + device.name + '.png';
     await page.screenshot({ path: shot, fullPage: true });
-    console.log('PASS B02-C2', device.name, 'HTTP', response.status(), JSON.stringify(layout), 'images', imgs.length, 'capture', shot);
+    console.log('PASS B02-C2', device.name, 'HTTP', response.status(), JSON.stringify(layout), 'images', imgs.length, 'logos', logos.length, 'alpha', JSON.stringify(alpha), 'capture', shot);
     await context.close();
   }
 } catch (error) {

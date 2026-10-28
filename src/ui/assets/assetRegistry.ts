@@ -1,6 +1,6 @@
 /**
  * B02-C1: catálogo de capas del mockup aprobado.
- * El fondo ilustrado B02-C2 fue aprobado por el Director; el resto sigue pendiente.
+ * Fondo y logotipo B02-C2 aprobados por el Director; personajes y otros assets siguen pendientes.
  * La captura completa del mockup es REFERENCIA, no fondo de interfaz.
  */
 export type AssetState = 'pending-art' | 'approved';
@@ -47,8 +47,8 @@ export const artAssets = {
     format: 'png', state: 'pending-art', src: null, transparent: true,
   },
   'brand/logo': {
-    kind: 'brand', role: 'Logotipo original SEMANTROPIC TRIVIA, separado de escenario',
-    format: 'png', state: 'pending-art', src: null, transparent: true,
+    kind: 'brand', role: 'Logotipo oficial SEMANTROPIC TRIVIA aislado del mockup aprobado; PNG alfa independiente',
+    format: 'png', state: 'approved', src: '/assets/home/brand/semantropic-trivia-logo-v1.png', transparent: true,
   },
   'characters/left-hero': {
     kind: 'character', role: 'Figura protagonista izquierda; identidad final por validar',

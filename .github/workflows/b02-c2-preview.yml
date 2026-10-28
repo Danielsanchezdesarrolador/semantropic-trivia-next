@@ -1,7 +1,7 @@
 name: B02-C2 — home visual aislado
 on:
   push:
-    branches: [feat/b02-c2-home-preview]
+    branches: [feat/b02-c2-home-preview, feat/b02-c2-logo-aprobado]
   workflow_dispatch:
 jobs:
   visual-preview:

@@ -41,6 +41,19 @@ test('B02-C2: fondo oficial WebP es binario real y conserva identidad', () => {
   assert.match(registry, /src: '\/assets\/home\/environment\/semantropic-pop-bg-v1.webp'/);
 });
 
+test('B02-C2: logotipo aprobado en PNG RGBA con transparencia real', () => {
+  const path = new URL('../public/assets/home/brand/semantropic-trivia-logo-v1.png', import.meta.url);
+  const png = readFileSync(path);
+  assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+  assert.equal(png.readUInt32BE(16), 585);
+  assert.equal(png.readUInt32BE(20), 370);
+  assert.equal(png[25], 6, 'PNG debe estar en modo truecolor con canal alfa');
+  assert.equal(createHash('sha256').update(png).digest('hex'), '1e404c4ea2e64d1629a80a247bcd6c66fc455bcbf7d2e1515e0d9a152aa8463b');
+  const registry = read('src/ui/assets/assetRegistry.ts');
+  assert.match(registry, /'brand\/logo'[\s\S]*?state: 'approved'/);
+  assert.match(registry, /semantropic-trivia-logo-v1\.png/);
+});
+
 test('B02-C2: preview aislada del tablero B01 y sin deploy', () => {
   const app = read('src/App.tsx');
   assert.doesNotMatch(app, /HomePreview|b02-preview/);
@@ -74,6 +87,8 @@ test('B02-C2: el mockup original sigue siendo referencia, nunca textura de panta
   assert.doesNotMatch(home, /mockup.*(png|jpg|webp)/i);
   assert.match(home, /getApprovedAsset\('environment\/home-main'\)/);
   assert.match(home, /st-home__approved-background/);
+  assert.match(home, /getApprovedAsset\('brand\/logo'\)/);
+  assert.match(home, /st-home__official-logo/);
   assert.doesNotMatch(home, /previewAssets\./, 'Candidatos de arte aún no aprobados');
 
 });

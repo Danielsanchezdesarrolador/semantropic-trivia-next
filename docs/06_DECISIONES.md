@@ -23,3 +23,5 @@ No interpretar la creación local de una estructura como repositorio existente, 
 - D-014: modos oficiales y prohibiciones B01/B02 continúan; Torneo CPU, pase de temporada y cifras ilustradas del mockup no son funcionalidades aprobadas.
 
 - D-015: El Director **APRUEBA** como fondo oficial de home la ilustración de plaza fantástica y cielo galáctico sin interfaz, 1672×941. Se integra WebP optimizado en B02-C2 y se conserva el original PNG; logotipo, personajes y UI final siguen pendientes. **FONDO APROBADO, PREVIEW EN DESARROLLO, NO PRODUCCIÓN.**
+
+- D-016: el Director **APRUEBA el logotipo SEMANTROPIC TRIVIA del mockup** y solicita su integración como asset independiente. Se emplea extracción PNG RGBA del mockup aprobado, sin reimaginar tipografía ni sustituirlo por un logotipo nuevo. Estado: **LOGOTIPO APROBADO, INTEGRADO EN PREVIEW B02-C2, NO PUBLICADO**.

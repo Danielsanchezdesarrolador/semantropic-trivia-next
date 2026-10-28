@@ -224,3 +224,37 @@ body { margin: 0; }
   .st-home__brand-placeholder h1 { font-size: clamp(.98rem, 5.1vw, 1.3rem); }
   .st-home__brand-kicker { font-size: .58rem; }
 }
+
+
+/* B02-C2 · Integración del LOGOTIPO OFICIAL aprobado.
+ * La imagen PNG es transparente, separada del escenario y de botones React.
+ * No utilizar el recorte original con fondo como pieza monolítica. */
+.st-home--official-logo .st-home__hero--text {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 0;
+}
+.st-home__official-logo {
+  display: block;
+  flex: 0 0 auto;
+  width: min(94%, 620px);
+  height: auto;
+  object-fit: contain;
+  margin-top: clamp(44px, 6vw, 90px);
+  filter: drop-shadow(0 10px 15px rgba(5, 25, 77, .48));
+  user-select: none;
+  pointer-events: none;
+}
+@media (max-width: 720px) {
+  .st-home--official-logo .st-home__hero--text { padding-top: 0; }
+  .st-home__official-logo {
+    width: 100%;
+    margin-top: 68px;
+    filter: drop-shadow(0 7px 8px rgba(5, 24, 68, .38));
+  }
+}
+@media (max-width: 420px) {
+  .st-home--official-logo .st-home__hero--text { padding-top: 0; }
+  .st-home__official-logo { width: 100%; margin-top: 52px; }
+}
