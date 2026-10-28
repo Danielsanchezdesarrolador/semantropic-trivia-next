@@ -1,5 +1,5 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
-Fecha: 2026-10-28 · Estado actualizado: **B01 verificado; B02 dirección artística y lobby aprobados; publicación de la home oficial autorizada y en proceso de validación.** Las fases funcionales siguen pendientes.
+Fecha: 2026-10-28 · Estado actualizado: **B01 completado; B02 diseño y lobby oficial publicados; B02-NAV navegación de menús autorizada antes de B03.** Las fases de partida y multijugador siguen pendientes.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
 |---|---|---|---|
@@ -34,8 +34,8 @@ Fecha: 2026-10-28 · Estado actualizado: **B01 verificado; B02 dirección artís
 - **Gate 07**: clasificatorias legítimas.
 - **Gate 08**: publicación Android/iOS.
 
-## Prioridad actual — Publicación B02
-El Director aprobó la home visual B02 para sustituir el tablero B01 en la URL oficial. Realizar PR contra main, QA real en escritorio y móviles emulados, desplegar y verificar HTTP/Render. No iniciar B03 ni activar modos en este despliegue. Ver docs/art/B02_PUBLICACION_HOME.md.
+## Prioridad actual — B02-NAV: Menús navegables
+El Director quiere poder pulsar los botones del lobby **antes de autorizar el núcleo de trivia B03**. Activar navegación real dentro de la interfaz oficial: Jugar Online → Normal/Clasificatoria, Jugar con Amigos → 1v1/2v2/3v3/FFA, y navegación lateral Inicio/Colección/Tienda/Amigos/Ranking. Todos llevan a pantallas explicativas y permiten volver; no mostrar actividad, usuarios, partidas ni datos simulados. Conservar el mockup y accesibilidad táctil. Validar PC y móviles emulados, publicar solo después de QA. B03 permanece como próximo bloque jugable real.
 
 ## Gestión del esfuerzo y prevención del agotamiento
 Un bloque/PR cada vez, no rework artístico interminable. Aprobar antes de producir 100 assets. Reusar componentes, no simplificar mockups aprobados, sin multiplicar sistemas antes de que se pruebe lo central. «MVP» significa producto que funciona, no todo el catálogo futuro.

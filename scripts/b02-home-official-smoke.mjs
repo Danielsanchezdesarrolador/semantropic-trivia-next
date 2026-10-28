@@ -81,7 +81,12 @@ try {
     await page.locator('.st-home').waitFor({ state: 'visible' });
     assert.equal(await page.locator('.st-library').count(), 0, 'La biblioteca NO debe estar en portada oficial');
     assert.equal(await page.locator('.st-home__actions button').count(), 2);
-    assert.equal(await page.locator('.st-home__actions button:disabled').count(), 2);
+    assert.equal(await page.locator('.st-home__actions button:disabled').count(), 0, 'Ambos CTA se deben poder pulsar');
+    assert.equal(await page.locator('.st-home__sidebar button').count(), 5, 'Navegación lateral accesible');
+    const navBg = await page.locator('.st-home__sidebar button:not(.st-home__nav--active)').first()
+      .evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(navBg, 'rgba(0, 0, 0, 0)', 'Sidebar inactiva transparente, sin botón gris de navegador');
+
     assert.equal(await page.locator('.st-sheet-action svg').count(), 2);
     assert.equal(await page.locator('.st-sheet-action img').count(), 0);
     assert.equal(await page.getByText('Modos próximamente', { exact: true }).count(), 1);
@@ -116,10 +121,54 @@ try {
       assert.ok(state.lobbyHeight >= state.viewportHeight - 1, 'El lobby debe cubrir pantalla móvil completa: ' + JSON.stringify(state));
     }
     assert.ok(state.scrollWidth <= state.viewport + 1, 'Overflow horizontal: ' + JSON.stringify(state));
+
+    // B02-NAV: comprobar interacción auténtica de la interfaz en un navegador.
+    await page.getByRole('button', { name: 'Abrir Jugar Online' }).click();
+    await page.getByRole('heading', { name: 'Jugar Online' }).waitFor();
+    assert.ok(page.url().endsWith('#online'), 'Ruta Online navegable');
+    assert.equal(await page.getByRole('button', { name: 'Ver detalles de Normal 1v1' }).count(), 1);
+    assert.equal(await page.getByRole('button', { name: 'Ver detalles de Clasificatoria 1v1' }).count(), 1);
+    await page.screenshot({ path: 'artifacts/b02-official/' + device.name + '-online.png', fullPage: true });
+
+    await page.getByRole('button', { name: 'Ver detalles de Normal 1v1' }).click();
+    await page.getByRole('heading', { name: 'Normal 1v1' }).waitFor();
+    assert.match(await page.locator('.st-lobby-panel__pending').innerText(), /No existe una búsqueda activa/);
+    await page.getByRole('button', { name: 'Volver a Jugar Online' }).click();
+    await page.getByRole('button', { name: 'Ver detalles de Clasificatoria 1v1' }).click();
+    await page.getByRole('heading', { name: 'Clasificatoria 1v1' }).waitFor();
+    assert.match(await page.locator('.st-lobby-panel__pending').innerText(), /Solo rivales humanos/);
+    await page.goBack();
+    await page.getByRole('heading', { name: 'Jugar Online' }).waitFor();
+
+    await page.getByRole('button', { name: 'Amigos', exact: true }).click();
+    await page.getByRole('heading', { name: 'Jugar con Amigos' }).waitFor();
+    for (const label of ['1v1', '2v2', '3v3', 'Todos contra todos']) {
+      assert.equal(await page.getByRole('button', { name: 'Ver detalles de ' + label }).count(), 1);
+    }
+    await page.screenshot({ path: 'artifacts/b02-official/' + device.name + '-friends.png', fullPage: true });
+    await page.getByRole('button', { name: 'Ver detalles de 2v2' }).click();
+    await page.getByRole('heading', { name: '2v2' }).waitFor();
+    assert.match(await page.locator('.st-lobby-panel__pending').innerText(), /Todavía no se ha creado ninguna sala/);
+    await page.getByRole('button', { name: 'Volver a Amigos' }).click();
+
+    for (const name of ['Colección', 'Tienda', 'Ranking']) {
+      await page.getByRole('button', { name, exact: true }).click();
+      await page.getByRole('heading', { name }).waitFor();
+      assert.equal(await page.getByText('Próximamente', { exact: true }).count(), 1);
+    }
+    await page.getByRole('button', { name: 'Inicio', exact: true }).click();
+    await page.getByRole('button', { name: 'Abrir Jugar con Amigos' }).click();
+    await page.getByRole('heading', { name: 'Jugar con Amigos' }).waitFor();
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.getByRole('heading', { name: 'Jugar con Amigos' }).waitFor();
+    await page.getByRole('button', { name: 'Volver al inicio' }).click();
+    await page.getByRole('button', { name: 'Abrir Jugar Online' }).waitFor();
+    assert.equal(await page.locator('.st-library').count(), 0);
+
     assert.deepEqual(errors, [], 'Errores JavaScript: ' + device.name);
     const screenshot = 'artifacts/b02-official/' + device.name + '.png';
     await page.screenshot({ path: screenshot, fullPage: true });
-    console.log('PASS HOME OFICIAL', device.name, 'HTTP', response.status(), JSON.stringify(state), screenshot);
+    console.log('PASS HOME OFICIAL CON NAVEGACIÓN', device.name, 'HTTP', response.status(), JSON.stringify(state), screenshot);
     await context.close();
   }
 } catch (error) {

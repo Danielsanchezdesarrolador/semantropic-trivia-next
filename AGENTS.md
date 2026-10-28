@@ -36,7 +36,7 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 
 ## 6. Estética: mockup de inicio aprobado (actualización 2026-10-28)
 - La dirección antigua NO es canon automático. Se solicita **una nueva identidad amigable, cálida, clara, original y transversal en edades**, y su aprobación se hará después mediante mockups.
-- **ALCANCE ACTUAL (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social y autorizó su publicación como portada oficial. El arte se compone por capas; el fondo y el logo oficiales aprobados permanecen separados; los otros recortes siguen como referencias artísticas. Se oculta la galería técnica de la portada y se mantienen los modos deshabilitados hasta desarrollo y QA posterior.
+- **ALCANCE ACTUAL (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social como portada y pidió que los botones respondan al pulsarlos antes de empezar B03. Se autoriza únicamente **navegación funcional por menús y submenús**, conservando el arte aprobado. No significa partidas, matchmaking, usuarios o cuentas activos. El fondo y logo oficiales permanecen separados; los otros recortes siguen como referencias artísticas.
 - Una vez aprobado un mockup, constituye especificación visual obligatoria: no simplificarlo unilateralmente ni convertirlo en una ilustración de fondo monolítica. Cuando haya conflicto técnico real, exponer alternativas y solicitar decisión.
 - Evitar estética sobrecargada, infantilizada, agresiva, confusa o derivativa de Preguntados.
 
@@ -52,7 +52,7 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 
 ## 8. Orden de ejecución
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
-**B02 (portada aprobada):** lobby visual montado desde los componentes React, fondo oficial y logo; publicar únicamente tras tests y despliegue verificable. Las funcionalidades futuras siguen pendientes.
+**B02 (portada aprobada):** lobby visual publicado; microbloque B02-NAV: permitir pulsar y explorar los accesos de la home y volver, SIN comenzar la partida trivia B03 ni simular sistemas online. Publicar tras CI/QA y verificación real de Render.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.
 **B04:** autenticación, perfil y base de datos real.
 **B05:** online casual 1v1 con servidor autoritativo; fallback IA **revelado, opcional**.
