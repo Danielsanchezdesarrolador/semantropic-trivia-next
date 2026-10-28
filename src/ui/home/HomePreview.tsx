@@ -2,9 +2,9 @@ import { ActionTile, GameFrame } from '../components/visual-primitives';
 import { getApprovedAsset } from '../assets/assetRegistry';
 
 /**
- * B02-C2 / iteración 2: fondo ilustrado aprobado como recurso independiente.
+ * B02-C2 / iteración 3: fondo y logotipo del mockup aprobados, como recursos independientes.
  * La composición contiene UI React real, pero NO habilita juego.
- * Logotipo y personajes continúan pendientes de producción/aprobación.
+ * Personajes, robot y demás ornamentos continúan pendientes de aprobación.
  */
 const navItems = [
   { icon: '⌂', label: 'Inicio', current: true },
@@ -16,12 +16,13 @@ const navItems = [
 
 export default function HomePreview() {
   const approvedBackground = getApprovedAsset('environment/home-main');
-  if (!approvedBackground) {
-    throw new Error('El fondo visual aprobado debe estar registrado antes de montar la home');
+  const approvedLogo = getApprovedAsset('brand/logo');
+  if (!approvedBackground || !approvedLogo) {
+    throw new Error('Fondo y logotipo oficiales deben estar registrados antes de montar la home');
   }
   return (
     <div className="st-home-preview-page">
-      <GameFrame className="st-home st-home--approved-bg" aria-label="Previsualización visual SEMANTROPIC TRIVIA">
+      <GameFrame className="st-home st-home--approved-bg st-home--official-logo" aria-label="Previsualización visual SEMANTROPIC TRIVIA">
         <div className="st-home__scene" aria-hidden="true">
           <img
             className="st-home__asset st-home__approved-background"
@@ -48,15 +49,21 @@ export default function HomePreview() {
         </aside>
         <div className="st-home__content">
           <header className="st-home__header">
-            <span className="st-home__stamp">B02-C2 · Fondo aprobado</span>
+            <span className="st-home__stamp">B02-C2 · Arte aprobado</span>
             <span className="st-home__availability">Previsualización · Sin partidas</span>
           </header>
-          <section className="st-home__hero st-home__hero--text" aria-label="Marca y ambiente visual del juego">
-            <div className="st-home__brand-placeholder">
-              <p className="st-home__brand-kicker">FANTASÍA SOCIAL</p>
-              <h1>SEMANTROPIC <span>TRIVIA</span></h1>
-              <p>Logotipo y personajes: próximos assets individuales</p>
-            </div>
+          <section className="st-home__hero st-home__hero--text" aria-labelledby="st-home-title">
+            <h1 className="st-home__sr-only" id="st-home-title">SEMANTROPIC TRIVIA</h1>
+            <img
+              className="st-home__official-logo"
+              src={approvedLogo}
+              width={585}
+              height={370}
+              alt=""
+              decoding="async"
+              fetchPriority="high"
+              draggable={false}
+            />
           </section>
           <section className="st-home__actions" aria-labelledby="st-home-modes-title">
             <h2 id="st-home-modes-title" className="st-home__sr-only">Modalidades oficiales previstas</h2>
@@ -88,7 +95,7 @@ export default function HomePreview() {
             <div className="st-home__footer-card"><span aria-hidden="true">♡</span><strong>COMPARTE</strong><small>Reúnete con amigos</small></div>
             <div className="st-home__footer-card"><span aria-hidden="true">◇</span><strong>DESTACA</strong><small>Tu propia identidad</small></div>
           </section>
-          <p className="st-home__disclaimer">Prototipo visual B02-C2 · Solo el fondo ha sido aprobado como asset oficial. No hay partidas ni usuarios conectados.</p>
+          <p className="st-home__disclaimer">Prototipo visual B02-C2 · Fondo y logotipo oficiales integrados; personajes pendientes. No hay partidas ni usuarios conectados.</p>
         </div>
       </GameFrame>
     </div>

@@ -51,3 +51,15 @@ El Director aprobó la segunda imagen limpia de paisaje (plaza fantástica, casc
 - Logotipo, personajes y otros ornamentos generados anteriormente no se muestran aún: requieren aprobación individual.
 - En móvil vertical se recortan los bordes por la relación 16:9 del fondo y el encuadre cover; validar eventualmente una variante de retrato.
 - main y Render no se modifican; prohibida integración a producción sin orden del Director.
+
+
+## Logo oficial del mockup aprobado — integración aislada
+
+- El Director proporcionó un recorte del logo y ordenó expresamente **utilizar ese logotipo**.
+- Se recuperó su representación con mayor resolución desde el mockup aprobado previamente, en lugar de recrear la tipografía con una IA. Se extrajo el fondo/escenario sin reescribir letras ni alterar los colores originales.
+- Archivo: `public/assets/home/brand/semantropic-trivia-logo-v1.png` (PNG RGBA transparente, 585×370 px; SHA-256 `1e404c4ea2e64d1629a80a247bcd6c66fc455bcbf7d2e1515e0d9a152aa8463b`).
+- `artAssets['brand/logo']` pasa a `approved`, sin alterar el estado de otros assets no aprobados.
+- `HomePreview` sustituye su marcador de texto por una etiqueta de imagen con el logo aprobado. Fondo WebP y logo PNG se renderizan como recursos separados y los CTA permanecen botones React deshabilitados.
+- La extracción alfa conserva el diseño original pero puede mostrar pequeñas imperfecciones de contorno propias de la segmentación; el Director puede ordenar un refinamiento antes de la publicación final.
+- Fuera de alcance: personajes, robot, UI funcional, auth, torneos, economía, producción/Render.
+- El cambio se prepara en una rama derivada de B02-C2 y no se fusiona en `main`.
