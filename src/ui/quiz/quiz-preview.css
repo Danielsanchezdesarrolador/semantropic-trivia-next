@@ -103,3 +103,7 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
   .b03-answer-letter{height:45px;min-width:45px}
 }
 @media(prefers-reduced-motion:reduce){.b03-category-pill,.b03-state-row button{transition:none}}
+
+/* Ajuste del arte vectorial: la caja SVG ocupa todo el botón sin letterboxing. */
+@media (min-width:861px){.b03-question h2{max-width:20ch}}
+@media (max-width:600px){.b03-answer{gap:22px}}
