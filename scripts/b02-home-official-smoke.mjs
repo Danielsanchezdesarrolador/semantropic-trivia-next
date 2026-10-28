@@ -83,6 +83,10 @@ try {
     assert.equal(await page.locator('.st-home__actions button').count(), 2);
     assert.equal(await page.locator('.st-home__actions button:disabled').count(), 0, 'Ambos CTA se deben poder pulsar');
     assert.equal(await page.locator('.st-home__sidebar button').count(), 5, 'Navegación lateral accesible');
+    const navBg = await page.locator('.st-home__sidebar button:not(.st-home__nav--active)').first()
+      .evaluate(el => getComputedStyle(el).backgroundColor);
+    assert.equal(navBg, 'rgba(0, 0, 0, 0)', 'Sidebar inactiva transparente, sin botón gris de navegador');
+
     assert.equal(await page.locator('.st-sheet-action svg').count(), 2);
     assert.equal(await page.locator('.st-sheet-action img').count(), 0);
     assert.equal(await page.getByText('Modos próximamente', { exact: true }).count(), 1);
