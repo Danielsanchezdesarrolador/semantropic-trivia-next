@@ -1,0 +1,30 @@
+name: B01 - smoke sitio publico
+on:
+  push:
+    branches: [feat/b01-qa-sitio-publico]
+  pull_request:
+    branches: [main]
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Instalar dependencias y Playwright de prueba
+        run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - name: Instalar navegador Chromium
+        run: npx playwright install --with-deps chromium
+      - name: HTTP + React + JS + viewport escritorio/movil
+        env:
+          B01_PUBLIC_URL: https://semantropic-trivia-next-web.onrender.com/
+        run: node scripts/b01-smoke.mjs
+      - name: Guardar capturas reales de Chromium
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b01-capturas-chromium
+          path: artifacts/
+          if-no-files-found: ignore
