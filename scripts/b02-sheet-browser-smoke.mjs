@@ -46,13 +46,14 @@ try{
     const stageBackground=await page.evaluate(()=>{
       const bg=document.querySelector('.st-home__approved-background');
       const root=document.querySelector('.st-home');
-      if(!(bg instanceof HTMLImageElement)||!(root instanceof HTMLElement))return null;
-      return {bgHeight:bg.getBoundingClientRect().height,stageHeight:root.getBoundingClientRect().height,
+      const scene=document.querySelector('.st-home__scene');
+      if(!(bg instanceof HTMLImageElement)||!(root instanceof HTMLElement)||!(scene instanceof HTMLElement))return null;
+      return {bgHeight:bg.getBoundingClientRect().height,sceneHeight:scene.getBoundingClientRect().height,stageHeight:root.getBoundingClientRect().height,
               objectFit:getComputedStyle(bg).objectFit,source:bg.currentSrc,
               veil:getComputedStyle(document.querySelector('.st-home__veil')).backgroundImage};
     });
     assert.ok(stageBackground,'No hay fondo');
-    assert.ok(Math.abs(stageBackground.bgHeight-stageBackground.stageHeight)<2, 'El fondo debe cubrir TODO el lobby: '+JSON.stringify(stageBackground));
+    assert.ok(Math.abs(stageBackground.bgHeight-stageBackground.sceneHeight)<2, 'El fondo debe cubrir TODA el área interna del lobby, excluyendo bordes: '+JSON.stringify(stageBackground));
     assert.equal(stageBackground.objectFit,'cover');
     const geometry=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth,stageWidth:document.querySelector('.st-home')?.getBoundingClientRect().width}));
     assert.ok(geometry.scrollWidth<=geometry.viewport+1,'Horizontal overflow: '+JSON.stringify(geometry));
