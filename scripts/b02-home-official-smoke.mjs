@@ -13,7 +13,8 @@ if (!publicUrl) {
   const root = resolve('dist');
   const types = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8',
     '.css':'text/css; charset=utf-8', '.png':'image/png', '.webp':'image/webp',
-    '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json' };
+    '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json',
+    '.webmanifest':'application/manifest+json' };
   server = createServer(async (request, response) => {
     try {
       const pathname = decodeURIComponent(new URL(request.url ?? '/', 'http://localhost').pathname);
@@ -164,6 +165,39 @@ try {
     await page.getByRole('button', { name: 'Volver al inicio' }).click();
     await page.getByRole('button', { name: 'Abrir Jugar Online' }).waitFor();
     assert.equal(await page.locator('.st-library').count(), 0);
+
+    // B02-FS: el control existe en TODAS las vistas y responde a un clic real.
+    const fullScreenButton = page.getByRole('button', { name: 'Pantalla completa', exact: true });
+    assert.equal(await fullScreenButton.count(), 1, 'Falta control fullscreen ' + device.name);
+    assert.equal(await fullScreenButton.getAttribute('aria-pressed'), 'false');
+    await fullScreenButton.click();
+    await page.waitForTimeout(170);
+    const activeNativeFullscreen = await page.evaluate(() => document.fullscreenElement === document.documentElement);
+    if (activeNativeFullscreen) {
+      assert.equal(await page.getByRole('button', { name: 'Salir de pantalla completa' }).getAttribute('aria-pressed'), 'true');
+      await page.screenshot({ path: 'artifacts/b02-official/' + device.name + '-fullscreen.png', fullPage: true });
+      await page.getByRole('button', { name: 'Salir de pantalla completa' }).click();
+      await page.waitForFunction(() => document.fullscreenElement === null);
+      assert.equal(await page.getByRole('button', { name: 'Pantalla completa' }).getAttribute('aria-pressed'), 'false');
+    } else {
+      // En WebView o navegadores sin esta API, dar la alternativa real de instalación.
+      const help = page.locator('.st-fullscreen-control__help');
+      await help.waitFor({ state: 'visible' });
+      assert.match(await help.innerText(), /Añadir a pantalla de inicio/);
+      await page.getByRole('button', { name: 'Cerrar ayuda de pantalla completa' }).click();
+      assert.equal(await help.count(), 0);
+    }
+
+    const manifestRes = await page.request.get(new URL('/manifest.webmanifest', url).href);
+    assert.equal(manifestRes.status(), 200, 'Manifest PWA HTTP 200');
+    const manifest = await manifestRes.json();
+    assert.equal(manifest.name, 'SEMANTROPIC TRIVIA 1.0');
+    assert.equal(manifest.display, 'fullscreen');
+    for (const size of ['192x192','512x512']) {
+      const icon = manifest.icons.find(item => item.sizes === size);
+      assert.ok(icon, 'Icono PWA ' + size);
+      assert.equal((await page.request.get(new URL(icon.src, url).href)).status(), 200);
+    }
 
     assert.deepEqual(errors, [], 'Errores JavaScript: ' + device.name);
     const screenshot = 'artifacts/b02-official/' + device.name + '.png';
