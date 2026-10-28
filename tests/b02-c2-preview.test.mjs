@@ -65,19 +65,19 @@ test('B02-C2: preview aislada del tablero B01 y sin deploy', () => {
 
 test('B02-C2: solo dos CTA principales y sin actividades simuladas', () => {
   const home = read('src/ui/home/HomePreview.tsx');
-  assert.match(home, /JUGAR ONLINE/);
-  assert.match(home, /JUGAR CON AMIGOS/);
-  assert.match(home, /Normal 1v1 y clasificatoria 1v1/);
-  assert.match(home, /1v1, 2v2, 3v3 y todos contra todos/);
+  assert.match(home, /id="online"/);
+  assert.match(home, /id="friends"/);
+  assert.match(home, /1v1 normal y clasificatoria solo entre personas/);
+  assert.match(home, /1v1, 2v2, 3v3 y FFA/);
   assert.doesNotMatch(home, /TORNEO CPU|PASE DE TEMPORADA|12\.450|680 monedas/);
-  assert.equal((home.match(/<ActionTile/g) || []).length, 2);
+  assert.equal((home.match(/<ModeButton id=/g) || []).length, 2);
   assert.doesNotMatch(home, /onClick=/);
 });
 
 test('B02-C2: responsive y movimiento reducido', () => {
   const css = read('src/ui/home/home-preview.css');
-  assert.match(css, /max-width: 720px/);
-  assert.match(css, /max-width: 420px/);
+  assert.match(css, /max-width:700px/);
+  assert.match(css, /max-width:360px/);
   assert.match(css, /prefers-reduced-motion/);
   assert.match(css, /st-home__scene/);
 });
@@ -87,7 +87,7 @@ test('B02-C2: el mockup original sigue siendo referencia, nunca textura de panta
   assert.doesNotMatch(home, /mockup.*(png|jpg|webp)/i);
   assert.match(home, /getApprovedAsset\('environment\/home-main'\)/);
   assert.match(home, /st-home__approved-background/);
-  assert.match(home, /getApprovedAsset\('brand\/logo'\)/);
+  assert.match(home, /sheetById/);
   assert.match(home, /st-home__official-logo/);
   assert.doesNotMatch(home, /previewAssets\./, 'Candidatos de arte aún no aprobados');
 

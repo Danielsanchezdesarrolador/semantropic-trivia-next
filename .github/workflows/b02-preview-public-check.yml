@@ -1,0 +1,37 @@
+name: B02-C2 - comprobar Render preview publico
+on:
+  push:
+    branches: [feat/b02-c2-lamina-assets-preview]
+  workflow_dispatch:
+jobs:
+  public-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: HTTP real del sitio aislado
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://semantropic-trivia-b02-art-preview.onrender.com"
+          for i in $(seq 1 20); do
+            if curl --fail --silent --show-error --location --max-time 20 "$URL/" -o /tmp/st-preview.html; then
+              if grep -q 'SEMANTROPIC TRIVIA' /tmp/st-preview.html; then
+                echo "PASS HTTP real: $URL/"
+                break
+              fi
+            fi
+            if [ "$i" = 20 ]; then echo "FAIL: no se pudo abrir el preview"; exit 1; fi
+            sleep 6
+          done
+      - name: Recursos graficos realmente disponibles por HTTPS
+        shell: bash
+        run: |
+          set -euo pipefail
+          URL="https://semantropic-trivia-b02-art-preview.onrender.com"
+          curl --fail --silent --show-error --location --max-time 30 "$URL/assets/home/sheet/logo-lamina.png" -o /tmp/st-logo.png
+          curl --fail --silent --show-error --location --max-time 30 "$URL/assets/home/sheet/character-boy.png" -o /tmp/st-boy.png
+          curl --fail --silent --show-error --location --max-time 30 "$URL/assets/home/environment/semantropic-pop-bg-v1.webp" -o /tmp/st-bg.webp
+          echo "179292f1868fa6d1a2535a3522b6ab9f5464f18fff8d05510b87139359e8fe35  /tmp/st-logo.png" | sha256sum -c -
+          echo "a7439fc611588b6ffa477c386b7e9a40c440f38cd8bf057f3237b3865b2b248b  /tmp/st-boy.png" | sha256sum -c -
+          echo "9763919bd271eded2fdcdf39c638d0d74bc93c93a303e7c5b53d6783b7340349  /tmp/st-bg.webp" | sha256sum -c -
+          echo "PASS assets online y bytes coinciden con repo"

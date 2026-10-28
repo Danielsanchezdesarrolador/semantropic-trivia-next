@@ -1,0 +1,163 @@
+[
+  {
+    "path": "public/assets/home/sheet/banner.png",
+    "byte_size": 21380,
+    "width": 72,
+    "height": 156,
+    "sha256": "7e5215fc0c21477167311764dbfeaebfde98107eb1229d0a96fc9f1b5da01751"
+  },
+  {
+    "path": "public/assets/home/sheet/button-cpu-reference.png",
+    "byte_size": 21955,
+    "width": 151,
+    "height": 106,
+    "sha256": "e81423ce09983bc54f7ec14b4fdde9eafcab656b2fe72f8e909011cd551fe4a0"
+  },
+  {
+    "path": "public/assets/home/sheet/button-friends.png",
+    "byte_size": 23301,
+    "width": 145,
+    "height": 105,
+    "sha256": "b39b851edeab928278c4e089d8797532185bcc2b92bae74054e824115130104f"
+  },
+  {
+    "path": "public/assets/home/sheet/button-online.png",
+    "byte_size": 21184,
+    "width": 144,
+    "height": 105,
+    "sha256": "236c66860b8de2a65ff407f1c483c78f2dabfa0a48130f2822ecb0525050a4a0"
+  },
+  {
+    "path": "public/assets/home/sheet/button-ranked-reference.png",
+    "byte_size": 20535,
+    "width": 136,
+    "height": 106,
+    "sha256": "c4ef5c69239e45d528c389218e3d21973711889568bef3404b00b57ddf61eebd"
+  },
+  {
+    "path": "public/assets/home/sheet/character-boy.png",
+    "byte_size": 76304,
+    "width": 173,
+    "height": 194,
+    "sha256": "a7439fc611588b6ffa477c386b7e9a40c440f38cd8bf057f3237b3865b2b248b"
+  },
+  {
+    "path": "public/assets/home/sheet/character-girl.png",
+    "byte_size": 84643,
+    "width": 180,
+    "height": 196,
+    "sha256": "3b5a25dbee739277f5b1645f76299ee6d1cefaf216f8dec43e5769a1cf8cc28b"
+  },
+  {
+    "path": "public/assets/home/sheet/crystal-blue.png",
+    "byte_size": 8615,
+    "width": 45,
+    "height": 83,
+    "sha256": "96fca3ecf6bf55c7db8082a1867f4b775829f7676df8bbbef9e0cf3a4d5ffa03"
+  },
+  {
+    "path": "public/assets/home/sheet/crystal-gold.png",
+    "byte_size": 7547,
+    "width": 55,
+    "height": 64,
+    "sha256": "69bef1735fe8bf6b8f615aaf9cca18a0e0c565987e7ee851d39655a58528bea1"
+  },
+  {
+    "path": "public/assets/home/sheet/crystal-violet.png",
+    "byte_size": 9887,
+    "width": 46,
+    "height": 95,
+    "sha256": "abab9cd10019493f87ba1e68f7633e0262ef43a0de28aafb329bd0b0c5595a23"
+  },
+  {
+    "path": "public/assets/home/sheet/flowers.png",
+    "byte_size": 33144,
+    "width": 107,
+    "height": 125,
+    "sha256": "664dde0dc324693ba49cd18c7b8bdb70ac52425953a1daf3ab0f6b84dd89ef1f"
+  },
+  {
+    "path": "public/assets/home/sheet/lantern.png",
+    "byte_size": 25164,
+    "width": 71,
+    "height": 174,
+    "sha256": "43fbd5afac5982546b48e67766691ca67001a258a17b7bb829f0e7d2368135cf"
+  },
+  {
+    "path": "public/assets/home/sheet/layer-city-reference.png",
+    "byte_size": 49556,
+    "width": 174,
+    "height": 116,
+    "sha256": "fa2742866f0126b0a23c5fb9d4b51f739ddd6b925c2e1d63e25e0571f43b79b3"
+  },
+  {
+    "path": "public/assets/home/sheet/layer-islands-reference.png",
+    "byte_size": 46331,
+    "width": 177,
+    "height": 116,
+    "sha256": "154cd119e697214187e4c3e82efb2c4263168d364d52c22a44058611231c5101"
+  },
+  {
+    "path": "public/assets/home/sheet/layer-plaza-reference.png",
+    "byte_size": 46616,
+    "width": 179,
+    "height": 116,
+    "sha256": "226b8c2fe8538b6934238727df89f2f418f0fc070940dc219aacb219e4d18327"
+  },
+  {
+    "path": "public/assets/home/sheet/layer-sky-reference.png",
+    "byte_size": 42719,
+    "width": 177,
+    "height": 116,
+    "sha256": "2422dfcacc9820fe34e21d67b482c74f14d8eb8bf42b0e7adef14705f6476145"
+  },
+  {
+    "path": "public/assets/home/sheet/layer-vegetation-reference.png",
+    "byte_size": 48682,
+    "width": 176,
+    "height": 116,
+    "sha256": "3bb629bc2d8ea33e670af9e20706523d433cbe07bdf2f2555ef3aa0f8919243f"
+  },
+  {
+    "path": "public/assets/home/sheet/logo-lamina.png",
+    "byte_size": 82169,
+    "width": 235,
+    "height": 161,
+    "sha256": "179292f1868fa6d1a2535a3522b6ab9f5464f18fff8d05510b87139359e8fe35"
+  },
+  {
+    "path": "public/assets/home/sheet/map-sheet-reference.webp",
+    "byte_size": 185994,
+    "width": 923,
+    "height": 774,
+    "sha256": "ab9c6eba68b1592d994cef3d11cf8003d6800511f0a2c28b821452cfc241cd1b"
+  },
+  {
+    "path": "public/assets/home/sheet/panel-collection-reference.png",
+    "byte_size": 38353,
+    "width": 176,
+    "height": 107,
+    "sha256": "d34930836bc3d8b69a5a4f3e4a0022ab278e1d7dc635186dd7b6cc9c4808dc28"
+  },
+  {
+    "path": "public/assets/home/sheet/panel-events-reference.png",
+    "byte_size": 39629,
+    "width": 184,
+    "height": 107,
+    "sha256": "3b67c1ec9bb580264cb6fa6f663fa8b22c445062eac3613b8ea68805e06bba85"
+  },
+  {
+    "path": "public/assets/home/sheet/panel-season-reference.png",
+    "byte_size": 50566,
+    "width": 225,
+    "height": 107,
+    "sha256": "e953e301bee300ee9d7891e448e2b5cb6e1985a8899b26bedd97858fd82c4fee"
+  },
+  {
+    "path": "public/assets/home/sheet/robot.png",
+    "byte_size": 48609,
+    "width": 142,
+    "height": 158,
+    "sha256": "073e84bc08ee860ecfaec2b08282d1025c2fda84ab66eda3664c30a3c72a4cca"
+  }
+]
