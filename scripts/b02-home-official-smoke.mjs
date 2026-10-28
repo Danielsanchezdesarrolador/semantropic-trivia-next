@@ -178,7 +178,9 @@ try {
       await page.screenshot({ path: 'artifacts/b02-official/' + device.name + '-fullscreen.png', fullPage: true });
       await page.getByRole('button', { name: 'Salir de pantalla completa' }).click();
       await page.waitForFunction(() => document.fullscreenElement === null);
-      assert.equal(await page.getByRole('button', { name: 'Pantalla completa' }).getAttribute('aria-pressed'), 'false');
+      await page.waitForFunction(() =>
+        document.querySelector('.st-fullscreen-control__button')?.getAttribute('aria-pressed') === 'false'
+      );
     } else {
       // En WebView o navegadores sin esta API, dar la alternativa real de instalación.
       const help = page.locator('.st-fullscreen-control__help');
