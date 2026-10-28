@@ -1,28 +1,49 @@
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
-import { spawn } from 'node:child_process';
+import { mkdir, readFile } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { resolve, extname, sep } from 'node:path';
 import { chromium } from 'playwright';
 
 const publicUrl = process.env.ST_OFFICIAL_URL;
 const url = publicUrl || 'http://127.0.0.1:4190/';
 let server;
-let serverLog = '';
 if (!publicUrl) {
-  server = spawn('npm', ['run', 'preview', '--', '--host', '127.0.0.1', '--port', '4190', '--strictPort'], {
-    stdio: ['ignore', 'pipe', 'pipe'], env: process.env,
+  // Servir el contenido de dist/, EXACTAMENTE el mismo HTML/JS/CSS que publica Render,
+  // evitando dependencias del modo preview de Vite durante QA.
+  const root = resolve('dist');
+  const types = { '.html':'text/html; charset=utf-8', '.js':'text/javascript; charset=utf-8',
+    '.css':'text/css; charset=utf-8', '.png':'image/png', '.webp':'image/webp',
+    '.svg':'image/svg+xml', '.ico':'image/x-icon', '.json':'application/json' };
+  server = createServer(async (request, response) => {
+    try {
+      const pathname = decodeURIComponent(new URL(request.url ?? '/', 'http://localhost').pathname);
+      const file = resolve(root, '.' + (pathname === '/' ? '/index.html' : pathname));
+      if (!file.startsWith(root + sep)) { response.writeHead(403); response.end(); return; }
+      const content = await readFile(file);
+      response.writeHead(200, { 'Content-Type': types[extname(file)] || 'application/octet-stream' });
+      response.end(content);
+    } catch {
+      response.writeHead(404);
+      response.end('Not found');
+    }
   });
-  for (const channel of [server.stdout, server.stderr]) {
-    channel.on('data', chunk => { serverLog += String(chunk); });
-  }
+  await new Promise((resolveReady, rejectReady) => {
+    server.once('error', rejectReady);
+    server.listen(4190, '127.0.0.1', resolveReady);
+  });
 }
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const ready = async () => {
   for (let i = 0; i < 60; i++) {
-    if (server?.exitCode != null) throw Error('Error de servidor Vite: ' + serverLog);
-    try { if ((await fetch(url)).ok) return; } catch {}
+    try {
+      const res = await fetch(url);
+      if (res.ok) return;
+    } catch (error) {
+      if (i === 59) console.error('Error de conexión local:', error);
+    }
     await sleep(500);
   }
-  throw Error('No se pudo abrir la URL: ' + url + ' ' + serverLog);
+  throw Error('No se pudo abrir la URL: ' + url);
 };
 
 let browser;
@@ -101,6 +122,6 @@ try {
   process.exitCode = 1;
 } finally {
   if (browser) await browser.close();
-  if (server) server.kill('SIGTERM');
+  if (server) await new Promise(resolveDone => server.close(resolveDone));
 }
 process.exit(process.exitCode ?? 0);
