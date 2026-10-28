@@ -66,7 +66,13 @@ try {
     console.log('PASS B02-C2', device.name, 'HTTP', response.status(), JSON.stringify(layout), 'images', imgs.length, 'capture', shot);
     await context.close();
   }
+} catch (error) {
+  console.error('FAIL B02-C2:', error);
+  process.exitCode = 1;
 } finally {
   if (browser) await browser.close();
   server.kill('SIGTERM');
 }
+// Vite puede conservar tuberías abiertas en un proceso nieto del npm CLI.
+// El resultado se fija tras finalizar el navegador y reportar todos los errores.
+process.exit(process.exitCode ?? 0);
