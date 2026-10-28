@@ -13,6 +13,6 @@
 <rect x="9" y="12" width="1174" height="139" rx="67" fill="url(#catFill)" stroke="#6E35E5" stroke-width="10"/>
 <rect x="20" y="22" width="1152" height="62" rx="31" fill="url(#catHeader)"/>
 <rect x="940" y="22" width="225" height="119" rx="55" fill="#08184D" opacity=".56"/>
-<path d="M928 40 V128" stroke="#BDEEFF" stroke-opacity=".46"stroke-width="5"/>
+<path d="M928 40 V128" stroke="#BDEEFF" stroke-opacity=".46" stroke-width="5"/>
 <circle cx="86" cy="81" r="66" fill="#4221A0" stroke="#D7FAFF" stroke-width="9"/>
 <circle cx="86" cy="81" r="54" fill="#6E35E5" fill-opacity=".5" stroke="#FFFFFF" stroke-opacity=".5" stroke-width="3"/></svg>

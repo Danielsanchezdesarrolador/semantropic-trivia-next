@@ -9,7 +9,7 @@
  <linearGradient id="wrong" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF0F0"/><stop offset="1" stop-color="#FFB8C9"/></linearGradient>
  <linearGradient id="selected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#D7FCFF"/><stop offset="1" stop-color="#68C3FF"/></linearGradient>
  </defs><circle cx="160" cy="166" r="137" fill="#061C56" opacity=".35"/>
-<circle cx="160" cy="150" r="132" fill="#10275D" stroke="#D2F5FF"stroke-width="10"/>
+<circle cx="160" cy="150" r="132" fill="#10275D" stroke="#D2F5FF" stroke-width="10"/>
 <circle cx="160" cy="150" r="115" fill="none" stroke="#092F83" stroke-width="24"/>
 <circle cx="160" cy="150" r="115" fill="none" stroke="#FFD144" stroke-width="24" stroke-linecap="round" stroke-dasharray="361.3 361.3" transform="rotate(-90 160 150)"/>
 <circle cx="160" cy="150" r="89" fill="#071D59" stroke="#438DD2" stroke-width="5"/>

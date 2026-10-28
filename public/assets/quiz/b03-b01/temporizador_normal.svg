@@ -12,5 +12,5 @@
 <circle cx="160" cy="150" r="132" fill="#10275D" stroke="#D2F5FF" stroke-width="10"/>
 <circle cx="160" cy="150" r="115" fill="none" stroke="#092F83" stroke-width="24"/>
 <circle cx="160" cy="150" r="115" fill="none" stroke="#12CAFF" stroke-width="24" stroke-linecap="round" stroke-dasharray="614.2 108.4" transform="rotate(-90 160 150)"/>
-<circle cx="160" cy="150"r="89" fill="#071D59" stroke="#438DD2" stroke-width="5"/>
+<circle cx="160" cy="150" r="89" fill="#071D59" stroke="#438DD2" stroke-width="5"/>
 <path d="M107 55a116 116 0 0 1 92 0" stroke="#FFFFFF" stroke-opacity=".60" stroke-width="8" fill="none" stroke-linecap="round"/></svg>

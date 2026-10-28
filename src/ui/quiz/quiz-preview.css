@@ -6,7 +6,7 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
 .b03-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 8px 15px}
 .b03-preview-eyebrow{margin:0 0 5px;color:#3767af;font-size:.72rem;letter-spacing:.09em;font-weight:900}
 .b03-preview-heading h1{font-size:clamp(1.35rem,3vw,2.15rem);margin:0 0 5px;font-weight:950}
-.b03-preview-headingp:not(.b03-preview-eyebrow){margin:0;color:#50688e;font-size:.85rem}
+.b03-preview-heading p:not(.b03-preview-eyebrow){margin:0;color:#50688e;font-size:.85rem}
 .b03-to-lobby{display:inline-flex;align-items:center;justify-content:center;min-height:43px;flex:none;border-radius:13px;background:#184a9c;color:#fff;text-decoration:none;font-size:.83rem;font-weight:800;padding:10px 16px}
 .b03-qa-controls{padding:15px 17px;background:#f8fbff;border:1px solid #d3e6ff;border-radius:18px;margin-bottom:15px;box-shadow:0 3px 10px #15366d10}
 .b03-control-heading{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin-bottom:11px}
@@ -22,7 +22,7 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
 .b03-back-visual{position:relative;display:grid;align-items:center;width:clamp(90px,10vw,145px);height:56px;white-space:nowrap;color:#fff;text-shadow:0 2px 3px #07327b;font-size:clamp(.85rem,1.5vw,1.2rem);font-weight:900}
 .b03-back-visual img{position:absolute;width:100%;height:100%;object-fit:fill;inset:0}
 .b03-back-visual span{position:relative;z-index:1;padding-left:45%}
-.b03-category-header{position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;height:83px;padding:0 15px 0 20px;min-width:0;color:#fff;text-shadow:0 2px 5px#0a3166}
+.b03-category-header{position:relative;isolation:isolate;display:flex;align-items:center;gap:13px;height:83px;padding:0 15px 0 20px;min-width:0;color:#fff;text-shadow:0 2px 5px #0a3166}
 .b03-category-header-skin{position:absolute;inset:0;width:100%;height:100%;z-index:-1;object-fit:fill}
 .b03-category-icon{width:50px;height:50px;flex:none;object-fit:contain}
 .b03-category-title{font-size:clamp(.9rem,2vw,1.52rem);font-weight:950;text-transform:uppercase;min-width:0;line-height:1.1;overflow-wrap:anywhere;flex:1}
@@ -41,7 +41,7 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
 .b03-answer-text{z-index:1;font-size:clamp(1.03rem,1.8vw,1.62rem);font-weight:900;line-height:1.2;overflow-wrap:anywhere}
 .b03-answer-feedback{position:relative;z-index:2;width:35px;height:35px;margin-left:auto;object-fit:contain}
 .b03-progress{position:relative;display:flex;justify-content:center;gap:4px;width:min(48%,660px);margin:25px auto 22px;z-index:3}
-.b03-progress img{width:calc((100% -36px)/10);height:19px;object-fit:fill;min-width:0;flex:1}
+.b03-progress img{width:calc((100% - 36px)/10);height:19px;object-fit:fill;min-width:0;flex:1}
 .b03-crystal{position:absolute;width:clamp(37px,6vw,75px);height:auto;bottom:8%;pointer-events:none;opacity:.89}
 .b03-crystal--cyan{left:4%}.b03-crystal--violet{right:4%}
 .b03-qa-controls--bottom{margin-top:16px}
@@ -85,7 +85,7 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
   .b03-question-kicker{font-size:.61rem}
   .b03-answer-grid{width:98%;grid-template-columns:1fr;gap:8px}
   .b03-answer{min-height:72px;padding:7px 12px;gap:8px}
-.b03-answer-letter{min-width:50px;height:50px;font-size:1.35rem}
+  .b03-answer-letter{min-width:50px;height:50px;font-size:1.35rem}
   .b03-answer-text{font-size:1.07rem}
   .b03-progress{margin:18px auto 12px;width:86%;gap:2px}
   .b03-progress img{height:14px}

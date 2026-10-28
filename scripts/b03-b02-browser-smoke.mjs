@@ -28,7 +28,7 @@ try {
   await mkdir('artifacts/b03-b02', { recursive: true });
   browser = await chromium.launch({headless:true});
   const devices = [
-    {name:'pc-1366',viewport:{width:1366,height:900}, isMobile:false},
+    {name:'pc-1366', viewport:{width:1366,height:900}, isMobile:false},
     {name:'mobile-390', viewport:{width:390,height:844}, isMobile:true},
     {name:'mobile-320', viewport:{width:320,height:740}, isMobile:true},
   ];
@@ -70,7 +70,7 @@ try {
     assert.equal(await page.locator('.b03-answer--incorrect').count(),1);
     await page.getByRole('button',{name:'Amarillo',exact:true}).click();
     assert.match(await page.locator('.b03-timer img').getAttribute('src'),/temporizador_alerta/);
-    awaitpage.getByRole('button',{name:'Rojo',exact:true}).click();
+    await page.getByRole('button',{name:'Rojo',exact:true}).click();
     assert.match(await page.locator('.b03-timer img').getAttribute('src'),/temporizador_urgente/);
     await page.screenshot({path:`artifacts/b03-b02/${d.name}-estados.png`,fullPage:true});
 

@@ -38,7 +38,7 @@ test('B03-B02: seis categorías con fondos separados de escritorio y móvil', ()
 
 test('B03-B02: textos, reloj y progreso son componentes, no sprites pintados', () => {
   const jsx = content('src/ui/quiz/QuizPreview.tsx');
-  assert.match(jsx, /¿Cuál es lacapital de Australia\?/);
+  assert.match(jsx, /¿Cuál es la capital de Australia\?/);
   assert.match(jsx, /Sídney|Melbourne|Canberra|Perth/);
   assert.match(jsx, /categoryThemes\[category\]/);
   assert.match(jsx, /setCategory\(id\)/);

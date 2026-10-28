@@ -11,7 +11,7 @@
  <linearGradient id="catFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0065D8"/><stop offset=".35" stop-color="#2488FF"/><stop offset="1" stop-color="#063D9E"/></linearGradient>
 <linearGradient id="catHeader" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".37"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs><rect x="16" y="26" width="1171" height="144" rx="72" fill="#07194F" opacity=".33"/>
 <rect x="9" y="12" width="1174" height="139" rx="67" fill="url(#catFill)" stroke="#0065D8" stroke-width="10"/>
-<rect x="20"y="22" width="1152" height="62" rx="31" fill="url(#catHeader)"/>
+<rect x="20" y="22" width="1152" height="62" rx="31" fill="url(#catHeader)"/>
 <rect x="940" y="22" width="225" height="119" rx="55" fill="#08184D" opacity=".56"/>
 <path d="M928 40 V128" stroke="#BDEEFF" stroke-opacity=".46" stroke-width="5"/>
 <circle cx="86" cy="81" r="66" fill="#063D9E" stroke="#D7FAFF" stroke-width="9"/>

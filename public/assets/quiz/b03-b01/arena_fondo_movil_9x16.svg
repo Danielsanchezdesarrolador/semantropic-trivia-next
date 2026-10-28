@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="2560" viewBox="0 0 1440 2560" role="img" aria-label="Escenario vertical minimalista sin interfaz"><defs>
  <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#123FBB"/><stop offset=".53" stop-color="#2179EF"/><stop offset="1" stop-color="#1A2C78"/></linearGradient>
-<radialGradient id="glow"><stop stop-color="#74D6FF" stop-opacity=".36"/><stop offset="1" stop-color="#74D6FF" stop-opacity="0"/></radialGradient>
+ <radialGradient id="glow"><stop stop-color="#74D6FF" stop-opacity=".36"/><stop offset="1" stop-color="#74D6FF" stop-opacity="0"/></radialGradient>
  <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".72" stop-color="#F4FAFF"/><stop offset="1" stop-color="#DCEFFF"/></linearGradient>
  <linearGradient id="button" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".76" stop-color="#EEF7FF"/><stop offset="1" stop-color="#CEE7FF"/></linearGradient>
  <linearGradient id="bluechip" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2AD4FF"/><stop offset=".50" stop-color="#007BFB"/><stop offset="1" stop-color="#0751C7"/></linearGradient>
@@ -16,7 +16,7 @@
  <polyline points="0,-92 46,-14 0,98 -46,-14 0,-92 0,98" fill="none" stroke="#D9FAFF" stroke-width="4" opacity=".62"/>
  </g><g transform="translate(1324.8 384.0) scale(0.7724610651186015)" opacity="0.18">
  <polygon points="0,-92 46,-14 0,98 -46,-14" fill="#664BDB"/>
-<polygon points="0,-92 46,-14 0,98 0,-10" fill="#C07AFF"/>
+ <polygon points="0,-92 46,-14 0,98 0,-10" fill="#C07AFF"/>
  <polygon points="0,-92 -46,-14 0,-10" fill="#EFBEFF"/>
  <polygon points="0,-10 46,-14 0,98" fill="#EFBEFF" opacity=".55"/>
  <polyline points="0,-92 46,-14 0,98 -46,-14 0,-92 0,98" fill="none" stroke="#D9FAFF" stroke-width="4" opacity=".62"/>

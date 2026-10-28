@@ -38,7 +38,7 @@ export default function QuizPreview() {
       </header>
 
       <section className="b03-qa-controls" aria-label="Controles del laboratorio de diseño">
-        <div className="b03-control-heading"><strong>Categorías</strong><span>Elige una para ver cómo cambia el color de laarena</span></div>
+        <div className="b03-control-heading"><strong>Categorías</strong><span>Elige una para ver cómo cambia el color de la arena</span></div>
         <div className="b03-category-pills" role="group" aria-label="Categoría del mockup">
           {quizCategories.map(id => (
             <button
@@ -92,7 +92,7 @@ export default function QuizPreview() {
                 <span className="b03-answer-letter">{option.letter}</span>
                 <span className="b03-answer-text">{option.text}</span>
                 {highlighted && (appearance === 'correct' || appearance === 'incorrect') &&
-                  <imgclassName="b03-answer-feedback" alt="" src={quizAsset(appearance === 'correct' ? 'icono_correcta' : 'icono_incorrecta')} />}
+                  <img className="b03-answer-feedback" alt="" src={quizAsset(appearance === 'correct' ? 'icono_correcta' : 'icono_incorrecta')} />}
               </div>
             );
           })}

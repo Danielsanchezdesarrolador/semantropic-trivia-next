@@ -9,7 +9,7 @@
  <linearGradient id="wrong" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF0F0"/><stop offset="1" stop-color="#FFB8C9"/></linearGradient>
  <linearGradient id="selected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#D7FCFF"/><stop offset="1" stop-color="#68C3FF"/></linearGradient>
  <linearGradient id="catFill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#E97811"/><stop offset=".35" stop-color="#FFAE32"/><stop offset="1" stop-color="#A34C04"/></linearGradient>
-<linearGradient id="catHeader" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".37"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs><rectx="16" y="26" width="1171" height="144" rx="72" fill="#07194F" opacity=".33"/>
+<linearGradient id="catHeader" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF" stop-opacity=".37"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs><rect x="16" y="26" width="1171" height="144" rx="72" fill="#07194F" opacity=".33"/>
 <rect x="9" y="12" width="1174" height="139" rx="67" fill="url(#catFill)" stroke="#E97811" stroke-width="10"/>
 <rect x="20" y="22" width="1152" height="62" rx="31" fill="url(#catHeader)"/>
 <rect x="940" y="22" width="225" height="119" rx="55" fill="#08184D" opacity=".56"/>

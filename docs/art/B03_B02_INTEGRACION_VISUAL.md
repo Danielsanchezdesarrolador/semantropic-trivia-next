@@ -3,7 +3,7 @@
 **Fecha:** 28-10-2026. **Director:** usuario. **Estado:** implementación candidata en rama y preview; NO es un modo jugable.
 
 ## Mandato
-El Director aprobó el mockup minimalista de B03-A y solicitó integrar los assets del paquete `SEMANTROPIC_TRIVIA_B03_B01_ASSETS_MINIMALISTAS.zip` en nuestro juego, sindesarrollar aún lógica B03-C ni modificar producción.
+El Director aprobó el mockup minimalista de B03-A y solicitó integrar los assets del paquete `SEMANTROPIC_TRIVIA_B03_B01_ASSETS_MINIMALISTAS.zip` en nuestro juego, sin desarrollar aún lógica B03-C ni modificar producción.
 
 ## Arte integrado
 42 recursos **SVG vectoriales originales** procedentes exactamente de `SEMANTROPIC_TRIVIA_B03_B01_ASSETS_NUCLEO_V1` y con el mismo nombre que sus pares PNG. Se incorporan individualmente a `public/assets/quiz/b03-b01/`.
