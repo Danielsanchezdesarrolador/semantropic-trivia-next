@@ -105,3 +105,12 @@ body { margin:0; }
   .st-library__checker {min-height:120px;}
 }
 @media(prefers-reduced-motion: reduce) {* {animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* B02-C2 QA: eliminar espacio vacío de la composición sin tocar la galería. */
+.st-home, .st-home__content { min-height: 850px; }
+@media (max-width: 700px) {
+  .st-home, .st-home__content { min-height: 680px; }
+}
+@media (max-width: 360px) {
+  .st-home, .st-home__content { min-height: 650px; }
+}
