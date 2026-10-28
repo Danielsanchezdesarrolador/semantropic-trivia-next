@@ -1,5 +1,5 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
-Fecha: 2026-10-28 · Estado inicial: **B01 por ejecutar**. Los estados son planificación, no implementación.
+Fecha: 2026-10-28 · Estado actualizado: **B01 verificado y aprobado; B02-A/B dirección y mockup home aprobados; B02-C1 arquitectura en curso**. Las demás fases siguen siendo planificación, no implementación.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
 |---|---|---|---|
@@ -17,7 +17,7 @@ Fecha: 2026-10-28 · Estado inicial: **B01 por ejecutar**. Los estados son plani
 | B08c | Comercio | Compras integradas y catálogo cosmético, restauraciones | Cumplimiento stores, prueba y seguridad |
 | B09 | Android/iOS | Capacitor, controles, pruebas físicas, publicación | Estabilidad, privacidad, accesibilidad y aprobaciones de tiendas |
 
-## Prioridad inmediata — B01
+## B01 — registro histórico de fundación (completado)
 1. Crear repo GitHub separado `semantropic-trivia-next` (sin sobrescribir `semantropic-trivia` ni `semantropic-trivia-unity-web`).
 2. Subir este paquete completo a `main` (ver README).
 3. Conectar Render Static Site con rama `main` y build `npm install && npm run build`, publish `dist`.
@@ -33,6 +33,9 @@ Fecha: 2026-10-28 · Estado inicial: **B01 por ejecutar**. Los estados son plani
 - **Gate 06**: salas familiares completas.
 - **Gate 07**: clasificatorias legítimas.
 - **Gate 08**: publicación Android/iOS.
+
+## Prioridad actual — B02-C1
+Diseñar el **sistema visual modular** sobre rama independiente. No integrar en main ni publicar hasta el próximo control del Director. Ver docs/art/B02_C1_DIRECCION_Y_FIDELIDAD.md.
 
 ## Gestión del esfuerzo y prevención del agotamiento
 Un bloque/PR cada vez, no rework artístico interminable. Aprobar antes de producir 100 assets. Reusar componentes, no simplificar mockups aprobados, sin multiplicar sistemas antes de que se pruebe lo central. «MVP» significa producto que funciona, no todo el catálogo futuro.

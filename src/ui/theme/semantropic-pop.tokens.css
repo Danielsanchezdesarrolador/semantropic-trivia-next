@@ -1,0 +1,41 @@
+/*
+  B02-C1 / TOKENS PROPUESTOS para implementar el mockup aprobado.
+  Totalmente encapsulados en .st-theme. No afectan al tablero B01.
+*/
+.st-theme {
+  --st-ink: #14264c;
+  --st-ink-soft: #33456b;
+  --st-white: #fff;
+  --st-blue-start: #20b9ff;
+  --st-blue-end: #0753ca;
+  --st-coral-start: #ff747b;
+  --st-coral-end: #d81e52;
+  --st-gold-start: #ffd64e;
+  --st-gold-end: #f79a14;
+  --st-violet-start: #b34dff;
+  --st-violet-end: #6616c9;
+  --st-glass: rgba(16, 38, 83, .86);
+  --st-line: rgba(255, 255, 255, .92);
+  --st-shadow: 0 6px 0 rgba(11, 31, 79, .24), 0 14px 28px rgba(12, 28, 70, .18);
+  --st-radius-card: 22px;
+  --st-radius-panel: 18px;
+  --st-radius-chip: 999px;
+  --st-focus: #ffe46b;
+  --st-space-1: .25rem;
+  --st-space-2: .5rem;
+  --st-space-3: .75rem;
+  --st-space-4: 1rem;
+  --st-space-6: 1.5rem;
+  --st-space-8: 2rem;
+  --st-motion-fast: 140ms;
+  color: var(--st-ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color-scheme: light;
+}
+.st-theme *, .st-theme *::before, .st-theme *::after { box-sizing: border-box; }
+@media (prefers-reduced-motion: reduce) {
+  .st-theme, .st-theme *, .st-theme *::before, .st-theme *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

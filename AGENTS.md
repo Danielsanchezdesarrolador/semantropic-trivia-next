@@ -34,9 +34,9 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 - Cliente jamás decide MMR, ganadores, recompensas, respuestas correctas de partidas competitivas ni temporizadores autoritativos. No colocar claves secretas o credenciales en frontend/GitHub.
 - Auditaremos los repositorios anteriores como fuentes opcionales: `semantropic-trivia` (web legacy) y `semantropic-trivia-unity-web` (build publicado). **No migrar automáticamente** código, branding, arte, bases de datos o credenciales.
 
-## 6. Estética: decisión aún pendiente
+## 6. Estética: mockup de inicio aprobado (actualización 2026-10-28)
 - La dirección antigua NO es canon automático. Se solicita **una nueva identidad amigable, cálida, clara, original y transversal en edades**, y su aprobación se hará después mediante mockups.
-- **PROHIBIDO:** crear identidad final, marcos, skins, personajes nuevos, mockups o assets de producción sin orden específica. La plantilla web inicial es estrictamente neutra / técnica.
+- **ALCANCE ACTUAL:** B02-C1 autoriza la arquitectura de assets y los componentes visuales reutilizables, no la integración en el home ni la creación automática de personajes, skins, economías o assets finales. La plantilla B01 publicada permanece neutra.
 - Una vez aprobado un mockup, constituye especificación visual obligatoria: no simplificarlo unilateralmente ni convertirlo en una ilustración de fondo monolítica. Cuando haya conflicto técnico real, exponer alternativas y solicitar decisión.
 - Evitar estética sobrecargada, infantilizada, agresiva, confusa o derivativa de Preguntados.
 
@@ -51,8 +51,8 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 8. Mantener los archivos de decisiones y roadmap alineados con instrucciones expresas más recientes, no con comentarios históricos.
 
 ## 8. Orden de ejecución
-**B01 (ahora):** repositorio independiente + skeleton React TS/Vite + documentos y despliegue Render Static Site verificable. Mostrar solo página técnica, responsive; no simular juego real.
-**B02:** decisiones de identidad y mockups aprobados.
+**B01 (completado y verificado):** repositorio independiente + skeleton React TS/Vite + documentos y despliegue Render Static Site verificable. Mostrar solo página técnica, responsive; no simular juego real.
+**B02 (actual B02-C1):** mockup de pantalla principal aprobado; preparar arquitectura modular, componentes y contratos de arte sin alterar producción. Las implementaciones requieren autorización posterior.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.
 **B04:** autenticación, perfil y base de datos real.
 **B05:** online casual 1v1 con servidor autoritativo; fallback IA **revelado, opcional**.
