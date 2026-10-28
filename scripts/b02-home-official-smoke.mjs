@@ -5,7 +5,7 @@ import { resolve, extname, sep } from 'node:path';
 import { chromium } from 'playwright';
 
 const publicUrl = process.env.ST_OFFICIAL_URL;
-const url = publicUrl || 'http://127.0.0.1:4190/';
+const url = publicUrl || 'http://127.0.0.1:4187/';
 let server;
 if (!publicUrl) {
   // Servir el contenido de dist/, EXACTAMENTE el mismo HTML/JS/CSS que publica Render,
@@ -29,7 +29,7 @@ if (!publicUrl) {
   });
   await new Promise((resolveReady, rejectReady) => {
     server.once('error', rejectReady);
-    server.listen(4190, '127.0.0.1', resolveReady);
+    server.listen(4187, '127.0.0.1', resolveReady);
   });
 }
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
