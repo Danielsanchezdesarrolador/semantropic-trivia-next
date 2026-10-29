@@ -1,4 +1,119 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
+
+## Estado vigente — cierre técnico B03-C5 autorizado, 29-10-2026
+
+D-046: etapa artística Caricatura Familiar aprobada por el Director. Se prepara
+producción con siete originales SFX-02 usados en eventos reales y controles
+independientes; W1/D2 siguen audición QA privada hasta existir resultado real.
+Licencias y fuentes revisadas: incorporación al juego bajo Pixabay Content License,
+sin biblioteca independiente. C con Content ID y certificado no recibido; no se
+promete ausencia de reclamos. DS-01 e histórico 18 no se emiten en producción.
+83 tests y QA del build; CI, integración #18 → (#17 dentro de #16) → #16 y Render por verificar.
+[Informe de cierre y recursos](audio/B03_C5_CIERRE_TECNICO.md).
+**B04 es la próxima etapa; no iniciada y sin nueva arquitectura.**
+
+## Antecedente — 29-10-2026, SFX-02 integrado SOLO DEV
+
+D-045 actualiza D-044: durante la ejecución llegaron los nueve originales a
+.local-sfx02-audio. Hashes/tamaños/decodificación reales registrados; integrados
+M1/V1/A1/X3, músicas L7/C y CLK progresivo por deadline. Colección usa M1,
+HF1 revocado; 18_lobby_pop_familiar queda histórico. W1/D2 solo audición QA
+en Resultados de práctica, sin resultados competitivos inventados. DS-01
+permanece laboratorio explícito y timeout separado.
+[Entrega local, catálogo, pruebas y límites](audio/SFX02_IMPLEMENTACION_LOCAL.md).
+80 tests, build/guard y QA local; certificado C/escucha física y revisión de
+distribución pendientes. Sin MP3 nuevos en Git/build, sin merge ni Render/B04.
+
+## Antecedente — SFX-02 aprobado / originales pendientes
+
+D-044 registra los nueve originales elegidos por el Director. Revoca silencio
+artístico de Colección y asigna M1/V1/A1/X3, victoria/derrota reales, L7/C y reloj.
+No hay ninguno de los nueve MP3 locales y la descarga oficial devuelve 403.
+[Lista exacta y estado verificable](audio/SFX02_ORIGINALES_PENDIENTES.md).
+Carpeta .local-approved-audio preparada e ignorada; sin hashes inventados ni
+sustitutos. No se declara integración SFX-02 lista; juego previo preservado,
+sin cambios funcionales, merge o Render. Pendiente recibir originales para probar.
+
+## Antecedente — DS-01 automático SOLO DEV
+
+D-043 autoriza autocarga de 13 DS-01 desde .local-ds01-audio ignorada por Git,
+mediante endpoint Vite solo-dev con allowlist, hash, origen privado y sin symlinks.
+Sin selector obligatorio ni ruido al importar; primer gesto habilita SFX, cinco
+eventos reales y variantes A/B/C dev (A provisional). HF1 y música HF3 conservados.
+[Entrega, endpoint, seguridad y QA](audio/DS01_AUTOCARGA_LOCAL.md).
+13 originales y manifiesto preparados desde el ZIP local entregado, sin modificar
+archivos sueltos ni descargar/regenerar audio. Build sin muestras, endpoint o
+herramientas privadas. Publicación GPL/Render y merge bloqueados; no iniciar B04.
+
+## Antecedente — HF3 música automática SOLO DEV
+
+D-042 confirma reproducción local inmediata de la pista exacta existente, sin
+selector manual. Autocarga Vite dev, primer gesto normal si autoplay bloquea,
+control compacto, volumen/silencio persistidos y un reproductor entre menús.
+Colección conserva HF1 sin SFX; Arena pausa/reanuda la música del lobby.
+[Entrega HF3, pruebas y URL real](audio/HF3_MUSICA_LOBBY_DEV.md).
+Derechos de publicación pendientes: asignación automática excluida del build
+y bloqueada por guard; DS-01 sigue privado, sin merge ni deploy nuevo o B04.
+
+## Antecedente — DS-01 + HF1/HF2
+
+D-041, confirmado expresamente por el Director, aplica HF1/HF2 sobre la rama
+DS-01 actual: Colección sin SFX de clic/entrada y música exacta 18_lobby_pop_familiar.mp3
+con reproductor estable, pausa en Arena y volumen independiente. Original localizado
+en Descargas, hash idéntico al asset previo; reproducción REAL de QA por File API.
+Publicación de la nueva asignación musical bloqueada por falta de declaración de
+derechos suficiente; sin sustitución ni nuevos MP3 públicos.
+[Estado, fuente, documento faltante y QA](audio/HF1_HF2_COLECCION_MUSICA.md).
+DS-01 conserva bloqueo de binarios y panel solo dev. Sin merge/deploy ni B04.
+
+## Entrega DS-01, vigente salvo excepción Colección de HF1
+
+D-040 autoriza cinco eventos DS-01, importación File API local, variantes A/B/C
+solo en Vite dev, volumen/mute y guard contra distribución de muestras.
+[Entrega técnica, evidencia y bloqueo de licencia](audio/DS01_INTEGRACION_QA_LOCAL.md).
+Tanda aprobada para explorar; A temporal, ninguna variante definitiva. TimGM6mb
+GPL-2: derechos/obligaciones del audio derivado pendientes, sin binarios en Git,
+public/, dist/, Render o releases. Código en rama nueva feat/audio-ds01-qa,
+con dependencia del PR #16 aún abierto; sin merge ni nueva publicación.
+No se cambian puntuación, reloj, arte, músicas o backend. B04 no se inicia.
+
+## Antecedente — evaluación acotada de efectos cartoon
+
+D-039 autoriza la integración verificable de los tres efectos aprobados: solo
+ui_open_cartoon_6 tiene evento conectado (apertura efectiva de Colección). Evento
+cómico y derrota real siguen reservados; sin simulaciones en práctica local.
+[Entrega de evaluación y límites](audio/INTEGRACION_CARTOON_EVALUACION.md).
+Originales privados fuera de Git, sin biblioteca pública independiente; no se
+modifican música oficial ni arte. Revisión del Director antes de merge. Esta
+autorización acotada prevalece sobre la restricción documental anterior y no
+autoriza el catálogo completo, otras músicas, eventos nuevos o B04.
+
+## Antecedente — B03-C5a documental
+
+El Director confirma B03 publicado en Render y PR #15 fusionado. B03-C5a está
+en revisión documental en el **PR #16**, que se actualiza sin crear otro PR.
+**D-036 sustituye la propuesta rechazada «Cristal cercano» por la identidad
+sonora oficial SEMANTROPIC POP — CARICATURA FAMILIAR**: pop, plop, boing, boop,
+silbidos moderados, xilófono/marimba, percusión ligera, bajo saltarín y pequeños
+acentos de trompeta. Se excluyen magia, cristales, hechizos, ambientes galácticos,
+fantasía mística y música épica como identidad sonora. La dirección visual no cambia.
+
+Entrega corregida: [dirección sonora y catálogo](B03_C5a_DIRECCION_SONORA.md),
+con 21 efectos y tres músicas revisados en timbre, motivo e instrumentación.
+Se conservan arquitectura, accesibilidad, rendimiento, licencias, buses y volúmenes.
+Orden obligatorio: **corregir dirección, después revisar y escuchar muestras
+originales reproducibles antes de aprobación definitiva**. Sección 6: dos variantes,
+archivos individuales, montaje A/B, fuentes/exportación y hoja de escucha. Todavía
+no hay muestras producidas en esta revisión documental.
+
+Commit/push y actualización del PR #16 autorizados; **sin merge**. Sin audio en
+el juego ni cambios a lobby, Arena o 42 SVG. C5b/C5c y B04 no se inician.
+No requiere URL jugable nueva. D-035 y los registros siguientes son antecedentes;
+Fantasía Social en el historial no mantiene vigente la dirección sonora anterior
+ni modifica el arte visual aprobado.
+
+## Registro histórico anterior a la autorización B03-C5a
+
 Fecha de actualización: 2026-10-29 · **B01/B02 completados; B03-B02 integrado en main. B03-C1/C2/C3/HF1 aprobados; B03-C4 validado y en PR #15.** D-034 autoriza completar el ciclo Git/CI/merge/Render de bloques aprobados, sin confirmaciones redundantes y solo con los criterios y verificaciones cumplidos. B03-C5 aprobado solo como planificación después de C4 y antes de B04; desarrollo de audio y B04 no autorizados.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |

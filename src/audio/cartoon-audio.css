@@ -1,0 +1,6 @@
+.st-cartoon-audio {display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;max-width:100%;}
+.st-cartoon-audio button {font:inherit;color:inherit;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:8px;cursor:pointer;min-height:36px;}
+.st-cartoon-audio button:disabled {opacity:.6;cursor:default;}
+.st-cartoon-audio label {display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
+.st-cartoon-audio input {width:90px;max-width:100%;}
+.st-cartoon-audio :focus-visible {outline:3px solid #fff;outline-offset:3px;}

@@ -1,0 +1,11 @@
+.ds01-panel {background:#152342;color:#fff;padding:12px;margin:8px;border-radius:12px;font:14px/1.4 system-ui;max-width:100%;}
+.ds01-panel p {margin:8px 0;}
+.ds01-panel label {display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:100%;}
+.ds01-panel input[type=file] {max-width:100%;}
+.ds01-panel button,.ds01-panel select {margin:4px;padding:8px;font:inherit;}
+.ds01-panel pre {white-space:pre-wrap;overflow-wrap:anywhere;}
+.ds01-panel :focus-visible {outline:3px solid #ffc53d;outline-offset:2px;}
+.ds01-controls {display:inline-flex;align-items:center;gap:6px;max-width:100%;}
+.ds01-controls button {font:inherit;color:#fff;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:7px;min-height:36px;cursor:pointer;}
+.ds01-controls input {width:68px;max-width:22vw;}
+.ds01-controls :focus-visible {outline:3px solid #fff;outline-offset:3px;}

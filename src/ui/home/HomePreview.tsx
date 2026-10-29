@@ -1,10 +1,19 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
+import { lazy, Suspense } from 'react';
+import { ds01Audio } from '../../audio/ds01/audioEngine';
+import { useDS01Dev } from '../../audio/ds01/useDS01Dev';
+import LobbyMusicControl, { useLobbyMusic } from '../../audio/LobbyMusicControl';
+import { lobbyMusic, arenaMusic } from '../../audio/lobbyMusic';
+import { navigationSound } from '../../audio/sfx02/policy';
 import LobbySection from './LobbySection';
 import FullscreenControl from './FullscreenControl';
 import QuizPreview from '../quiz/QuizPreview';
 import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
+import EffectsControl from '../../audio/sfx02/EffectsControl';
+import { cartoonAudio } from '../../audio/cartoonAudio';
+import { isCartoonOpening } from '../../audio/cartoonPolicy';
 
 const nav = [
   { label: 'Inicio', icon: '⌂', screen: 'home' },
@@ -18,6 +27,8 @@ const categories: readonly SheetCategory[] = [
   'Paneles de referencia','Capas de referencia',
 ];
 const asset = (id: string) => sheetById(id).path;
+const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
+const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
 
 function ModeIcon({ id }: { id: 'online' | 'friends' }) {
   if (id === 'online') {
@@ -86,10 +97,24 @@ function ResourceLibrary() {
 export default function HomePreview({ official = false, showLibrary = true }: { official?: boolean; showLibrary?: boolean } = {}) {
   const approvedBackground = getApprovedAsset('environment/home-main');
   const approvedLogo = getApprovedAsset('brand/logo');
-  const { screen, navigate } = useLobbyNavigation(official);
+  const { screen, navigate: navigateTo } = useLobbyNavigation(official);
+  useLobbyMusic(screen !== 'arena', official);
+  useDS01Dev(official);
+  const navigate = (next: Parameters<typeof navigateTo>[0], intent: 'open' | 'back' = 'open') => {
+    cartoonAudio.stop();
+    const sound = navigationSound(screen, next, intent);
+    if (official && sound) ds01Audio.navigation(sound);
+    if (official) {
+      if (next === 'arena') { lobbyMusic.setLobby(false); arenaMusic.setLobby(true); }
+      else { arenaMusic.setLobby(false); lobbyMusic.setLobby(true); }
+      lobbyMusic.interaction(); arenaMusic.interaction();
+    }
+    navigateTo(next);
+    if (import.meta.env.DEV && official && !ds01Audio.officialMode && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
+  };
   const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
-  if (official && screen === 'arena') return <QuizPreview official onExit={() => navigate('home')} />;
+  if (official && screen === 'arena') return <QuizPreview official onExit={() => navigate('home', 'back')} />;
   return (
     <main className={'st-preview-page' + (official ? ' st-preview-page--official' : '')}>
       <section className="st-home" aria-label={official ? 'Pantalla principal de Semantropic Trivia' : 'Vista de prueba de Semantropic Trivia con assets separados'}>
@@ -122,6 +147,10 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
+              {official ? <details className="st-audio-options"><summary>Audio</summary><div>
+                {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <EffectsControl />}
+                <LobbyMusicControl />
+              </div></details> : null}
               {official ? <FullscreenControl /> : null}
             </div>
           </header>
@@ -161,10 +190,11 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
               </button>
             </> : 'Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.'}
           </div>
-          </> : <LobbySection screen={screen} onNavigate={navigate} logoSrc={approvedLogo} />}
+          </> : <LobbySection screen={screen} onNavigate={navigate} onBack={next => navigate(next, 'back')} logoSrc={approvedLogo} />}
         </div>
       </section>
       {showLibrary ? <ResourceLibrary /> : null}
+      {official && DS01Panel ? <Suspense fallback={null}><DS01Panel /></Suspense> : null}
     </main>
   );
 }

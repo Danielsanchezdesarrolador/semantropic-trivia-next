@@ -1,0 +1,115 @@
+{
+  "status": "SOLO QA LOCAL; PUBLICACION PENDIENTE",
+  "artisticStatus": "Tanda aprobada para explorar; ninguna variante definitiva; A temporal",
+  "origin": "TimGM6mb.sf2 interpretado con MIDI / FluidSynth; no Foley humano",
+  "sourceCopyright": "Tim Brechbill 2004; David Bolton 2010",
+  "sourceLicense": "GPL-2 declarada; licencia aplicable a audio derivado y obligaciones pendientes de revision",
+  "recipeBranch": "chore/ds01-audio-qa-reproducible",
+  "recipePath": "qa/audio/ds01/render_local.py",
+  "samples": [
+    {
+      "filename": "POP01_BOTON_A.mp3",
+      "event": "Botón",
+      "description": "A: madera cálida, click/plop",
+      "seconds": 0.29,
+      "sha256": "c5c27d4ea135027b812da65f58b9a63a81bbb59f6f7079e64e107ed22059e067",
+      "bytes": 3812
+    },
+    {
+      "filename": "POP01_BOTON_B.mp3",
+      "event": "Botón",
+      "description": "B: goma redondeada y mini-resorte",
+      "seconds": 0.34,
+      "sha256": "57653b15e55ad0ad12491163d1e1ee3afed4578c73666e3f47e721a75d28a7e2",
+      "bytes": 4388
+    },
+    {
+      "filename": "POP01_BOTON_C.mp3",
+      "event": "Botón",
+      "description": "C: madera seca con doble rebote",
+      "seconds": 0.29,
+      "sha256": "f4d0757f2ac032a19866a87a514185c62b103c100fe859e741a34ba3a484d860",
+      "bytes": 3596
+    },
+    {
+      "filename": "POP02_SELECCION_A.mp3",
+      "event": "Seleccionar alternativa",
+      "description": "A: tap y confirmación melódica pequeña",
+      "seconds": 0.47,
+      "sha256": "112af22ed7acd4c03eb501fa9d4e00550d39f570a30ebc1330cfa9726dcc80eb",
+      "bytes": 4988
+    },
+    {
+      "filename": "POP02_SELECCION_B.mp3",
+      "event": "Seleccionar alternativa",
+      "description": "B: clic de juguete con eco acústico",
+      "seconds": 0.47,
+      "sha256": "04de63aa5ced50f052d47c6d61e2747459c619968b96ef28a7783030a399d3c9",
+      "bytes": 5996
+    },
+    {
+      "filename": "TIKI01_ACIERTO_A.mp3",
+      "event": "Respuesta correcta",
+      "description": "A: marimba, tres notas saltarinas",
+      "seconds": 0.94,
+      "sha256": "1b9e20b1ea7f591cf30fc0683b1b22c8a53078303e665bb7ef2402c8698e0c62",
+      "bytes": 10892
+    },
+    {
+      "filename": "TIKI01_ACIERTO_B.mp3",
+      "event": "Respuesta correcta",
+      "description": "B: xilófono juguetón y remate redondo",
+      "seconds": 0.97,
+      "sha256": "ba7451a6beece02e0f48263922a0672bf8abb1f25dc863ad8aaaf1117c93144f",
+      "bytes": 11036
+    },
+    {
+      "filename": "TIKI01_ACIERTO_C.mp3",
+      "event": "Respuesta correcta",
+      "description": "C: kalimba y marimba, cálido y sereno",
+      "seconds": 1,
+      "sha256": "0b99ddb0da8cbc7132166bd6f5adb3d4956a012417491e2eda301f3ca6a8a0a0",
+      "bytes": 12860
+    },
+    {
+      "filename": "TOOT01_ERROR_A.mp3",
+      "event": "Respuesta incorrecta",
+      "description": "A: bassoon uh-oh, descenso cómico",
+      "seconds": 0.96,
+      "sha256": "3abb22e13b7da6741df4c7719a3288a4277e91c23a6815accc511daa022963ff",
+      "bytes": 8660
+    },
+    {
+      "filename": "TOOT01_ERROR_B.mp3",
+      "event": "Respuesta incorrecta",
+      "description": "B: trombón pequeño, sin fanfarria de derrota",
+      "seconds": 0.91,
+      "sha256": "46f0720b45958c8d709682be3b63b694cfbe798f20b892b2002bfd21e6e2ea4a",
+      "bytes": 9500
+    },
+    {
+      "filename": "TOOT01_ERROR_C.mp3",
+      "event": "Respuesta incorrecta",
+      "description": "C: plonk de madera + nota torpe",
+      "seconds": 0.84,
+      "sha256": "9c4fb68e0e6a777e8b815ec31cafc813dc9bf1547a1bc6d040a510e25d4260ef",
+      "bytes": 8756
+    },
+    {
+      "filename": "POP03_TIEMPO_A.mp3",
+      "event": "Tiempo agotado",
+      "description": "A: dos toques y cierre amortiguado",
+      "seconds": 0.91,
+      "sha256": "2d61c592ef63e76419406f0c4e7c966ef3987e0a10326bded5da81efd5653e90",
+      "bytes": 8012
+    },
+    {
+      "filename": "POP03_TIEMPO_B.mp3",
+      "event": "Tiempo agotado",
+      "description": "B: campana de madera, ritmo pausado",
+      "seconds": 1.08,
+      "sha256": "037f9ee6a9a3dc0cf067e1293e2d02c404ec12283b1030c4e52888c73a9ca3df",
+      "bytes": 9788
+    }
+  ]
+}

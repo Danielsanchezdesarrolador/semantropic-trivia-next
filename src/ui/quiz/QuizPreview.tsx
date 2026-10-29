@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { ds01Audio } from '../../audio/ds01/audioEngine';
+import { useQuizAudio } from '../../audio/ds01/useQuizAudio';
+import { useClockAudio } from '../../audio/sfx02/useClockAudio';
+import LobbyMusicControl from '../../audio/LobbyMusicControl';
+import { arenaMusic } from '../../audio/lobbyMusic';
+import EffectsControl from '../../audio/sfx02/EffectsControl';
 import { currentQuestion } from '../../game/local/round';
 import { useLocalPractice } from './useLocalPractice';
 import TimerArc from './TimerArc';
@@ -16,6 +22,10 @@ const demoOptions = [
   { letter: 'C', text: 'Canberra' },
   { letter: 'D', text: 'Perth' },
 ] as const;
+const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
+const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
+const ClockControls = lazy(() => import('../../audio/sfx02/ClockControl'));
+const ResultAudioQA = import.meta.env.DEV ? lazy(() => import('../../audio/sfx02/Controls')) : null;
 
 /** Official: timed local practice. Default: independent B03-B02 visual laboratory. */
 export default function QuizPreview({ official = false, onExit }: { official?: boolean; onExit?: () => void } = {}) {
@@ -23,6 +33,15 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
   const [appearance, setAppearance] = useState<AnswerAppearance>('normal');
   const [timerAppearance, setTimerAppearance] = useState<TimerAppearance>('normal');
   const { session, round, remainingSeconds, durationSeconds, respond, advance, restart } = useLocalPractice(official);
+  useQuizAudio(official ? round : null);
+  useClockAudio(official ? session : null);
+  const exit = onExit ? () => { ds01Audio.stop(); ds01Audio.play(['button']); onExit(); } : undefined;
+  const nextQuestion = () => {
+    if (round?.status === 'answered') { ds01Audio.play(['button']); advance(); }
+  };
+  const replay = () => {
+    if (round?.status === 'finished') { ds01Audio.play(['button']); restart(); }
+  };
   // Keep the final question visible with its feedback when the round finishes.
   const question = round ? currentQuestion(round) ?? round.questions[round.questionIndex] : null;
   const category = question?.category ?? labCategory;
@@ -56,8 +75,13 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
           <p>{official ? `Práctica local · Diez preguntas · ${durationSeconds} segundos por pregunta.` : 'Integración visual del mockup aprobado. Sin partida, puntuación ni cronómetro activos.'}</p>
         </div>
         {official ? <div className="b03-preview-heading__actions">
+          <details className="st-audio-options"><summary>Audio</summary><div>
+            {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <EffectsControl />}
+            <LobbyMusicControl channel={arenaMusic} scope="Arena" />
+            {ClockControls ? <Suspense fallback={null}><ClockControls /></Suspense> : null}
+          </div></details>
           <FullscreenControl />
-          <button className="b03-to-lobby" type="button" onClick={onExit}>Volver al lobby</button>
+          <button className="b03-to-lobby" type="button" onClick={exit}>Volver al lobby</button>
         </div> : <a href="/" className="b03-to-lobby">Regresar al lobby oficial</a>}
       </header>
 
@@ -80,7 +104,7 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
 
       <section className="b03-arena" style={shellStyle} aria-label={official ? 'Partida de práctica local' : 'Vista previa de una pantalla de preguntas'}>
         <div className="b03-arena-top">
-          {official ? <button type="button" className="b03-back-visual b03-back-visual--interactive" onClick={onExit} aria-label="Salir de Arena del Conocimiento">
+          {official ? <button type="button" className="b03-back-visual b03-back-visual--interactive" onClick={exit} aria-label="Salir de Arena del Conocimiento">
             <img src={backSurface} alt="" />
             <span>Salir</span>
           </button> : <span className="b03-back-visual" aria-label="Botón volver, visual no operativo">
@@ -150,14 +174,15 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
           `Ronda finalizada · Aciertos: ${round.result.correct} de 10 · Errores: ${round.result.incorrect} · Puntuación: ${round.result.score} puntos.`
           : answer ? `${timedOut ? 'Tiempo agotado.' : answer.correct ? '¡Correcto!' : 'Respuesta incorrecta.'} ${round.questions[round.questionIndex].explanation}`
           : 'Selecciona una respuesta antes de que termine el tiempo.'}</p>
-        {round.status === 'answered' && <button ref={nextButton} type="button" className="b03-to-lobby" onClick={advance}>Siguiente pregunta</button>}
+        {round.status === 'answered' && <button ref={nextButton} type="button" className="b03-to-lobby" onClick={nextQuestion}>Siguiente pregunta</button>}
         {round.status === 'finished' && <>
           <p>Preguntas completadas: {round.answers.length} de 10 · Respondidas: {round.answers.filter(item => item.alternativeId !== null).length} · Sin respuesta por tiempo: {round.answers.filter(item => item.alternativeId === null).length}</p>
           <p>{timedOut ? 'Tiempo agotado en la última pregunta. ' : ''}{round.questions[round.questionIndex].explanation}</p>
           <div className="b03-results-actions">
-            <button type="button" className="b03-to-lobby" onClick={restart}>Volver a jugar</button>
-            <button type="button" className="b03-to-lobby" onClick={onExit}>Volver al inicio</button>
+            <button type="button" className="b03-to-lobby" onClick={replay}>Volver a jugar</button>
+            <button type="button" className="b03-to-lobby" onClick={exit}>Volver al inicio</button>
           </div>
+          {ResultAudioQA ? <Suspense fallback={null}><ResultAudioQA /></Suspense> : null}
         </>}
       </div> : <section className="b03-qa-controls b03-qa-controls--bottom" aria-label="Estados de diseño">
         <div className="b03-control-heading"><strong>Inspeccionar estados</strong><span>Estos controles muestran solamente variaciones visuales de los assets</span></div>
@@ -181,6 +206,7 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
         </div>
         <p className="b03-warning">B03-B02 · Previsualización de diseño: las respuestas no se pueden seleccionar para jugar, el reloj es estático y no se calculan puntos ni resultados. Las categorías y estados permiten revisar los recursos.</p>
       </section>}
+      {official && DS01Panel ? <Suspense fallback={null}><DS01Panel /></Suspense> : null}
     </main>
   );
 }

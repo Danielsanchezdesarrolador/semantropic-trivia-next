@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ds01Audio } from '../../audio/ds01/audioEngine';
 
 type StandaloneNavigator = Navigator & { standalone?: boolean };
 
@@ -35,6 +36,7 @@ export default function FullscreenControl() {
     if (document.fullscreenElement) {
       try {
         await document.exitFullscreen();
+        ds01Audio.play(['button']);
       } catch {
         setShowHelp(true);
       }
@@ -47,12 +49,14 @@ export default function FullscreenControl() {
     if (typeof element.requestFullscreen === 'function' && document.fullscreenEnabled !== false) {
       try {
         await element.requestFullscreen();
+        ds01Audio.play(['button']);
         return;
       } catch {
         // Mostrar opción honesta sin falsas promesas de ocultar barras.
       }
     }
     setShowHelp(true);
+    if (!showHelp) ds01Audio.play(['button']);
   }
 
   return (
@@ -80,7 +84,7 @@ export default function FullscreenControl() {
         <div className="st-fullscreen-control__help" role="status">
           <div className="st-fullscreen-control__help-top">
             <strong>{installed ? 'Modo aplicación' : 'Cómo ampliar la pantalla'}</strong>
-            <button type="button" aria-label="Cerrar ayuda de pantalla completa" onClick={() => setShowHelp(false)}>×</button>
+            <button type="button" aria-label="Cerrar ayuda de pantalla completa" onClick={() => { setShowHelp(false); ds01Audio.play(['button']); }}>×</button>
           </div>
           {installed ? (
             <p>La aplicación ya está abierta desde la pantalla de inicio. Las barras del sistema dependen de tu dispositivo.</p>
