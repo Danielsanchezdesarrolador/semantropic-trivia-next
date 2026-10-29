@@ -30,6 +30,8 @@
 .b03-category-count{display:grid;place-items:center;min-width:84px;height:64%;background:#061d58a1;border-radius:28px;padding:0 10px;font-size:clamp(.95rem,1.8vw,1.4rem);font-weight:950;white-space:nowrap}
 .b03-timer{position:relative;display:grid;place-items:center;justify-self:end;width:clamp(72px,8.5vw,118px);aspect-ratio:1;color:#fff;text-shadow:0 3px 5px #0f2c64;font-size:clamp(1.6rem,3vw,2.7rem);font-weight:950;font-variant-numeric:tabular-nums}
 .b03-timer img{position:absolute;inset:0;width:100%;height:100%}.b03-timer span{position:relative;z-index:1}
+.b03-timer-arc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.b03-timer-arc__progress{filter:drop-shadow(0 0 3px currentColor);transition:none}
 .b03-question{position:relative;width:min(69%,930px);min-height:clamp(174px,19vw,275px);margin:22px auto 28px;display:grid;place-items:center;padding:35px 42px;text-align:center}
 .b03-question-skin{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none}
 .b03-question-content{position:relative;z-index:1;color:#14356c;max-width:100%}
@@ -426,6 +428,16 @@ html:fullscreen .b03-preview-page--official {
   padding:12px clamp(10px,2vw,30px) 24px;
 }
 html:fullscreen .b03-preview-page--official .b03-arena {min-height:min(65vw,850px)}
+/* B03-C2: native buttons keep the exact card geometry and approved SVG surfaces. */
+.b03-answer--interactive {
+  appearance:none;border:0;background:transparent;border-radius:0;margin:0;
+  font:inherit;text-align:left;cursor:pointer;touch-action:manipulation;
+  width:100%;opacity:1;
+}
+.b03-answer--interactive:disabled {cursor:default;color:#173364;opacity:1}
+.b03-answer--interactive:focus-visible {outline-offset:-4px}
+.b03-visual-status .b03-to-lobby {cursor:pointer;border:1px solid #adddff}
+.b03-results-actions {display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 @media(max-width:600px){
  .b03-preview-page--official .b03-preview-heading {
    display:flex;flex-direction:column;align-items:stretch;gap:6px;

@@ -1,6 +1,6 @@
 # SEMANTROPIC TRIVIA 1.0 · B03-B02 Integración visual de Arena del Conocimiento
 
-**Fecha:** 28-10-2026. **Director:** usuario. **Estado:** implementación candidata en rama y preview; NO es un modo jugable.
+**Fecha histórica:** 28-10-2026. **Director:** usuario. **Estado vigente (29-10-2026):** Arena aprobada e integrada en main mediante `3aa8f037`; la práctica jugable C1/C2/C3/HF1 está aprobada para continuar y pendiente de integrar/publicar. Las secciones siguientes conservan la secuencia histórica del laboratorio y de B03-B02. La vista actual local y el cierre se describen en `../B03_C4_CIERRE_LOCAL.md`.
 
 ## Mandato
 El Director aprobó el mockup minimalista de B03-A y solicitó integrar los assets del paquete `SEMANTROPIC_TRIVIA_B03_B01_ASSETS_MINIMALISTAS.zip` en nuestro juego, sin desarrollar aún lógica B03-C ni modificar producción.

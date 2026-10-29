@@ -1,5 +1,5 @@
 # AGENTS.md — SEMANTROPIC TRIVIA / NUEVA ETAPA
-**Autoridad de dirección:** Director del juego (usuario). **Corte:** 2026-10-28. **Estado:** fundación de nuevo proyecto, no juego terminado.
+**Autoridad de dirección:** Director del juego (usuario). **Corte:** 2026-10-29. **Estado:** núcleo local B03 aprobado para continuar; cierre B03-C4 y preparación de publicación, sin juego online terminado.
 
 ## 1. Mandato innegociable
 Construir Semantropic Trivia como videojuego de preguntas **social, familiar y competitivo**, para Android e iOS, con pruebas web desde PC y teléfono. Debe ser inclusivo para diversas edades, amigable, fácil de comprender, divertido, justo y respetuoso del tiempo del jugador. Las referencias a Preguntados son inspiración de categoría de producto, **no permiso para copiar** interfaz, arte, propiedad intelectual ni dinámicas invasivas.
@@ -36,7 +36,8 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 
 ## 6. Estética: mockup de inicio aprobado (actualización 2026-10-28)
 - La dirección antigua NO es canon automático. Se solicita **una nueva identidad amigable, cálida, clara, original y transversal en edades**, y su aprobación se hará después mediante mockups.
-- **ALCANCE ACTUAL (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social como portada y pidió que los botones respondan al pulsarlos antes de empezar B03. Se autoriza únicamente **navegación funcional por menús y submenús**, conservando el arte aprobado. No significa partidas, matchmaking, usuarios o cuentas activos. El fondo y logo oficiales permanecen separados; los otros recortes siguen como referencias artísticas.
+- **ALCANCE HISTÓRICO B02 (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social como portada y pidió que los botones respondan al pulsarlos antes de empezar B03. Se autorizó únicamente **navegación funcional por menús y submenús**, conservando el arte aprobado. El fondo y logo oficiales permanecen separados; los otros recortes siguen como referencias artísticas.
+- **ALCANCE ACTUAL (2026-10-29):** B03-C1/C2/C3/HF1 aprobados para continuar: práctica local de diez preguntas en la Arena original, categorías automáticas, reloj real de 20 s con arco continuo y resultados. Conservar íntegramente los 42 SVG y la composición aprobada. El selector manual de categorías pertenece solo al laboratorio. B03-C4 consolida QA/documentación y prepara commit/PR; exige autorización específica antes de commit, push y apertura de PR. No autoriza merge, despliegue ni B04. No hay backend, cuentas ni partidas online activos.
 - Una vez aprobado un mockup, constituye especificación visual obligatoria: no simplificarlo unilateralmente ni convertirlo en una ilustración de fondo monolítica. Cuando haya conflicto técnico real, exponer alternativas y solicitar decisión.
 - Evitar estética sobrecargada, infantilizada, agresiva, confusa o derivativa de Preguntados.
 
@@ -49,11 +50,13 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 6. Realizar QA de navegador de escritorio y móvil horizontal/vertical según función. No decir «PASS móvil físico» sin comprobarlo físicamente; distinguir QA automatizado, emulado y dispositivo real.
 7. Reportar cambios, tests ejecutados, resultados, limitaciones, commit/PR y URL **únicamente si están verificados**. No inventar capturas, disponibilidad online, usuarios concurrentes, mediciones, ni sistemas completados.
 8. Mantener los archivos de decisiones y roadmap alineados con instrucciones expresas más recientes, no con comentarios históricos.
+9. **Entrega jugable obligatoria después de cada microbloque:** implementar solo el alcance autorizado; ejecutar TypeScript, tests y build; iniciar Vite con `npm run dev` cuando corresponda y comprobar el juego en navegador. Entregar una URL local real con el puerto confirmado por Vite y la ruta exacta. Mantener el servidor disponible mientras sea posible e indicar cómo reiniciarlo (en PowerShell puede usarse `npm.cmd run dev`). Cuando sea viable, dar la dirección Wi-Fi para el celular y distinguir acceso comprobado desde el PC de prueba en teléfono físico. Un enlace público de pruebas solo se entrega tras verificar autorización, despliegue del bloque y funcionamiento; nunca sustituye la autorización de publicación. No hacer push, merge ni deploy automáticamente. Informar microbloque, funciones, archivos, resultados de tests, URL comprobada, límites y cambios pendientes de aprobación. Ciclo obligatorio: **implementar → probar → presentar al Director → corregir o aprobar → avanzar**.
 
 ## 8. Orden de ejecución
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
 **B02 (COMPLETADO):** lobby oficial, navegación y pantalla completa publicados en Render. **B03-B02 (APROBADO por el Director, incluyendo HF2):** integrar la Arena del Conocimiento con sus 42 SVG y seis categorías en el juego oficial, con acceso visible desde el lobby y botón de regreso. La pantalla mostrará explícitamente que es demostrativa y no activa partidas ni relojes reales. El laboratorio con controles técnicos sigue separado. Solo fusionar en `main` y publicar Render tras TypeScript, tests, build y smoke Chromium PC/móvil.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.
+**Estado B03 al 29-10-2026:** C1/C2/C3/HF1 implementados y aprobados por el Director para continuar; C4 realiza cierre local y preparación de integración sobre `feat/b03-c1-nucleo-local`. La base integrada en main verificada en esta sesión es `3aa8f037` (Arena demostrativa); el estado remoto actual y el núcleo jugable en Render no se presumen comprobados. Autorización de commit/push/PR pendiente; producción y QA físico no se presumen completados.
 **B04:** autenticación, perfil y base de datos real.
 **B05:** online casual 1v1 con servidor autoritativo; fallback IA **revelado, opcional**.
 **B06:** salas privadas de 1v1, 2v2, 3v3, FFA.
