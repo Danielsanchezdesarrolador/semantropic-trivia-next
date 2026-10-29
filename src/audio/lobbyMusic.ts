@@ -1,8 +1,9 @@
 const expectedName = '18_lobby_pop_familiar.mp3';
 const expectedHash = 'e82e7f4d6e129eddad15a9cf26c4118ae545646d4ae08fc33c19e45c27d37707';
+const devSource = import.meta.env.DEV ? '/assets/audio/music/semantropic_lobby_pop_familiar_v001.mp3' : undefined;
 
-/** HF2: exact original, local File API only until publication rights are documented.
- * Singleton survives menu navigation. No alternative track or production URL. */
+/** HF3: verified original automatically assigned ONLY in Vite dev.
+ * Singleton survives menus; production assignment stays blocked by rights review. */
 export class LobbyMusic {
   private audio?: HTMLAudioElement;
   private objectUrl?: string;
@@ -10,7 +11,7 @@ export class LobbyMusic {
   private epoch = 0;
   private listeners = new Set<() => void>();
   private inLobby = true;
-  enabled = false;
+  enabled = true;
   volume = .25;
   message = 'Música: pendiente de autorización de publicación. Carga local disponible en QA.';
   filename = '';
@@ -18,12 +19,32 @@ export class LobbyMusic {
     try {
       const saved = JSON.parse(localStorage.getItem('semantropic.lobby-music.v1') ?? 'null');
       if (typeof saved?.volume === 'number' && Number.isFinite(saved.volume)) this.volume = Math.min(1, Math.max(0, saved.volume));
+      if (saved?.enabled === false) this.enabled = false;
     } catch { /* Optional preferences, never stored files or automatic consent. */ }
   }
   subscribe = (listener: () => void) => { this.listeners.add(listener); return () => { this.listeners.delete(listener); }; };
   snapshot = () => this.revision;
   private notify() { this.revision++; this.listeners.forEach(fn => fn()); }
   get available() { return Boolean(this.audio); }
+  get playing() { return this.enabled && Boolean(this.audio && !this.audio.paused); }
+  private save() {
+    try { localStorage.setItem('semantropic.lobby-music.v1', JSON.stringify({ volume: this.volume, enabled: this.enabled })); }
+    catch { /* Optional preferences. */ }
+  }
+  prepareDev() {
+    if (!devSource || this.audio) return;
+    this.audio = new Audio(devSource);
+    this.audio.loop = true;
+    this.audio.volume = this.volume;
+    this.audio.preload = 'auto';
+    this.filename = expectedName;
+    this.message = 'Música oficial disponible en desarrollo';
+    this.notify();
+    void this.sync();
+  }
+  interaction() {
+    if (this.enabled && this.audio?.paused && this.inLobby && !document.hidden) void this.sync();
+  }
   async load(file: File) {
     if (file.name !== expectedName) { this.message = `Se requiere exactamente ${expectedName}`; this.notify(); return; }
     const request = ++this.epoch;
@@ -48,9 +69,10 @@ export class LobbyMusic {
   async enable() {
     if (!this.audio) return;
     this.enabled = true;
+    this.save();
     await this.sync();
   }
-  disable() { this.enabled = false; void this.sync(); }
+  disable() { this.enabled = false; this.save(); void this.sync(); }
   setLobby(value: boolean) {
     if (value === this.inLobby) return; // Menus preserve player, time and play() promise.
     this.inLobby = value;
@@ -71,8 +93,7 @@ export class LobbyMusic {
       this.message = 'Música del lobby activa · QA local';
     } catch {
       if (request !== this.epoch) return;
-      this.enabled = false;
-      this.message = 'El navegador no permitió reproducir. Puedes activar música de nuevo.';
+      this.message = 'El navegador requiere una interacción para iniciar la música. Puedes activar música.';
     }
     this.notify();
   }
@@ -80,11 +101,11 @@ export class LobbyMusic {
     if (!Number.isFinite(value)) return;
     this.volume = Math.max(0, Math.min(1, value));
     if (this.audio) this.audio.volume = this.volume;
-    try { localStorage.setItem('semantropic.lobby-music.v1', JSON.stringify({ volume: this.volume })); } catch { /* Optional. */ }
+    this.save();
     this.notify();
   }
   clear() {
-    this.epoch++; this.enabled = false;
+    this.epoch++;
     if (this.audio) { this.audio.pause(); this.audio.removeAttribute('src'); this.audio.load(); }
     if (this.objectUrl) URL.revokeObjectURL(this.objectUrl);
     this.audio = undefined; this.objectUrl = undefined; this.filename = '';

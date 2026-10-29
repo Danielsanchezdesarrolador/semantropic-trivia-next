@@ -1,6 +1,16 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, DS-01 + HF1/HF2
+## Estado vigente — 29-10-2026, HF3 música automática SOLO DEV
+
+D-042 confirma reproducción local inmediata de la pista exacta existente, sin
+selector manual. Autocarga Vite dev, primer gesto normal si autoplay bloquea,
+control compacto, volumen/silencio persistidos y un reproductor entre menús.
+Colección conserva HF1 sin SFX; Arena pausa/reanuda la música del lobby.
+[Entrega HF3, pruebas y URL real](audio/HF3_MUSICA_LOBBY_DEV.md).
+Derechos de publicación pendientes: asignación automática excluida del build
+y bloqueada por guard; DS-01 sigue privado, sin merge ni deploy nuevo o B04.
+
+## Antecedente — DS-01 + HF1/HF2
 
 D-041, confirmado expresamente por el Director, aplica HF1/HF2 sobre la rama
 DS-01 actual: Colección sin SFX de clic/entrada y música exacta 18_lobby_pop_familiar.mp3

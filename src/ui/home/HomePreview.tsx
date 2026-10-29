@@ -100,6 +100,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
     cartoonAudio.stop();
     if (official && screen !== next && next !== 'collection') ds01Audio.play(['button']);
     if (official) lobbyMusic.setLobby(next !== 'arena');
+    if (official) lobbyMusic.interaction();
     navigateTo(next);
     if (official && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
   };

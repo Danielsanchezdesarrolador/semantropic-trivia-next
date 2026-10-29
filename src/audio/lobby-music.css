@@ -1,0 +1,5 @@
+.st-lobby-music {display:inline-flex;align-items:center;gap:6px;max-width:100%;}
+.st-lobby-music button {font:inherit;color:inherit;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:7px;min-height:36px;cursor:pointer;}
+.st-lobby-music button:disabled {opacity:.6;cursor:default;}
+.st-lobby-music input {width:68px;max-width:22vw;}
+.st-lobby-music :focus-visible {outline:3px solid #fff;outline-offset:3px;}

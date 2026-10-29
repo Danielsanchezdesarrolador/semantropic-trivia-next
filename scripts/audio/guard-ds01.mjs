@@ -25,6 +25,10 @@ export function assertPublishable(path, bytes) {
     && (bytes.includes(Buffer.from('Cargar 13 MP3 locales')) || bytes.includes(Buffer.from('Cargar 18_lobby_pop_familiar.mp3')))) {
     throw Error('Importador privado presente en build pública');
   }
+  if (path.replaceAll('\\', '/').includes('/dist/') && extname(path) === '.js'
+    && bytes.includes(Buffer.from('/assets/audio/music/semantropic_lobby_pop_familiar_v001.mp3'))) {
+    throw Error('Asignación automática de música dev presente en build pública');
+  }
 }
 async function walk(path) {
   let entries;

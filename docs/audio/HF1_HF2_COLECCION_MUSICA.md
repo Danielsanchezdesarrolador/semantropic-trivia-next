@@ -1,5 +1,9 @@
 # B03-C5 / HF1 + HF2 — cierre sobre DS-01
 
+**Actualización posterior HF3:** la carga File API descrita aquí es histórica.
+La música ahora se asigna automáticamente solo en Vite dev, sin selector;
+[entrega HF3](HF3_MUSICA_LOBBY_DEV.md). HF1 y el bloqueo de publicación siguen vigentes.
+
 29-10-2026. El Director confirmó expresamente aplicar ambos correctivos al trabajo
 DS-01 actual. Rama conservada: `feat/audio-ds01-qa`; no reinicio ni descarte de cambios.
 
