@@ -63,6 +63,76 @@ try {
       const bg=await page.locator('.b03-arena').evaluate(el=>getComputedStyle(el,'::before').backgroundImage);
       assert.notEqual(bg,baseBackground,'Cambio de fondo al elegir '+category);
     }
+
+    // HF1: inspección geométrica de la interfaz, no solo validación de clics.
+    await page.getByRole('button',{name:'Arte y cultura',exact:true}).click();
+    await page.getByRole('button',{name:'Incorrecta',exact:true}).click();
+    const layout=await page.evaluate(()=>{
+      const rect=selector=>document.querySelector(selector)?.getBoundingClientRect();
+      const arena=rect('.b03-arena');
+      const header=rect('.b03-category-header');
+      const title=rect('.b03-category-title');
+      const counter=rect('.b03-category-count');
+      const question=rect('.b03-question');
+      const questionText=rect('.b03-question-content');
+      const progress=rect('.b03-progress');
+      const answers=[...document.querySelectorAll('.b03-answer')].map(el=>{
+        const card=el.getBoundingClientRect();
+        const letter=el.querySelector('.b03-answer-letter').getBoundingClientRect();
+        const answerText=el.querySelector('.b03-answer-text').getBoundingClientRect();
+        const feedback=el.querySelector('.b03-answer-feedback')?.getBoundingClientRect();
+        return {
+          cardWidth:card.width, cardHeight:card.height,
+          chipCenter:(letter.left+letter.width/2-card.left)/card.width,
+          chipCenterY:(letter.top+letter.height/2-card.top)/card.height,
+          letterEnd:letter.right-card.left,
+          textStart:answerText.left-card.left,
+          textEnd:answerText.right-card.left,
+          feedbackStart:feedback?feedback.left-card.left:null,
+          textContained:answerText.left>=card.left-1&&answerText.right<=card.right+1,
+        };
+      });
+      return {
+        arenaCenter:(arena.left+arena.right)/2,
+        headerCenter:(header.left+header.right)/2,
+        titleEndsBeforeCount:title.right<=counter.left+2,
+        titleOverflows:document.querySelector('.b03-category-title').scrollWidth>
+          document.querySelector('.b03-category-title').clientWidth+2,
+        questionCenter:(question.left+question.right)/2,
+        textCenter:(questionText.left+questionText.right)/2,
+        progressCenter:(progress.left+progress.right)/2,
+        progressSegments:[...document.querySelectorAll('.b03-progress img')].map(img=>img.getBoundingClientRect().width),
+        answers
+      };
+    });
+    assert.ok(Math.abs(layout.headerCenter-layout.arenaCenter)<5,
+      'Cabecera centrada horizontalmente: '+JSON.stringify(layout));
+    assert.ok(layout.titleEndsBeforeCount&&!layout.titleOverflows,
+      'Texto de categoría invade el contador: '+JSON.stringify(layout));
+    assert.ok(Math.abs(layout.questionCenter-layout.textCenter)<5,
+      'Enunciado descentrado: '+JSON.stringify(layout));
+    assert.ok(Math.abs(layout.progressCenter-layout.arenaCenter)<5,
+      'Progreso descentrado: '+JSON.stringify(layout));
+    assert.equal(layout.progressSegments.length,10);
+    assert.ok(Math.max(...layout.progressSegments)-Math.min(...layout.progressSegments)<2,
+      'Los segmentos deben medir lo mismo');
+    for(const item of layout.answers){
+      assert.ok(Math.abs(item.chipCenter-.1235)<.023,
+        'Letra desalineada horizontalmente: '+JSON.stringify(item));
+      assert.ok(Math.abs(item.chipCenterY-.456)<.036,
+        'Letra desalineada verticalmente: '+JSON.stringify(item));
+      assert.ok(item.textStart>=item.letterEnd-1,
+        'El texto se superpone con el chip: '+JSON.stringify(item));
+      assert.ok(item.textContained,'Texto fuera de tarjeta: '+JSON.stringify(item));
+      if(item.feedbackStart!==null){
+        assert.ok(item.feedbackStart>=item.textEnd-1,
+          'Indicador de respuesta superpuesto: '+JSON.stringify(item));
+      }
+    }
+    await page.screenshot({path:'artifacts/b03-b02/'+d.name+'-arte-cultura-hf1.png',fullPage:true});
+    console.log('PASS B03-B02-HF1',d.name,'GEOMETRIA',JSON.stringify(layout));
+    await page.getByRole('button',{name:'Entretenimiento',exact:true}).click();
+
     await page.screenshot({path:`artifacts/b03-b02/${d.name}-entretenimiento.png`,fullPage:true});
     await page.getByRole('button',{name:'Correcta',exact:true}).click();
     assert.equal(await page.locator('.b03-answer--correct').count(),1);
