@@ -70,6 +70,9 @@ export async function verifyContinuousArc(page, name) {
     Object.defineProperty(document,'hidden',{configurable:true,get:()=>false});
     document.dispatchEvent(new Event('visibilitychange'));
   });
+  // The arc paints synchronously; React commits the engine's timeout asynchronously.
+  // Wait for that observable state before asserting the exact resolved count.
+  await page.getByText('Tiempo agotado.',{exact:false}).waitFor();
   approx(await progress(),0);
   assert.equal((await frames()).pending,0);
   assert.equal(await page.locator('.b03-progress img[src$="progreso_completada.svg"]').count(),3);
