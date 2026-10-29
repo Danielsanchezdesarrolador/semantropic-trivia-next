@@ -1,7 +1,8 @@
-:root{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#12346e;font-synthesis:none}
-*{box-sizing:border-box}
-html{background:#e9f3ff}body{margin:0;min-width:300px}
-button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px solid #ffca35;outline-offset:3px}
+/* Aislar B03 para no modificar estilos globales del lobby B02 oficial. */
+.b03-preview-page{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;color:#12346e;font-synthesis:none;background:#e9f3ff}
+.b03-preview-page,.b03-preview-page *{box-sizing:border-box}
+.b03-preview-page button,.b03-preview-page a{font-family:inherit}
+.b03-preview-page button:focus-visible,.b03-preview-page a:focus-visible{outline:3px solid #ffca35;outline-offset:3px}
 .b03-preview-page{min-height:100dvh;max-width:1500px;margin:auto;padding:22px clamp(12px,2vw,32px) 40px}
 .b03-preview-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 8px 15px}
 .b03-preview-eyebrow{margin:0 0 5px;color:#3767af;font-size:.72rem;letter-spacing:.09em;font-weight:900}
@@ -399,4 +400,37 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
     --b03-title-end:97.1667px;
     --b03-count-width:66.25px;
   }
+}
+
+
+/* B03 aprobado y visible desde la ruta oficial #arena; laboratorio independiente intacto. */
+.b03-preview-page--official{background:linear-gradient(160deg,#eaf5ff,#dceaff);max-width:1500px}
+.b03-preview-page--official .b03-preview-heading {align-items:center}
+.b03-preview-heading__actions {display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.b03-preview-heading__actions .b03-to-lobby{
+  border:1px solid #adddff;cursor:pointer;box-shadow:0 3px 0 #0c2c6e;
+}
+.b03-preview-page--official .b03-back-visual--interactive {
+  padding:0;border:0;background:transparent;cursor:pointer;touch-action:manipulation;
+  text-align:left;justify-self:start;
+}
+.b03-preview-page--official .b03-back-visual--interactive:hover {filter:brightness(1.08)}
+.b03-preview-page--official .b03-category-pill {min-height:44px}
+.b03-visual-status {
+  color:#1c477f;background:#f4f9ff;border:1px solid #bfd9f6;
+  border-radius:12px;padding:12px 14px;
+  margin:14px 0 0;text-align:center;font-size:.84rem;line-height:1.55;
+}
+html:fullscreen .b03-preview-page--official {
+  max-width:none;min-height:100vh;min-height:100dvh;
+  padding:12px clamp(10px,2vw,30px) 24px;
+}
+html:fullscreen .b03-preview-page--official .b03-arena {min-height:min(65vw,850px)}
+@media(max-width:600px){
+ .b03-preview-page--official .b03-preview-heading {
+   display:flex;flex-direction:column;align-items:stretch;gap:6px;
+ }
+ .b03-preview-heading__actions {justify-content:space-between}
+ .b03-preview-page--official .b03-category-pill{min-height:44px}
+ .b03-preview-page--official {padding-bottom:max(20px,env(safe-area-inset-bottom,0px))}
 }

@@ -1,4 +1,5 @@
 import { useState, type CSSProperties } from 'react';
+import FullscreenControl from '../home/FullscreenControl';
 import {
   answerSurfaces, backSurface, progressSurfaces, questionSurface,
   quizAsset, timerSurfaces, type AnswerAppearance, type TimerAppearance,
@@ -14,7 +15,7 @@ const demoOptions = [
 ] as const;
 
 /** B03-B02: sólo el MOCKUP integrado. No hay timer activo, corrección ni partida. */
-export default function QuizPreview() {
+export default function QuizPreview({ official = false, onExit }: { official?: boolean; onExit?: () => void } = {}) {
   const [category, setCategory] = useState<QuizCategory>('geografia');
   const [appearance, setAppearance] = useState<AnswerAppearance>('normal');
   const [timerAppearance, setTimerAppearance] = useState<TimerAppearance>('normal');
@@ -27,18 +28,21 @@ export default function QuizPreview() {
   } as CSSProperties;
 
   return (
-    <main className="b03-preview-page">
+    <main className={'b03-preview-page' + (official ? ' b03-preview-page--official' : '')}>
       <header className="b03-preview-heading">
         <div>
           <p className="b03-preview-eyebrow">SEMANTROPIC TRIVIA 1.0 · B03-B02</p>
           <h1>Arena del Conocimiento</h1>
-          <p>Integración visual del mockup aprobado. Sin partida, puntuación ni cronómetro activos.</p>
+          <p>{official ? 'Interfaz oficial de preguntas · Vista demostrativa, sin partida activa.' : 'Integración visual del mockup aprobado. Sin partida, puntuación ni cronómetro activos.'}</p>
         </div>
-        <a href="/" className="b03-to-lobby">Regresar al lobby oficial</a>
+        {official ? <div className="b03-preview-heading__actions">
+          <FullscreenControl />
+          <button className="b03-to-lobby" type="button" onClick={onExit}>Volver al lobby</button>
+        </div> : <a href="/" className="b03-to-lobby">Regresar al lobby oficial</a>}
       </header>
 
-      <section className="b03-qa-controls" aria-label="Controles del laboratorio de diseño">
-        <div className="b03-control-heading"><strong>Categorías</strong><span>Elige una para ver cómo cambia el color de la arena</span></div>
+      <section className="b03-qa-controls" aria-label={official ? "Elegir categoría de la demostración" : "Controles del laboratorio de diseño"}>
+        <div className="b03-control-heading"><strong>{official ? "Explorar categorías" : "Categorías"}</strong><span>Elige una para ver cómo cambia el color de la arena</span></div>
         <div className="b03-category-pills" role="group" aria-label="Categoría del mockup">
           {quizCategories.map(id => (
             <button
@@ -56,10 +60,13 @@ export default function QuizPreview() {
 
       <section className="b03-arena" style={shellStyle} aria-label="Vista previa de una pantalla de preguntas">
         <div className="b03-arena-top">
-          <span className="b03-back-visual" aria-label="Botón volver, visual no operativo">
+          {official ? <button type="button" className="b03-back-visual b03-back-visual--interactive" onClick={onExit} aria-label="Salir de Arena del Conocimiento">
             <img src={backSurface} alt="" />
             <span>Salir</span>
-          </span>
+          </button> : <span className="b03-back-visual" aria-label="Botón volver, visual no operativo">
+            <img src={backSurface} alt="" />
+            <span>Salir</span>
+          </span>}
 
           <div className="b03-category-header" aria-label={'Categoría visual: ' + activeTheme.label}>
             <img className="b03-category-header-skin" src={quizAsset(activeTheme.bar)} alt="" />
@@ -108,7 +115,7 @@ export default function QuizPreview() {
         <img className="b03-crystal b03-crystal--violet" src={quizAsset('cristal_violeta')} alt="" />
       </section>
 
-      <section className="b03-qa-controls b03-qa-controls--bottom" aria-label="Estados de diseño">
+      {official ? <p className="b03-visual-status" role="status">Vista demostrativa del diseño aprobado · Las respuestas, el reloj y la puntuación todavía no son jugables.</p> : <section className="b03-qa-controls b03-qa-controls--bottom" aria-label="Estados de diseño">
         <div className="b03-control-heading"><strong>Inspeccionar estados</strong><span>Estos controles muestran solamente variaciones visuales de los assets</span></div>
         <div className="b03-state-rows">
           <div className="b03-state-row" role="group" aria-label="Estado de respuesta de ejemplo">
@@ -129,7 +136,7 @@ export default function QuizPreview() {
           </div>
         </div>
         <p className="b03-warning">B03-B02 · Previsualización de diseño: las respuestas no se pueden seleccionar para jugar, el reloj es estático y no se calculan puntos ni resultados. Las categorías y estados permiten revisar los recursos.</p>
-      </section>
+      </section>}
     </main>
   );
 }

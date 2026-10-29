@@ -57,3 +57,12 @@ Diagnóstico: la barra SVG aprobada mide 1200×180 unidades, con círculo izquie
 Corrección: la barra original queda intacta; su icono se superpone en (7,166667%,45%) y el contador en el centro de la cápsula (87,7083%,45,2778%), utilizando posicionamiento porcentual relativo al SVG. El título ocupa el espacio intermedio sin invadir las zonas laterales. Responsive PC, tablet y celular; los demás assets, la distribución de preguntas y las cuatro respuestas siguen idénticos.
 
 QA: medición de centro de pictograma y contador contra las coordenadas fuente (tolerancia 1,6 px) en Chromium escritorio y móviles, comprobación de no superposición título/pictograma/contador y capturas recortadas de la cabecera. Aplicar exclusivamente al laboratorio B03 y presentar al Director para aprobación visual.
+
+## Publicación oficial B03-B02 — Aprobación del Director
+Tras aprobar expresamente el hotfix HF2 (icono, barra y contador), el Director autorizó publicar la Arena en el juego oficial.
+
+**Integración de bajo riesgo:** el inicio B02 mantiene sus dos botones principales y la estética aprobada; se añade una entrada accesible «Arena del Conocimiento» que navega por hash `#arena`. React reutiliza el mismo `QuizPreview` con propiedad `official`: muestra las seis categorías y los assets aprobados, permite salir y volver, oculta los controles inferiores de inspección y deja claro que la pregunta es una demostración. La vista de laboratorio `b03-preview.html` continúa con sus controles de QA.
+
+**Fuera de alcance:** lógica de respuestas, temporizador en marcha, clasificación, puntos, backend, salas, jugadores falsos. B03-C, B04 y siguientes no iniciados.
+
+**Verificación premerge:** TypeScript, node tests, compilación Vite (tres entradas), smoke Playwright de home+arena en 1366, 390 y 320, cambio de categorías, botón salir, recarga profunda `#arena`, historial Atrás/Adelante, SVG, no overflow ni errores. Posmerge: despliegue Render LIVE y smoke público real; revisión física adicional por el Director.

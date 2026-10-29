@@ -358,3 +358,27 @@ html:fullscreen .st-preview-page--official .st-home__content {
 .st-home__header .st-fullscreen-control__label {
   background:none;border:0;padding:0;border-radius:0;
 }
+
+
+/* B03-B02 aprobado: acceso a la Arena desde el lobby oficial, sin simular partida. */
+.st-preview-page--official .st-home__notice p {margin:0 0 10px;line-height:1.4}
+.st-home__arena-entry {
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;max-width:430px;margin:0 auto;padding:10px 13px;
+  min-height:54px;border:2px solid #bbf3ff;border-radius:15px;
+  background:linear-gradient(125deg,#1189dc,#245bb6 64%,#6746ca);
+  color:#fff;text-align:left;text-shadow:0 1px 3px #11377e;
+  box-shadow:inset 0 2px #ffffff5a,0 4px 0 #0b2b79;
+  font:inherit;cursor:pointer;touch-action:manipulation;
+}
+.st-home__arena-entry-icon{font-size:1.65rem;color:#ffe885;flex:none}
+.st-home__arena-entry strong{display:block;font-size:clamp(.75rem,1.6vw,.92rem);letter-spacing:.03em}
+.st-home__arena-entry small{display:block;font-size:clamp(.63rem,1vw,.73rem);color:#e2f5ff;line-height:1.35}
+.st-home__arena-entry-arrow{margin-left:auto;font-size:1.5rem;flex:none}
+.st-home__arena-entry:focus-visible{outline:3px solid #ffe58a;outline-offset:4px}
+@media(hover:hover){.st-home__arena-entry:hover{filter:brightness(1.12)}}
+@media(max-width:400px){
+  .st-home__arena-entry{gap:7px;padding:9px;min-height:52px}
+  .st-home__arena-entry strong{font-size:.73rem}
+  .st-home__arena-entry small{font-size:.64rem}
+}

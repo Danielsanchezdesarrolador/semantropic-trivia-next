@@ -1,5 +1,5 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
-Fecha: 2026-10-28 · Estado actualizado: **B01 y B02 (lobby, navegación y fullscreen) completados; B03-A mockup minimalista aprobado; B03-B01 assets generados; B03-B02 integración visual en rama de preview autorizada.** Partidas reales siguen pendientes.
+Fecha: 2026-10-28 · Estado actualizado: **B01 y B02 completados; B03-A mockup minimalista aprobado; B03-B01 assets creados; B03-B02 Arena visual (HF2 incluido) aprobada para incorporación al juego oficial.** B03-C — primera partida real — sigue pendiente.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
 |---|---|---|---|
@@ -34,8 +34,8 @@ Fecha: 2026-10-28 · Estado actualizado: **B01 y B02 (lobby, navegación y fulls
 - **Gate 07**: clasificatorias legítimas.
 - **Gate 08**: publicación Android/iOS.
 
-## Prioridad actual — B03-B02: integración de pantalla de preguntas (solo UI)
-El Director aprobó Arena del Conocimiento en su versión minimalista, con colores distintos por categoría. El kit B03-B01 contiene 42 assets (SVG editable + PNG) organizados por tipo. Integrar **fuentes SVG individuales** en una nueva entrada `b03-preview.html` y componentes React con fondos responsivos para PC/móvil, panel de pregunta, alternativas, cabecera, timer y progreso ilustrativos. No activar selección como partida, reloj real, backend ni resultados; no alterar el lobby B02 oficial. Gate: revisión de 6 categorías y estados, TypeScript, build, tests y Chromium real en PC y móvil emulado. Director revisa el laboratorio antes de aprobar la integración a producción.
+## Prioridad actual — Publicar B03-B02 aprobado en pantalla oficial
+El Director aprobó el pulido HF2 y autorizó integrar **Arena del Conocimiento** al sitio oficial. Mantener intacto el lobby B02 y agregar un botón secundario identificable «Arena del Conocimiento» que navegue a `/#arena` (con historial y regreso), en la misma aplicación React. La demostración usa las seis categorías y los 42 SVG, con pregunta, respuestas, reloj y progreso de ejemplo; no activa juego real ni muestra controles QA inferiores. Mantener `b03-preview.html` y Render del laboratorio por separado para trabajo artístico posterior. Gate obligatorio: TypeScript, 44+ tests, Vite, Chromium PC/390/320 para navegación lobby→arena→lobby, cambios de las seis categorías, carga de assets, cero JS error y overflow, además del QA público Render LIVE. B03-C requiere autorización independiente.
 
 ## Gestión del esfuerzo y prevención del agotamiento
 Un bloque/PR cada vez, no rework artístico interminable. Aprobar antes de producir 100 assets. Reusar componentes, no simplificar mockups aprobados, sin multiplicar sistemas antes de que se pruebe lo central. «MVP» significa producto que funciona, no todo el catálogo futuro.

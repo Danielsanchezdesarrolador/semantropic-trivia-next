@@ -1,6 +1,7 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
 import LobbySection from './LobbySection';
 import FullscreenControl from './FullscreenControl';
+import QuizPreview from '../quiz/QuizPreview';
 import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
@@ -88,6 +89,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
   const { screen, navigate } = useLobbyNavigation(official);
   const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
+  if (official && screen === 'arena') return <QuizPreview official onExit={() => navigate('home')} />;
   return (
     <main className={'st-preview-page' + (official ? ' st-preview-page--official' : '')}>
       <section className="st-home" aria-label={official ? 'Pantalla principal de Semantropic Trivia' : 'Vista de prueba de Semantropic Trivia con assets separados'}>
@@ -150,9 +152,14 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <div><b>Jugar con Amigos</b><span>Salas privadas 1v1, 2v2, 3v3 y FFA.</span></div>
           </section>
           <div className="st-home__notice">
-            {official
-              ? 'Los menús ya se pueden explorar. Las partidas y el multijugador se incorporarán en los próximos bloques.'
-              : 'Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.'}
+            {official ? <>
+              <p>Los menús ya se pueden explorar. Las partidas y el multijugador se incorporarán en los próximos bloques.</p>
+              <button type="button" className="st-home__arena-entry" onClick={() => navigate('arena')} aria-label="Abrir Arena del Conocimiento">
+                <span className="st-home__arena-entry-icon" aria-hidden="true">✦</span>
+                <span><strong>ARENA DEL CONOCIMIENTO</strong><small>Ver pantalla de preguntas · Demostración visual</small></span>
+                <span aria-hidden="true" className="st-home__arena-entry-arrow">›</span>
+              </button>
+            </> : 'Vista de arte en desarrollo · personajes, logo extraído y paneles pendientes de revisión · sin contenido jugable.'}
           </div>
           </> : <LobbySection screen={screen} onNavigate={navigate} logoSrc={approvedLogo} />}
         </div>
