@@ -69,6 +69,22 @@ Dentro del bloque aprobado, Codex puede ejecutar autónomamente, sin nuevas conf
 
 Ciclo autorizado: **DESARROLLAR → PROBAR → COMMIT → PUSH → PR → CI → MERGE → RENDER → ENTREGAR ENLACE**. La aprobación de un microbloque no autoriza comenzar B03-C5, B04 u otro bloque sin la decisión expresa correspondiente del Director.
 
+## 7 ter. Mandato permanente del Director: cambio jugable y comprobable de inmediato (29-10-2026)
+
+**Regla principal:** todo cambio autorizado que afecte el juego debe quedar conectado al flujo jugable REAL en la misma entrega, y ser comprobable por el Director lo antes posible en Vite dev, sin depender de que el PR se fusione o de que Render publique. Un módulo aislado, un laboratorio de QA, una batería de tests o un PR por sí solos NO equivalen a una entrega jugable.
+
+**Rutina obligatoria en cada microbloque/hotfix:**
+1. Aplicar el cambio en la pantalla/acción oficial correspondiente (lobby, menús, Colección o Arena). Conservar el comportamiento aprobado y no inventar sistemas futuros. Los paneles privados pueden complementar, pero no reemplazar, la integración real cuando está autorizada.
+2. Arrancar o conservar el servidor local Vite sobre el código recién editado; comprobar en navegador la acción afectada y que el cambio se ve/escucha al recargar (HMR). Ejecutar TypeScript, tests, build y guard exigidos por el bloque. Dar URL local REAL con puerto confirmado, ruta precisa y máximo tres pasos para reproducir el cambio en PC. Si es viable, proporcionar conexión Wi-Fi y distinguir móvil emulado de físico.
+3. El Director debe poder probar el microbloque sin tener que hacer merge, instalar binarios en el repositorio ni buscar archivos de código. Cuando se requieren muestras locales por licencia, ofrecer importación de archivos desde el navegador en **dev solamente**, con instrucciones claras; no fingir que están disponibles en la web pública.
+4. Con QA y licencias en regla, ejecutar sin permisos redundantes el flujo existente: commit → PR → CI → merge → Render → smoke y URL pública verificada. No confundir integración local inmediata con publicación; comunicar **LOCAL LISTO / PÚBLICO PUBLICADO / PÚBLICO BLOQUEADO** según evidencia.
+5. Si falta licencia, titularidad, autorización de contenido, CI, acceso o aprobación requerida, NO saltar el bloqueo ni incluir recursos restringidos en public/dist/Render. Entregar igualmente la funcionalidad local legalmente comprobable, el bloqueo exacto y la acción concreta para resolverlo; la build pública debe mantenerse segura.
+6. No cerrar una tarea con “código listo” o “tests pasan” solamente. Entregar un cambio reproducible en el juego, pasos de prueba, estado de publicación, tests y riesgos pendientes. No declarar QA de dispositivo físico si no se probó.
+
+**Aplicación específica B03-C5 / DS-01 / HF1-HF2:** la Arena debe poder probar los cinco eventos con importación local (sin exportar TimGM6mb o sus derivados); Colección debe permanecer sin sonido de clic ni entrada; la pista exacta `18_lobby_pop_familiar.mp3` debe probarse localmente con reproducción estable entre menús y pausa en Arena. Las asignaciones de audio públicas no se activan sin resolver la revisión de licencia DS-01 y la declaración de derechos de la música del lobby.
+
+Esta regla modifica la **forma de entregar y verificar** cambios, no autoriza un nuevo bloque, no elude el criterio de QA/CI de 7 bis y nunca concede permisos de distribución de obras de terceros.
+
 ## 8. Orden de ejecución
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
 **B02 (COMPLETADO):** lobby oficial, navegación y pantalla completa publicados en Render. **B03-B02 (APROBADO por el Director, incluyendo HF2):** integrar la Arena del Conocimiento con sus 42 SVG y seis categorías en el juego oficial, con acceso visible desde el lobby y botón de regreso. La pantalla mostrará explícitamente que es demostrativa y no activa partidas ni relojes reales. El laboratorio con controles técnicos sigue separado. Solo fusionar en `main` y publicar Render tras TypeScript, tests, build y smoke Chromium PC/móvil.
