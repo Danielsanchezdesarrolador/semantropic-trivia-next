@@ -11,7 +11,7 @@ import QuizPreview from '../quiz/QuizPreview';
 import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
-import CartoonEffectsControl from '../../audio/CartoonEffectsControl';
+import EffectsControl from '../../audio/sfx02/EffectsControl';
 import { cartoonAudio } from '../../audio/cartoonAudio';
 import { isCartoonOpening } from '../../audio/cartoonPolicy';
 
@@ -110,7 +110,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
       lobbyMusic.interaction(); arenaMusic.interaction();
     }
     navigateTo(next);
-    if (official && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
+    if (import.meta.env.DEV && official && !ds01Audio.officialMode && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
   };
   const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
@@ -148,7 +148,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
               {official ? <details className="st-audio-options"><summary>Audio</summary><div>
-                {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <CartoonEffectsControl />}
+                {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <EffectsControl />}
                 <LobbyMusicControl />
               </div></details> : null}
               {official ? <FullscreenControl /> : null}

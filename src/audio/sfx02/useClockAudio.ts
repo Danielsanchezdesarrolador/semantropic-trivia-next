@@ -10,7 +10,7 @@ export function useClockAudio(session: TimedLocalRound | null) {
   const waiting = session?.round.status === 'awaiting-answer';
   const deadline = session?.deadline;
   useLayoutEffect(() => {
-    if (!import.meta.env.DEV || !waiting || !deadline) { ds01Audio.stopClock(); return; }
+    if (!waiting || !deadline) { ds01Audio.stopClock(); return; }
     let frame = 0;
     let previous: number | null = null;
     const paint = () => {

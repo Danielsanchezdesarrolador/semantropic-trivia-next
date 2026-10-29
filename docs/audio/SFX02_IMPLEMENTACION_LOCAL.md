@@ -1,5 +1,11 @@
 # SFX-02 — nueve originales integrados en el juego local
 
+**Actualización:** el Director aprobó la etapa artística y autorizó el cierre
+técnico. El estado posterior y la revisión de distribución están en
+[B03_C5_CIERRE_TECNICO.md](B03_C5_CIERRE_TECNICO.md). Este documento conserva la
+entrega DEV anterior; sus prohibiciones operativas históricas no sustituyen la
+autorización expresa posterior.
+
 29-10-2026 · `feat/audio-ds01-qa` / PR #17 · **solo Vite dev, sin publicación**.
 
 ## Probar ahora

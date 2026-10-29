@@ -4,10 +4,12 @@ import { arenaMusic } from '../lobbyMusic';
 
 export function useDS01Dev(official: boolean) {
   useEffect(() => {
-    if (!import.meta.env.DEV || !official) return;
+    if (!official) return;
     ds01Audio.beginOfficial();
-    void import('./autoLoadDev').then(module => module.prepareDS01Dev());
-    void import('../sfx02/loadDev').then(module => module.loadOfficialDev());
+    if (import.meta.env.DEV) {
+      void import('./autoLoadDev').then(module => module.prepareDS01Dev());
+      void import('../sfx02/loadDev').then(module => module.loadOfficialDev());
+    } else void import('../sfx02/loadProduction').then(module => module.loadProductionAudio());
     const gesture = (event: Event) => {
       if (!event.isTrusted || !(event.target instanceof Element)
         || !event.target.closest('button:not([disabled]), a, input[type=range]')) return;

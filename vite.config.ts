@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { ds01DevPlugin } from './scripts/audio/ds01-dev-middleware.mjs';
+import { releaseMarker } from './scripts/audio/release-marker.mjs';
 
 export default defineConfig({
-  plugins: [react(), ds01DevPlugin()],
+  plugins: [react(), ds01DevPlugin(), releaseMarker()],
   // Capturas y respaldos locales no son fuentes; Windows puede bloquear sus ZIP.
   server: {
     watch: { ignored: ['**/artifacts/**', '**/.local-ds01-audio/**', '**/.local-sfx02-audio/**', '**/.local-approved-audio/**'] },

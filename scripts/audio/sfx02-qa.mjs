@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
+import catalog from '../../docs/audio/SFX02_CATALOGO.json' with { type: 'json' };
+const release = process.env.ST_AUDIO_RELEASE === '1';
 const url = process.env.ST_OFFICIAL_URL || 'http://localhost:5173/';
-const browser = await chromium.launch({ channel: 'chrome', headless: true });
+const browser = await chromium.launch({ ...(process.env.CI ? {} : { channel: 'chrome' }), headless: true });
 await mkdir('artifacts/sfx02-qa', { recursive: true });
 try {
   for (const [width, height] of [[1366,900], [390,844], [320,740]]) {
@@ -29,11 +31,14 @@ try {
     const page = await context.newPage();
     const errors = [], requests = [], posts = [];
     page.on('pageerror', e => errors.push(e.message));
-    page.on('request', r => { if(r.url().includes('/__qa_approved__/'))requests.push(r.url());if(r.method()==='POST')posts.push(r.url()); });
+    page.on('request', r => { if(release ? /\.mp3(?:\?|$)/.test(r.url()) : r.url().includes('/__qa_approved__/'))requests.push(r.url());if(r.method()==='POST')posts.push(r.url()); });
     await page.goto(url);
-    await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('SFX-02: 9/9'));
-    await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('13/13 muestras'));
-    const info = await page.evaluate(async()=> (await import('/src/audio/sfx02/loadDev.ts')).decodedInfo);
+    if(release) await page.waitForFunction(()=>document.querySelector('button[title="SFX-02: 7/7 recursos del juego verificados."]'));
+    else {
+      await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('SFX-02: 9/9'));
+      await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('13/13 muestras'));
+    }
+    const info = release ? Object.fromEntries(catalog.items.map(item=>[item.code,{seconds:item.decodedSeconds}])) : await page.evaluate(async()=> (await import('/src/audio/sfx02/loadDev.ts')).decodedInfo);
     assert.equal(Object.keys(info).length,9);
     const state = () => page.evaluate(()=>({ media:window.__media.map(a=>({duration:a.duration,paused:a.paused,time:a.currentTime,volume:a.volume,loop:a.loop})),sfx:window.__sfx }));
     const reset = () => page.evaluate(()=>{window.__sfx=[];});
@@ -43,6 +48,7 @@ try {
     };
     const count = async code => (await state()).sfx.filter(s=>Math.abs(s.seconds-info[code].seconds)<.001).length;
     await page.waitForFunction(()=>window.__media.length===2 && window.__media.every(a=>Number.isFinite(a.duration)));
+    if(release) await page.evaluate(()=>window.__media.sort((a,b)=>a.duration-b.duration)); // L7 54 s, C 119 s; parallel loads.
     assert.deepEqual((await state()).media.map(a=>a.paused),[true,true]);
     assert.equal((await state()).sfx.length,0);
     await page.getByRole('button',{name:'Colección',exact:true}).click();
@@ -94,7 +100,7 @@ try {
         for(const target of [2000,1000,650,350])assert.ok(gaps.some(g=>Math.abs(g-target)<140),`Cadencia ${target}`);
         assert.ok(ticks.every(s=>s.pitch===1 && s.duration===.14));
         assert.equal(await count('X3'),0);assert.equal(await count('A1'),0);
-        const timeout=(await state()).sfx.filter(s=>Math.abs(s.seconds-.91)<.03);assert.equal(timeout.length,1);
+        const timeout=(await state()).sfx.filter(s=>Math.abs(s.seconds-.91)<.03);assert.equal(timeout.length,release?0:1);
         const stopped=(await state()).sfx.length;await page.waitForTimeout(500);assert.equal((await state()).sfx.length,stopped);
       }else{
         const button=page.locator('.b03-answer--interactive').filter({has:page.locator('.b03-answer-letter',{hasText:choices[index]})});
@@ -112,7 +118,13 @@ try {
       }
       if(index<9){await page.getByRole('button',{name:'Siguiente pregunta',exact:true}).click();await reset();}
     }
-    if(total===10){
+    if(total===10 && release) {
+      assert.equal(await page.getByRole('button',{name:'Probar sonido de victoria (QA)',exact:true}).count(),0);
+      assert.equal(await page.getByRole('button',{name:'Probar sonido de derrota (QA)',exact:true}).count(),0);
+      assert.equal(await count('W1'),0);assert.equal(await count('D2'),0);
+      await page.getByRole('button',{name:'Volver a jugar',exact:true}).click();
+    }
+    if(total===10 && !release){
       assert.equal(await count('W1'),0);assert.equal(await count('D2'),0);
       await page.getByText('SFX-02 · Audición QA de resultados',{exact:true}).click();
       const resultText=await page.locator('.b03-visual-status > p').first().textContent();
@@ -127,28 +139,35 @@ try {
     await page.waitForFunction(()=>!window.__media[0].paused && window.__media[1].paused);
     assert.equal(await count('V1'),1);assert.equal(await count('M1'),0);
     assert.ok((await state()).media[0].time>=position);
+    if(!release) {
     const lab=page.locator('.ds01-panel');
     await lab.locator('summary').first().click();
     await lab.getByLabel('Usar maquetas DS-01 en laboratorio (desactiva SFX-02 de interfaz y respuestas)').check();
     await reset();await lab.getByRole('button',{name:'Probar Acierto',exact:true}).click();
     assert.equal(await count('A1'),0);assert.ok((await state()).sfx.some(s=>Math.abs(s.seconds-.94)<.03),'DS-01 conserva laboratorio explícito');
     await lab.getByLabel('Usar maquetas DS-01 en laboratorio (desactiva SFX-02 de interfaz y respuestas)').uncheck();
+    } else assert.equal(await page.locator('.ds01-panel').count(),0);
     await openAudio();
-    assert.equal(requests.length,10,'Manifiesto + nueve originales una vez');assert.deepEqual(posts,[]);
+    assert.equal(requests.length,release?7:10,'Una sola carga por recurso');assert.deepEqual(posts,[]);
     await page.getByRole('button',{name:'Silenciar música lobby',exact:true}).click();
     await page.getByRole('button',{name:'Silenciar efectos',exact:true}).click();
     await reset();await page.getByRole('button',{name:'Colección',exact:true}).click();
     assert.equal((await state()).sfx.length,0);assert.equal((await state()).media[0].paused,true);
-    await page.reload();await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('SFX-02: 9/9'));
+    await page.reload();
+    if(release) {
+      await page.waitForFunction(()=>document.querySelector('button[title="SFX-02: 7/7 recursos del juego verificados."]') && window.__media.length===2);
+      await page.evaluate(()=>window.__media.sort((a,b)=>a.duration-b.duration));
+    } else await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('SFX-02: 9/9'));
     await page.getByRole('button',{name:'Inicio',exact:true}).click();
     assert.equal((await state()).sfx.length,0);assert.equal((await state()).media[0].paused,true);
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert.deepEqual(errors,[]);
     if(await page.locator('.st-audio-options').evaluate(el=>el.open))await page.locator('.st-audio-options > summary').click();
     await page.screenshot({path:`artifacts/sfx02-qa/${width}x${height}.png`,fullPage:true});
     await writeFile('artifacts/sfx02-qa/decoded.json',JSON.stringify(info,null,2));
-    console.log(`PASS SFX02 ${width}x${height}: 9 originales, M1/V1 excluyentes, A1/X3 sin DS, músicas excluyentes/ducking, ${total} preguntas, reloj, QA resultados, preferencias y responsive`);
+    console.log(`PASS SFX02 ${release?'RELEASE':'DEV'} ${width}x${height}: M1/V1, A1/X3, músicas excluyentes/ducking, ${total} preguntas, reloj, resultados sin victoria/derrota implícita, preferencias y responsive`);
     await context.close();
   }
+  if(!release) {
   const missing=await browser.newContext();const page=await missing.newPage();
   await page.route('**/__qa_approved__/floraphonic-casual-click-pop-ui-2-262119.mp3',route=>route.fulfill({status:404,body:'missing'}));
   await page.goto(url);await page.waitForFunction(()=>document.querySelector('.ds01-panel')?.textContent.includes('SFX-02: 8/9'));
@@ -161,4 +180,5 @@ try {
   await page.getByRole('button',{name:'Siguiente pregunta',exact:true}).waitFor();
   console.log('PASS SFX02 M1 faltante: aviso específico, sin sustituto y navegación/partida funcional');
   await missing.close();
+  }
 }finally{await browser.close();}

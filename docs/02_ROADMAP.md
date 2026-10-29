@@ -1,6 +1,18 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, SFX-02 integrado SOLO DEV
+## Estado vigente — cierre técnico B03-C5 autorizado, 29-10-2026
+
+D-046: etapa artística Caricatura Familiar aprobada por el Director. Se prepara
+producción con siete originales SFX-02 usados en eventos reales y controles
+independientes; W1/D2 siguen audición QA privada hasta existir resultado real.
+Licencias y fuentes revisadas: incorporación al juego bajo Pixabay Content License,
+sin biblioteca independiente. C con Content ID y certificado no recibido; no se
+promete ausencia de reclamos. DS-01 e histórico 18 no se emiten en producción.
+83 tests y QA del build; CI, integración #18 → (#17 dentro de #16) → #16 y Render por verificar.
+[Informe de cierre y recursos](audio/B03_C5_CIERRE_TECNICO.md).
+**B04 es la próxima etapa; no iniciada y sin nueva arquitectura.**
+
+## Antecedente — 29-10-2026, SFX-02 integrado SOLO DEV
 
 D-045 actualiza D-044: durante la ejecución llegaron los nueve originales a
 .local-sfx02-audio. Hashes/tamaños/decodificación reales registrados; integrados

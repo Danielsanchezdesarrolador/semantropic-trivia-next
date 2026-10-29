@@ -4,6 +4,7 @@ import { useQuizAudio } from '../../audio/ds01/useQuizAudio';
 import { useClockAudio } from '../../audio/sfx02/useClockAudio';
 import LobbyMusicControl from '../../audio/LobbyMusicControl';
 import { arenaMusic } from '../../audio/lobbyMusic';
+import EffectsControl from '../../audio/sfx02/EffectsControl';
 import { currentQuestion } from '../../game/local/round';
 import { useLocalPractice } from './useLocalPractice';
 import TimerArc from './TimerArc';
@@ -23,7 +24,7 @@ const demoOptions = [
 ] as const;
 const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
 const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
-const ClockControls = import.meta.env.DEV ? lazy(() => import('../../audio/sfx02/Controls').then(module => ({ default: module.ClockControls }))) : null;
+const ClockControls = lazy(() => import('../../audio/sfx02/ClockControl'));
 const ResultAudioQA = import.meta.env.DEV ? lazy(() => import('../../audio/sfx02/Controls')) : null;
 
 /** Official: timed local practice. Default: independent B03-B02 visual laboratory. */
@@ -75,7 +76,7 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
         </div>
         {official ? <div className="b03-preview-heading__actions">
           <details className="st-audio-options"><summary>Audio</summary><div>
-            {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : null}
+            {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <EffectsControl />}
             <LobbyMusicControl channel={arenaMusic} scope="Arena" />
             {ClockControls ? <Suspense fallback={null}><ClockControls /></Suspense> : null}
           </div></details>

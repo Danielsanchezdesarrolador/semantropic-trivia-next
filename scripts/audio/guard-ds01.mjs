@@ -3,6 +3,9 @@ import { readFile, readdir } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
 import { extname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
+import official from '../../docs/audio/SFX02_CATALOGO.json' with { type: 'json' };
+
+const releaseAudio = new Map(official.items.filter(item => !['W1', 'D2'].includes(item.code)).map(item => [item.sha256, item]));
 
 // Fail closed: only existing, explicitly approved audio bytes may be published.
 const allowed = new Set([
@@ -10,6 +13,13 @@ const allowed = new Set([
   '54a2f8b4f7b984a4ae76ef37ae8a4110bb76a36232edd6a8f1511bbe528023ed',
 ]);
 export function assertPublishable(path, bytes) {
+  const normalized = path.replaceAll('\\', '/');
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const approved = releaseAudio.get(hash);
+  const isBuild = normalized.includes('/dist/');
+  if (approved && (normalized.includes('/src/audio/sfx02/assets/') || normalized.includes('/dist/assets/'))
+    && /\.mp3$/i.test(path) && bytes.length === approved.bytes) return;
+  if (isBuild && allowed.has(hash)) throw Error('Audio histórico/no asignado prohibido en build pública');
   const audioExtension = /\.(mp3|wav|ogg|opus|flac|aac|m4a|aiff|sf2|sf3|mid|midi|webm|zip|7z)$/i.test(path);
   const signature = bytes.subarray(0, 12).toString('latin1');
   const audioMagic = signature.startsWith('ID3') || signature.startsWith('OggS') || signature.startsWith('fLaC')
@@ -49,6 +59,6 @@ export async function guard(root = process.cwd(), includeBuild = true) {
   const files = new Set([...tracked, ...await walk(join(root, 'public')), ...await walk(join(root, 'src')),
     ...(includeBuild ? await walk(join(root, 'dist')) : [])]);
   for (const path of files) assertPublishable(path, await readFile(path));
-  console.log(`PASS guard DS-01: ${files.size} archivos revisados; sin binarios QA ni panel en producción`);
+  console.log(`PASS guard audio: ${files.size} archivos revisados; solo originales SFX-02 autorizados, sin binarios QA ni panel en producción`);
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await guard(process.cwd(), !process.argv.includes('--sources'));

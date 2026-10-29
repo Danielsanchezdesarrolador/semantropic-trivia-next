@@ -3,8 +3,7 @@ const expectedHash = 'e82e7f4d6e129eddad15a9cf26c4118ae545646d4ae08fc33c19e45c27
 // SFX-02: 18_lobby_pop_familiar is historical; no longer assigned to playback.
 const devSource: string | undefined = undefined;
 
-/** HF3: verified original automatically assigned ONLY in Vite dev.
- * Singleton survives menus; production assignment stays blocked by rights review. */
+/** Stable player for verified SFX-02 game music; historical File API stays DEV only. */
 export class LobbyMusic {
   private audio?: HTMLAudioElement;
   private objectUrl?: string;
@@ -15,7 +14,7 @@ export class LobbyMusic {
   private ducked = false;
   enabled = true;
   volume: number;
-  message = 'Música: pendiente de autorización de publicación. Carga local disponible en QA.';
+  message = 'Cargando música';
   filename = '';
   constructor(private storageKey = 'semantropic.lobby-music.v1', initialVolume = .25) {
     this.volume = initialVolume;
@@ -49,7 +48,6 @@ export class LobbyMusic {
     if (this.enabled && this.audio?.paused && this.inLobby && !document.hidden) void this.sync();
   }
   assignVerified(blob: Blob, filename: string) {
-    if (!import.meta.env.DEV) return;
     this.clear();
     this.objectUrl = URL.createObjectURL(blob);
     this.audio = new Audio(this.objectUrl);
@@ -57,7 +55,7 @@ export class LobbyMusic {
     this.audio.volume = this.volume * (this.ducked ? .35 : 1);
     this.audio.preload = 'auto';
     this.filename = filename;
-    this.message = 'Pista oficial verificada · preview local';
+    this.message = 'Pista oficial verificada';
     this.notify();
     void this.sync();
   }
@@ -111,7 +109,7 @@ export class LobbyMusic {
         if (!this.enabled || !this.inLobby || document.hidden) audio.pause();
         return;
       }
-      this.message = 'Música del lobby activa · QA local';
+      this.message = 'Música activa';
     } catch {
       if (request !== this.epoch) return;
       this.message = 'El navegador requiere una interacción para iniciar la música. Puedes activar música.';
@@ -130,7 +128,7 @@ export class LobbyMusic {
     if (this.audio) { this.audio.pause(); this.audio.removeAttribute('src'); this.audio.load(); }
     if (this.objectUrl) URL.revokeObjectURL(this.objectUrl);
     this.audio = undefined; this.objectUrl = undefined; this.filename = '';
-    this.message = 'Música: pendiente de autorización de publicación. Carga local disponible en QA.';
+    this.message = 'Música no cargada';
     this.notify();
   }
 }

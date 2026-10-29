@@ -86,6 +86,16 @@ Ciclo autorizado: **DESARROLLAR → PROBAR → COMMIT → PUSH → PR → CI →
 Esta regla modifica la **forma de entregar y verificar** cambios, no autoriza un nuevo bloque, no elude el criterio de QA/CI de 7 bis y nunca concede permisos de distribución de obras de terceros.
 
 ## 8. Orden de ejecución
+
+**Actualización de cierre B03-C5 (29-10-2026):** el Director aprueba la etapa
+artística SEMANTROPIC POP — Caricatura Familiar y autoriza su cierre técnico,
+QA, merge de PR #16/#17/#18 y publicación verificada bajo 7 bis. SFX-02 sustituye
+las asignaciones históricas de 7 ter: Colección usa M1, L7 es el lobby y C la Arena.
+Las siete pistas con eventos reales se incorporan al juego tras comprobar fuentes,
+licencia y hashes. W1/D2 solo audición QA privada hasta tener resultado competitivo
+real. DS-01/TimGM6mb y música histórica con derechos pendientes no se publican.
+B04 es la próxima etapa, todavía sin autorización de inicio. Conservar los
+antecedentes como historia; este alcance expreso más reciente prevalece.
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
 **B02 (COMPLETADO):** lobby oficial, navegación y pantalla completa publicados en Render. **B03-B02 (APROBADO por el Director, incluyendo HF2):** integrar la Arena del Conocimiento con sus 42 SVG y seis categorías en el juego oficial, con acceso visible desde el lobby y botón de regreso. La pantalla mostrará explícitamente que es demostrativa y no activa partidas ni relojes reales. El laboratorio con controles técnicos sigue separado. Solo fusionar en `main` y publicar Render tras TypeScript, tests, build y smoke Chromium PC/móvil.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.

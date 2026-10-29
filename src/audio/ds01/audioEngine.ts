@@ -108,7 +108,7 @@ export class DS01AudioEngine {
   beginOfficial() { this.stop(); this.officialMode = true; this.laboratoryMode = false; this.notify(); }
   officialStatus(message: string) { this.officialMessage = message; this.notify(); }
   async importApproved(code: ApprovedCode, bytes: ArrayBuffer) {
-    if (!import.meta.env.DEV) return;
+    if (!import.meta.env.DEV && (code === 'W1' || code === 'D2')) return;
     const buffer = await this.init().decodeAudioData(bytes);
     if (code !== 'L7' && code !== 'C') this.approved.set(code, buffer);
     if (code === 'CLK') {
@@ -127,7 +127,7 @@ export class DS01AudioEngine {
     else this.play(['button']);
   }
   playApproved(code: ApprovedCode, preview = false) {
-    if (!import.meta.env.DEV || document.hidden || !this.context || this.context.state !== 'running') return;
+    if ((!import.meta.env.DEV && (code === 'W1' || code === 'D2')) || document.hidden || !this.context || this.context.state !== 'running') return;
     const clock = code === 'CLK';
     if (clock && this.laboratoryMode) return;
     if (clock ? !this.clockEnabled || !this.clockVolume : !this.active || !this.volume) return;
@@ -207,6 +207,7 @@ export class DS01AudioEngine {
         // Never interrupt resolution feedback for a navigation tap.
         if (this.voices.size >= 3) continue;
       }
+      if (!import.meta.env.DEV) continue; // TimGM6mb derivatives remain private, including timeout.
       const buffer = this.buffers.get(soundFilename(event, this.variants[event]));
       if (!buffer) continue;
       if (this.voices.size >= 4) this.stop(); // Essential resolution wins over previous tails.
