@@ -1,7 +1,7 @@
 name: B03-B02 - Arena visual PC y móvil
 on:
   push:
-    branches: [feat/b03-b02-arena-preview, feat/b03-b02-hf1-pulido-visual]
+    branches: [feat/b03-b02-arena-preview, feat/b03-b02-hf1-pulido-visual, feat/b03-b02-hf2-cabecera-precisa]
   pull_request:
     branches: [main]
 jobs:

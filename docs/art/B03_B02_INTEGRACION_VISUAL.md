@@ -47,3 +47,13 @@ El Director aprobó el concepto de pantalla de preguntas minimalista, pero obser
 - Responsive PC/móvil, mismas seis categorías y estados visuales; ningún asset original reemplazado.
 - QA Chromium reforzado con comprobaciones de coordenadas y capturas Arte y cultura a 1366 / 390 / 320 px.
 - **Protección:** solo integrar en rama de laboratorio B03 y Render de pruebas; la portada oficial y `main` permanecen intactos. La aprobación artística final corresponde al Director.
+
+## B03-B02-HF2 — Ajuste de precisión de cabecera
+
+El Director mostró una nueva captura en la que la barra superior aún presenta desalineación: el icono queda a la izquierda del círculo y «3 / 10» se aproxima al borde derecho. Se ejecuta HF2 exclusivamente sobre la cabecera.
+
+Diagnóstico: la barra SVG aprobada mide 1200×180 unidades, con círculo izquierdo centrado en (86,81) y cápsula del contador entre x=940..1165 e y=22..141. La rejilla aproximada de HF1 no coincide exactamente con esos puntos.
+
+Corrección: la barra original queda intacta; su icono se superpone en (7,166667%,45%) y el contador en el centro de la cápsula (87,7083%,45,2778%), utilizando posicionamiento porcentual relativo al SVG. El título ocupa el espacio intermedio sin invadir las zonas laterales. Responsive PC, tablet y celular; los demás assets, la distribución de preguntas y las cuatro respuestas siguen idénticos.
+
+QA: medición de centro de pictograma y contador contra las coordenadas fuente (tolerancia 1,6 px) en Chromium escritorio y móviles, comprobación de no superposición título/pictograma/contador y capturas recortadas de la cabecera. Aplicar exclusivamente al laboratorio B03 y presentar al Director para aprobación visual.
