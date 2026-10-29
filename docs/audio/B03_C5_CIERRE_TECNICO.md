@@ -75,6 +75,9 @@ No hay backend, ganador competitivo, cuentas ni simulación de online nuevos.
   móviles emulados: dos preguntas. QA DEV conserva nueve audiciones y laboratorio.
 - Workflow B03-C5 repite QA del build en GitHub Actions sin necesitar archivos
   privados. Prueba del juego completo adicional con el smoke B03/B02 existente.
+- La regresión del arco cuenta ahora un RAF visual y otro sonoro, sin duplicados;
+  ambos quedan en cero al responder, ocultar o salir. El gestor central de
+  visibilidad cancela/reanuda el RAF de audio, sin modificar TimerArc o el motor.
 - PR #18 cambia AGENTS y parte de main. PR #16 parte de main; PR #17 depende
   de #16. Orden previsto: #18 a main, #17 dentro de #16 y #16 consolidado a main, evitando un despliegue intermedio con audio histórico. Sin force push.
   El cierre incorpora la regla de #18 y aclara su asignación histórica revocada.

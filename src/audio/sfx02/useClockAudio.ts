@@ -14,6 +14,8 @@ export function useClockAudio(session: TimedLocalRound | null) {
     let frame = 0;
     let previous: number | null = null;
     const paint = () => {
+      frame = 0;
+      if (document.hidden) { ds01Audio.stopClock(); return; }
       const snapshot = current.current;
       if (!snapshot || snapshot.round.status !== 'awaiting-answer') { ds01Audio.stopClock(); return; }
       const slot = clockSlot(Math.max(0, snapshot.deadline - Math.max(snapshot.observedAt, localNow())));
@@ -22,7 +24,15 @@ export function useClockAudio(session: TimedLocalRound | null) {
       previous = slot; // Consume only current slot, never replay missed ticks.
       if (slot !== null) frame = requestAnimationFrame(paint);
     };
+    const visibility = () => {
+      cancelAnimationFrame(frame); frame = 0;
+      if (document.hidden) ds01Audio.stopClock(); else paint();
+    };
+    ds01Audio.clockVisibility = visibility;
     frame = requestAnimationFrame(paint);
-    return () => { cancelAnimationFrame(frame); ds01Audio.stopClock(); };
+    return () => {
+      cancelAnimationFrame(frame); ds01Audio.stopClock();
+      if (ds01Audio.clockVisibility === visibility) ds01Audio.clockVisibility = undefined;
+    };
   }, [waiting, deadline]);
 }

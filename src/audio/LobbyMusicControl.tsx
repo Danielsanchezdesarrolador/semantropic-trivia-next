@@ -14,6 +14,7 @@ export function useLobbyMusic(inLobby: boolean, official: boolean) {
     const visibility = () => {
       lobbyMusic.visibility(); arenaMusic.visibility();
       if (document.hidden) { ds01Audio.stop(); ds01Audio.stopClock(); }
+      ds01Audio.clockVisibility?.();
     };
     document.addEventListener('visibilitychange', visibility);
     return () => {

@@ -25,6 +25,7 @@ export class DS01AudioEngine {
   private clockOffset = 0;
   private priorityVoices = new Set<AudioBufferSourceNode>();
   priorityChanged?: (active: boolean) => void;
+  clockVisibility?: () => void;
   clockVolume = .3;
   clockEnabled = true;
   officialMessage = 'Audio SFX-02 no cargado';

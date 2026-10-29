@@ -26,7 +26,7 @@ export async function verifyContinuousArc(page, name) {
   const started = await page.evaluate(() => Date.now());
   approx(await progress(),1);
   assert.equal(await page.locator('.b03-timer img').getAttribute('src'),'/assets/quiz/b03-b01/temporizador_normal.svg');
-  assert.equal((await frames()).pending,1);
+  assert.equal((await frames()).pending,2,'Un RAF visual y un RAF sonoro, ambos por deadline');
   const samples=[];
   for(let i=0;i<5;i++) {
     await page.clock.runFor(32);
@@ -48,7 +48,7 @@ export async function verifyContinuousArc(page, name) {
   assert.equal(await page.locator('.b03-progress img[src$="progreso_completada.svg"]').count(),1);
   await page.getByRole('button',{name:'Siguiente pregunta'}).click();
   approx(await progress(),1);
-  assert.equal((await frames()).pending,1);
+  assert.equal((await frames()).pending,2);
   await page.clock.runFor(1234);
   await page.locator('button.b03-answer').nth(1).click();
   approx(await progress(),(20000-1234)/20000);
@@ -78,11 +78,11 @@ export async function verifyContinuousArc(page, name) {
   assert.equal(await page.locator('.b03-progress img[src$="progreso_completada.svg"]').count(),3);
   await page.getByRole('button',{name:'Salir de Arena del Conocimiento'}).click();
   assert.equal((await frames()).pending,0);
-  assert.equal((await frames()).peak,1,'Nunca hay dos RAF pendientes');
+  assert.equal((await frames()).peak,2,'No se duplican los dos RAF autorizados: arco y audio');
   await page.getByRole('button',{name:'Abrir Arena del Conocimiento'}).click();
   approx(await progress(),1);
-  assert.equal((await frames()).pending,1);
+  assert.equal((await frames()).pending,2);
   // Reload restores document.hidden and starts a clean round for the regression suite.
   await page.reload({waitUntil:'networkidle'});
-  console.log('PASS B03-C3-HF1',name,'100/75/50/25/0%; RAF subsegundo único, congelación, reinicio, ocultación y cleanup');
+  console.log('PASS B03-C3-HF1',name,'100/75/50/25/0%; un RAF visual y uno sonoro, cero ocultos, congelación, reinicio y cleanup');
 }
