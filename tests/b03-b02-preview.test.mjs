@@ -71,3 +71,18 @@ test('B03-B02: estilo minimalista, mobile y sin barra horizontal', () => {
   assert.match(css, /\.b03-answer-grid/);
   assert.match(css, /focus-visible/);
 });
+
+
+test('B03-B02-HF1: cabecera y chips proporcionales a sus SVG originales', () => {
+  const css = content('src/ui/quiz/quiz-preview.css');
+  const smoke = content('scripts/b03-b02-browser-smoke.mjs');
+  assert.match(css,/B03-B02-HF1/);
+  assert.match(css,/grid-template-columns:15% minmax\(0,1fr\) 19%/);
+  assert.match(css,/left:4\.17%/);
+  assert.match(css,/width:16\.36%/);
+  assert.match(css,/grid-template-columns:repeat\(10,minmax\(0,1fr\)\)/);
+  assert.match(css,/text-wrap:balance/);
+  assert.match(smoke,/chipCenter/);
+  assert.match(smoke,/titleEndsBeforeCount/);
+  assert.match(smoke,/progressSegments/);
+});

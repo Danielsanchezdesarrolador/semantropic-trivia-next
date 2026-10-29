@@ -33,3 +33,17 @@ El Director aprobó el mockup minimalista de B03-A y solicitó integrar los asse
 - Evaluación estética de los 42 elementos. El mockup B03-A es aprobado; integración y assets individuales permanecen **candidatos**, no definitivos.
 - B03-C: preguntas y reloj reales, puntuación, validación y resultados. NO implementados en esta entrega.
 - QA en Android/iOS físico depende del Director; emulación Chromium no equivale a hardware real.
+
+## B03-B02-HF1 — Pulido visual solicitado (28-10-2026)
+
+El Director aprobó el concepto de pantalla de preguntas minimalista, pero observó desplazamientos leves en la integración real. Autorizó este microbloque para corregir SOLO layout, alineaciones y espaciados.
+
+- Cabecera: icono, categoría y marcador distribuidos sobre áreas correspondientes del SVG original, sin superposición.
+- Pregunta: kicker y texto centrados ópticamente con saltos de línea más armónicos.
+- Respuestas: letras posicionadas respecto del chip del SVG (centro x≈12,35 %, y≈45,6 %), textos con márgenes idénticos y feedback separado.
+- Progreso: diez columnas de igual ancho, centradas por una única rejilla.
+- Cristales laterales: menor tamaño y opacidad en los bordes.
+- Barra inferior de inspección: espaciados equilibrados y compactos.
+- Responsive PC/móvil, mismas seis categorías y estados visuales; ningún asset original reemplazado.
+- QA Chromium reforzado con comprobaciones de coordenadas y capturas Arte y cultura a 1366 / 390 / 320 px.
+- **Protección:** solo integrar en rama de laboratorio B03 y Render de pruebas; la portada oficial y `main` permanecen intactos. La aprobación artística final corresponde al Director.
