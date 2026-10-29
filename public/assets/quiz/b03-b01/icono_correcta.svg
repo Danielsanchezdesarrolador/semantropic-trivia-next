@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256" role="img" aria-label="Símbolo verde de correcta"><defs>
+ <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#123FBB"/><stop offset=".53" stop-color="#2179EF"/><stop offset="1" stop-color="#1A2C78"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#74D6FF" stop-opacity=".36"/><stop offset="1" stop-color="#74D6FF" stop-opacity="0"/></radialGradient>
+ <linearGradient id="paper" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".72" stop-color="#F4FAFF"/><stop offset="1" stop-color="#DCEFFF"/></linearGradient>
+ <linearGradient id="button" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFFFFF"/><stop offset=".76" stop-color="#EEF7FF"/><stop offset="1" stop-color="#CEE7FF"/></linearGradient>
+ <linearGradient id="bluechip" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#2AD4FF"/><stop offset=".50" stop-color="#007BFB"/><stop offset="1" stop-color="#0751C7"/></linearGradient>
+ <linearGradient id="bluepanel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#257CFA"/><stop offset=".50" stop-color="#095FD3"/><stop offset="1" stop-color="#0B358F"/></linearGradient>
+ <linearGradient id="correct" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#E4FFF1"/><stop offset="1" stop-color="#8CF6C4"/></linearGradient>
+ <linearGradient id="wrong" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#FFF0F0"/><stop offset="1" stop-color="#FFB8C9"/></linearGradient>
+ <linearGradient id="selected" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#D7FCFF"/><stop offset="1" stop-color="#68C3FF"/></linearGradient>
+ </defs><circle cx="128" cy="124" r="102" fill="#08B96D" stroke="#B6FFE1" stroke-width="12"/>
+<path d="M77 124l34 33 68-76" fill="none" stroke="white" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/></svg>

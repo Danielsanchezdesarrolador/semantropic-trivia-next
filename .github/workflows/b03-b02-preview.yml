@@ -1,0 +1,41 @@
+name: B03-B02 - Arena visual PC y móvil
+on:
+  push:
+    branches: [feat/b03-b02-arena-preview, feat/b03-b02-hf1-pulido-visual, feat/b03-b02-hf2-cabecera-precisa]
+  pull_request:
+    branches: [main]
+jobs:
+  b03-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Instalar dependencias
+        run: npm install --no-audit --no-fund
+      - name: TypeScript
+        run: npm run check
+      - name: Contratos de assets y aislamiento
+        run: npm test
+      - name: Compilar Vite
+        run: npm run build
+      - name: Confirmar las tres entradas
+        run: |
+          test -f dist/index.html
+          test -f dist/b02-preview.html
+          test -f dist/b03-preview.html
+      - name: Preparar navegador
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: QA visual PC + móviles emulados
+        run: node scripts/b03-b02-browser-smoke.mjs
+      - name: Capturas del B03-B02
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: B03-B02-Arena-PC-Mobile
+          path: artifacts/b03-b02/
+          if-no-files-found: ignore

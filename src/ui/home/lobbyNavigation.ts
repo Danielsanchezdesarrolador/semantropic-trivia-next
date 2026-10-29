@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
  * Fragmentos hash para que el botón Atrás del navegador también funcione.
  */
 export type LobbyScreen =
-  | 'home' | 'online' | 'friends' | 'collection' | 'shop' | 'ranking'
+  | 'home' | 'online' | 'friends' | 'collection' | 'shop' | 'ranking' | 'arena'
   | 'online-normal' | 'online-ranked'
   | 'private-1v1' | 'private-2v2' | 'private-3v3' | 'private-ffa';
 
 const VALID_SCREENS: readonly LobbyScreen[] = [
-  'home', 'online', 'friends', 'collection', 'shop', 'ranking',
+  'home', 'online', 'friends', 'collection', 'shop', 'ranking', 'arena',
   'online-normal', 'online-ranked',
   'private-1v1', 'private-2v2', 'private-3v3', 'private-ffa',
 ] as const;
@@ -22,6 +22,7 @@ function readHash(): LobbyScreen {
 }
 
 export function activeSidebarScreen(screen: LobbyScreen): LobbyScreen {
+  if (screen === 'arena') return 'home';
   if (screen.startsWith('online-')) return 'home';
   if (screen.startsWith('private-')) return 'friends';
   return screen === 'online' ? 'home' : screen;

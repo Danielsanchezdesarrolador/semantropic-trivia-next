@@ -7,7 +7,7 @@ export default defineConfig({
   // La página B01 principal permanece intacta.
   build: {
     rollupOptions: {
-      input: ['index.html', 'b02-preview.html'],
+      input: ['index.html', 'b02-preview.html', 'b03-preview.html'],
     },
   },
 });

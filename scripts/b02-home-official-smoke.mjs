@@ -166,6 +166,37 @@ try {
     await page.getByRole('button', { name: 'Abrir Jugar Online' }).waitFor();
     assert.equal(await page.locator('.st-library').count(), 0);
 
+    // B03-B02: acceso aprobado desde la portada oficial, sin iniciar una partida falsa.
+    await page.getByRole('button', { name: 'Abrir Arena del Conocimiento' }).click();
+    await page.locator('.b03-preview-page--official').waitFor({state:'visible'});
+    assert.ok(page.url().endsWith('#arena'), 'Ruta oficial #arena');
+    assert.equal(await page.getByRole('heading',{name:'Arena del Conocimiento'}).count(),1);
+    assert.equal(await page.locator('.st-library').count(),0);
+    assert.equal(await page.locator('.b03-state-rows').count(),0, 'Panel técnico de inspección no debe aparecer en el juego oficial');
+    assert.equal(await page.locator('.b03-warning').count(),0, 'Sin avisos del laboratorio');
+    assert.match(await page.locator('.b03-visual-status').innerText(),/Vista demostrativa/);
+    assert.equal(await page.locator('.b03-category-pill').count(),6,'Seis categorías dinámicas');
+    for (const label of ['Geografía','Ciencias','Historia','Arte y cultura','Deportes','Entretenimiento']) {
+      await page.getByRole('button',{name:label,exact:true}).click();
+      assert.equal(await page.locator('.b03-category-title').textContent().then(s=>s?.trim()), label);
+    }
+    await page.waitForFunction(() => [...document.querySelectorAll('.b03-arena img')]
+      .every(i=>i.complete&&i.naturalWidth>0),null,{timeout:15000});
+    assert.equal(await page.locator('.b03-answer').count(),4);
+    assert.equal(await page.locator('.b03-answer button').count(),0,'Las respuestas no son jugables todavía');
+    assert.equal(await page.locator('.b03-timer span').textContent().then(s=>s?.trim()), '18');
+    const arenaSize=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
+    assert.ok(arenaSize.scrollWidth<=arenaSize.viewport+1,'Overflow Arena oficial: '+JSON.stringify(arenaSize));
+    await page.screenshot({path:'artifacts/b02-official/'+device.name+'-arena-b03.png',fullPage:true});
+    await page.reload({waitUntil:'networkidle'});
+    await page.locator('.b03-preview-page--official').waitFor({state:'visible'});
+    await page.getByRole('button',{name:'Salir de Arena del Conocimiento'}).click();
+    await page.getByRole('button',{name:'Abrir Arena del Conocimiento'}).waitFor();
+    await page.goBack();
+    await page.locator('.b03-preview-page--official').waitFor({state:'visible'});
+    await page.goForward();
+    await page.getByRole('button',{name:'Abrir Arena del Conocimiento'}).waitFor();
+
     // B02-FS: el control existe en TODAS las vistas y responde a un clic real.
     const fullScreenButton = page.getByRole('button', { name: 'Pantalla completa', exact: true });
     assert.equal(await fullScreenButton.count(), 1, 'Falta control fullscreen ' + device.name);
