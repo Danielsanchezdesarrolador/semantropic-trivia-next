@@ -25,7 +25,7 @@ test('HF3: preparación única, autoplay rechazado, primer gesto, continuidad y 
   try {
     const { LobbyMusic } = await load(true);
     const player = new LobbyMusic();
-    player.prepareDev(); await Promise.resolve(); await Promise.resolve();
+    player.assignVerified(new Blob(['test-fixture']), 'L7.mp3'); await Promise.resolve(); await Promise.resolve();
     assert.equal(media.length, 1);
     assert.equal(player.playing, false);
     player.prepareDev(); assert.equal(media.length, 1);
@@ -40,7 +40,7 @@ test('HF3: preparación única, autoplay rechazado, primer gesto, continuidad y 
     player.setLobby(true); await Promise.resolve(); assert.equal(player.playing, true);
     player.setVolume(.13); player.disable();
     player.interaction(); assert.equal(player.playing, false);
-    const reloaded = new LobbyMusic(); reloaded.prepareDev();
+    const reloaded = new LobbyMusic(); reloaded.assignVerified(new Blob(['test-fixture']), 'L7.mp3');
     assert.equal(reloaded.enabled, false); assert.equal(reloaded.volume, .13);
     assert.equal(media[1].calls, 0);
     player.clear(); reloaded.clear();

@@ -1,5 +1,10 @@
 .st-lobby-music {display:inline-flex;align-items:center;gap:6px;max-width:100%;}
-.st-lobby-music button {font:inherit;color:inherit;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:7px;min-height:36px;cursor:pointer;}
+.st-lobby-music button {font:inherit;color:#fff;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:7px;min-height:36px;cursor:pointer;}
 .st-lobby-music button:disabled {opacity:.6;cursor:default;}
 .st-lobby-music input {width:68px;max-width:22vw;}
 .st-lobby-music :focus-visible {outline:3px solid #fff;outline-offset:3px;}
+.st-audio-options {max-width:100%;font-size:.75rem;color:#fff;}
+.st-audio-options > summary {cursor:pointer;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:8px 12px;min-height:36px;box-sizing:border-box;}
+.st-audio-options > div {display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;padding:8px;background:#182e6b;border-radius:12px;}
+.st-audio-options:not([open]) > div {display:none;}
+.st-audio-options > summary:focus-visible {outline:3px solid #ffc53d;outline-offset:3px;}

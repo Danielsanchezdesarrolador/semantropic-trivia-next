@@ -1,6 +1,18 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, SFX-02 aprobado / originales pendientes
+## Estado vigente — 29-10-2026, SFX-02 integrado SOLO DEV
+
+D-045 actualiza D-044: durante la ejecución llegaron los nueve originales a
+.local-sfx02-audio. Hashes/tamaños/decodificación reales registrados; integrados
+M1/V1/A1/X3, músicas L7/C y CLK progresivo por deadline. Colección usa M1,
+HF1 revocado; 18_lobby_pop_familiar queda histórico. W1/D2 solo audición QA
+en Resultados de práctica, sin resultados competitivos inventados. DS-01
+permanece laboratorio explícito y timeout separado.
+[Entrega local, catálogo, pruebas y límites](audio/SFX02_IMPLEMENTACION_LOCAL.md).
+80 tests, build/guard y QA local; certificado C/escucha física y revisión de
+distribución pendientes. Sin MP3 nuevos en Git/build, sin merge ni Render/B04.
+
+## Antecedente — SFX-02 aprobado / originales pendientes
 
 D-044 registra los nueve originales elegidos por el Director. Revoca silencio
 artístico de Colección y asigna M1/V1/A1/X3, victoria/derrota reales, L7/C y reloj.

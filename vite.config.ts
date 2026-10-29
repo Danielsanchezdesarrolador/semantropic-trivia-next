@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react(), ds01DevPlugin()],
   // Capturas y respaldos locales no son fuentes; Windows puede bloquear sus ZIP.
   server: {
-    watch: { ignored: ['**/artifacts/**', '**/.local-ds01-audio/**'] },
-    fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.local-ds01-audio/**',
+    watch: { ignored: ['**/artifacts/**', '**/.local-ds01-audio/**', '**/.local-sfx02-audio/**', '**/.local-approved-audio/**'] },
+    fs: { deny: ['.env', '.env.*', '*.{crt,pem}', '**/.git/**', '**/.local-ds01-audio/**', '**/.local-sfx02-audio/**', '**/.local-approved-audio/**',
       '**/POP01_BOTON_*.mp3', '**/POP02_SELECCION_*.mp3', '**/TIKI01_ACIERTO_*.mp3',
       '**/TOOT01_ERROR_*.mp3', '**/POP03_TIEMPO_*.mp3', '**/MANIFIESTO_SHA256.json'] },
   },

@@ -3,8 +3,11 @@ import { constants } from 'node:fs';
 import { lstat, open, realpath } from 'node:fs/promises';
 import { join, relative, resolve } from 'node:path';
 import approved from '../../docs/audio/DS01_MANIFIESTO_QA.json' with { type: 'json' };
+import official from '../../docs/audio/SFX02_CATALOGO.json' with { type: 'json' };
 
 const allowed = new Map(approved.samples.map(item => [item.filename, item]));
+const officialAllowed = new Map(official.items.filter(item => item.sha256 && item.downloaded_filename)
+  .map(item => [item.downloaded_filename, item]));
 export function isPrivateHost(value) {
   const host = String(value).toLowerCase().replace(/^::ffff:/, '').replace(/^\[|\]$/g, '');
   if (host === 'localhost' || host === '::1') return true;
@@ -13,13 +16,13 @@ export function isPrivateHost(value) {
   const [a, b] = parts.map(Number);
   return a === 127 || a === 10 || (a === 192 && b === 168) || (a === 172 && b >= 16 && b <= 31);
 }
-async function privateBytes(root, filename) {
-  const directory = join(root, '.local-ds01-audio');
+async function privateBytes(root, filename, dirname = '.local-ds01-audio') {
+  const directory = join(root, dirname);
   const directoryInfo = await lstat(directory);
   if (!directoryInfo.isDirectory() || directoryInfo.isSymbolicLink()) throw Error('Carpeta privada no válida');
   const canonicalRoot = await realpath(root);
   const canonicalDirectory = await realpath(directory);
-  if (relative(canonicalRoot, canonicalDirectory) !== '.local-ds01-audio') throw Error('Carpeta fuera del proyecto');
+  if (relative(canonicalRoot, canonicalDirectory) !== dirname) throw Error('Carpeta fuera del proyecto');
   const path = join(directory, filename);
   const info = await lstat(path);
   if (!info.isFile() || info.isSymbolicLink() || info.size > 5_000_000) throw Error('Archivo privado no válido');
@@ -31,25 +34,31 @@ async function privateBytes(root, filename) {
     return await handle.readFile();
   } finally { await handle.close(); }
 }
-async function manifest(root) {
-  const data = JSON.parse((await privateBytes(root, 'MANIFIESTO_SHA256.json')).toString('utf8'));
-  if (!Array.isArray(data.archivos) || data.archivos.length !== allowed.size) throw Error('Manifiesto requiere 13 nombres');
+async function manifest(root, dirname = '.local-ds01-audio', registry = allowed) {
+  const data = JSON.parse((await privateBytes(root, 'MANIFIESTO_SHA256.json', dirname)).toString('utf8'));
+  if (!Array.isArray(data.archivos) || data.archivos.length !== registry.size) throw Error('Manifiesto incompleto');
   const seen = new Set();
   const archivos = data.archivos.map(item => {
-    const known = allowed.get(item.archivo);
+    const known = registry.get(item.archivo);
     if (!known || seen.has(item.archivo) || item.sha256 !== known.sha256 || item.tamano !== known.bytes) throw Error('Manifiesto no coincide con DS-01 aprobado');
     seen.add(item.archivo);
     return { archivo: item.archivo, sha256: item.sha256, tamano: item.tamano };
   });
-  return { lote: 'DS01', uso: 'SOLO QA LOCAL; redistribución pendiente', archivos };
+  return { lote: registry === allowed ? 'DS01' : 'SFX02', uso: 'SOLO QA LOCAL; redistribución pendiente', archivos };
 }
 export function ds01Middleware(root) {
+  return privateMiddleware(root, '/__qa_ds01__', '.local-ds01-audio', allowed);
+}
+export function approvedMiddleware(root) {
+  return privateMiddleware(root, '/__qa_approved__', '.local-sfx02-audio', officialAllowed);
+}
+function privateMiddleware(root, prefix, dirname, registry) {
   return async (req, res, next) => {
     let path;
     try { path = decodeURIComponent((req.url ?? '').split('?')[0]); }
     catch { res.writeHead(400); res.end(); return; }
-    if (path.toLowerCase().includes('.local-ds01-audio')) { res.writeHead(403); res.end(); return; }
-    if (!path.startsWith('/__qa_ds01__')) { next(); return; }
+    if (/\.local-(ds01|sfx02|approved)-audio/i.test(path)) { res.writeHead(403); res.end(); return; }
+    if (!path.startsWith(prefix)) { next(); return; }
     try {
       const host = new URL(`http://${req.headers.host ?? ''}`).hostname;
       const origin = req.headers.origin ? new URL(req.headers.origin) : null;
@@ -59,16 +68,16 @@ export function ds01Middleware(root) {
         res.writeHead(403); res.end(); return;
       }
       if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405, { Allow: 'GET, HEAD' }); res.end(); return; }
-      const name = path.slice('/__qa_ds01__/'.length);
-      if (path !== `/__qa_ds01__/${name}` || (name !== 'manifest.json' && !allowed.has(name))) {
+      const name = path.slice(prefix.length + 1);
+      if (path !== `${prefix}/${name}` || (name !== 'manifest.json' && !registry.has(name))) {
         res.writeHead(404); res.end(); return;
       }
-      const metadata = await manifest(root);
+      const metadata = await manifest(root, dirname, registry);
       let bytes;
       if (name === 'manifest.json') bytes = Buffer.from(JSON.stringify(metadata));
       else {
-        bytes = await privateBytes(root, name);
-        const known = allowed.get(name);
+        bytes = await privateBytes(root, name, dirname);
+        const known = registry.get(name);
         if (bytes.length !== known.bytes || createHash('sha256').update(bytes).digest('hex') !== known.sha256) throw Error(`SHA-256 incorrecto: ${name}`);
       }
       res.writeHead(200, { 'Content-Type': name === 'manifest.json' ? 'application/json' : 'audio/mpeg',
@@ -84,5 +93,6 @@ export function ds01Middleware(root) {
 export function ds01DevPlugin() {
   return { name: 'ds01-private-dev', apply: 'serve', configureServer(server) {
     server.middlewares.use(ds01Middleware(resolve(server.config.root)));
+    server.middlewares.use(approvedMiddleware(resolve(server.config.root)));
   } };
 }

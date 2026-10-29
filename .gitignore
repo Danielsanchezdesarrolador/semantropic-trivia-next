@@ -1,6 +1,7 @@
 node_modules/
 .local-ds01-audio/
 .local-approved-audio/
+.local-sfx02-audio/
 **/TimGM6mb.sf2
 **/POP01_BOTON_*.mp3
 **/POP01_BOTON_*.wav

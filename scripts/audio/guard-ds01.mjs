@@ -30,7 +30,9 @@ export function assertPublishable(path, bytes) {
     throw Error('Asignación automática de música dev presente en build pública');
   }
   if (path.replaceAll('\\', '/').includes('/dist/') && extname(path) === '.js'
-    && (bytes.includes(Buffer.from('/__qa_ds01__')) || bytes.includes(Buffer.from('DS-01 · PREVIEW / QA local'))
+    && (bytes.includes(Buffer.from('/__qa_ds01__')) || bytes.includes(Buffer.from('/__qa_approved__'))
+      || bytes.includes(Buffer.from('Probar sonido de victoria (QA)')) || bytes.includes(Buffer.from('Probar sonido de derrota (QA)'))
+      || bytes.includes(Buffer.from('.local-sfx02-audio')) || bytes.includes(Buffer.from('DS-01 · PREVIEW / QA local'))
       || bytes.includes(Buffer.from('.local-ds01-audio'))
       || bytes.includes(Buffer.from('TimGM6mb.sf2 / MIDI / FluidSynth; no Foley humano')))) {
     throw Error('Endpoint, cargador o panel DS-01 dev presente en build pública');

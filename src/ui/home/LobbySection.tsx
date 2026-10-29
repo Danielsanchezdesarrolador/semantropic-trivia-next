@@ -76,10 +76,12 @@ function SelectionCard({ option, onNavigate }: { option: ModeOption; onNavigate:
 export default function LobbySection({
   screen,
   onNavigate,
+  onBack,
   logoSrc,
 }: {
   screen: LobbyScreen;
   onNavigate: Navigate;
+  onBack?: Navigate;
   logoSrc: string;
 }) {
   const parent: LobbyScreen = screen.startsWith('online-')
@@ -124,7 +126,7 @@ export default function LobbySection({
         <button
           type="button"
           className="st-lobby-panel__back"
-          onClick={() => onNavigate(parent)}
+          onClick={() => (onBack ?? onNavigate)(parent)}
         >
           <span aria-hidden="true">‹</span> {parent === 'home' ? 'Volver al inicio' : parent === 'online' ? 'Volver a Jugar Online' : 'Volver a Amigos'}
         </button>

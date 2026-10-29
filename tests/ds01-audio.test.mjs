@@ -99,3 +99,31 @@ test('DS-01 engine: no samples, mute, autoplay rejection and volume zero never p
     assert.equal(blocked.active, false); assert.match(blocked.message, /No se pudo/);
   } finally { globalThis.AudioContext = original.context; globalThis.document = original.document; }
 });
+
+test('SFX-02: A1/X3 sustituyen maquetas; reloj independiente; previews nunca implícitos', async () => {
+  const { DS01AudioEngine } = await import(moduleUrl(compile('../src/audio/ds01/audioEngine.ts')
+    .replaceAll("'./catalog'", `'${catalogUrl}'`).replaceAll('import.meta.env.DEV', 'true')));
+  const original = { context: globalThis.AudioContext, document: globalThis.document };
+  globalThis.document = { hidden: false };
+  const started = [];
+  globalThis.AudioContext = class {
+    state='running';currentTime=0;destination={};
+    createGain(){return {gain:{value:0,setTargetAtTime(){}},connect(){}};}
+    async resume(){}
+    async decodeAudioData(bytes){return {duration:1,numberOfChannels:1,sampleRate:1000,tag:new Uint8Array(bytes)[0],getChannelData(){return new Float32Array([0,.5,0]);}};}
+    createBufferSource(){const voice={connect(){},disconnect(){},stop(){},start(){started.push(voice.buffer.tag);}};return voice;}
+  };
+  try {
+    const engine=new DS01AudioEngine();await engine.enable();engine.beginOfficial();
+    for(const [code,tag] of [['A1',1],['X3',2],['W1',3],['D2',4],['CLK',5],['M1',6],['V1',7]])await engine.importApproved(code,Uint8Array.of(tag).buffer);
+    engine.play(['selection','correct']);assert.deepEqual(started,[1]);
+    engine.play(['incorrect']);assert.deepEqual(started,[1,2]);
+    assert.ok(!started.includes(3)&&!started.includes(4),'No victoria/derrota por feedback de pregunta');
+    engine.stop();engine.navigation('M1');engine.navigation('V1');assert.deepEqual(started.slice(-2),[6,7]);
+    engine.playApproved('W1',true);engine.playApproved('D2',true);assert.deepEqual(started.slice(-2),[3,4]);
+    engine.mute();engine.play(['correct']);assert.equal(started.at(-1),4);
+    engine.playApproved('CLK');assert.equal(started.at(-1),5,'Reloj no depende de mute SFX');
+    engine.setClock(.3,false);engine.playApproved('CLK');assert.equal(started.filter(n=>n===5).length,1);
+    globalThis.document.hidden=true;engine.playApproved('A1');assert.equal(started.at(-1),5);
+  } finally { globalThis.AudioContext=original.context;globalThis.document=original.document; }
+});

@@ -1,5 +1,10 @@
 # SFX-02 — catálogo aprobado; originales pendientes
 
+**Actualización durante la misma ejecución:** el Director aportó después los nueve
+originales. La integración y su estado vigente están en
+[SFX02_IMPLEMENTACION_LOCAL.md](SFX02_IMPLEMENTACION_LOCAL.md). Este documento
+conserva la comprobación inicial, no describe faltantes actuales.
+
 29-10-2026. Orden artística del Director recibida después de D-043.
 **No es una integración SFX-02 lista ni una declaración de audio reproducido.**
 

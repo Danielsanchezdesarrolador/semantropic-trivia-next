@@ -9,6 +9,9 @@ export default function DS01Panel() {
     <summary>DS-01 · PREVIEW / QA local</summary>
     <p>TimGM6mb.sf2 / MIDI / FluidSynth · GPL-2 de la fuente. Publicación de derivados pendiente. No es Foley humano.</p>
     <p>A es preselección técnica temporal; ninguna variante definitiva ha sido elegida.</p>
+    <p role="status">{ds01Audio.officialMessage}</p>
+    <label><input type="checkbox" checked={ds01Audio.laboratoryMode}
+      onChange={event => ds01Audio.setLaboratory(event.target.checked)} />Usar maquetas DS-01 en laboratorio (desactiva SFX-02 de interfaz y respuestas)</label>
     <p role="status">{ds01Audio.message}</p>
     <button type="button" aria-pressed={ds01Audio.active} onClick={() => {
       if (ds01Audio.active) ds01Audio.mute(); else void ds01Audio.enable();
@@ -33,9 +36,9 @@ export function DS01Controls() {
   return <div className="ds01-controls">
     <button type="button" aria-pressed={ds01Audio.active} title={ds01Audio.message}
       onClick={() => { if (ds01Audio.active) ds01Audio.mute(); else void ds01Audio.enable(); }}>
-      {ds01Audio.active ? 'Silenciar efectos DS-01' : 'Activar efectos DS-01'}
+      {ds01Audio.active ? 'Silenciar efectos' : 'Activar efectos'}
     </button>
-    <input aria-label="Volumen de efectos DS-01" type="range" min="0" max="100"
+    <input aria-label="Volumen de efectos" type="range" min="0" max="100"
       value={Math.round(ds01Audio.volume * 100)} onChange={event => ds01Audio.setVolume(Number(event.target.value) / 100)} />
   </div>;
 }
