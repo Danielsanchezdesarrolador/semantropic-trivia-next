@@ -1,4 +1,6 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
+import { lazy, Suspense } from 'react';
+import { ds01Audio } from '../../audio/ds01/audioEngine';
 import LobbySection from './LobbySection';
 import FullscreenControl from './FullscreenControl';
 import QuizPreview from '../quiz/QuizPreview';
@@ -21,6 +23,7 @@ const categories: readonly SheetCategory[] = [
   'Paneles de referencia','Capas de referencia',
 ];
 const asset = (id: string) => sheetById(id).path;
+const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
 
 function ModeIcon({ id }: { id: 'online' | 'friends' }) {
   if (id === 'online') {
@@ -92,8 +95,9 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
   const { screen, navigate: navigateTo } = useLobbyNavigation(official);
   const navigate = (next: Parameters<typeof navigateTo>[0]) => {
     cartoonAudio.stop();
+    if (official && screen !== next) ds01Audio.play(['button']);
     navigateTo(next);
-    if (official && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
+    if (official && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
   };
   const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
@@ -174,6 +178,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
         </div>
       </section>
       {showLibrary ? <ResourceLibrary /> : null}
+      {official && DS01Panel ? <Suspense fallback={null}><DS01Panel /></Suspense> : null}
     </main>
   );
 }

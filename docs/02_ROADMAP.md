@@ -1,6 +1,17 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, evaluación acotada de efectos cartoon
+## Estado vigente — 29-10-2026, DS-01: motor listo / muestras privadas para QA
+
+D-040 autoriza cinco eventos DS-01, importación File API local, variantes A/B/C
+solo en Vite dev, volumen/mute y guard contra distribución de muestras.
+[Entrega técnica, evidencia y bloqueo de licencia](audio/DS01_INTEGRACION_QA_LOCAL.md).
+Tanda aprobada para explorar; A temporal, ninguna variante definitiva. TimGM6mb
+GPL-2: derechos/obligaciones del audio derivado pendientes, sin binarios en Git,
+public/, dist/, Render o releases. Código en rama nueva feat/audio-ds01-qa,
+con dependencia del PR #16 aún abierto; sin merge ni nueva publicación.
+No se cambian puntuación, reloj, arte, músicas o backend. B04 no se inicia.
+
+## Antecedente — evaluación acotada de efectos cartoon
 
 D-039 autoriza la integración verificable de los tres efectos aprobados: solo
 ui_open_cartoon_6 tiene evento conectado (apertura efectiva de Colección). Evento
