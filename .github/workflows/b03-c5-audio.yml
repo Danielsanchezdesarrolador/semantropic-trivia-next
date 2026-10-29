@@ -1,0 +1,37 @@
+name: B03-C5 - Audio de producción
+on:
+  push:
+    branches: [main, 'feat/**', 'release/**']
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  audio-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - run: npm install --no-audit --no-fund
+      - run: npm run check
+      - run: npm test
+      - run: npm run build
+      - run: npm install --no-save --no-audit --no-fund playwright@1.56.1
+      - run: npx playwright install --with-deps chromium
+      - name: Verificar audio real del build en PC y móvil emulado
+        env:
+          ST_AUDIO_RELEASE: '1'
+          ST_OFFICIAL_URL: http://localhost:4188/
+        run: |
+          npm run preview -- --port 4188 --strictPort > /tmp/semantropic-preview.log 2>&1 &
+          node --input-type=module -e "for(let i=0;i<60;i++){try{if((await fetch('http://localhost:4188/')).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,500))}process.exit(1)"
+          node scripts/audio/sfx02-qa.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: B03-C5-Audio-Release
+          path: artifacts/sfx02-qa/
+          if-no-files-found: ignore

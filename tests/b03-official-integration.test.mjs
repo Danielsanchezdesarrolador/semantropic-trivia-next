@@ -23,7 +23,7 @@ test('B03 aprobado: laboratorio conserva controles, portada oculta herramientas 
   assert.match(quiz,/official = false/);
   assert.match(quiz,/b03-preview-page--official/);
   assert.match(quiz,/official && round \? <div className="b03-visual-status"/);
-  assert.match(quiz,/onClick=\{onExit\}/);
+  assert.match(quiz,/onClick=\{exit\}/);
   assert.match(quiz,/Salir de Arena del Conocimiento/);
   assert.match(quiz,/setAppearance\(id\)/);
   assert.match(quiz,/setTimerAppearance\(id\)/);

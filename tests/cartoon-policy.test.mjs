@@ -5,8 +5,8 @@ import ts from 'typescript';
 const source = readFileSync(new URL('../src/audio/cartoonPolicy.ts', import.meta.url), 'utf8');
 const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext } }).outputText;
 const { isCartoonOpening, safeEffectsVolume } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString('base64')}`);
-test('Cartoon: apertura real, no repetición, cierre, respuesta o derrota local', () => {
-  assert.equal(isCartoonOpening('home', 'collection'), true);
+test('SFX-02: Cartoon 6 permanece reservado; Colección usa M1 por su despachador', () => {
+  assert.equal(isCartoonOpening('home', 'collection'), false);
   assert.equal(isCartoonOpening('collection', 'collection'), false);
   for (const target of ['home', 'arena', 'shop', 'ranking', 'correct', 'incorrect', 'timeout', 'results', 'defeat']) {
     assert.equal(isCartoonOpening('collection', target), false, target);
