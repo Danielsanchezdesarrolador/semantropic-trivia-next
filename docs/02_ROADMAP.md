@@ -1,6 +1,17 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, B03-C5a
+## Estado vigente — 29-10-2026, evaluación acotada de efectos cartoon
+
+D-039 autoriza la integración verificable de los tres efectos aprobados: solo
+ui_open_cartoon_6 tiene evento conectado (apertura efectiva de Colección). Evento
+cómico y derrota real siguen reservados; sin simulaciones en práctica local.
+[Entrega de evaluación y límites](audio/INTEGRACION_CARTOON_EVALUACION.md).
+Originales privados fuera de Git, sin biblioteca pública independiente; no se
+modifican música oficial ni arte. Revisión del Director antes de merge. Esta
+autorización acotada prevalece sobre la restricción documental anterior y no
+autoriza el catálogo completo, otras músicas, eventos nuevos o B04.
+
+## Antecedente — B03-C5a documental
 
 El Director confirma B03 publicado en Render y PR #15 fusionado. B03-C5a está
 en revisión documental en el **PR #16**, que se actualiza sin crear otro PR.

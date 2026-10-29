@@ -5,6 +5,9 @@ import QuizPreview from '../quiz/QuizPreview';
 import { activeSidebarScreen, useLobbyNavigation } from './lobbyNavigation';
 import { sheetAssets, sheetById, sheetPalette, type SheetCategory } from '../assets/sheetAssets';
 import './home-preview.css';
+import CartoonEffectsControl from '../../audio/CartoonEffectsControl';
+import { cartoonAudio } from '../../audio/cartoonAudio';
+import { isCartoonOpening } from '../../audio/cartoonPolicy';
 
 const nav = [
   { label: 'Inicio', icon: '⌂', screen: 'home' },
@@ -86,7 +89,12 @@ function ResourceLibrary() {
 export default function HomePreview({ official = false, showLibrary = true }: { official?: boolean; showLibrary?: boolean } = {}) {
   const approvedBackground = getApprovedAsset('environment/home-main');
   const approvedLogo = getApprovedAsset('brand/logo');
-  const { screen, navigate } = useLobbyNavigation(official);
+  const { screen, navigate: navigateTo } = useLobbyNavigation(official);
+  const navigate = (next: Parameters<typeof navigateTo>[0]) => {
+    cartoonAudio.stop();
+    navigateTo(next);
+    if (official && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
+  };
   const isHome = !official || screen === 'home';
   if (!approvedBackground || !approvedLogo) throw new Error('Fondo o logotipo oficial no registrado');
   if (official && screen === 'arena') return <QuizPreview official onExit={() => navigate('home')} />;
@@ -122,6 +130,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
+              {official ? <CartoonEffectsControl /> : null}
               {official ? <FullscreenControl /> : null}
             </div>
           </header>
