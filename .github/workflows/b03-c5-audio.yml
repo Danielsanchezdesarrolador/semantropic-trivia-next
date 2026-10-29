@@ -27,7 +27,7 @@ jobs:
           ST_OFFICIAL_URL: http://localhost:4188/
         run: |
           npm run preview -- --port 4188 --strictPort > /tmp/semantropic-preview.log 2>&1 &
-          node -e "for(let i=0;i<60;i++){try{if((await fetch('http://localhost:4188/')).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,500))}process.exit(1)"
+          node --input-type=module -e "for(let i=0;i<60;i++){try{if((await fetch('http://localhost:4188/')).ok)process.exit(0)}catch{}await new Promise(r=>setTimeout(r,500))}process.exit(1)"
           node scripts/audio/sfx02-qa.mjs
       - uses: actions/upload-artifact@v4
         if: always()
