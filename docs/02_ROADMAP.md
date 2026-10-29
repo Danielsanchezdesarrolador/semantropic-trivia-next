@@ -1,4 +1,21 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
+
+## Estado vigente — 29-10-2026, B03-C5a
+
+El Director confirma B03 publicado en Render y PR #15 fusionado. Autoriza
+expresamente **B03-C5a — Dirección Sonora Premium**, ahora en desarrollo
+documental y preparado para revisión artística. Entrega: identidad, catálogo
+de efectos/música y arquitectura propuesta en
+[B03_C5a_DIRECCION_SONORA.md](B03_C5a_DIRECCION_SONORA.md).
+Rama dedicada, commit, push y PR autorizados; **sin merge hasta aprobación
+del catálogo por el Director**. No se implementa reproducción, no se producen
+assets ni se alteran juego, lobby, Arena o sus 42 SVG. C5b/C5c y B04 no se inician.
+No requiere nueva URL jugable. D-035 registra esta autorización, posterior a
+las restricciones de planificación de D-031. Los textos siguientes conservan
+el historial de B03-C4 y no describen el estado vigente de publicación.
+
+## Registro histórico anterior a la autorización B03-C5a
+
 Fecha de actualización: 2026-10-29 · **B01/B02 completados; B03-B02 integrado en main. B03-C1/C2/C3/HF1 aprobados; B03-C4 validado y en PR #15.** D-034 autoriza completar el ciclo Git/CI/merge/Render de bloques aprobados, sin confirmaciones redundantes y solo con los criterios y verificaciones cumplidos. B03-C5 aprobado solo como planificación después de C4 y antes de B04; desarrollo de audio y B04 no autorizados.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
