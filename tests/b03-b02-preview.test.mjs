@@ -99,6 +99,11 @@ test('B03-B02-HF2: pictograma y contador se fijan a coordenadas del arte aprobad
   assert.match(css,/left:16\.5%/);
   assert.match(smoke,/targetIconCenterX/);
   assert.match(smoke,/targetCountCenterY/);
+  assert.match(css,/xMidYMid meet/);
+  assert.match(css,/--b03-circle-offset/);
+  assert.match(css,/--b03-count-offset/);
+  assert.match(css,/min\(37\.708333%/);
+  assert.match(smoke,/paintedScale/);
   assert.match(smoke,/titleStartsAfterIcon/);
   assert.match(smoke,/cabecera-hf2\.png/);
 });
