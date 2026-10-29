@@ -71,6 +71,10 @@ try {
       const rect=selector=>document.querySelector(selector)?.getBoundingClientRect();
       const arena=rect('.b03-arena');
       const header=rect('.b03-category-header');
+      // El SVG externo usa xMidYMid meet: descartar el letterboxing de CSS.
+      const paintedScale=Math.min(header.width/1200,header.height/180);
+      const drawnX=(header.width-1200*paintedScale)/2;
+      const drawnY=(header.height-180*paintedScale)/2;
       const title=rect('.b03-category-title');
       const icon=rect('.b03-category-icon');
       const counter=rect('.b03-category-count');
@@ -98,12 +102,12 @@ try {
         headerCenter:(header.left+header.right)/2,
         iconCenterX:(icon.left+icon.right)/2,
         iconCenterY:(icon.top+icon.bottom)/2,
-        targetIconCenterX:header.left+header.width*(86/1200),
-        targetIconCenterY:header.top+header.height*(81/180),
+        targetIconCenterX:header.left+drawnX+86*paintedScale,
+        targetIconCenterY:header.top+drawnY+81*paintedScale,
         countCenterX:(counter.left+counter.right)/2,
         countCenterY:(counter.top+counter.bottom)/2,
-        targetCountCenterX:header.left+header.width*((940+225/2)/1200),
-        targetCountCenterY:header.top+header.height*((22+119/2)/180),
+        targetCountCenterX:header.left+drawnX+(940+225/2)*paintedScale,
+        targetCountCenterY:header.top+drawnY+(22+119/2)*paintedScale,
         titleStartsAfterIcon:title.left>=icon.right+3,
         headerLeft:header.left,
         backRight:rect('.b03-back-visual').right,
