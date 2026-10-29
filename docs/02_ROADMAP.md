@@ -1,5 +1,5 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
-Fecha de actualización: 2026-10-29 · **B01/B02 completados; B03-B02 integrado en main. B03-C1/C2/C3/HF1 aprobados para continuar; B03-C4 validado localmente y commit, push de la rama y PR hacia main autorizados por el Director.** Merge y despliegue no autorizados. B03-C5 aprobado solo como planificación después de C4 y antes de B04; desarrollo de audio y B04 no autorizados.
+Fecha de actualización: 2026-10-29 · **B01/B02 completados; B03-B02 integrado en main. B03-C1/C2/C3/HF1 aprobados; B03-C4 validado y en PR #15.** D-034 autoriza completar el ciclo Git/CI/merge/Render de bloques aprobados, sin confirmaciones redundantes y solo con los criterios y verificaciones cumplidos. B03-C5 aprobado solo como planificación después de C4 y antes de B04; desarrollo de audio y B04 no autorizados.
 
 | Bloque | Objetivo | Entrega comprobable | Criterio de salida |
 |---|---|---|---|
@@ -76,8 +76,10 @@ El Director aprueba C1/C2/C3/HF1 para continuar y autoriza auditar/consolidar el
 trabajo existente, QA final y actualización documental. Conservar la rama y los
 cambios sin duplicar implementación. La regla de entregar Vite y URL comprobada
 tras cada microbloque queda incorporada en AGENTS.md. Preparar un respaldo local
-y propuesta concreta de commit/PR a main; autorización específica requerida
-**antes** de commit, push o apertura de PR. No fusionar ni desplegar.
+y propuesta concreta de commit/PR a main. La posterior D-034 autoriza completar
+commit/push/PR/CI/merge y verificación de Render sin permisos redundantes para
+este bloque aprobado, con todas las pruebas obligatorias aprobadas, sin
+conflictos y sin saltar protecciones. Detenerse si no se cumplen esas condiciones.
 
 El objetivo local es diez preguntas y cuatro alternativas, seis categorías
 automáticas, respuesta única, reloj real de 20 s con arco/color continuos,
