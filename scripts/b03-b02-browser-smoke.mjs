@@ -95,6 +95,9 @@ try {
       return {
         arenaCenter:(arena.left+arena.right)/2,
         headerCenter:(header.left+header.right)/2,
+        headerLeft:header.left,
+        backRight:rect('.b03-back-visual').right,
+        timerCenter:(rect('.b03-timer').left+rect('.b03-timer').right)/2,
         titleEndsBeforeCount:title.right<=counter.left+2,
         titleOverflows:document.querySelector('.b03-category-title').scrollWidth>
           document.querySelector('.b03-category-title').clientWidth+2,
@@ -105,8 +108,15 @@ try {
         answers
       };
     });
-    assert.ok(Math.abs(layout.headerCenter-layout.arenaCenter)<5,
-      'Cabecera centrada horizontalmente: '+JSON.stringify(layout));
+    if(d.isMobile){
+      assert.ok(layout.headerLeft>=layout.backRight-8,
+        'Cabecera móvil no debe superponerse a Salir: '+JSON.stringify(layout));
+      assert.ok(Math.abs(layout.timerCenter-layout.arenaCenter)<5,
+        'Reloj móvil debe estar centrado: '+JSON.stringify(layout));
+    }else{
+      assert.ok(Math.abs(layout.headerCenter-layout.arenaCenter)<5,
+        'Cabecera PC centrada horizontalmente: '+JSON.stringify(layout));
+    }
     assert.ok(layout.titleEndsBeforeCount&&!layout.titleOverflows,
       'Texto de categoría invade el contador: '+JSON.stringify(layout));
     assert.ok(Math.abs(layout.questionCenter-layout.textCenter)<5,
