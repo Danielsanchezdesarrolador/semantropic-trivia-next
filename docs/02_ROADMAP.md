@@ -1,6 +1,16 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, DS-01 automático SOLO DEV
+## Estado vigente — 29-10-2026, SFX-02 aprobado / originales pendientes
+
+D-044 registra los nueve originales elegidos por el Director. Revoca silencio
+artístico de Colección y asigna M1/V1/A1/X3, victoria/derrota reales, L7/C y reloj.
+No hay ninguno de los nueve MP3 locales y la descarga oficial devuelve 403.
+[Lista exacta y estado verificable](audio/SFX02_ORIGINALES_PENDIENTES.md).
+Carpeta .local-approved-audio preparada e ignorada; sin hashes inventados ni
+sustitutos. No se declara integración SFX-02 lista; juego previo preservado,
+sin cambios funcionales, merge o Render. Pendiente recibir originales para probar.
+
+## Antecedente — DS-01 automático SOLO DEV
 
 D-043 autoriza autocarga de 13 DS-01 desde .local-ds01-audio ignorada por Git,
 mediante endpoint Vite solo-dev con allowlist, hash, origen privado y sin symlinks.
