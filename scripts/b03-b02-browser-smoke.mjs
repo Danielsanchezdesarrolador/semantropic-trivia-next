@@ -26,7 +26,7 @@ if (!publicUrl) {
 let browser;
 try {
   await mkdir('artifacts/b03-b02', { recursive: true });
-  browser = await chromium.launch({headless:true});
+  browser = await chromium.launch({headless:true,channel:process.env.ST_BROWSER_CHANNEL || undefined});
   const devices = [
     {name:'pc-1366', viewport:{width:1366,height:900}, isMobile:false},
     {name:'mobile-390', viewport:{width:390,height:844}, isMobile:true},
@@ -37,7 +37,7 @@ try {
     const page = await context.newPage();
     const errors=[];
     page.on('pageerror',e=>errors.push(e.message));
-    page.on('console',e=>{if(e.type()==='error')errors.push(e.text());});
+    page.on('console',e=>{if(e.type()==='error')errors.push(e.text()+' '+e.location().url);});
     const r = await page.goto(url,{waitUntil:'networkidle',timeout:30000});
     assert.equal(r?.status(),200, `${d.name} HTTP`);
     await page.getByRole('heading',{name:'Arena del Conocimiento'}).waitFor();

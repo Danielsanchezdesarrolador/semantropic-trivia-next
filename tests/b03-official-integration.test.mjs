@@ -22,13 +22,15 @@ test('B03 aprobado: laboratorio conserva controles, portada oculta herramientas 
   const quiz=read('src/ui/quiz/QuizPreview.tsx');
   assert.match(quiz,/official = false/);
   assert.match(quiz,/b03-preview-page--official/);
-  assert.match(quiz,/official \? <p className="b03-visual-status"/);
+  assert.match(quiz,/official && round \? <div className="b03-visual-status"/);
   assert.match(quiz,/onClick=\{onExit\}/);
   assert.match(quiz,/Salir de Arena del Conocimiento/);
   assert.match(quiz,/setAppearance\(id\)/);
   assert.match(quiz,/setTimerAppearance\(id\)/);
   assert.match(quiz,/setCategory\(id\)/);
-  assert.match(quiz,/Las respuestas, el reloj y la puntuación todavía no son jugables/);
+  assert.match(quiz,/!official && <section className="b03-qa-controls"/);
+  assert.match(quiz,/useLocalPractice\(official\)/);
+  assert.match(quiz,/segundos por pregunta/);
   assert.doesNotMatch(quiz,/setInterval|correctAnswer|submitAnswer|matchmaking|fetch\(/i);
   const lab=read('b03-preview.html');
   assert.match(lab,/id="b03-root"/);
@@ -46,13 +48,15 @@ test('B03 aprobado: CSS de arena está aislado y no reconfigura tema global del 
   assert.match(homeCss,/st-home__arena-entry/);
 });
 
-test('B03 aprobado: qa de navegador recorre colores, regreso y no juego ficticio',()=>{
+test('B03 aprobado: qa de navegador recorre ronda local, categorías y regreso',()=>{
   const smoke=read('scripts/b02-home-official-smoke.mjs');
   assert.match(smoke,/Ruta oficial #arena/);
   assert.match(smoke,/b03-preview-page--official/);
-  assert.match(smoke,/b03-category-pill/);
-  assert.match(smoke,/b03-state-rows/);
-  assert.match(smoke,/Las respuestas no son jugables todavía/);
+  assert.match(smoke,/verifyLocalRound/);
+  const roundQa=read('scripts/b03-c2-round-qa.mjs');
+  assert.match(roundQa,/b03-category-pill/);
+  assert.match(roundQa,/b03-state-rows/);
+  assert.match(roundQa,/Ronda finalizada/);
   assert.match(smoke,/page\.goBack\(\)/);
   assert.match(smoke,/page\.goForward\(\)/);
 });

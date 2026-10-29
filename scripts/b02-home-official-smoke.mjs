@@ -3,6 +3,7 @@ import { mkdir, readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 import { resolve, extname, sep } from 'node:path';
 import { chromium } from 'playwright';
+import { verifyLocalRound } from './b03-c2-round-qa.mjs';
 
 const publicUrl = process.env.ST_OFFICIAL_URL;
 const url = publicUrl || 'http://127.0.0.1:4187/';
@@ -51,7 +52,7 @@ let browser;
 try {
   await ready();
   await mkdir('artifacts/b02-official', { recursive: true });
-  browser = await chromium.launch({ headless: true });
+  browser = await chromium.launch({ headless: true, channel: process.env.ST_BROWSER_CHANNEL || undefined });
   for (const device of [
     { name: 'desktop-1366', viewport: { width: 1366, height: 850 }, isMobile: false, hasTouch: false },
     { name: 'mobile-390-emulado', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true },
@@ -166,7 +167,7 @@ try {
     await page.getByRole('button', { name: 'Abrir Jugar Online' }).waitFor();
     assert.equal(await page.locator('.st-library').count(), 0);
 
-    // B03-B02: acceso aprobado desde la portada oficial, sin iniciar una partida falsa.
+    // B03-C2: práctica local real desde el lobby; nunca se presenta como online.
     await page.getByRole('button', { name: 'Abrir Arena del Conocimiento' }).click();
     await page.locator('.b03-preview-page--official').waitFor({state:'visible'});
     assert.ok(page.url().endsWith('#arena'), 'Ruta oficial #arena');
@@ -174,19 +175,7 @@ try {
     assert.equal(await page.locator('.st-library').count(),0);
     assert.equal(await page.locator('.b03-state-rows').count(),0, 'Panel técnico de inspección no debe aparecer en el juego oficial');
     assert.equal(await page.locator('.b03-warning').count(),0, 'Sin avisos del laboratorio');
-    assert.match(await page.locator('.b03-visual-status').innerText(),/Vista demostrativa/);
-    assert.equal(await page.locator('.b03-category-pill').count(),6,'Seis categorías dinámicas');
-    for (const label of ['Geografía','Ciencias','Historia','Arte y cultura','Deportes','Entretenimiento']) {
-      await page.getByRole('button',{name:label,exact:true}).click();
-      assert.equal(await page.locator('.b03-category-title').textContent().then(s=>s?.trim()), label);
-    }
-    await page.waitForFunction(() => [...document.querySelectorAll('.b03-arena img')]
-      .every(i=>i.complete&&i.naturalWidth>0),null,{timeout:15000});
-    assert.equal(await page.locator('.b03-answer').count(),4);
-    assert.equal(await page.locator('.b03-answer button').count(),0,'Las respuestas no son jugables todavía');
-    assert.equal(await page.locator('.b03-timer span').textContent().then(s=>s?.trim()), '18');
-    const arenaSize=await page.evaluate(()=>({viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
-    assert.ok(arenaSize.scrollWidth<=arenaSize.viewport+1,'Overflow Arena oficial: '+JSON.stringify(arenaSize));
+    await verifyLocalRound(page, device.name);
     await page.screenshot({path:'artifacts/b02-official/'+device.name+'-arena-b03.png',fullPage:true});
     await page.reload({waitUntil:'networkidle'});
     await page.locator('.b03-preview-page--official').waitFor({state:'visible'});

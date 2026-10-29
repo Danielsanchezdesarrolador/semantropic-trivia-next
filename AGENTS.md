@@ -1,5 +1,5 @@
 # AGENTS.md — SEMANTROPIC TRIVIA / NUEVA ETAPA
-**Autoridad de dirección:** Director del juego (usuario). **Corte:** 2026-10-28. **Estado:** fundación de nuevo proyecto, no juego terminado.
+**Autoridad de dirección:** Director del juego (usuario). **Corte:** 2026-10-29. **Estado:** núcleo local B03 aprobado para continuar; cierre B03-C4 y preparación de publicación, sin juego online terminado.
 
 ## 1. Mandato innegociable
 Construir Semantropic Trivia como videojuego de preguntas **social, familiar y competitivo**, para Android e iOS, con pruebas web desde PC y teléfono. Debe ser inclusivo para diversas edades, amigable, fácil de comprender, divertido, justo y respetuoso del tiempo del jugador. Las referencias a Preguntados son inspiración de categoría de producto, **no permiso para copiar** interfaz, arte, propiedad intelectual ni dinámicas invasivas.
@@ -36,7 +36,8 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 
 ## 6. Estética: mockup de inicio aprobado (actualización 2026-10-28)
 - La dirección antigua NO es canon automático. Se solicita **una nueva identidad amigable, cálida, clara, original y transversal en edades**, y su aprobación se hará después mediante mockups.
-- **ALCANCE ACTUAL (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social como portada y pidió que los botones respondan al pulsarlos antes de empezar B03. Se autoriza únicamente **navegación funcional por menús y submenús**, conservando el arte aprobado. No significa partidas, matchmaking, usuarios o cuentas activos. El fondo y logo oficiales permanecen separados; los otros recortes siguen como referencias artísticas.
+- **ALCANCE HISTÓRICO B02 (2026-10-28):** El Director aprobó el lobby SEMANTROPIC POP — Fantasía Social como portada y pidió que los botones respondan al pulsarlos antes de empezar B03. Se autorizó únicamente **navegación funcional por menús y submenús**, conservando el arte aprobado. El fondo y logo oficiales permanecen separados; los otros recortes siguen como referencias artísticas.
+- **ALCANCE ACTUAL (2026-10-29):** B03-C1/C2/C3/HF1 aprobados para continuar: práctica local de diez preguntas en la Arena original, categorías automáticas, reloj real de 20 s con arco continuo y resultados. Conservar íntegramente los 42 SVG y la composición aprobada. El selector manual de categorías pertenece solo al laboratorio. B03-C4 consolida QA/documentación e integración, bajo la autorización general de operaciones Git del apartado 7 bis. B03-C5 está aprobado solo como planificación; su desarrollo y B04 requieren autorización independiente. No hay backend, cuentas ni partidas online activos.
 - Una vez aprobado un mockup, constituye especificación visual obligatoria: no simplificarlo unilateralmente ni convertirlo en una ilustración de fondo monolítica. Cuando haya conflicto técnico real, exponer alternativas y solicitar decisión.
 - Evitar estética sobrecargada, infantilizada, agresiva, confusa o derivativa de Preguntados.
 
@@ -49,11 +50,30 @@ Construir Semantropic Trivia como videojuego de preguntas **social, familiar y c
 6. Realizar QA de navegador de escritorio y móvil horizontal/vertical según función. No decir «PASS móvil físico» sin comprobarlo físicamente; distinguir QA automatizado, emulado y dispositivo real.
 7. Reportar cambios, tests ejecutados, resultados, limitaciones, commit/PR y URL **únicamente si están verificados**. No inventar capturas, disponibilidad online, usuarios concurrentes, mediciones, ni sistemas completados.
 8. Mantener los archivos de decisiones y roadmap alineados con instrucciones expresas más recientes, no con comentarios históricos.
+9. **Entrega jugable obligatoria después de cada microbloque:** implementar solo el alcance autorizado; ejecutar TypeScript, tests y build; iniciar Vite con `npm run dev` cuando corresponda y comprobar el juego en navegador. Entregar una URL local real con el puerto confirmado por Vite y la ruta exacta. Mantener el servidor disponible mientras sea posible e indicar cómo reiniciarlo (en PowerShell puede usarse `npm.cmd run dev`). Cuando sea viable, dar la dirección Wi-Fi para el celular y distinguir acceso comprobado desde el PC de prueba en teléfono físico. Un enlace público solo se entrega tras verificar despliegue del bloque y funcionamiento. Ejecutar las operaciones cubiertas por el apartado 7 bis sin confirmaciones redundantes. Informar microbloque, funciones, archivos, resultados de tests, URLs comprobadas, límites y cambios pendientes de aprobación. Conservar la revisión del Director y no comenzar otro bloque sin autorización.
+
+## 7 bis. Autorización general de operaciones Git y GitHub (2026-10-29)
+
+**Autoridad final:** Director del videojuego. Esta autorización se limita al repositorio `Danielsanchezdesarrolador/semantropic-trivia-next` y a microbloques **expresamente aprobados**; no autoriza ampliar su alcance ni iniciar el siguiente. Sustituye las exigencias históricas de pedir permisos operativos adicionales para esos mismos bloques, conservando todas las demás reglas.
+
+Dentro del bloque aprobado, Codex puede ejecutar autónomamente, sin nuevas confirmaciones:
+1. Crear ramas de desarrollo y modificar los archivos correspondientes al bloque.
+2. Instalar las dependencias necesarias y ejecutar las pruebas.
+3. Crear commits descriptivos, hacer push de las ramas autorizadas y crear/actualizar PR hacia `main`.
+4. Verificar GitHub Actions y fusionar el PR solo cuando **todas las pruebas obligatorias hayan pasado**, no existan conflictos y se cumplan los criterios del bloque. Respetar las protecciones de ramas, sin saltarlas ni usar privilegios para evitarlas.
+5. Confirmar que el despliegue automático de Render corresponde al commit fusionado y ejecutar comprobaciones posteriores a la publicación. No declarar publicado un bloque solo por haberlo subido o fusionado.
+
+**Condiciones obligatorias:** trabajar únicamente en SEMANTROPIC TRIVIA 1.0; no modificar SEMANTROPIC TD ni repositorios antiguos. Prohibidos force push, eliminar ramas principales, sobrescribir cambios ajenos, descartar trabajo local u otras operaciones destructivas. No introducir secretos, credenciales ni datos privados en GitHub. No reemplazar diseños, assets ni funcionalidades aprobadas. No fusionar ni desplegar con tests, compilación o verificaciones obligatorias fallidas. Detenerse e informar ante conflictos, fallos críticos, cambios de arquitectura o decisiones fuera de la autorización.
+
+**Entrega automática:** resumen de cambios y archivos, número de pruebas aprobadas/fallidas, rama y commit, enlace del PR, estado de integración en `main`, estado de Render, URL pública actualizada y comprobada, URL local cuando corresponda y limitaciones pendientes. Distinguir QA automatizado/emulado de dispositivo físico y resultados verificados de pendientes.
+
+Ciclo autorizado: **DESARROLLAR → PROBAR → COMMIT → PUSH → PR → CI → MERGE → RENDER → ENTREGAR ENLACE**. La aprobación de un microbloque no autoriza comenzar B03-C5, B04 u otro bloque sin la decisión expresa correspondiente del Director.
 
 ## 8. Orden de ejecución
 **B01 (completado históricamente):** repositorio independiente + skeleton React TS/Vite + documentos y Render Static Site verificados. La portada técnica fue sustituida por el lobby visual B02 tras aprobación del Director.
 **B02 (COMPLETADO):** lobby oficial, navegación y pantalla completa publicados en Render. **B03-B02 (APROBADO por el Director, incluyendo HF2):** integrar la Arena del Conocimiento con sus 42 SVG y seis categorías en el juego oficial, con acceso visible desde el lobby y botón de regreso. La pantalla mostrará explícitamente que es demostrativa y no activa partidas ni relojes reales. El laboratorio con controles técnicos sigue separado. Solo fusionar en `main` y publicar Render tras TypeScript, tests, build y smoke Chromium PC/móvil.
 **B03:** partida trivia local de punta a punta + categorías y datos con contratos preparados para servidor.
+**Estado B03 al 29-10-2026:** C1/C2/C3/HF1 implementados y aprobados por el Director para continuar; C4 gestiona cierre e integración en el PR #15 desde `feat/b03-c1-nucleo-local`, aplicando el apartado 7 bis. La base previa es `3aa8f037` (Arena demostrativa). Verificar merge y Render antes de declarar el núcleo publicado; no presumir QA físico ni sistemas online completados.
 **B04:** autenticación, perfil y base de datos real.
 **B05:** online casual 1v1 con servidor autoritativo; fallback IA **revelado, opcional**.
 **B06:** salas privadas de 1v1, 2v2, 3v3, FFA.

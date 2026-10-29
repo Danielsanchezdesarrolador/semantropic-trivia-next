@@ -29,10 +29,17 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Navegar portada compilada desde PC y móvil emulado
         run: node scripts/b02-home-official-smoke.mjs
+      - name: Validar ronda local, cronómetro y arco continuo
+        run: node scripts/b03-c3-browser-smoke.mjs
+      - name: Conservar laboratorio visual y geometría aprobada
+        run: node scripts/b03-b02-browser-smoke.mjs
       - name: Guardar capturas de prueba
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: B02-Lobby-Oficial-PC-Mobile
-          path: artifacts/b02-official/
+          path: |
+            artifacts/b02-official/
+            artifacts/b03-c3/
+            artifacts/b03-b02/
           if-no-files-found: ignore
