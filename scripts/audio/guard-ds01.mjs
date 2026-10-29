@@ -29,6 +29,12 @@ export function assertPublishable(path, bytes) {
     && bytes.includes(Buffer.from('/assets/audio/music/semantropic_lobby_pop_familiar_v001.mp3'))) {
     throw Error('Asignación automática de música dev presente en build pública');
   }
+  if (path.replaceAll('\\', '/').includes('/dist/') && extname(path) === '.js'
+    && (bytes.includes(Buffer.from('/__qa_ds01__')) || bytes.includes(Buffer.from('DS-01 · PREVIEW / QA local'))
+      || bytes.includes(Buffer.from('.local-ds01-audio'))
+      || bytes.includes(Buffer.from('TimGM6mb.sf2 / MIDI / FluidSynth; no Foley humano')))) {
+    throw Error('Endpoint, cargador o panel DS-01 dev presente en build pública');
+  }
 }
 async function walk(path) {
   let entries;
@@ -36,10 +42,11 @@ async function walk(path) {
   catch (error) { if (error.code === 'ENOENT') return []; throw error; }
   return (await Promise.all(entries.map(entry => entry.isDirectory() ? walk(join(path, entry.name)) : [join(path, entry.name)]))).flat();
 }
-export async function guard(root = process.cwd()) {
+export async function guard(root = process.cwd(), includeBuild = true) {
   const tracked = execFileSync('git', ['ls-files', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean).map(p => join(root, p));
-  const files = new Set([...tracked, ...await walk(join(root, 'public')), ...await walk(join(root, 'src')), ...await walk(join(root, 'dist'))]);
+  const files = new Set([...tracked, ...await walk(join(root, 'public')), ...await walk(join(root, 'src')),
+    ...(includeBuild ? await walk(join(root, 'dist')) : [])]);
   for (const path of files) assertPublishable(path, await readFile(path));
   console.log(`PASS guard DS-01: ${files.size} archivos revisados; sin binarios QA ni panel en producción`);
 }
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await guard();
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) await guard(process.cwd(), !process.argv.includes('--sources'));

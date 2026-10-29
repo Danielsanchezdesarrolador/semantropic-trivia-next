@@ -71,7 +71,8 @@ test('DS-01: motor real, respuesta tardía, avance y reinicio con mock de reprod
   assert.equal(calls.length, 4);
 });
 test('DS-01 engine: no samples, mute, autoplay rejection and volume zero never play', async () => {
-  const { DS01AudioEngine } = await import(moduleUrl(compile('../src/audio/ds01/audioEngine.ts').replaceAll("'./catalog'", `'${catalogUrl}'`)));
+  const { DS01AudioEngine } = await import(moduleUrl(compile('../src/audio/ds01/audioEngine.ts')
+    .replaceAll("'./catalog'", `'${catalogUrl}'`).replaceAll('import.meta.env.DEV', 'true')));
   const original = { context: globalThis.AudioContext, document: globalThis.document };
   globalThis.document = { hidden: false };
   let started = 0;

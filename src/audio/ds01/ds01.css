@@ -5,3 +5,7 @@
 .ds01-panel button,.ds01-panel select {margin:4px;padding:8px;font:inherit;}
 .ds01-panel pre {white-space:pre-wrap;overflow-wrap:anywhere;}
 .ds01-panel :focus-visible {outline:3px solid #ffc53d;outline-offset:2px;}
+.ds01-controls {display:inline-flex;align-items:center;gap:6px;max-width:100%;}
+.ds01-controls button {font:inherit;color:inherit;background:#182e6b;border:1px solid #c4eaff;border-radius:12px;padding:7px;min-height:36px;cursor:pointer;}
+.ds01-controls input {width:68px;max-width:22vw;}
+.ds01-controls :focus-visible {outline:3px solid #fff;outline-offset:3px;}

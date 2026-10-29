@@ -19,6 +19,7 @@ const demoOptions = [
   { letter: 'D', text: 'Perth' },
 ] as const;
 const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
+const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
 
 /** Official: timed local practice. Default: independent B03-B02 visual laboratory. */
 export default function QuizPreview({ official = false, onExit }: { official?: boolean; onExit?: () => void } = {}) {
@@ -67,6 +68,7 @@ export default function QuizPreview({ official = false, onExit }: { official?: b
           <p>{official ? `Práctica local · Diez preguntas · ${durationSeconds} segundos por pregunta.` : 'Integración visual del mockup aprobado. Sin partida, puntuación ni cronómetro activos.'}</p>
         </div>
         {official ? <div className="b03-preview-heading__actions">
+          {DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : null}
           <FullscreenControl />
           <button className="b03-to-lobby" type="button" onClick={exit}>Volver al lobby</button>
         </div> : <a href="/" className="b03-to-lobby">Regresar al lobby oficial</a>}

@@ -1,6 +1,17 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, HF3 música automática SOLO DEV
+## Estado vigente — 29-10-2026, DS-01 automático SOLO DEV
+
+D-043 autoriza autocarga de 13 DS-01 desde .local-ds01-audio ignorada por Git,
+mediante endpoint Vite solo-dev con allowlist, hash, origen privado y sin symlinks.
+Sin selector obligatorio ni ruido al importar; primer gesto habilita SFX, cinco
+eventos reales y variantes A/B/C dev (A provisional). HF1 y música HF3 conservados.
+[Entrega, endpoint, seguridad y QA](audio/DS01_AUTOCARGA_LOCAL.md).
+13 originales y manifiesto preparados desde el ZIP local entregado, sin modificar
+archivos sueltos ni descargar/regenerar audio. Build sin muestras, endpoint o
+herramientas privadas. Publicación GPL/Render y merge bloqueados; no iniciar B04.
+
+## Antecedente — HF3 música automática SOLO DEV
 
 D-042 confirma reproducción local inmediata de la pista exacta existente, sin
 selector manual. Autocarga Vite dev, primer gesto normal si autoplay bloquea,

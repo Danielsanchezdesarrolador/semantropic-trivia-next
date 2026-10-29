@@ -9,8 +9,6 @@ export default function DS01Panel() {
     <summary>DS-01 · PREVIEW / QA local</summary>
     <p>TimGM6mb.sf2 / MIDI / FluidSynth · GPL-2 de la fuente. Publicación de derivados pendiente. No es Foley humano.</p>
     <p>A es preselección técnica temporal; ninguna variante definitiva ha sido elegida.</p>
-    <label>Cargar 13 MP3 locales <input type="file" multiple accept="audio/mpeg,audio/mp3"
-      onChange={event => { void ds01Audio.importFiles(Array.from(event.target.files ?? [])).catch(() => {}); event.target.value = ''; }} /></label>
     <p role="status">{ds01Audio.message}</p>
     <button type="button" aria-pressed={ds01Audio.active} onClick={() => {
       if (ds01Audio.active) ds01Audio.mute(); else void ds01Audio.enable();
@@ -26,7 +24,18 @@ export default function DS01Panel() {
         onClick={() => ds01Audio.play([id])}>Probar {families[id].label}</button>
     </div>)}
     <p>Muestras faltantes: {ds01Audio.missing().join(', ') || 'ninguna'}</p>
-    <button type="button" onClick={() => ds01Audio.clear()}>Descargar de memoria</button>
     <details><summary>Procedencia y SHA-256 locales</summary><pre>{JSON.stringify(ds01Audio.samples, null, 2)}</pre></details>
   </details>;
+}
+
+export function DS01Controls() {
+  useSyncExternalStore(ds01Audio.subscribe, ds01Audio.snapshot);
+  return <div className="ds01-controls">
+    <button type="button" aria-pressed={ds01Audio.active} title={ds01Audio.message}
+      onClick={() => { if (ds01Audio.active) ds01Audio.mute(); else void ds01Audio.enable(); }}>
+      {ds01Audio.active ? 'Silenciar efectos DS-01' : 'Activar efectos DS-01'}
+    </button>
+    <input aria-label="Volumen de efectos DS-01" type="range" min="0" max="100"
+      value={Math.round(ds01Audio.volume * 100)} onChange={event => ds01Audio.setVolume(Number(event.target.value) / 100)} />
+  </div>;
 }

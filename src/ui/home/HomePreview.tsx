@@ -1,6 +1,7 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
 import { lazy, Suspense } from 'react';
 import { ds01Audio } from '../../audio/ds01/audioEngine';
+import { useDS01Dev } from '../../audio/ds01/useDS01Dev';
 import LobbyMusicControl, { useLobbyMusic } from '../../audio/LobbyMusicControl';
 import { lobbyMusic } from '../../audio/lobbyMusic';
 import LobbySection from './LobbySection';
@@ -26,6 +27,7 @@ const categories: readonly SheetCategory[] = [
 ];
 const asset = (id: string) => sheetById(id).path;
 const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
+const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
 
 function ModeIcon({ id }: { id: 'online' | 'friends' }) {
   if (id === 'online') {
@@ -96,6 +98,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
   const approvedLogo = getApprovedAsset('brand/logo');
   const { screen, navigate: navigateTo } = useLobbyNavigation(official);
   useLobbyMusic(screen !== 'arena', official);
+  useDS01Dev(official);
   const navigate = (next: Parameters<typeof navigateTo>[0]) => {
     cartoonAudio.stop();
     if (official && screen !== next && next !== 'collection') ds01Audio.play(['button']);
@@ -139,7 +142,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
-              {official ? <CartoonEffectsControl /> : null}
+              {official ? DS01Controls ? <Suspense fallback={null}><DS01Controls /></Suspense> : <CartoonEffectsControl /> : null}
               {official ? <LobbyMusicControl /> : null}
               {official ? <FullscreenControl /> : null}
             </div>

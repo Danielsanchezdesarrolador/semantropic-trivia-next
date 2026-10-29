@@ -1,5 +1,9 @@
 # B03-C5 / DS-01 — motor listo, muestras privadas para QA
 
+**Orden posterior:** el selector manual aquí descrito fue sustituido por
+[autocarga local de DS-01](DS01_AUTOCARGA_LOCAL.md), solo en Vite dev. El bloqueo
+de publicación, la procedencia y los eventos siguen vigentes.
+
 29-10-2026. Autorización: Prompt Maestro DS-01 del Director, posterior a D-039.
 Estado: código implementado para evaluación local; ninguna variante definitiva.
 Sin merge ni publicación de audio. B04 y otras músicas no se inician.

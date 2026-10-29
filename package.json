@@ -10,7 +10,7 @@
     "dev": "vite --host 0.0.0.0",
     "check": "tsc --noEmit",
     "test": "node --test",
-    "build": "node scripts/audio/guard-ds01.mjs && tsc --noEmit && vite build && node scripts/audio/guard-ds01.mjs",
+    "build": "node scripts/audio/guard-ds01.mjs --sources && tsc --noEmit && vite build && node scripts/audio/guard-ds01.mjs",
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
