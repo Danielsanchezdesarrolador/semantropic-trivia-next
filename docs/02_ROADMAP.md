@@ -2,17 +2,27 @@
 
 ## Estado vigente — 29-10-2026, B03-C5a
 
-El Director confirma B03 publicado en Render y PR #15 fusionado. Autoriza
-expresamente **B03-C5a — Dirección Sonora Premium**, ahora en desarrollo
-documental y preparado para revisión artística. Entrega: identidad, catálogo
-de efectos/música y arquitectura propuesta en
-[B03_C5a_DIRECCION_SONORA.md](B03_C5a_DIRECCION_SONORA.md).
-Rama dedicada, commit, push y PR autorizados; **sin merge hasta aprobación
-del catálogo por el Director**. No se implementa reproducción, no se producen
-assets ni se alteran juego, lobby, Arena o sus 42 SVG. C5b/C5c y B04 no se inician.
-No requiere nueva URL jugable. D-035 registra esta autorización, posterior a
-las restricciones de planificación de D-031. Los textos siguientes conservan
-el historial de B03-C4 y no describen el estado vigente de publicación.
+El Director confirma B03 publicado en Render y PR #15 fusionado. B03-C5a está
+en revisión documental en el **PR #16**, que se actualiza sin crear otro PR.
+**D-036 sustituye la propuesta rechazada «Cristal cercano» por la identidad
+sonora oficial SEMANTROPIC POP — CARICATURA FAMILIAR**: pop, plop, boing, boop,
+silbidos moderados, xilófono/marimba, percusión ligera, bajo saltarín y pequeños
+acentos de trompeta. Se excluyen magia, cristales, hechizos, ambientes galácticos,
+fantasía mística y música épica como identidad sonora. La dirección visual no cambia.
+
+Entrega corregida: [dirección sonora y catálogo](B03_C5a_DIRECCION_SONORA.md),
+con 21 efectos y tres músicas revisados en timbre, motivo e instrumentación.
+Se conservan arquitectura, accesibilidad, rendimiento, licencias, buses y volúmenes.
+Orden obligatorio: **corregir dirección, después revisar y escuchar muestras
+originales reproducibles antes de aprobación definitiva**. Sección 6: dos variantes,
+archivos individuales, montaje A/B, fuentes/exportación y hoja de escucha. Todavía
+no hay muestras producidas en esta revisión documental.
+
+Commit/push y actualización del PR #16 autorizados; **sin merge**. Sin audio en
+el juego ni cambios a lobby, Arena o 42 SVG. C5b/C5c y B04 no se inician.
+No requiere URL jugable nueva. D-035 y los registros siguientes son antecedentes;
+Fantasía Social en el historial no mantiene vigente la dirección sonora anterior
+ni modifica el arte visual aprobado.
 
 ## Registro histórico anterior a la autorización B03-C5a
 

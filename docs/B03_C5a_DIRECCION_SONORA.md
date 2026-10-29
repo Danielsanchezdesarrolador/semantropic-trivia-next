@@ -3,34 +3,43 @@
 Fecha: 29-10-2026. Producto: **SEMANTROPIC TRIVIA 1.0**.
 Estado: **diseño documental preparado para revisión artística del Director**.
 Autoriza este documento la instrucción expresa del Director de ejecutar B03-C5a.
-Ninguna propuesta equivale a aprobación artística ni autoriza C5b/C5c o B04.
+La personalidad Caricatura Familiar fue elegida por el Director; catálogo y audio
+requieren escucha antes de aprobación. No autoriza C5b/C5c o B04.
 No se producen archivos de audio ni se implementa reproducción en este bloque.
 
-## 1. Identidad: Cristal cercano
+## 1. Identidad oficial: SEMANTROPIC POP — CARICATURA FAMILIAR
 
-La identidad propone conocimiento compartido como descubrimiento luminoso:
-cristal con cuerpo suave, tecnología que responde con claridad y una fantasía
-cálida que acompaña a personas de distintas edades. El carácter premium nace
-del detalle, la coherencia y el espacio entre sonidos, sin aumentar el volumen.
+**Decisión del Director:** «Cristal cercano» queda rechazada y sustituida por
+**Caricatura Familiar**. La personalidad es oficial; catálogo y realizaciones
+audibles requieren revisión. La dirección visual aprobada permanece intacta.
 
-Paleta: cristal sintetizado de ataque redondeado, madera afinada, pequeños
-pulsos electrónicos y colchones armónicos aireados. Evitar campanillas agudas
-persistentes, bajos dominantes, alarmas, voces, risas, aplausos y fanfarrias de
-casino. Sin referencias melódicas, grabaciones ni imitaciones de otros juegos.
-No se asocian culturas o edades a clichés musicales.
+Personalidad caricaturesca, cercana, simpática, familiar, expresiva y juguetona;
+pop colorida y optimista, con humor amable y acabado comercial profesional.
+Preguntados es referencia conceptual de alegría social, nunca fuente de melodías,
+efectos, grabaciones ni imitaciones. No infantilizar ni burlarse de quien falla.
 
-Firma propuesta: tres notas propias sobre grados 1–2–5, con ritmo corto–corto–largo
-y una pequeña resonancia de cristal sobre base de madera. Es una célula a
-componer, no una melodía aprobada; su originalidad debe revisarse al escuchar
-el material producido. Las acciones frecuentes usan fragmentos de una o dos
-notas; la firma completa se reserva a entrada y cierre. Registro medio, armonía
-mayor abierta con segundas y sextas suaves; sin modulación brusca ni tensión
-creciente al acercarse el plazo.
+Paleta: boing elástico corto, pop de burbuja, plop redondo, boop electrónico
+cómico, silbidos ascendentes/descendentes suaves, xilófono y marimba. Música con
+percusión ligera, bajo saltarín y pequeñas trompetas sordas como puntuación
+ocasional. No apilar todos los timbres en cada evento. Silbidos de registro medio
+y trompetas sin estridencia. Sin risas, voces de burla, bocinas fuertes,
+zumbadores punitivos ni percusión incesante.
 
-La interfaz se siente ágil; la Arena, curiosa y concentrada; el resultado,
-satisfecho y acogedor. Una respuesta incorrecta invita a continuar y nunca
-ridiculiza. La celebración final reconoce completar la práctica: no proclama
-victoria online, rango ni recompensa inexistente.
+Quedan excluidos como identidad sonidos mágicos, cristales, hechizos, ambientes
+galácticos, fantasía mística y música épica. Sin colas etéreas, drones espaciales
+ni grandes reverberaciones. Predominan ataques redondos y colas cortas.
+
+Motivo nuevo a componer: pregunta de dos notas repetidas y respuesta de tres
+notas sincopadas en marimba, pausa cómica breve y remate de boop. Contorno
+propuesto 3–3 / 5–2–1, 4/4, sin fijar tonalidad ni melodía definitiva. Bajo a
+contratiempo con saltos moderados; xilófono solo en remates. No reutilizar la
+célula 1–2–5 ni el arreglo rechazado. Originalidad y memorabilidad se evalúan
+escuchando muestras, no por una descripción escrita.
+
+Los botones hacen pop; los avances rebotan; el acierto responde con una frase
+alegre breve; el error usa un boop bajo amable distinto del agotamiento. El lobby
+invita a reunirse, la partida deja espacio para leer y el resultado celebra
+completar una ronda, sin anunciar victorias online, rangos ni premios inexistentes.
 
 ## 2. Convenciones del catálogo
 
@@ -46,27 +55,27 @@ Cada ID es estable y cada evento es un contrato propuesto, no una API existente.
 
 | ID / nombre | Propósito y carácter | Duración | Nivel | Prioridad | Evento exacto propuesto |
 |---|---|---|---|---|---|
-| ui_press / Toque de luz | Confirmar botón común; madera con brillo corto | 70–110 ms | −9 dB | P3 | Activación aceptada por click, toque o teclado; sin duplicar pointerdown/click |
-| ui_navigate / Paso luminoso | Cambio de menú; dos gotas suaves ascendentes | 150–220 ms | −8 dB | P3 | Navegación efectiva a otro menú; sustituye ui_press |
-| ui_back / Regreso cálido | Orientar regreso; caída breve sin tono de error | 140–220 ms | −8 dB | P3 | Regreso efectivo por acción de usuario; sustituye ui_press |
-| arena_enter / Umbral de cristal | Presentar Arena; firma sobre aire cálido | 800–1100 ms | −4 dB | P2 | Entrada efectiva desde lobby, una vez por entrada |
-| question_reveal / Ventana de conocimiento | Señalar pregunta legible; destello amortiguado | 160–240 ms | −9 dB | P2 | Nueva pregunta visible y activa; una vez por questionId |
-| category_geografia / Horizonte | Identificar Geografía; cristal abierto y soplo breve | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Geografía si cambia categoría |
-| category_ciencias / Órbita | Identificar Ciencias; dos pulsos redondos y cristal | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Ciencias si cambia categoría |
-| category_historia / Memoria | Identificar Historia; madera resonante con luz cálida | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Historia si cambia categoría |
-| category_arte_cultura / Prisma | Identificar Arte y cultura; cristal y cuerda pulsada suave | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Arte y cultura si cambia categoría |
-| category_deportes / Impulso | Identificar Deportes; pulso de madera elástico | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Deportes si cambia categoría |
-| category_entretenimiento / Chispa | Identificar Entretenimiento; dos notas juguetonas moderadas | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Entretenimiento si cambia categoría |
-| answer_select / Encaje | Reconocer selección aceptada; cierre táctil suave | 70–110 ms | −10 dB | P3 | Una alternativa aceptada por motor; sin sonar ante duplicado o fuera de plazo |
-| answer_correct / Cristal resuelto | Acierto; dos notas abiertas con resonancia luminosa | 450–650 ms | 0 dB | P1 | Resolución correcta confirmada; una vez por pregunta |
-| answer_incorrect / Otra oportunidad | Error amable; madera y intervalo neutro que se posa | 300–450 ms | −4 dB | P1 | Resolución incorrecta confirmada; sin zumbador ni caída dramática |
-| timer_soft / Pulso de atención | Recordar tiempo sin alarma; pulso mate único | 60–100 ms | −14 dB | P3 | Cruce real de 5 s restantes, solo pregunta activa y aviso habilitado |
-| time_expired / Cierre suave | Expresar plazo terminado; aire y cristal que se apaga | 350–500 ms | −5 dB | P1 | Resolución por agotamiento; excluye answer_incorrect |
-| question_next / Paso de página | Reconocer avance; barrido breve de madera/cristal | 140–220 ms | −9 dB | P2 | Avance explícito aceptado a otra pregunta; sustituye ui_press |
-| round_complete / Constelación | Celebrar completar diez preguntas; firma cálida completa | 1200–1800 ms | −2 dB | P1 | Apertura de resumen después de avance final; una vez por roundId |
-| replay / Nueva chispa | Reinicio optimista; pequeño ascenso abierto | 350–500 ms | −6 dB | P2 | Volver a jugar aceptado y nueva ronda creada |
-| audio_enable / Luz encendida | Previsualizar control sin sorpresa; toque redondeado | 80–120 ms | −12 dB | P3 | Activar efectos explícitamente, una vez y al volumen elegido |
-| audio_adjust / Punto de escucha | Ayudar a ajustar volumen; toque neutro | 70–100 ms | −12 dB | P3 | Final de ajuste de efectos, con máximo una muestra cada 500 ms |
+| ui_press / Pop de botón | Confirmar botón; burbuja seca redonda con pequeño rebote | 70–110 ms | −9 dB | P3 | Activación aceptada por click, toque o teclado; sin duplicar pointerdown/click |
+| ui_navigate / Boop de paseo | Cambio de menú; dos boops medios ascendentes de ataque blando | 150–220 ms | −8 dB | P3 | Navegación efectiva a otro menú; sustituye ui_press |
+| ui_back / Plop de regreso | Orientar regreso; plop descendente corto y simpático | 140–220 ms | −8 dB | P3 | Regreso efectivo por acción de usuario; sustituye ui_press |
+| arena_enter / ¡A jugar! | Presentar Arena; boing breve, marimba sincopada y acento de trompeta sorda | 800–1100 ms | −4 dB | P2 | Entrada efectiva desde lobby, una vez por entrada |
+| question_reveal / Pregunta al salto | Señalar pregunta legible; pop y golpe seco de xilófono | 160–240 ms | −9 dB | P2 | Nueva pregunta visible y activa; una vez por questionId |
+| category_geografia / De paseo | Identificar Geografía; silbido ascendente corto con plop, sin cliché regional | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Geografía si cambia categoría |
+| category_ciencias / Boop curioso | Identificar Ciencias; boop de dos alturas con modulación cómica breve | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Ciencias si cambia categoría |
+| category_historia / Toc-toc | Identificar Historia; dos golpes de marimba y remate de bloque de madera | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Historia si cambia categoría |
+| category_arte_cultura / Pincel travieso | Identificar Arte y cultura; tres notas de xilófono con pausa juguetona | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Arte y cultura si cambia categoría |
+| category_deportes / Rebote | Identificar Deportes; boing amortiguado y palmada sintética ligera | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Deportes si cambia categoría |
+| category_entretenimiento / Ta-dá pequeño | Identificar Entretenimiento; dos notas de trompeta sorda y pop seco | 280–400 ms | −10 dB | P2 | Entrada de pregunta de Entretenimiento si cambia categoría |
+| answer_select / Plop encajado | Reconocer selección aceptada; plop compacto de tono medio | 70–110 ms | −10 dB | P3 | Una alternativa aceptada por motor; sin sonar ante duplicado o fuera de plazo |
+| answer_correct / ¡Bien ahí! | Acierto; marimba ascendente sincopada y pop final, celebración breve | 450–650 ms | 0 dB | P1 | Resolución correcta confirmada; una vez por pregunta |
+| answer_incorrect / Ups amable | Error; boop grave redondo con deslizamiento y rebote neutro; sin burla ni trombón de fracaso | 300–450 ms | −4 dB | P1 | Resolución incorrecta confirmada; sin zumbador ni caída dramática |
+| timer_soft / Toc de atención | Recordar tiempo; único toc de madera de cuerpo redondo | 60–100 ms | −14 dB | P3 | Cruce real de 5 s restantes, solo pregunta activa y aviso habilitado |
+| time_expired / Se cerró el turno | Plazo terminado; silbido descendente moderado y plop seco | 350–500 ms | −5 dB | P1 | Resolución por agotamiento; excluye answer_incorrect |
+| question_next / Salto de página | Avance; mini boing ascendente con tope de madera | 140–220 ms | −9 dB | P2 | Avance explícito aceptado a otra pregunta; sustituye ui_press |
+| round_complete / Ronda redonda | Celebrar completar; motivo de marimba, bajo saltarín y dos acentos cortos de trompeta | 1200–1800 ms | −2 dB | P1 | Apertura de resumen después de avance final; una vez por roundId |
+| replay / Otro saltito | Reinicio; boing corto y respuesta optimista de xilófono | 350–500 ms | −6 dB | P2 | Volver a jugar aceptado y nueva ronda creada |
+| audio_enable / Boop de prueba | Previsualizar control; boop medio amistoso sin remate extra | 80–120 ms | −12 dB | P3 | Activar efectos explícitamente, una vez y al volumen elegido |
+| audio_adjust / Pop de escucha | Ayudar a ajustar; pop neutro sin barrido ni sorpresa | 70–100 ms | −12 dB | P3 | Final de ajuste de efectos, con máximo una muestra cada 500 ms |
 
 No sonido al hover, foco, scroll, botón deshabilitado o pulsación rechazada.
 Las seis categorías comparten duración y fuerza; su identificación no es
@@ -78,9 +87,9 @@ segundo, aceleración ni crescendo. Se puede desactivar independientemente.
 
 | ID / nombre | Propósito y carácter | Duración | Nivel | Prioridad | Evento exacto propuesto |
 |---|---|---|---|---|---|
-| music_lobby / Plaza de luz | Identidad social; madera, cristal espaciado y armonía cálida; 92 BPM, 4/4 | 32 compases ≈83,5 s, bucle | −18 dB | P4 | Lobby visible, audio desbloqueado y música habilitada |
-| music_arena / Ideas en órbita | Sostener concentración; textura ligera y pocos ataques; 80 BPM, 4/4 | 24 compases =72 s, bucle | −23 dB | P4 | Ronda activa visible; sin sincronizar con respuestas o plazo |
-| music_results / Luz compartida | Reposo satisfactorio; variante armónica del motivo, sin fanfarria; 88 BPM, 4/4 | 16 compases ≈43,6 s, bucle | −20 dB | P4 | Resumen visible; entrar después de round_complete |
+| music_lobby / Patio Pop | Encuentro social; melodía original pegadiza de marimba, xilófono de respuesta, bajo saltarín, shaker y escobillas; trompeta sorda puntual; 108 BPM, 4/4 | 32 compases ≈71,1 s, bucle | −18 dB | P4 | Lobby visible, audio desbloqueado y música habilitada |
+| music_arena / Piensa y salta | Concentración juguetona; marimba espaciada, bajo pizzicato sintetizado, percusión mínima y pausas; sin silbidos durante lectura; 96 BPM, 4/4 | 24 compases =60 s, bucle | −23 dB | P4 | Ronda activa visible; sin sincronizar con respuestas o plazo |
+| music_results / Otra ronda juntos | Cierre optimista; respuesta al motivo con marimba, bajo rebotado y trompeta suave solo en entrada, después arreglo ligero; 104 BPM, 4/4 | 16 compases ≈36,9 s, bucle | −20 dB | P4 | Resumen visible; entrar después de round_complete |
 
 Composición original con desarrollo y silencios; ninguna pista es un preset
 genérico repetido. Sin letra, voces ni percusión insistente. Entregar bucles
@@ -162,7 +171,7 @@ reintentos. Cancelar cargas al cambiar de escena; no recrear motor por render.
 ### Archivos y presupuesto
 
 - Máster de producción WAV PCM 48 kHz / 24 bits, proyectos editables, stems de
-  cristal/base/ambiente y exportaciones sin normalización destructiva. Efectos
+  melodía/marimba/bajo/percusión/acentos cómicos y exportaciones sin normalización destructiva. Efectos
   mono salvo entrada/cierre que justifiquen estéreo; música estéreo compatible
   con mono. No introducir silencio inicial perceptible; rampas evitan clicks.
 - Entrega candidata Opus en WebM (SFX 64–96 kb/s, música 96–128 kb/s) y alternativa
@@ -208,27 +217,66 @@ documentar herramienta, términos aplicables y revisión humana de similitud ant
 de admitir el asset. No hay recursos adquiridos ni derechos verificados en C5a;
 la revisión contractual corresponde a la futura producción.
 
-## 6. Primera producción recomendada y aprobación
+## 6. Especificación de muestras originales y reproducibles
 
-Primera tanda futura: **ocho efectos** — ui_press, ui_back, arena_enter,
-question_reveal, answer_correct, answer_incorrect, timer_soft y time_expired —
-y **un boceto de lobby de 20–30 s**, sin bucle final todavía. Presentar dos
-variantes de firma (cristal con madera / cristal con pulso) dentro de la misma
-identidad y elegir una antes de extenderla a categorías y tres músicas.
-No producir el catálogo entero antes de esta escucha. Esta recomendación no
-autoriza producción ni implementación de C5b/C5c.
+**Orden obligatorio:** primero corrección documental, después archivos de audio
+reproducibles y comparación audible antes de aprobar producción definitiva. Esta
+revisión prepara la especificación: no afirma haber producido ni escuchado audio.
+Los prototipos se entregarán separados del juego. No se aprueba por onomatopeyas.
 
-Revisión del Director: aprobar o ajustar identidad, intensidad de acierto/error,
-aviso único a 5 s, timbres de categoría, papel de la música y primera tanda.
-Después se solicita el alcance concreto de producción, por separado de C5a.
+### Paquete de escucha
 
-Criterios para futura aceptación de audio: contraste comprensible en escucha
-ciega de acierto/error/agotamiento sin carácter punitivo; mezcla agradable tras
-dos rondas; ausencia de saturación, clicks y cortes de bucle; funcionamiento
-en silencio; una reproducción por evento aceptado y ninguna tras reanudar;
-preferencias, bloqueo autoplay y errores de red controlados. Validar Chrome y
-Firefox escritorio, Android Chrome e iOS Safari reales, altavoz y auriculares,
-mono y lector de pantalla. Nada de este QA sonoro se declara ejecutado ahora.
+Dos variantes dentro de Caricatura Familiar: **A — Pop redondo**, elástica y
+contenida; **B — Comedia rítmica**, más expresiva con marimba y remates breves.
+Mismas duraciones y niveles de referencia; ninguna es definitiva. No comparar
+contra la identidad rechazada ni reintroducirla como alternativa.
+
+| Muestras por variante | Contenido exigido | Comparación audible |
+|---|---|---|
+| ui_press y ui_back | Dos archivos: pop y plop; A seco, B con rebote corto | Diez pulsaciones a 500 ms y tres regresos; valorar fatiga |
+| answer_correct | Frase original de marimba; A dos ataques, B frase sincopada | Alegría y claridad a igual sonoridad percibida |
+| answer_incorrect y time_expired | Dos archivos: boop amable y silbido/plop | Alternar sin rótulos para comprobar distinción sin humillación |
+| Seis category_* | Los seis timbres del catálogo, no un archivo renombrado | Orden fijo, pausas de 800 ms, misma secuencia A/B |
+| Boing, pop, plop, boop, silbido arriba y silbido abajo | Seis estudios aislados de 100–500 ms; no nuevos eventos de juego | Carácter cómico, registro y ausencia de estridencia |
+| music_lobby | Boceto de ocho compases a 108 BPM ≈17,8 s, repetido dos veces ≈35,6 s | Dos arreglos originales: bajo saltarín y percusión ligera; B suma trompeta breve, no volumen |
+
+**18 archivos individuales por variante, 36 en total**, más montaje comparativo:
+2 botones + acierto + error + agotamiento + 6 categorías + 6 estudios + música.
+Los estudios pueden compartir síntesis con efectos, etiquetados como estudios.
+No producir el catálogo completo antes de evaluar esta tanda.
+
+Entrega futura WAV PCM 48 kHz/24 bits, SFX mono y música estéreo, más MP3 de
+escucha. Carpeta separada del runtime, nunca public/ ni importaciones desde src/.
+Nombres c5a_<id>_<A|B>_v001.wav; índice Markdown con enlaces relativos, duración,
+autor/procedencia y estado PROTOTIPO, NO APROBADO. Montaje
+c5a_comparacion_AB_v001.wav: A, pausa de 1 s y B por pareja; hoja con orden y
+tiempos exactos. Primera comparación de SFX sin música encima ni voces necesarias
+para identificar archivos.
+
+Reproducibilidad: entregar fuente de síntesis/arreglo o proyecto editable,
+versiones de herramientas, semilla si hay aleatoriedad, parámetros, tempo,
+notas/ritmo, comando o pasos de exportación y manifiesto SHA-256. Sin extraer
+audios de videojuegos ni transcribir sus melodías. Registrar licencias de
+instrumentos/muestras; sustituir fuentes que impidan la entrega reproducible.
+
+QA de entrega: apertura y decodificación real de cada archivo, duración, canales,
+clipping, silencios accidentales, correspondencia A/B y hashes. Igualar sonoridad
+por pareja sin eliminar expresión y medir picos tras exportar. Escuchar en
+altavoz de teléfono, auriculares, mono y volumen bajo; registrar dispositivo,
+herramienta y resultado. Validar archivos no equivale a aprobación humana ni a
+PASS físico. No declarar escucha o aprobación que no se haya realizado.
+
+Hoja del Director por pareja: A/B/ninguna, simpatía, claridad, molestia tras
+repetición y ajuste solicitado. Evaluar música tras dos repeticiones y distinción
+de acierto/error/agotamiento sin etiquetas. Solo después de escuchar se fija
+variante, catálogo y alcance de producción definitiva. Mantener aviso único a
+5 s, silencio y límites; el humor no penaliza ni añade presión competitiva.
+
+Se conservan criterios posteriores de implementación: una reproducción por evento
+aceptado, ninguna tras reanudar; preferencias, autoplay y errores de red
+controlados. Validar Chrome y Firefox escritorio, Android Chrome e iOS Safari
+reales, altavoz, auriculares, mono y lector de pantalla. Este QA sonoro aún no
+se ha ejecutado; C5b/C5c y B04 permanecen sin iniciar.
 
 ## 7. Entrega y límites del bloque
 
