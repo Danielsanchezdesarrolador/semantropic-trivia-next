@@ -97,7 +97,7 @@ try {
         const ticks=(await state()).sfx.filter(s=>Math.abs(s.seconds-info.CLK.seconds)<.001);
         assert.ok(ticks.length>=18 && ticks.length<=22,`Cadencia progresiva: ${ticks.length} tics`);
         const gaps=ticks.slice(1).map((s,i)=>s.at-ticks[i].at);
-        for(const target of [2000,1000,650,350])assert.ok(gaps.some(g=>Math.abs(g-target)<140),`Cadencia ${target}`);
+        for(const target of [2000,1000,650,350])assert.ok(gaps.some(g=>Math.abs(g-target)<140),`Cadencia ${target}; intervalos observados: ${gaps.map(g=>Math.round(g)).join(',')}`);
         assert.ok(ticks.every(s=>s.pitch===1 && s.duration===.14));
         assert.equal(await count('X3'),0);assert.equal(await count('A1'),0);
         const timeout=(await state()).sfx.filter(s=>Math.abs(s.seconds-.91)<.03);assert.equal(timeout.length,release?0:1);
