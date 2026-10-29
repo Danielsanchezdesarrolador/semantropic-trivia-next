@@ -180,6 +180,10 @@ try {
     assert.match(await page.locator('.b03-timer img').getAttribute('src'),/temporizador_urgente/);
     await page.screenshot({path:`artifacts/b03-b02/${d.name}-estados.png`,fullPage:true});
 
+    // Al cambiar el estado del reloj el SVG se solicita de forma asíncrona;
+    // esperar a que TODAS las imágenes terminen de cargar (o caducar por error real).
+    await page.waitForFunction(() => [...document.images].every(i => i.complete && i.naturalWidth > 0),
+      null,{timeout:15000});
     const imgState = await page.locator('img').evaluateAll(images=>images.map(i=>({src:i.getAttribute('src'),loaded:i.complete&&i.naturalWidth>0})));
     assert.ok(imgState.every(x=>x.loaded),'Recursos ilustrados cargados: '+JSON.stringify(imgState.filter(x=>!x.loaded)));
     const geometry=await page.evaluate(()=>({width:innerWidth,scrollWidth:document.documentElement.scrollWidth}));
