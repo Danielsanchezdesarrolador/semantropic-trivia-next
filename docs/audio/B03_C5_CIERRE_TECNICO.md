@@ -1,7 +1,38 @@
 # B03-C5 — cierre técnico de Caricatura Familiar
 
-29-10-2026. Aprobación artística expresa del Director recibida. Cierre técnico
-en validación/publicación; B04 es próxima etapa y no se inicia.
+29-10-2026. Aprobación artística expresa del Director recibida. **B03-C5 cerrado
+y publicado para evaluación final.** B04 es próxima etapa y no se inicia.
+
+Primera publicación: `d90e24505e1cebc0a53e19812b030b3f5e383124`, merge de #16.
+Render `dep-dbht2qff3r2c7383tsjg` LIVE, comprobado en My Workspace, servicio
+`semantropic-trivia-next-web` / `srv-dbh2d5bl550s73epp23g`, rama main.
+[Juego](https://semantropic-trivia-next-web.onrender.com/) y
+[SHA del build servido](https://semantropic-trivia-next-web.onrender.com/release.json).
+Los commits documentales posteriores actualizan ese marcador; la referencia
+anterior registra la primera publicación funcional, no un SHA actual inventado.
+
+## Recuperación y evidencia pública
+
+Se recuperó la rama docs/b03-c5a-direccion-sonora en 2cc66ee, sin divergencia
+respecto a origin. AGENTS, roadmap y workflow ya estaban guardados; solo quedaba
+sin commit la ampliación del mensaje de diagnóstico de cadencia en la prueba.
+Se conservó en 377319e sin cambiar criterios, tolerancias ni reproducción.
+Los seis archivos aportados sin seguimiento y los nueve originales privados
+permanecieron intactos; no hubo reset, clean, force push ni descartes.
+
+Vite se arrancó de nuevo en http://localhost:5173/. El manifiesto privado devolvió
+SFX02 y nueve entradas; hashes y decodificación reales 9/9. TypeScript, 83 tests,
+build y guard PASS. QA DEV PC1366/móvil390/320 PASS, incluidos W1/D2 solo audición,
+preferencias y ausencia de sustitutos ante M1 faltante. El incidente de cadencia
+DEV anterior no se reprodujo en la recuperación; se conserva el diagnóstico
+ampliado sin relajar la comprobación.
+
+Tras los cuatro checks aprobados de #16 se verificó el despliegue automático por
+API, SHA público exacto y los siete MP3 por tamaño y SHA-256 efectivo usando
+scripts/audio/verify-published.mjs. Chrome sobre la URL pública: 1366×900,
+390×844 y 320×740 PASS; navegación/retroceso, acierto/error, dos músicas
+excluyentes, ducking, volumen/silencio, reloj progresivo, diez preguntas y timeout
+real en escritorio, sin errores JS ni overflow. No es prueba en teléfono físico.
 
 ## Recursos y permiso de uso
 
@@ -79,10 +110,11 @@ No hay backend, ganador competitivo, cuentas ni simulación de online nuevos.
   ambos quedan en cero al responder, ocultar o salir. El gestor central de
   visibilidad cancela/reanuda el RAF de audio, sin modificar TimerArc o el motor.
 - PR #18 cambia AGENTS y parte de main. PR #16 parte de main; PR #17 depende
-  de #16. Orden previsto: #18 a main, #17 dentro de #16 y #16 consolidado a main, evitando un despliegue intermedio con audio histórico. Sin force push.
+  de #16. Orden aplicado: #18 a main, #17 dentro de #16 y #16 consolidado a main,
+  evitando un despliegue intermedio con audio histórico. Sin force push.
   El cierre incorpora la regla de #18 y aclara su asignación histórica revocada.
 
-Publicación pendiente de completar CI, merge y comprobar Render con SHA exacto.
+Publicación inicial comprobada; el roadmap refleja cierre real, con B04 pendiente.
 La aprobación artística ya está concedida; no se presenta QA automatizado como
 escucha humana ni prueba física. Pendientes no simulados: Safari/iOS y teléfono
 físico, certificado C para archivo de evidencia, futuras victorias/derrotas reales.

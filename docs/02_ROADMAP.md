@@ -1,6 +1,19 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — cierre técnico B03-C5 autorizado, 29-10-2026
+## Estado vigente — B03-C5 cerrado y publicado, 29-10-2026
+
+D-047: recuperación terminada sin descarte de trabajo. PR #18 integrado a main,
+#17 dentro de #16 y #16 consolidado a main tras cuatro checks aprobados.
+Primera publicación B03-C5: d90e24505e1cebc0a53e19812b030b3f5e383124,
+Render LIVE y SHA comprobado por API y release.json. Siete originales verificados
+por tamaño/SHA en la URL pública; Chrome PC y móvil emulado PASS, diez preguntas
+y timeout real en PC. W1/D2 solo QA privado; DS-01 e histórico fuera de dist.
+83 tests aprobados, cero fallos; 42 SVG, preguntas y motor conservados.
+[Juego publicado](https://semantropic-trivia-next-web.onrender.com/) ·
+[Informe y límites](audio/B03_C5_CIERRE_TECNICO.md).
+**B04 es la próxima etapa: no iniciada ni autorizada en este cierre.**
+
+## Antecedente — cierre técnico B03-C5 autorizado
 
 D-046: etapa artística Caricatura Familiar aprobada por el Director. Se prepara
 producción con siete originales SFX-02 usados en eventos reales y controles
