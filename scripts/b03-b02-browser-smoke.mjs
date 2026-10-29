@@ -72,6 +72,7 @@ try {
       const arena=rect('.b03-arena');
       const header=rect('.b03-category-header');
       const title=rect('.b03-category-title');
+      const icon=rect('.b03-category-icon');
       const counter=rect('.b03-category-count');
       const question=rect('.b03-question');
       const questionText=rect('.b03-question-content');
@@ -95,6 +96,15 @@ try {
       return {
         arenaCenter:(arena.left+arena.right)/2,
         headerCenter:(header.left+header.right)/2,
+        iconCenterX:(icon.left+icon.right)/2,
+        iconCenterY:(icon.top+icon.bottom)/2,
+        targetIconCenterX:header.left+header.width*(86/1200),
+        targetIconCenterY:header.top+header.height*(81/180),
+        countCenterX:(counter.left+counter.right)/2,
+        countCenterY:(counter.top+counter.bottom)/2,
+        targetCountCenterX:header.left+header.width*((940+225/2)/1200),
+        targetCountCenterY:header.top+header.height*((22+119/2)/180),
+        titleStartsAfterIcon:title.left>=icon.right+3,
         headerLeft:header.left,
         backRight:rect('.b03-back-visual').right,
         timerCenter:(rect('.b03-timer').left+rect('.b03-timer').right)/2,
@@ -117,6 +127,16 @@ try {
       assert.ok(Math.abs(layout.headerCenter-layout.arenaCenter)<5,
         'Cabecera PC centrada horizontalmente: '+JSON.stringify(layout));
     }
+    assert.ok(Math.abs(layout.iconCenterX-layout.targetIconCenterX)<1.6,
+      'El icono debe coincidir con el círculo dibujado en el SVG: '+JSON.stringify(layout));
+    assert.ok(Math.abs(layout.iconCenterY-layout.targetIconCenterY)<1.6,
+      'Icono descentrado verticalmente: '+JSON.stringify(layout));
+    assert.ok(Math.abs(layout.countCenterX-layout.targetCountCenterX)<1.6,
+      'El 3/10 no coincide con el centro de la cápsula: '+JSON.stringify(layout));
+    assert.ok(Math.abs(layout.countCenterY-layout.targetCountCenterY)<1.6,
+      'Contador descentrado verticalmente: '+JSON.stringify(layout));
+    assert.ok(layout.titleStartsAfterIcon,
+      'El icono invade el texto de categoría: '+JSON.stringify(layout));
     assert.ok(layout.titleEndsBeforeCount&&!layout.titleOverflows,
       'Texto de categoría invade el contador: '+JSON.stringify(layout));
     assert.ok(Math.abs(layout.questionCenter-layout.textCenter)<5,
@@ -139,7 +159,9 @@ try {
           'Indicador de respuesta superpuesto: '+JSON.stringify(item));
       }
     }
-    await page.screenshot({path:'artifacts/b03-b02/'+d.name+'-arte-cultura-hf1.png',fullPage:true});
+    await page.screenshot({path:'artifacts/b03-b02/'+d.name+'-arte-cultura-hf2.png',fullPage:true});
+    // Recorte de cabecera para inspección visual precisa.
+    await page.locator('.b03-arena-top').screenshot({path:'artifacts/b03-b02/'+d.name+'-cabecera-hf2.png'});
     console.log('PASS B03-B02-HF1',d.name,'GEOMETRIA',JSON.stringify(layout));
     await page.getByRole('button',{name:'Entretenimiento',exact:true}).click();
 
