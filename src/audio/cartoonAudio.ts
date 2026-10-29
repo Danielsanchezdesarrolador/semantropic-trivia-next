@@ -1,11 +1,8 @@
 import { safeEffectsVolume } from './cartoonPolicy';
 
-// Solo el efecto con uso real se incluye en la compilación local de evaluación.
-// Los originales viven fuera de Git. Sin importación privada, el juego sigue en silencio.
-const sources = import.meta.glob<string>('/artifacts/private-cartoon-sfx/ui_open_cartoon_6.mp3', {
-  query: '?url', import: 'default', eager: true,
-});
-const source = Object.values(sources)[0];
+// HF1 retira Colección como disparador. Conservar el original privado y el motor,
+// sin incluir MP3 ni activar otro evento hasta una asignación autorizada.
+const source = '';
 const expectedHash = '54a2f8b4f7b984a4ae76ef37ae8a4110bb76a36232edd6a8f1511bbe528023ed';
 const preferenceKey = 'semantropic.cartoon-effects.v1';
 

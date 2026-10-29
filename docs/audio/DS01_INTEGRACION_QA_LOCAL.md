@@ -80,9 +80,9 @@ sin beeps de sustitución. Importar no reproduce. Al ocultar, se detienen fuente
 el timeout pendiente se consume una vez al volver, no en cada tick/foco. StrictMode
 no duplica registros. Las nuevas preguntas y reinicios conservan claves independientes.
 
-Los tres efectos Pixabay mantienen sus IDs y usos. Durante QA DS-01 activo no
-se mezcla Cartoon 6 con su botón; fuera de DS-01 sigue su asignación previa.
-Funny y derrota siguen sin disparadores. Ninguna música nueva se reproduce.
+Los tres efectos Pixabay mantienen sus IDs. **HF1 posterior retira Colección como
+disparador de Cartoon 6 y de POP01**; no se inventa otro uso, todos quedan reservados.
+HF2 prepara música exacta solo en QA local; ver el correctivo enlazado abajo.
 
 ## Uso por el Director
 
@@ -102,9 +102,10 @@ Funny y derrota siguen sin disparadores. Ninguna música nueva se reproduce.
 La música física presente sigue siendo
 `public/assets/audio/music/semantropic_lobby_pop_familiar_v001.mp3`, hash
 `e82e7f4d6e129eddad15a9cf26c4118ae545646d4ae08fc33c19e45c27d37707`, preservado.
-No se encontró en el repositorio un archivo llamado `18_lobby_pop_familiar.mp3`;
-este bloque no finge su existencia ni implementa o sustituye música. Bombinsound
-continúa sin integrar. Se preservan 42 SVG, CSS de Arena, preguntas y temporizador.
+HF2 posteriormente encontró `18_lobby_pop_familiar.mp3` en Descargas con el mismo
+hash exacto; no se sustituye ni renombra el original. Sus derechos explícitos de
+publicación siguen pendientes. [Estado HF1/HF2](HF1_HF2_COLECCION_MUSICA.md).
+Bombinsound continúa sin integrar. Se preservan 42 SVG, CSS de Arena, preguntas y temporizador.
 
 ## Evidencia y límites
 

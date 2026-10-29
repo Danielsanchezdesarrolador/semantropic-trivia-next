@@ -1,6 +1,8 @@
 import { getApprovedAsset } from '../assets/assetRegistry';
 import { lazy, Suspense } from 'react';
 import { ds01Audio } from '../../audio/ds01/audioEngine';
+import LobbyMusicControl, { useLobbyMusic } from '../../audio/LobbyMusicControl';
+import { lobbyMusic } from '../../audio/lobbyMusic';
 import LobbySection from './LobbySection';
 import FullscreenControl from './FullscreenControl';
 import QuizPreview from '../quiz/QuizPreview';
@@ -93,9 +95,11 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
   const approvedBackground = getApprovedAsset('environment/home-main');
   const approvedLogo = getApprovedAsset('brand/logo');
   const { screen, navigate: navigateTo } = useLobbyNavigation(official);
+  useLobbyMusic(screen !== 'arena', official);
   const navigate = (next: Parameters<typeof navigateTo>[0]) => {
     cartoonAudio.stop();
-    if (official && screen !== next) ds01Audio.play(['button']);
+    if (official && screen !== next && next !== 'collection') ds01Audio.play(['button']);
+    if (official) lobbyMusic.setLobby(next !== 'arena');
     navigateTo(next);
     if (official && !ds01Audio.active && isCartoonOpening(screen, next)) void cartoonAudio.openCollection();
   };
@@ -135,6 +139,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
               {official ? <CartoonEffectsControl /> : null}
+              {official ? <LobbyMusicControl /> : null}
               {official ? <FullscreenControl /> : null}
             </div>
           </header>

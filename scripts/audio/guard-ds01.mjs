@@ -22,7 +22,9 @@ export function assertPublishable(path, bytes) {
     throw Error(`Audio inline no autorizado: ${path}`);
   }
   if (path.replaceAll('\\', '/').includes('/dist/') && extname(path) === '.js'
-    && bytes.includes(Buffer.from('Cargar 13 MP3 locales'))) throw Error('Panel privado DS-01 presente en build pública');
+    && (bytes.includes(Buffer.from('Cargar 13 MP3 locales')) || bytes.includes(Buffer.from('Cargar 18_lobby_pop_familiar.mp3')))) {
+    throw Error('Importador privado presente en build pública');
+  }
 }
 async function walk(path) {
   let entries;

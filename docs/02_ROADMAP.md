@@ -1,6 +1,17 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — 29-10-2026, DS-01: motor listo / muestras privadas para QA
+## Estado vigente — 29-10-2026, DS-01 + HF1/HF2
+
+D-041, confirmado expresamente por el Director, aplica HF1/HF2 sobre la rama
+DS-01 actual: Colección sin SFX de clic/entrada y música exacta 18_lobby_pop_familiar.mp3
+con reproductor estable, pausa en Arena y volumen independiente. Original localizado
+en Descargas, hash idéntico al asset previo; reproducción REAL de QA por File API.
+Publicación de la nueva asignación musical bloqueada por falta de declaración de
+derechos suficiente; sin sustitución ni nuevos MP3 públicos.
+[Estado, fuente, documento faltante y QA](audio/HF1_HF2_COLECCION_MUSICA.md).
+DS-01 conserva bloqueo de binarios y panel solo dev. Sin merge/deploy ni B04.
+
+## Entrega DS-01, vigente salvo excepción Colección de HF1
 
 D-040 autoriza cinco eventos DS-01, importación File API local, variantes A/B/C
 solo en Vite dev, volumen/mute y guard contra distribución de muestras.

@@ -43,50 +43,16 @@ try {
     await page.getByRole('button', { name: 'Colección', exact: true }).click();
     assert.equal(await starts(), 0, 'Silencioso antes de consentimiento');
     await page.getByRole('button', { name: 'Inicio', exact: true }).click();
-    await page.getByRole('button', { name: 'Activar efectos', exact: true }).click();
-    await page.getByRole('button', { name: 'Silenciar efectos', exact: true }).waitFor();
-    await page.getByRole('button', { name: 'Colección', exact: true }).click();
-    await page.waitForFunction(() => window.__audioStarts.length === 1);
-    assert.ok(await page.evaluate(() => Math.abs(window.__audioStarts[0] - 2.56) < 0.1), 'MP3 decodificado real');
-    await page.getByRole('button', { name: 'Colección', exact: true }).click();
-    assert.equal(await starts(), 1, 'No repetición del mismo panel');
-    await page.getByRole('button', { name: 'Inicio', exact: true }).click();
-    await page.getByRole('button', { name: 'Colección', exact: true }).click();
-    assert.equal(await starts(), 1, 'Cooldown evita cascada');
-    await page.evaluate(() => {
-      Object.defineProperty(document, 'hidden', { configurable: true, value: true });
-      document.dispatchEvent(new Event('visibilitychange'));
-      Object.defineProperty(document, 'hidden', { configurable: true, value: false });
-      document.dispatchEvent(new Event('visibilitychange'));
-    });
-    await page.getByRole('button', { name: 'Activar efectos', exact: true }).waitFor();
-    assert.equal(await starts(), 1, 'Reanudación no repite eventos');
-    await page.getByRole('button', { name: 'Activar efectos', exact: true }).click();
-    await page.getByRole('button', { name: 'Silenciar efectos', exact: true }).waitFor();
-    await page.getByRole('slider', { name: 'Volumen de efectos' }).fill('0');
-    await page.waitForTimeout(4100);
-    await page.getByRole('button', { name: 'Inicio', exact: true }).click();
-    await page.getByRole('button', { name: 'Colección', exact: true }).click();
-    assert.equal(await starts(), 1, 'Volumen cero no dispara fuentes');
-    await page.getByRole('button', { name: 'Silenciar efectos', exact: true }).click();
-    await page.reload();
-    await page.getByRole('button', { name: 'Activar efectos', exact: true }).waitFor();
-    await page.getByRole('button', { name: 'Colección', exact: true }).click();
-    assert.equal(await starts(), 0, 'Silencio persistido tras recarga');
+    assert.equal(await page.getByRole('button', { name: 'Activar efectos', exact: true }).isDisabled(), true, 'Pixabay sin evento activo tras HF1');
+    for (let i = 0; i < 3; i++) {
+      await page.getByRole('button', { name: 'Colección', exact: true }).click();
+      await page.getByRole('button', { name: 'Inicio', exact: true }).click();
+    }
+    assert.equal(await starts(), 0, 'HF1: Colección sin efecto de entrada');
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, 'Sin overflow');
     assert.deepEqual(errors, []);
     await page.screenshot({ path: `artifacts/cartoon-qa/${width}x${height}.png` });
-    console.log(`PASS ${width}x${height}: consentimiento, decode, evento, dedupe, cooldown, volumen, persistencia, overflow`);
+    console.log(`PASS ${width}x${height}: HF1 Colección sin SFX, originales preservados, navegación y overflow`);
     await context.close();
   }
-  const blocked = await browser.newContext();
-  await blocked.addInitScript(() => { AudioContext.prototype.resume = () => Promise.reject(Error('Bloqueado')); });
-  const page = await blocked.newPage();
-  await page.goto(url);
-  await page.getByRole('button', { name: 'Activar efectos', exact: true }).click();
-  await page.getByRole('status').filter({ hasText: 'No se pudo activar' }).waitFor();
-  await page.getByRole('button', { name: 'Colección', exact: true }).click();
-  await page.getByRole('heading', { name: 'Colección', exact: true }).waitFor();
-  console.log('PASS autoplay rechazado: aviso, navegación funcional, sin error no capturado');
-  await blocked.close();
 } finally { await browser.close(); }

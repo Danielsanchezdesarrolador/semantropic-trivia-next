@@ -1,6 +1,8 @@
 /** Solo aperturas reales de Colección; jamás respuestas o resultados locales. */
-export function isCartoonOpening(from: string, to: string): boolean {
-  return from !== to && to === 'collection';
+export function isCartoonOpening(_from: string, _to: string): boolean {
+  // HF1: Colección conserva navegación, sin click ni efecto de entrada.
+  // Cartoon 6 se conserva reservado hasta otro evento expresamente autorizado.
+  return false;
 }
 
 export function safeEffectsVolume(value: unknown): number {
