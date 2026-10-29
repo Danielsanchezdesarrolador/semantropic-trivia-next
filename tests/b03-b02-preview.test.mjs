@@ -86,3 +86,24 @@ test('B03-B02-HF1: cabecera y chips proporcionales a sus SVG originales', () => 
   assert.match(smoke,/titleEndsBeforeCount/);
   assert.match(smoke,/progressSegments/);
 });
+
+
+test('B03-B02-HF2: pictograma y contador se fijan a coordenadas del arte aprobado',()=>{
+  const css=content('src/ui/quiz/quiz-preview.css');
+  const smoke=content('scripts/b03-b02-browser-smoke.mjs');
+  assert.match(css,/B03-B02-HF2/);
+  assert.match(css,/left:7\.166667%/);
+  assert.match(css,/top:45\.277778%/);
+  assert.match(css,/left:78\.333333%/);
+  assert.match(css,/width:18\.75%/);
+  assert.match(css,/left:16\.5%/);
+  assert.match(smoke,/targetIconCenterX/);
+  assert.match(smoke,/targetCountCenterY/);
+  assert.match(css,/xMidYMid meet/);
+  assert.match(css,/--b03-circle-offset/);
+  assert.match(css,/--b03-count-offset/);
+  assert.match(css,/min\(37\.708333%/);
+  assert.match(smoke,/paintedScale/);
+  assert.match(smoke,/titleStartsAfterIcon/);
+  assert.match(smoke,/cabecera-hf2\.png/);
+});

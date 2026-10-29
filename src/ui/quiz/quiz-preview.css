@@ -252,3 +252,151 @@ button,a{font-family:inherit}button:focus-visible,a:focus-visible{outline:3px so
   .b03-answer-text {font-size:.95rem}
   .b03-answer-feedback {width:23px;height:23px}
 }
+
+
+/* B03-B02-HF2 · Geometría EXACTA del SVG (1200×180).
+   Antes, grid+padding desplazaba el pictograma y situaba "3 / 10"
+   fuera del centro de su cápsula. Ahora cada elemento se ancla
+   a las coordenadas originales del asset, NO a columnas aproximadas.
+   Centro emblema: (86,81); cápsula: (940..1165,22..141). */
+.b03-category-header {
+  position:relative;
+  display:block;
+  height:80px;
+  padding:0;
+  min-width:0;
+}
+.b03-category-header-skin {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:fill;
+  pointer-events:none;
+}
+.b03-category-icon {
+  position:absolute;
+  z-index:2;
+  grid-column:auto;
+  left:7.166667%;
+  top:45%;
+  width:clamp(23px,9%,47px);
+  height:auto;
+  aspect-ratio:1;
+  max-width:none;
+  transform:translate(-50%,-50%);
+  object-fit:contain;
+}
+.b03-category-title {
+  position:absolute;
+  z-index:2;
+  grid-column:auto;
+  left:16.5%;
+  right:23%;
+  top:45%;
+  width:auto;
+  height:auto;
+  min-width:0;
+  padding:0;
+  margin:0;
+  transform:translateY(-50%);
+  display:block;
+  line-height:1.16;
+  text-align:left;
+  text-wrap:nowrap;
+  overflow-wrap:normal;
+}
+.b03-category-count {
+  position:absolute;
+  z-index:2;
+  grid-column:auto;
+  left:78.333333%;
+  top:45.277778%;
+  width:18.75%;
+  height:auto;
+  min-width:0;
+  padding:0;
+  margin:0;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+  background:transparent;
+  border:0;
+  border-radius:0;
+}
+@media(max-width:860px) {
+  .b03-category-header {height:64px}
+}
+@media(max-width:600px) {
+  .b03-category-header {height:56px}
+  .b03-category-icon {width:clamp(23px,9%,28px)}
+  .b03-category-title {font-size:clamp(.64rem,2.65vw,.84rem)}
+}
+@media(max-width:355px) {
+  .b03-category-header {height:53px}
+  .b03-category-icon {width:23px}
+  .b03-category-title {font-size:.59rem}
+}
+
+
+/* HF2-QA: la vista SVG conserva preserveAspectRatio="xMidYMid meet".
+   En PC, un SVG 1200/180 dentro de 590/80 tiene bandas horizontales
+   internas (28 px a cada lado). El layout anterior medía el <img>, NO
+   la parte pintada, y por eso icono/contador se veían desplazados.
+   Estas coordenadas usan min(anchoSVG/anchoContenedor, altoSVG/altoContenedor)
+   sin deformar los 6 SVG originales. */
+.b03-category-header {
+  --b03-circle-offset:228.4444px; /* 514 * (80 / 180) */
+  --b03-count-offset:201.1111px;  /* 452.5 * (80 / 180) */
+  --b03-title-start:177.7778px;   /* 400 * (80 / 180) */
+  --b03-title-end:146.6667px;     /* 330 * (80 / 180) */
+  --b03-count-width:100px;        /* 225 * (80 / 180) */
+}
+.b03-category-icon {
+  left:calc(50% - min(42.833333%,var(--b03-circle-offset)));
+  top:45%;
+  transform:translate(-50%,-50%);
+}
+.b03-category-title {
+  left:calc(50% - min(33.333333%,var(--b03-title-start)));
+  right:calc(50% - min(27.5%,var(--b03-title-end)));
+  top:45%;
+  transform:translateY(-50%);
+}
+.b03-category-count {
+  /* CSS left representa el CENTRO de la cápsula del SVG. */
+  left:calc(50% + min(37.708333%,var(--b03-count-offset)));
+  width:min(18.75%,var(--b03-count-width));
+  top:45.277778%;
+  transform:translate(-50%,-50%);
+}
+@media(max-width:860px) {
+  .b03-category-header {
+    --b03-circle-offset:182.7556px;
+    --b03-count-offset:160.8889px;
+    --b03-title-start:142.2222px;
+    --b03-title-end:117.3333px;
+    --b03-count-width:80px;
+  }
+}
+@media(max-width:600px) {
+  .b03-category-header {
+    --b03-circle-offset:159.9111px;
+    --b03-count-offset:140.7778px;
+    --b03-title-start:124.4444px;
+    --b03-title-end:102.6667px;
+    --b03-count-width:70px;
+  }
+}
+@media(max-width:355px) {
+  .b03-category-header {
+    --b03-circle-offset:151.3444px;
+    --b03-count-offset:133.2361px;
+    --b03-title-start:117.7778px;
+    --b03-title-end:97.1667px;
+    --b03-count-width:66.25px;
+  }
+}
