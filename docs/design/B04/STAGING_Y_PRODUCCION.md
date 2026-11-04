@@ -26,3 +26,9 @@ Auto-Deploy preferido: After CI Checks Pass. El conector de creación disponible
 Bienvenida en raíz y #welcome; acceso/registro visual; lobby B02 real en #home; audio comprobado dentro del lobby; Arena B03 y ronda local preservadas. Los tests conservan todas sus aserciones previas. Se agregan checks B04 y ejecución en pushes a staging. Sin cambios al juego ni dependencias: solo scripts, workflows y continuidad. El PR #20 permanece sin fusionar a main.
 
 Las referencias y evidencias de la primera entrega se conservan como historia. El paquete limpio de main contiene 83 tests, no los 201 que incluían trabajos privados del workspace original. Evidencias de CI se guardan como artifacts/b04 y no incorporan preguntas privadas.
+
+## Configuración comprobada al iniciar B04-C3 (04/11/2026)
+
+Sitio fijo: https://semantropic-trivia-dev.onrender.com/ · servicio `srv-dbljjvqjnfac7387cua0`, workspace confirmado por el Director `tea-daum20gjo6nc73dndfqg`. Rama `staging`, build `npm install && npm run build`, publish `dist`, autoDeploy `yes`, disparador `commit`, previews `off`. Se aplica la barrera CI antes de integrar el PR a staging; no afirmar que el disparador nativo es After CI Checks Pass. No se modifica esta configuración ni se crean servicios por bloque.
+
+Base C3 verificada: staging `d28648c1db6f68183069e3a5347741d19ffa8c4c` (merge #21), cuatro workflows completados con éxito. Producción conserva `main` `522b038caaa98cab1a0ff733b6beed8a1584d63d` y servicio `srv-dbh2d5bl550s73epp23g`. Los SHA desplegados finales se contrastan por API y release.json; el registro de cierre del PR contiene esa evidencia.

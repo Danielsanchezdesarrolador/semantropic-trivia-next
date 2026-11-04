@@ -76,7 +76,8 @@ try {
         await page.getByRole('link', { name: 'CREAR CUENTA', exact: false }).click();
         await page.getByRole('heading', { name: 'Crear cuenta', exact: true }).waitFor();
         await page.getByRole('link', { name: 'Volver a bienvenida', exact: false }).click();
-        await page.getByRole('link', { name: 'Ir al lobby actual · práctica local' }).click();
+        await page.getByRole('link', { name: 'Demostración · práctica local' }).click();
+        await page.getByRole('link', { name: 'ABRIR LOBBY LOCAL', exact: true }).click();
         assert.equal(new URL(page.url()).hash, '#home');
         await page.locator('.st-preview-page--official').waitFor({ state: 'visible' });
         isOfficial = response?.status() === 200 && await page.locator('.st-preview-page--official').count() === 1;

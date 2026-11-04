@@ -1,4 +1,4 @@
-import { getApprovedAsset } from '../assets/assetRegistry';
+import { getOfficialAsset, getApprovedAsset } from '../assets/assetRegistry';
 import { lazy, Suspense } from 'react';
 import { ds01Audio } from '../../audio/ds01/audioEngine';
 import { useDS01Dev } from '../../audio/ds01/useDS01Dev';
@@ -76,7 +76,7 @@ function ResourceLibrary() {
             {sheetAssets.filter(item=>item.category===group).map(item=>(
               <figure className="st-library__tile" key={item.id}>
                 <div className="st-library__checker"><img src={item.path} alt={item.title} loading="eager" /></div>
-                <figcaption><strong>{item.title}</strong><span>{item.state==='candidato'?'Candidato visual':'Referencia / no funcional'}</span>{item.note?<small>{item.note}</small>:null}</figcaption>
+                <figcaption><strong>{item.title}</strong><span>{item.state==='candidato'?'Candidato visual':item.state==='legacy/provisional'?'Histórico provisional':'Referencia / no funcional'}</span>{item.note?<small>{item.note}</small>:null}</figcaption>
               </figure>
             ))}
           </div>
@@ -161,10 +161,10 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
             <img className="st-home__crystal st-home__crystal--one" src={asset('crystal-blue')} alt="" />
             <img className="st-home__crystal st-home__crystal--two" src={asset('crystal-violet')} alt="" />
           </div>
-          <div className="st-home__characters" aria-label="Personajes candidatos">
-            <img className="st-home__character st-home__character--boy" src={asset('boy')} alt="Protagonista 01, arte provisional" width={173} height={194} />
-            <img className="st-home__character st-home__character--girl" src={asset('girl')} alt="Protagonista 02, arte provisional" width={180} height={196} />
-            <img className="st-home__character st-home__character--robot" src={asset('robot')} alt="Robot ilustrativo, no modo CPU" width={142} height={158} />
+          <div className="st-home__characters" aria-label="Personajes oficiales">
+            <img className="st-home__character st-home__character--boy" src={getOfficialAsset('protagonist-male-v1').src} alt="Protagonista masculino oficial" width={704} height={1100} />
+            <img className="st-home__character st-home__character--girl" src={getOfficialAsset('protagonist-female-v1').src} alt="Protagonista femenina oficial" width={653} height={1100} />
+            <img className="st-home__character st-home__character--robot" src={getOfficialAsset('mascot-robot-v1').src} alt="Robot mascota oficial" width={1100} height={1044} />
           </div>
           <div className="st-home__actions" aria-label="Modos oficiales previstos">
             <ModeButton id="online" name="Jugar Online" onOpen={official ? () => navigate('online') : undefined} />

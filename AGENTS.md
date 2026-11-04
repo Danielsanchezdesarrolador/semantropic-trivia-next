@@ -122,3 +122,9 @@ antecedentes como historia; este alcance expreso más reciente prevalece.
 
 ### Definición de terminado
 Una etapa es terminada solo si cumple su objetivo, QA medible, aprobación humana y despliegue verificable cuando corresponde. No asumir que subir archivos a GitHub equivale a haber lanzado un juego.
+
+## Actualización vigente del Director — B04-C3, 04/11/2026
+
+Esta orden prevalece sobre los estados históricos que dejan B04 pendiente. Se autoriza únicamente consolidar navegación visual de acceso y canon de personajes, con validación local sin cuentas reales. Director aprueba Opción C tras su revisión Android/web; conservar C2 y D-049. Reutilizar personajes exactos del catálogo tipado y proteger históricos; no generar reinterpretaciones sin nueva aprobación. Ver `docs/design/B04/B04_C3_IDENTIDAD.md`.
+
+Publicación permanente de revisión: rama propia desde staging → PR a staging → CI completa verde y protecciones → merge normal a staging → mismo Render DEV https://semantropic-trivia-dev.onrender.com/ → release.json/QA público → revisión del Director. Sin main, producción, previews por PR ni nuevos servicios. La actualización de staging no es aprobación artística ni comercial. No incorporar Q03/Q04 privado. C4 solo propuesta documental; requiere nueva autorización para autenticación/backend. Checkpoint: `docs/design/B04/B04_C3_ENTREGA.md`.

@@ -1,6 +1,9 @@
+import { officialArtAssets } from './officialArtAssets';
+export { officialArtAssets, getOfficialAsset, embeddedPortal } from './officialArtAssets';
+export type { OfficialArtAsset, OfficialArtAssetId } from './officialArtAssets';
 /**
  * B02-C1: catálogo de capas del mockup aprobado.
- * Fondo y logotipo B02-C2 aprobados por el Director; personajes y otros assets siguen pendientes.
+ * Fondo y logotipo B02-C2 protegidos; canon de personajes B04-C3 enlazado.
  * La captura completa del mockup es REFERENCIA, no fondo de interfaz.
  */
 export type AssetState = 'pending-art' | 'approved';
@@ -14,6 +17,7 @@ export interface ArtAsset {
   readonly state: AssetState;
   readonly src: string | null;
   readonly transparent: boolean;
+  readonly classification?: 'legacy/provisional' | 'official/approved';
 }
 
 export const referenceMockup = {
@@ -26,6 +30,7 @@ export const referenceMockup = {
 } as const;
 
 export const artAssets = {
+  ...officialArtAssets,
   'environment/home-main': {
     kind: 'environment',
     role: 'Fondo oficial híbrido de plaza diurna y cielo galáctico, sin interfaz',
@@ -51,15 +56,15 @@ export const artAssets = {
     format: 'png', state: 'approved', src: '/assets/home/brand/semantropic-trivia-logo-v1.png', transparent: true,
   },
   'characters/left-hero': {
-    kind: 'character', role: 'Figura protagonista izquierda; identidad final por validar',
+    kind: 'character', classification: 'legacy/provisional', role: 'Referencia legacy/provisional; sustituida por protagonist-male-v1',
     format: 'png', state: 'pending-art', src: null, transparent: true,
   },
   'characters/right-hero': {
-    kind: 'character', role: 'Figura protagonista derecha; identidad final por validar',
+    kind: 'character', classification: 'legacy/provisional', role: 'Referencia legacy/provisional; sustituida por protagonist-female-v1',
     format: 'png', state: 'pending-art', src: null, transparent: true,
   },
   'characters/robot': {
-    kind: 'character', role: 'Robot ilustrativo; no implica modo Torneo CPU',
+    kind: 'character', classification: 'legacy/provisional', role: 'Referencia legacy/provisional; sustituida por mascot-robot-v1; no implica CPU',
     format: 'png', state: 'pending-art', src: null, transparent: true,
   },
   'decorations/crystal-cyan': {

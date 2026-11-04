@@ -382,3 +382,6 @@ html:fullscreen .st-preview-page--official .st-home__content {
   .st-home__arena-entry strong{font-size:.73rem}
   .st-home__arena-entry small{font-size:.64rem}
 }
+
+/* B04-C3: conservar los huecos del lobby; mostrar completos los WebP oficiales. */
+.st-home__character{object-fit:contain;object-position:center bottom}
