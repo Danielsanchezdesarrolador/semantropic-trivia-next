@@ -26,7 +26,7 @@ const categories: readonly SheetCategory[] = [
   'Marca y personajes','Cristales y objetos','Botones de referencia',
   'Paneles de referencia','Capas de referencia',
 ];
-const asset = (id: string) => sheetById(id).path;
+const asset = (id: string) => { const path = sheetById(id).path; if (!path) throw new Error('Asset histórico sin uso activo: ' + id); return path; };
 const DS01Panel = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel')) : null;
 const DS01Controls = import.meta.env.DEV ? lazy(() => import('../../audio/ds01/DS01Panel').then(module => ({ default: module.DS01Controls }))) : null;
 
@@ -75,7 +75,7 @@ function ResourceLibrary() {
           <div className="st-library__grid">
             {sheetAssets.filter(item=>item.category===group).map(item=>(
               <figure className="st-library__tile" key={item.id}>
-                <div className="st-library__checker"><img src={item.path} alt={item.title} loading="eager" /></div>
+                <div className="st-library__checker">{item.path ? <img src={item.path} alt={item.title} loading="eager" /> : <span>Archivado fuera del juego activo</span>}</div>
                 <figcaption><strong>{item.title}</strong><span>{item.state==='candidato'?'Candidato visual':item.state==='legacy/provisional'?'Histórico provisional':'Referencia / no funcional'}</span>{item.note?<small>{item.note}</small>:null}</figcaption>
               </figure>
             ))}
@@ -144,7 +144,7 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
         </aside>
         <div className={'st-home__content' + (!isHome ? ' st-home__content--section' : '')}>
           <header className="st-home__header">
-            <span>{official ? 'SEMANTROPIC TRIVIA 1.0' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
+            <span>{official ? 'SEMANTROPIC TRIVIA' : 'B02-C2 · PRUEBA DE ASSETS'}</span>
             <div className="st-home__header-actions">
               <span>{official ? (isHome ? 'Modos próximamente' : 'Navegación habilitada') : 'Sin partidas operativas'}</span>
               {official ? <details className="st-audio-options"><summary>Audio</summary><div>
@@ -157,14 +157,14 @@ export default function HomePreview({ official = false, showLibrary = true }: { 
           {isHome ? <>
           <div className="st-home__brand">
             <h1 className="st-sr-only">SEMANTROPIC TRIVIA</h1>
-            <img className="st-home__official-logo" src={approvedLogo} width={585} height={370} alt="" fetchPriority="high" decoding="async" />
+            <img className="st-home__official-logo" src={approvedLogo} width={1536} height={1024} alt="" fetchPriority="high" decoding="async" />
             <img className="st-home__crystal st-home__crystal--one" src={asset('crystal-blue')} alt="" />
             <img className="st-home__crystal st-home__crystal--two" src={asset('crystal-violet')} alt="" />
           </div>
           <div className="st-home__characters" aria-label="Personajes oficiales">
-            <img className="st-home__character st-home__character--boy" src={getOfficialAsset('protagonist-male-v1').src} alt="Protagonista masculino oficial" width={704} height={1100} />
-            <img className="st-home__character st-home__character--girl" src={getOfficialAsset('protagonist-female-v1').src} alt="Protagonista femenina oficial" width={653} height={1100} />
-            <img className="st-home__character st-home__character--robot" src={getOfficialAsset('mascot-robot-v1').src} alt="Robot mascota oficial" width={1100} height={1044} />
+            <div className="st-home__portrait st-home__portrait--boy"><img className="st-home__character st-home__character--boy" src={getOfficialAsset('protagonist-male-v1').src} alt="Protagonista masculino oficial" width={1122} height={1402} /></div>
+            <div className="st-home__portrait st-home__portrait--girl"><img className="st-home__character st-home__character--girl" src={getOfficialAsset('protagonist-female-v1').src} alt="Protagonista femenina oficial" width={1122} height={1402} /></div>
+            <div className="st-home__portrait st-home__portrait--robot"><img className="st-home__character st-home__character--robot" src={getOfficialAsset('mascot-robot-v1').src} alt="Robot mascota oficial" width={1254} height={1254} /></div>
           </div>
           <div className="st-home__actions" aria-label="Modos oficiales previstos">
             <ModeButton id="online" name="Jugar Online" onOpen={official ? () => navigate('online') : undefined} />

@@ -50,8 +50,11 @@ try {
    if(route==='home'){
     const actors=await page.locator('.st-home__character').evaluateAll(nodes=>nodes.map(n=>({src:n.getAttribute('src'),complete:n.complete,w:n.naturalWidth,rect:{x:n.getBoundingClientRect().x,right:n.getBoundingClientRect().right}})));
     assert.equal(actors.length,3);
-    for(const id of ['protagonist-male-v1','protagonist-female-v1','mascot-robot-v1'])assert.ok(actors.some(a=>a.src.endsWith(id+'-web.webp')&&a.complete&&a.w>0));
-    assert.ok(actors.every(a=>a.rect.x>=0&&a.rect.right<=width));
+    for(const id of ['protagonist-male-v1','protagonist-female-v1','mascot-robot-v1'])assert.ok(actors.some(a=>a.src.endsWith(id+'.webp')&&a.complete&&a.w>0));
+    const portraits=await page.locator('.st-home__portrait').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,right:r.right,height:r.height,overflow:getComputedStyle(n).overflow};}));
+    assert.equal(portraits.length,3);assert.ok(portraits.every(r=>r.x>=0&&r.right<=width&&r.height>0&&r.overflow==='hidden'),'Recorte CSS dentro del lobby');
+    const crop=await page.locator('.st-home__portrait--boy').evaluate(n=>n.querySelector('img').getBoundingClientRect().height/n.getBoundingClientRect().height);
+    assert.ok(crop>=1.8&&crop<=2,'Encuadre torso sin modificar PNG');
    }
    results.push({viewport:name,route,status:'PASS'});
   }
@@ -63,22 +66,21 @@ try {
     await comparison.goto(url+'#'+route);await decoded(comparison);
     await comparison.evaluate(()=>window.scrollTo(0,0));
     await comparison.screenshot({path:`${output}/${name}-${route}${suffix}.png`,fullPage:true});
-    const geometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    const geometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage, .b04-option-c__logo, .b04-option-c__character, .b04-option-c__copy, .b04-option-c__cta').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
     if(route==='welcome'){
-     // El único texto autorizado a cambiar se iguala antes de ocultarlo; no cambia el arte.
-     await comparison.locator('.b04-local-link').evaluate(node=>{node.textContent='Recorrido visual de prueba';});
-     await comparison.addStyleTag({content:'.b04-local-link{visibility:hidden!important}'});
+     // CP01 permite únicamente sustituir el logo de D-049; textos/enlaces se comparan íntegros.
+     await comparison.addStyleTag({content:'.b04-portal .b04-logo{visibility:hidden!important}'});
     }
     await comparison.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
     const pixels=await comparison.screenshot({path:`${output}/${name}-${route}-protected${suffix}.png`,fullPage:true});
-    const protectedGeometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
-    assert.deepEqual(protectedGeometry,geometry,'Excluir texto de demo no mueve arte '+name);
+    const protectedGeometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage, .b04-option-c__logo, .b04-option-c__character, .b04-option-c__copy, .b04-option-c__cta').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    assert.deepEqual(protectedGeometry,geometry,'Excluir logo no mueve arte '+name);
     return {geometry,sha256:digest(pixels)};
    }
    const before=await capture(baseline,'-before'),after=await capture(base,'');
    assert.deepEqual(after.geometry,before.geometry,'Sin desplazar composición/acciones '+name+' '+route);
-   if(route!=='home')assert.equal(after.sha256,before.sha256,name+' '+route+' arte protegido idéntico');
-   comparisons.push({viewport:name,route,status:'PASS',...(route==='home'?{}:{sha256:after.sha256}),comparison:route==='home'?'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas':route==='welcome'?'Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación':'Píxeles idénticos completos'});
+   if(route==='welcome')assert.equal(after.sha256,before.sha256,name+' '+route+' arte protegido idéntico');
+   comparisons.push({viewport:name,route,status:'PASS',pixelEqualityRequired:route==='welcome',baselineSha256:before.sha256,actualSha256:after.sha256,...(route==='home'?{}:{sha256:after.sha256}),comparison:route==='home'?'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas':route==='welcome'?'Píxeles idénticos salvo logo CP01, oculto solo en comparación':'Geometría de escena, personajes, textos y CTA conservada; assets CP01 autorizados'});
    await comparison.close();
   }
   await page.goto(base+'#welcome');

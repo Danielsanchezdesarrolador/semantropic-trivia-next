@@ -21,7 +21,7 @@ jobs:
         run: npm test
       - name: Construir Vite
         run: npm run build
-      - name: Guard editorial y assets B04-C2
+      - name: Guard audio/editorial/semantic y assets ART-CP01
         run: node scripts/b04/guard-option-c.mjs
       - name: Confirmar index oficial
         run: test -f dist/index.html
@@ -39,14 +39,14 @@ jobs:
         env:
           B04_EVIDENCE_DIR: artifacts/b04
         run: node scripts/b04/visual-qa.mjs
-      - name: Construir base aprobada para comparación visual B04-C3
+      - name: Construir base staging anterior a ART-CP01
         run: |
-          git fetch --no-tags origin d28648c1db6f68183069e3a5347741d19ffa8c4c
-          git worktree add --detach "$RUNNER_TEMP/b04-c3-baseline" d28648c1db6f68183069e3a5347741d19ffa8c4c
+          git fetch --no-tags origin ac216f009c7cdd88b558c14e7625e2f347bf0eb8
+          git worktree add --detach "$RUNNER_TEMP/b04-c3-baseline" ac216f009c7cdd88b558c14e7625e2f347bf0eb8
           ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/b04-c3-baseline/node_modules"
           cd "$RUNNER_TEMP/b04-c3-baseline"
           npm run build
-      - name: B04-C3 navegación accesible, canon y regresión visual protegida
+      - name: Acceso y ART-CP01: navegación, canon y regresión visual protegida
         env:
           B04_C3_BASE_DIR: ${{ runner.temp }}/b04-c3-baseline/dist
         run: node scripts/b04/c3-qa.mjs

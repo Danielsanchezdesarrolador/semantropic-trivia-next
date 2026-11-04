@@ -133,7 +133,7 @@ export default function LobbySection({
         <span className="st-lobby-panel__status">En desarrollo</span>
       </div>
 
-      <img className="st-lobby-panel__logo" src={logoSrc} alt="" width={585} height={370} />
+      <img className="st-lobby-panel__logo" src={logoSrc} alt="" width={1536} height={1024} />
       <div className="st-lobby-panel__body">
         <p className="st-lobby-panel__eyebrow">{eyebrow}</p>
         <h1 id="st-lobby-panel-title">{title}</h1>

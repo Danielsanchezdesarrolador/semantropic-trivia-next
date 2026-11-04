@@ -127,3 +127,6 @@
 .b04-access:not(.b04-welcome) :focus-visible{outline:3px solid #185fc9;outline-offset:3px}
 
 .b04-access:not(.b04-welcome) .b04-field button,.b04-access:not(.b04-welcome) .b04-field input{min-height:44px}
+
+/* ART-CP01: mismo marco D-049/A2; PNG nuevo 1.0 contenido sin deformación. */
+.b04-access .b04-logo{aspect-ratio:585/370;object-fit:contain}

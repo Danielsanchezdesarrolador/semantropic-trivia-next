@@ -3,7 +3,7 @@ export { officialArtAssets, getOfficialAsset, embeddedPortal } from './officialA
 export type { OfficialArtAsset, OfficialArtAssetId } from './officialArtAssets';
 /**
  * B02-C1: catálogo de capas del mockup aprobado.
- * Fondo y logotipo B02-C2 protegidos; canon de personajes B04-C3 enlazado.
+ * Fondo B02 protegido; logo y personajes oficiales sustituidos por ART-CP01.
  * La captura completa del mockup es REFERENCIA, no fondo de interfaz.
  */
 export type AssetState = 'pending-art' | 'approved';
@@ -50,10 +50,6 @@ export const artAssets = {
   'environment/islands': {
     kind: 'environment', role: 'Islas flotantes y torres, capa de parallax opcional',
     format: 'png', state: 'pending-art', src: null, transparent: true,
-  },
-  'brand/logo': {
-    kind: 'brand', role: 'Logotipo oficial SEMANTROPIC TRIVIA aislado del mockup aprobado; PNG alfa independiente',
-    format: 'png', state: 'approved', src: '/assets/home/brand/semantropic-trivia-logo-v1.png', transparent: true,
   },
   'characters/left-hero': {
     kind: 'character', classification: 'legacy/provisional', role: 'Referencia legacy/provisional; sustituida por protagonist-male-v1',

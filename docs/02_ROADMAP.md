@@ -1,6 +1,10 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — B04-C3 navegación y canon, 04/11/2026
+## Estado vigente — ART-CP01, 04/11/2026
+
+Orden del Director: diez PNG nuevos sustituyen la identidad anterior. Logo original 1.0, tres personajes de identidad con IDs estables, fondos v2 con portal integrado, maestros y referencias inmutables en Git. Runtime solo desde el manifiesto; históricos retirados de public y conservados fuera del juego. D-049 solo cambia logo; B02 incorpora encuadre CSS de torso y robot central; Opción C conserva estructura. Flujo de cuentas sigue visual, sin backend. Únicamente staging/Render DEV tras CI, sin main/producción ni Q03/Q04. Integración pendiente de revisión visual final. [Entrega y continuidad](art/ART_CP01_ENTREGA.md).
+
+## Antecedente — B04-C3 navegación y canon, 04/11/2026
 
 El Director declara aprobada Opción C tras revisión física Android y web, y oficializa sus tres personajes. C3 conecta únicamente pantallas de acceso existentes con validación local accesible y recorrido de prueba claramente separado; no crea cuentas, sesiones ni correos. Canon tipado y sustitución de recortes provisionales en los huecos existentes del lobby. D-049/Opción C protegidas; Arena, 42 SVG, audio, banco y Q03/Q04 intactos. Rama desde staging, PR a staging, CI completa antes de integrar y mismo Render DEV. Main/producción excluidos. [Checkpoint de entrega](design/B04/B04_C3_ENTREGA.md), [identidad](design/B04/B04_C3_IDENTIDAD.md) y [propuesta C4 sin ejecutar](design/B04/B04_C4_PROPUESTA_NO_EJECUTAR.md). La publicación C3 queda sujeta a revisión del Director.
 

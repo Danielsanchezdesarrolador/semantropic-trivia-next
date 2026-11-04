@@ -8,7 +8,8 @@ const manifest = JSON.parse(text('docs/art/B02_SHEET_BINARY_MANIFEST.json'));
 test('La galería registra 23 archivos separados, con tamaño y hash verificables',()=>{
   assert.equal(manifest.length,23);
   for(const item of manifest){
-    const p = new URL('../'+item.path,import.meta.url);
+    const archived=JSON.parse(text('docs/art/LEGACY_CP01.json')).find(a=>a.previousPath===item.path);
+    const p = new URL('../'+(archived?.archivePath||item.path),import.meta.url);
     assert.ok(existsSync(p),item.path);
     const data=readFileSync(p);
     assert.equal(data.length,item.byte_size,item.path);
@@ -57,5 +58,5 @@ test('Fondo del lobby ocupa todo el contenedor y botones son nítidos',()=>{
   assert.match(css,/\.st-sheet-action__icon svg/);
   assert.doesNotMatch(home,/src=\{asset\(id\)\}/, 'No se debe mostrar el PNG de botón de baja resolución');
   assert.match(home,/getApprovedAsset\('brand\/logo'\)/);
-  assert.match(home,/width=\{585\} height=\{370\}/);
+  assert.match(home,/width=\{1536\} height=\{1024\}/);
 });

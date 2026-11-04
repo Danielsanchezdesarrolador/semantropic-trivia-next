@@ -23,7 +23,7 @@ test('B02 oficial: fondo y logotipo aprobados, dos modos únicamente', () => {
   assert.match(home,/getApprovedAsset\('environment\/home-main'\)/);
   assert.match(home,/getApprovedAsset\('brand\/logo'\)/);
   assert.match(assets,/semantropic-pop-bg-v1\.webp/);
-  assert.match(assets,/semantropic-trivia-logo-v1\.png/);
+  assert.match(assets,/officialArtAssets/);
   assert.match(home,/ModeButton id="online"/);
   assert.match(home,/ModeButton id="friends"/);
   assert.doesNotMatch(home,/id="cpu"|id="ranked"/);
