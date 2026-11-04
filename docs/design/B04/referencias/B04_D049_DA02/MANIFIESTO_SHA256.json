@@ -1,0 +1,130 @@
+{
+  "decision": "D-049",
+  "fecha": "2026-11-04",
+  "aprobacion": "La pantalla de bienvenida está aprobada y congelada; restantes pantallas son candidatas",
+  "referencia_oficial_sha256": "dcd2d3b6aa682415391321bab10ff2e04e2f0a93ae8e098257f29fc5837e8676",
+  "referencia_exportada_sha256": "dcd2d3b6aa682415391321bab10ff2e04e2f0a93ae8e098257f29fc5837e8676",
+  "logo_oficial_original_sha256": "78671693df5adec2d8c6bcc2733e63e1eae289c36064ce7c9a35d8053fcc904d",
+  "logo_exportado_sha256": "78671693df5adec2d8c6bcc2733e63e1eae289c36064ce7c9a35d8053fcc904d",
+  "logo_identico": true,
+  "referencia_identica": true,
+  "assets_generados": [
+    {
+      "archivo": "D01_INICIAR_SESION.png",
+      "bytes": 544976,
+      "sha256": "24a681d96d9762f6e759e66e5e97e540158c9058017943506e1e724d52e3821c"
+    },
+    {
+      "archivo": "D02_CREAR_CUENTA.png",
+      "bytes": 548774,
+      "sha256": "4e80bb38665746050451fd1b32b9a859612ed3258b86b12f857621b5e961c222"
+    },
+    {
+      "archivo": "D03_VERIFICAR_CORREO.png",
+      "bytes": 534616,
+      "sha256": "b6bc6b70fa93ab5a507a15f5b9caff4efd8e6b2a5268348b8c7ae581844edb4d"
+    },
+    {
+      "archivo": "D04_RECUPERAR_ACCESO.png",
+      "bytes": 537963,
+      "sha256": "5cae52f9724cd960797786b1ddd3bc6e0b53a5ec5292d2b598625fb2036956fb"
+    },
+    {
+      "archivo": "D05_NUEVA_CONTRASENA.png",
+      "bytes": 540523,
+      "sha256": "b941c7b8b0e08013eae7b36f2bc0168dc82088fde1bee02bb9e582e8b8d867e1"
+    },
+    {
+      "archivo": "D06_EXITO.png",
+      "bytes": 529359,
+      "sha256": "1142afd42c7939865bfe4e9af9f7c3cd2f215f106bbe45e8da0f8e3bda6dfa62"
+    },
+    {
+      "archivo": "D07_TRANSICION_LOBBY.png",
+      "bytes": 533257,
+      "sha256": "ee9539fd17839f0dec034ed03942325c511c070b5607241f551c7e34a0547b44"
+    },
+    {
+      "archivo": "ESTADOS_UI_Y_VALIDACIONES.png",
+      "bytes": 119064,
+      "sha256": "46d9e1b66291a83aa89f7aa360a610cd02907673dacd6de06438d1d0d905fce9"
+    },
+    {
+      "archivo": "LAMINA_ESCRITORIO_16X9.png",
+      "bytes": 748011,
+      "sha256": "6db8eaa970aeee7fca3e204ea690231ca410643abcc02d67130f5906eb752d6a"
+    },
+    {
+      "archivo": "LAMINA_MOVIL_COMPLETA.png",
+      "bytes": 946528,
+      "sha256": "2c6fe62de70cfb410271279c280764c55482c7a958c6e95f21b8031ed21f9b47"
+    },
+    {
+      "archivo": "LOGO_OFICIAL_B02_PNG_ORIGINAL.png",
+      "bytes": 245013,
+      "sha256": "78671693df5adec2d8c6bcc2733e63e1eae289c36064ce7c9a35d8053fcc904d"
+    },
+    {
+      "archivo": "M01_INICIAR_SESION.png",
+      "bytes": 227761,
+      "sha256": "08d5028705cc5cf87acf212e2f1ad0513a86d306db48f13ccb39cff4b5baf7df"
+    },
+    {
+      "archivo": "M02_CREAR_CUENTA.png",
+      "bytes": 213529,
+      "sha256": "3df9f31da455d65e824157930ea5c1fdf991e346abe5140e4e1d7c7421fd1469"
+    },
+    {
+      "archivo": "M03_VERIFICAR_CORREO.png",
+      "bytes": 226511,
+      "sha256": "189d7769f7bc8f5e5c358fae00159f02e13389367913658a5ba00a8292bbafb2"
+    },
+    {
+      "archivo": "M04_RECUPERAR_ACCESO.png",
+      "bytes": 245145,
+      "sha256": "7d8c119ae0cc9736953cb535e039a3481051dadd8c64d8dbd59ca02be579768a"
+    },
+    {
+      "archivo": "M05_NUEVA_CONTRASENA.png",
+      "bytes": 220924,
+      "sha256": "ccf03723145fd43dd038a89c205dbe86ecec27049945ac4f1b09c0d60198fbed"
+    },
+    {
+      "archivo": "M06_EXITO.png",
+      "bytes": 241754,
+      "sha256": "60eb5601a1bc66f1acc9a6da50518238dd4cea2663fbec36e3d382518330362e"
+    },
+    {
+      "archivo": "M07_TRANSICION_LOBBY.png",
+      "bytes": 284613,
+      "sha256": "dffaece4721086b2bd7cc0d1c0d489e61e64207f252ee5e0b8b91f3129c92cbf"
+    },
+    {
+      "archivo": "REFERENCIA_OFICIAL_D049_BIENVENIDA_APROBADA_NO_MODIFICAR.png",
+      "bytes": 3276736,
+      "sha256": "dcd2d3b6aa682415391321bab10ff2e04e2f0a93ae8e098257f29fc5837e8676"
+    }
+  ],
+  "archivos_documentos": [
+    {
+      "archivo": "INFORME_DISENO_B04_DA02_Y_CONTINUIDAD.md",
+      "bytes": 14150,
+      "sha256": "375ceb3bff3522d36af03a2e91fb5417e3e33743c154bad7d56a666f25d22b7c"
+    },
+    {
+      "archivo": "README_ENTREGA.md",
+      "bytes": 771,
+      "sha256": "6ea0de38ba1fe70e29d6478c9fdbcbcc1562cb8c95936088456b45606ecaabc1"
+    },
+    {
+      "archivo": "ACTA_D049_Y_ESTADO_DA_B04_A2.md",
+      "bytes": 1388,
+      "sha256": "969973ab60ea519c451c49963ee81cd1976dfc4898e00ae1eac47f8b4030734c"
+    },
+    {
+      "archivo": "PROMPT_CONTINUIDAD_PARA_OTRO_CHAT.md",
+      "bytes": 1449,
+      "sha256": "4c52f5fbb4f7a533628b6eb508e0b1c1bfd136da9e182d44397bd190cb4ac2e3"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+.b04-access{--b04-ink:#1b2863;position:relative;isolation:isolate;min-height:100svh;padding:30px 4vw;color:var(--b04-ink);font:16px/1.4 'Segoe UI',Arial,sans-serif;color-scheme:light;background:#102470;box-sizing:border-box}
+.b04-access *{box-sizing:border-box}
+.b04-environment{position:fixed;z-index:-2;inset:-16px;background:linear-gradient(#09135a55,#26166666),url('/assets/home/environment/semantropic-pop-bg-v1.webp') center/cover;filter:blur(8px)}
+.b04-access a{color:inherit}
+.b04-access button,.b04-access input{font:inherit}
+.b04-access a:focus-visible,.b04-access button:focus-visible,.b04-access input:focus-visible{outline:3px solid #ffce42;outline-offset:4px}
+.b04-access h1:focus{outline:none}
+.b04-top{max-width:1480px;margin:auto auto 40px;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 24px;color:white;background:#172365;border:2px solid #81cfff;border-radius:26px}
+.b04-top a{padding:10px 0}
+.b04-top span{color:#ffe36a;font-weight:700}
+.b04-layout{display:grid;grid-template-columns:.83fr 1fr;gap:40px;max-width:1424px;margin:auto;align-items:stretch}
+.b04-story{padding:54px 28px;text-align:center;border:2px solid #94c9df;background:linear-gradient(125deg,#202559f5,#19176af5);border-radius:28px;color:white;display:flex;flex-direction:column;justify-content:center}
+.b04-story h2{color:#ffde5f;font-size:30px;margin:10px 0}
+.b04-story p{font-size:22px;margin:8px 0}
+.b04-story h3{font-size:24px;margin:12px}
+.b04-ornament{width:100%;max-width:440px;display:block;margin:20px auto;fill:none;stroke-width:7}
+.b04-card{background:#f8f6ff;border:3px solid #dfceff;border-radius:34px;text-align:center;padding:18px 8% 30px;box-shadow:0 18px 44px #080e4238;position:relative}
+.b04-logo{display:block;width:240px;max-width:70%;height:auto;object-fit:contain;margin:0 auto}
+.b04-card h1{font-size:32px;line-height:1.15;margin:0 0 10px}
+.b04-card h2{font-size:21px}
+.b04-subtitle{color:#425581;font-size:19px;margin:0 0 12px}
+.b04-preview-note{font-size:12px;color:#485782;margin:8px 0 18px}
+.b04-card form{display:grid;gap:16px;text-align:left}
+.b04-field{border:1.5px solid #b6b9ef;background:white;border-radius:18px;display:block;padding:7px 16px 5px;text-align:left}
+.b04-field:focus-within{border-color:#0969e8;box-shadow:0 0 0 2px #008cfa30}
+.b04-field>label{display:block;font-size:14px;color:#3d507b}
+.b04-field-row{display:flex;align-items:center;gap:8px;min-width:0}
+.b04-field input{min-width:0;width:100%;height:31px;border:0;background:transparent;color:#1b2863;font-size:18px;outline-offset:1px}
+.b04-field button{border:0;background:none;color:#174c9c;min-height:36px;padding:4px;cursor:pointer;font-size:14px}
+.b04-forgot{text-align:right;color:#1254ab!important;min-height:30px}
+.b04-cta{border:2px solid #d4f8ff;border-radius:24px;background:linear-gradient(#20baff,#0363e9 70%,#0642b8);box-shadow:0 5px 10px #10296365,0 0 12px #3fbfff66;color:white!important;min-height:60px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:23px;font-weight:750;text-decoration:none;padding:10px 20px;text-align:center;cursor:pointer}
+.b04-cta:hover{filter:brightness(1.09)}
+.b04-cta:active{transform:translateY(2px)}
+.b04-coral{background:linear-gradient(#ff829e,#f1356a 65%,#df174d);box-shadow:0 5px 10px #49234e55,0 0 14px #f1356a55}
+.b04-switch{font-weight:600;margin:20px 0}
+.b04-switch a{margin-left:5px}
+.b04-legal{font-size:13px;color:#47587d}
+.b04-tour{margin-top:22px;padding-top:14px;border-top:1px solid #d0d0ee;display:grid;gap:10px;font-size:14px}
+.b04-tour>span{color:#536285;font-size:12px}
+.b04-tour a:not(.b04-cta),.b04-tour button{min-height:44px;display:flex;align-items:center;justify-content:center}
+.b04-tour button{background:none;border:0;color:#174c9c;text-decoration:underline;cursor:pointer}
+.b04-message{padding:14px;border:1px solid #6aa9df;background:#e4f4ff;border-radius:12px;color:#163b60;font-size:14px}
+.b04-mail{font-size:56px;color:#087bed;text-align:center}
+.b04-code{letter-spacing:10px;text-align:center}
+.b04-success{border-radius:50%;width:90px;height:90px;display:grid;place-content:center;background:#13b880;color:white;border:5px solid #83e2bc;font-size:54px;margin:24px auto}
+.b04-welcome{display:grid;place-items:center;padding:100px 24px 60px;overflow:hidden}
+.b04-welcome .b04-environment{filter:none;background:linear-gradient(#06136735,#221d6240),url('/assets/home/environment/semantropic-pop-bg-v1.webp') center/cover}
+.b04-portal{position:relative;text-align:center;width:min(850px,90vw);padding:50px 38px 32px;color:white;background:radial-gradient(ellipse at 50% 20%,#144bbb,#24138ef2 65%,#651dce);border:18px solid #f6c461;border-top-width:24px;border-radius:46% 46% 10% 10% / 29% 29% 6% 6%;box-shadow:inset 0 0 0 5px #ffe4a0,inset 0 0 35px 12px #2cb7ff,0 0 0 7px #ae763e,0 0 0 12px #ecc6ad,0 25px 0 20px #b18d85,0 40px 0 26px #d9b39b,0 50px 40px 28px #14104c80}
+.b04-portal:after,.b04-portal:before{content:'';position:absolute;top:28%;bottom:1%;width:25px;background:linear-gradient(90deg,#e4b37d,#ffdd9d,#ad754b);border:3px solid #ffe49e;border-radius:10px;z-index:-1}
+.b04-portal:before{left:-50px}
+.b04-portal:after{right:-50px}
+.b04-portal-gem{position:absolute;top:-66px;left:calc(50% - 35px);font-size:80px;line-height:1;color:#e581ff;text-shadow:0 0 5px white,0 0 25px #e896ff;filter:drop-shadow(0 5px 1px #8b359f)}
+.b04-portal h1{font-size:30px;margin:0;text-shadow:0 3px 2px #061459}
+.b04-portal .b04-logo{width:330px;max-width:80%;margin:-12px auto -15px}
+.b04-tagline{font-size:21px;line-height:1.2;margin:0 0 24px;text-shadow:0 2px 2px #152060}
+.b04-actions{display:flex;gap:16px}
+.b04-actions>*{flex:1;white-space:nowrap;font-size:21px}
+.b04-guest{margin:20px 0 8px;font-size:17px}
+.b04-guest span{background:#dbc9ff;color:#21136f;border-radius:20px;font-size:12px;padding:5px 12px;margin-left:8px}
+.b04-portal .b04-preview-note{color:#e2d7ff;margin:12px 0 4px}
+.b04-local-link{font-size:13px;display:inline-flex;align-items:center;min-height:44px}
+.b04-crystal{position:absolute;bottom:0;width:100px;height:auto;pointer-events:none}
+.b04-crystal-left{left:-100px}
+.b04-crystal-right{right:-100px}
+
+@media(min-width:1600px){.b04-layout{margin-top:4vh}
+.b04-card{padding-top:24px;padding-bottom:40px}
+.b04-card form{gap:18px}
+}
+
+@media(max-width:760px){.b04-access{padding:16px 18px 32px}
+.b04-top{padding:4px 12px;margin-bottom:16px;border-radius:16px;font-size:13px}
+.b04-top span{font-size:11px}
+.b04-layout{display:block}
+.b04-story{display:none}
+.b04-card{padding:10px 22px 24px;border-radius:28px;margin-top:140px}
+.b04-card>.b04-logo{position:absolute;width:220px;max-width:70%;top:-144px;left:50%;transform:translateX(-50%)}
+.b04-card:before{content:'';position:absolute;z-index:-1;left:-10px;right:-10px;top:-48px;height:90px;border:10px solid #ffda65;border-bottom:0;border-radius:70% 70% 0 0/100% 100% 0 0;filter:drop-shadow(0 3px 5px #99600a)}
+.b04-card-content:before{content:'';display:block;border-top:6px solid #a38aef;border-radius:10px;margin:0 -12px 12px}
+.b04-card h1{font-size:27px}
+.b04-subtitle{font-size:17px}
+.b04-card form{gap:12px}
+.b04-field{padding:5px 12px;border-radius:14px}
+.b04-field input{font-size:16px}
+.b04-cta{font-size:19px;min-height:56px;border-radius:22px}
+.b04-welcome{padding:140px 26px 70px;min-height:100svh}
+.b04-portal{width:100%;padding:48px 14px 16px;border-width:10px;border-top-width:16px;box-shadow:inset 0 0 25px 8px #409cff,0 0 0 5px #ac795c,0 22px 0 14px #c4a397,0 36px 0 20px #dfbf96}
+.b04-portal h1{font-size:24px}
+.b04-portal .b04-logo{width:260px;max-width:100%;margin:-4px auto -6px}
+.b04-actions{flex-direction:column;gap:14px}
+.b04-actions>*{font-size:19px;white-space:normal}
+.b04-tagline{font-size:18px;margin-bottom:24px}
+.b04-portal-gem{top:-65px}
+.b04-crystal{width:65px;bottom:8px}
+.b04-crystal-left{left:-42px}
+.b04-crystal-right{right:-42px}
+.b04-portal:before{left:-26px;width:16px}
+.b04-portal:after{right:-26px;width:16px}
+.b04-guest{font-size:14px}
+.b04-guest span{display:table;margin:8px auto}
+.b04-portal .b04-preview-note{font-size:11px}
+}
+
+@media(prefers-reduced-motion:reduce){.b04-access *{scroll-behavior:auto;transition:none}
+}
+
+
+.b04-user-icon{width:28px;height:28px;flex-shrink:0;overflow:visible}
+.b04-portal-gem{width:70px;height:90px;top:-74px}
+.b04-card-content{max-width:500px;margin:auto}
+.b04-states{text-align:left;margin-top:22px;font-size:14px}
+.b04-states summary{cursor:pointer;min-height:44px;padding:12px 0}
+.b04-states ul{list-style:none;padding:0;display:grid;gap:12px}
+.b04-state{padding:14px;border:1px solid #6798e5;border-radius:16px;background:#e0f1ff;display:grid;gap:8px}
+.b04-state--error{border-color:#cc6a8a;background:#ffe4ef}
+.b04-state--offline{border-color:#b29161;background:#fff7db}
+.b04-state--success{border-color:#5bab90;background:#e0fff1}
+.b04-state--expired{border-color:#a181cc;background:#f4e7ff}
+.b04-state--attempts{border-color:#bb907a;background:#fff0df}
