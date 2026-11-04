@@ -33,7 +33,7 @@ En los cinco formularios, los datos válidos muestran exactamente «Vista previa
 - `LobbyTransitionOptionC.tsx`: sustituye literales por consultas al catálogo que devuelven exactamente las mismas rutas. CSS C2 inalterado.
 - `HomePreview.tsx`, CSS del lobby: tres imágenes/alt/dimensiones oficiales en huecos existentes, object-fit contain. Sin mover botones, sidebar o contenedor de personajes. Los cuerpos completos ocupan de forma distinta los huecos antes usados por recortes; evaluar ese encaje en capturas, sin rediseñar el lobby.
 - `sheetAssets.ts` y biblioteca histórica: conserva los recortes y sus rutas, ahora legacy/provisional.
-- Tests y scripts B04, smoke B02 y workflow official-home: conservan controles anteriores, añaden validación/canon y comparación con build C2 en el mismo navegador/runner. No comparar hashes de capturas hechas con fuentes/sistemas distintos.
+- Tests y scripts B04, smoke B02 y workflow official-home: conservan controles anteriores, añaden validación/canon y comparación con build C2 en el mismo navegador/runner. No comparar hashes de capturas hechas con fuentes/sistemas distintos. Comparación exacta en el mismo contexto secuencial, scroll normalizado y DPR 2, con decodificación explícita de fondos. El texto del enlace demo se iguala/oculta solo en comparación y se exige que eso no mueva geometría; recorridos normales y muestras documentales a DPR 1.
 - AGENTS, roadmap, decisiones, guía de identidad/staging y propuesta C4 documentan únicamente la orden actual.
 
 No cambian `App.tsx`, package/dependencias versionadas, Vite, public, logo, fondos, másteres, 42 SVG, audio, Arena, motor o preguntas. [Hashes y respaldo de másteres](B04_C3_IDENTIDAD.md). Los PNG másteres no están versionados: respaldo local fuera del repo, pendiente copia externa permanente del Director.
@@ -44,10 +44,14 @@ No cambian `App.tsx`, package/dependencias versionadas, Vite, public, logo, fond
 - C3: **54 vistas, seis recorridos, 18 comparaciones PASS**, sin errores JavaScript, HTTP o requests de mutación. Ver [resultado JSON](C3-capturas/qa-local.json).
 - 320×740, 390×844, 844×390, 768×1024, 1366×900, 1920×1080: sin overflow horizontal, imágenes decodificadas y navegación mouse/touch/Tab/Enter; correo/confirmación, mostrar/ocultar, estados/reenvío y Atrás/Adelante. A 320/390 se reduce el viewport a 400 px de alto para comprobar scroll del formulario con espacio de teclado emulado. No es prueba de teclado Android físico.
 - Opción C: píxeles idénticos completos en los seis tamaños. D-049: píxeles idénticos fuera del enlace inferior de demostración, ocultado únicamente en comparación manteniendo su hueco; las capturas entregadas muestran el enlace real. B02: geometría exacta de contenedor/personajes, botones y sidebar antes/después en seis tamaños.
-- QA previo B04: 48 vistas y seis recorridos PASS. B02 oficial: PC, 390 y 320, menús/fullscreen, ronda de diez preguntas, Arena/retorno PASS. B03 reloj/arco: tres tamaños PASS; laboratorio/geometría Arena PASS. Audio release: PC, 390 y 320 PASS, L7/C excluyentes, SFX, reloj, preferencias/resultados sin victoria ficticia.
+- QA previo B04: 48 vistas y seis recorridos PASS. B02 oficial: PC, 390 y 320, menús/fullscreen, ronda de diez preguntas, Arena/retorno PASS. B03 reloj/arco: cuatro tamaños PASS; laboratorio/geometría Arena PASS. Audio release: PC, 390 y 320 PASS, L7/C excluyentes, SFX, reloj, preferencias/resultados sin victoria ficticia.
 - Vite en http://localhost:4194/#welcome (reiniciar desde esta rama con `npm run dev -- --port 4194 --strictPort`). Recorridos comprobados; el smoke estricto extra en modo DEV encontró 404 de los dos manifiestos privados QA de audio ausentes en este worktree limpio. No se copiaron binarios privados ni se alteró audio para ocultarlo. El build público y su preview http://localhost:4193/#welcome pasan con audio oficial y sin esas solicitudes; la entrega principal usa Render DEV.
 
 Móvil **EMULADO**. C3 requiere revisión Android física del Director; no se hereda como prueba C3 la revisión física previa de C2.
+
+## Ajuste de QA detectado por CI
+
+El primer HEAD e86e72a superó cinco checks; official-home detectó discrepancia en la captura protegida horizontal. No se integró ese HEAD. El diff de capturas sin máscara de CI solo contenía el texto autorizado del enlace; en reproducción local se midieron además 20 píxeles de antialias de esquinas de botones (máximo 16 niveles de canal) con geometría y fuentes idénticas. Se estabiliza la captura usando el mismo contexto secuencial, scroll normalizado, DPR 2 y fondos decodificados; se guardan también las imágenes protegidas para auditoría. Se conserva igualdad exacta de hashes, sin tolerancias de píxeles ni mayor área excluida. Se añade una aserción de geometría antes/después de excluir el texto. Ningún cambio adicional de aplicación o arte se introduce por esta corrección del QA. El nuevo HEAD debe superar nuevamente todos los checks.
 
 ## Capturas comparativas
 

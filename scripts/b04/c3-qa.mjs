@@ -24,7 +24,7 @@ async function decoded(page) {
   await Promise.all([...document.images].map(img=>img.decode()));
   const urls=new Set();
   for(const node of document.querySelectorAll('*'))for(const match of getComputedStyle(node).backgroundImage.matchAll(/url\(["']?([^"')]+)["']?\)/g))urls.add(match[1]);
-  await Promise.all([...urls].map(src=>new Promise((done,fail)=>{const img=new Image();img.onload=done;img.onerror=fail;img.src=src;})));
+  await Promise.all([...urls].map(async src=>{const img=new Image();img.src=src;await img.decode();}));
   await new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done)));
  });
 }
@@ -56,23 +56,30 @@ try {
    results.push({viewport:name,route,status:'PASS'});
   }
   if(baseline) for(const route of ['welcome','lobby-transition','home']) {
-   const before=await browser.newPage(options);
-   await before.goto(baseline+'#'+route);await decoded(before);
-   await before.screenshot({path:`${output}/${name}-${route}-before.png`,fullPage:true});
-   await page.goto(base+'#'+route);await decoded(page);
-   if(route==='home') {
-    const geometry=async p=>p.locator('.st-home__actions button, .st-home__sidebar, .st-home__characters').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
-    assert.deepEqual(await geometry(page),await geometry(before),'Sin mover estructura/acciones del lobby '+name);
-    comparisons.push({viewport:name,route,status:'PASS',comparison:'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas'});
-   } else {
-    const masks=[];
-    if(route==='welcome')for(const p of [before,page])masks.push(await p.addStyleTag({content:'.b04-local-link{visibility:hidden!important}'}));
-    const a=await before.screenshot({fullPage:true}),b=await page.screenshot({fullPage:true});
-    assert.equal(digest(b),digest(a),name+' '+route+' arte protegido idéntico');
-    comparisons.push({viewport:name,route,status:'PASS',sha256:digest(b),comparison:route==='welcome'?'Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación':'Píxeles idénticos completos'});
-    for(const mask of masks)await mask.evaluate(node=>node.remove());
+   // Mismo contexto, scroll y DPR 2: evita redondeos de rasterización subpíxel a DPR 1.
+   const comparison=await browser.newPage({...options,deviceScaleFactor:2});
+   comparison.on('pageerror',e=>errors.push(e.message));
+   async function capture(url,suffix) {
+    await comparison.goto(url+'#'+route);await decoded(comparison);
+    await comparison.evaluate(()=>window.scrollTo(0,0));
+    await comparison.screenshot({path:`${output}/${name}-${route}${suffix}.png`,fullPage:true});
+    const geometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    if(route==='welcome'){
+     // El único texto autorizado a cambiar se iguala antes de ocultarlo; no cambia el arte.
+     await comparison.locator('.b04-local-link').evaluate(node=>{node.textContent='Recorrido visual de prueba';});
+     await comparison.addStyleTag({content:'.b04-local-link{visibility:hidden!important}'});
+    }
+    await comparison.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
+    const pixels=await comparison.screenshot({path:`${output}/${name}-${route}-protected${suffix}.png`,fullPage:true});
+    const protectedGeometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    assert.deepEqual(protectedGeometry,geometry,'Excluir texto de demo no mueve arte '+name);
+    return {geometry,sha256:digest(pixels)};
    }
-   await before.close();
+   const before=await capture(baseline,'-before'),after=await capture(base,'');
+   assert.deepEqual(after.geometry,before.geometry,'Sin desplazar composición/acciones '+name+' '+route);
+   if(route!=='home')assert.equal(after.sha256,before.sha256,name+' '+route+' arte protegido idéntico');
+   comparisons.push({viewport:name,route,status:'PASS',...(route==='home'?{}:{sha256:after.sha256}),comparison:route==='home'?'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas':route==='welcome'?'Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación':'Píxeles idénticos completos'});
+   await comparison.close();
   }
   await page.goto(base+'#welcome');
   await page.getByRole('link',{name:'INICIAR SESIÓN',exact:false}).focus();await page.keyboard.press('Enter');
@@ -122,6 +129,6 @@ try {
   await page.close();
  }
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);assert.deepEqual(mutations,[]);
- await writeFile(output+'/qa.json',JSON.stringify({status:'PASS',base,baselineCompared:!!baseline,views:results.length,flows,results,comparisons,errors,failed,mutations},null,2));
+ await writeFile(output+'/qa.json',JSON.stringify({status:'PASS',base,baselineCompared:!!baseline,comparisonDeviceScaleFactor:2,flowDeviceScaleFactor:1,views:results.length,flows,results,comparisons,errors,failed,mutations},null,2));
  console.log('PASS B04-C3: '+results.length+' vistas, '+flows.length+' recorridos, '+comparisons.length+' comparaciones, sin errores JS/HTTP/mutaciones.');
 }finally{await browser?.close();for(const server of servers)await new Promise(done=>server.close(done));}

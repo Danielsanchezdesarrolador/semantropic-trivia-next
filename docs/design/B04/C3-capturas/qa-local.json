@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "base": "http://127.0.0.1:40505/",
+  "base": "http://127.0.0.1:42833/",
   "baselineCompared": true,
   "views": 54,
   "flows": [
@@ -312,14 +312,14 @@
       "viewport": "small",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "5b0c4c0edb2e4652c4ecc6b1698cddbbda23907c10827c619110651d1880efdb",
+      "sha256": "25435aaee8603b94a1d3d77d6d5c876cce55a296f25fe083fcdb2e5592d44b2f",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "small",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "ddf3b092935e5ee9f9e8f28fdb6b37d9d997ac4fcb397fa0199de0a1d8a0ce01",
+      "sha256": "45946a68168c17ee59de2bd541971cff04210cbb081db758806997a6d3554f6c",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -332,14 +332,14 @@
       "viewport": "mobile",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "101521b51bf54dd9c4ae7de46662210ab1967694bcd6abc582415d6aa4ccb622",
+      "sha256": "e3c15d6a75f2c9e93aa460c44f095a66f32c357195cfbb6ce03fe57f8f4bc855",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "mobile",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "abc68324f59c9c9394591a9b3ec28a5dc38b1c78ffbb36c32d19238db4d6028b",
+      "sha256": "965b5d55c540236a0c5c317e354280b6f00896d3c658e065dcdab23ea5dbafc7",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -352,14 +352,14 @@
       "viewport": "landscape",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "8d9b7ae64ccf370035f20a5b9656e5fbc37012ab5ee2c504d8a36cc27c89171e",
+      "sha256": "152837c46e4b130000b9c9ae126bd205bf0b3c770b9ce28aa2a0753fd891c115",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "landscape",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "66d4b13e2ea26ec6c42fd61a2ee57c425d9210b9fa0ccbfd2faecd16a3f6de96",
+      "sha256": "9b1698c88b6fbea83a0fd9083881bfc38677fd5e016d8c28e8d6eafd1018d17e",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -372,14 +372,14 @@
       "viewport": "tablet",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "cd3ab200116a41a7bea12b8a8a2e4138788d5f89e2607f3312b021350fb6f30c",
+      "sha256": "f62fe84fa4a1077dd0df35ee63ca9157697b167ba4600a66652eab7e9ee8ab86",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "tablet",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "cadef146d36a5fa8f94a5a26a8695c7142c3862b488f1bd0fe634d5267c8bb97",
+      "sha256": "eaccfaf3836695ac6dfbdec7fb3f22b393feebbf0f41063134e948dc04efcb4d",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -392,14 +392,14 @@
       "viewport": "desktop",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "56b7ff4a788738b2f7c4787cba51962371a5302fa4fcdc52436072fbe9594b69",
+      "sha256": "b2453de81045a6555f1c18dd34ff08db21925dde48ee2e141e47d2de71aa2faa",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "desktop",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "d67aee7e3754ce1cc4169d1f57e12fd42528500f108518d050d8135ac05f3c65",
+      "sha256": "8936f266121e7b8257917a48ce367e371efbf5809ef501f2ddd16abdd093093d",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -412,14 +412,14 @@
       "viewport": "wide",
       "route": "welcome",
       "status": "PASS",
-      "sha256": "aea89c87007959dc0b71ce9838803e0e2dcdd2caf956248c4b43916e2d8240df",
+      "sha256": "68ddcdd83ebe7d3248bcceb10d5602f02dd472edcb3a05d568a02613ca988d58",
       "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
     },
     {
       "viewport": "wide",
       "route": "lobby-transition",
       "status": "PASS",
-      "sha256": "da262309b9c4bbe3ae68d9cdb092360cbf61971a4b23977d53a8c79251b89499",
+      "sha256": "60b370914fff04d4b4691557de49ba8ab3e0a0f28b10d70a050c2e778c12796e",
       "comparison": "Píxeles idénticos completos"
     },
     {
@@ -431,5 +431,7 @@
   ],
   "errors": [],
   "failed": [],
-  "mutations": []
+  "mutations": [],
+  "comparisonDeviceScaleFactor": 2,
+  "flowDeviceScaleFactor": 1
 }
