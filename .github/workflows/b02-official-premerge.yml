@@ -39,6 +39,17 @@ jobs:
         env:
           B04_EVIDENCE_DIR: artifacts/b04
         run: node scripts/b04/visual-qa.mjs
+      - name: Construir base aprobada para comparación visual B04-C3
+        run: |
+          git fetch --no-tags origin d28648c1db6f68183069e3a5347741d19ffa8c4c
+          git worktree add --detach "$RUNNER_TEMP/b04-c3-baseline" d28648c1db6f68183069e3a5347741d19ffa8c4c
+          ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/b04-c3-baseline/node_modules"
+          cd "$RUNNER_TEMP/b04-c3-baseline"
+          npm run build
+      - name: B04-C3 navegación accesible, canon y regresión visual protegida
+        env:
+          B04_C3_BASE_DIR: ${{ runner.temp }}/b04-c3-baseline/dist
+        run: node scripts/b04/c3-qa.mjs
       - name: Guardar capturas de prueba
         if: always()
         uses: actions/upload-artifact@v4
@@ -49,4 +60,5 @@ jobs:
             artifacts/b03-c3/
             artifacts/b03-b02/
             artifacts/b04/
+            artifacts/b04-c3/
           if-no-files-found: ignore

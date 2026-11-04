@@ -1,11 +1,15 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
-## Estado vigente — B04-C2 Opción C, 04/11/2026
+## Estado vigente — B04-C3 navegación y canon, 04/11/2026
+
+El Director declara aprobada Opción C tras revisión física Android y web, y oficializa sus tres personajes. C3 conecta únicamente pantallas de acceso existentes con validación local accesible y recorrido de prueba claramente separado; no crea cuentas, sesiones ni correos. Canon tipado y sustitución de recortes provisionales en los huecos existentes del lobby. D-049/Opción C protegidas; Arena, 42 SVG, audio, banco y Q03/Q04 intactos. Rama desde staging, PR a staging, CI completa antes de integrar y mismo Render DEV. Main/producción excluidos. [Checkpoint de entrega](design/B04/B04_C3_ENTREGA.md), [identidad](design/B04/B04_C3_IDENTIDAD.md) y [propuesta C4 sin ejecutar](design/B04/B04_C4_PROPUESTA_NO_EJECUTAR.md). La publicación C3 queda sujeta a revisión del Director.
+
+## Antecedente — B04-C2 Opción C, 04/11/2026
 
 Orden expresa del Director: integrar únicamente `#lobby-transition` con los cinco WebP independientes del paquete Opción C y el logo canónico protegido. Arte aprobado; montaje responsive pendiente de revisión visual real. Rama desde staging y PR hacia staging, CI verde antes de integrar y Render DEV fijo. Sin main, previews, servicios nuevos, backend o autenticación. D-049 y el resto de accesos, lobby, Arena, 42 SVG, audio y trabajo Q03/Q04 se conservan. [Alcance, evidencia y límites](design/B04/B04_C2_ENTREGA.md).
 
 
-## Estado vigente — B04-C1 y entorno permanente de revisión, 04/11/2026
+## Antecedente — B04-C1 y entorno permanente de revisión, 04/11/2026
 
 El Director autoriza reparar el QA de entrada de B04-C1 y publicar el bloque limpio en la rama permanente `staging` y un sitio separado `semantropic-trivia-dev`. El enlace fijo sustituye las previews manuales de PR y los puertos locales para revisión del Director. Solo llevar commits con CI verde a staging; verificar deploy y navegación pública antes de entregar URL. Producción `semantropic-trivia-next-web`/`main` permanece preservada y requiere aprobación expresa antes de integrar cada bloque. PR #20 no se fusiona a main. Publicación de revisión no equivale a aprobación del diseño ni autoriza otro bloque. Se conservan los registros anteriores como historia.
 

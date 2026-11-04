@@ -117,3 +117,13 @@
 .b04-state--success{border-color:#5bab90;background:#e0fff1}
 .b04-state--expired{border-color:#a181cc;background:#f4e7ff}
 .b04-state--attempts{border-color:#bb907a;background:#fff0df}
+
+/* B04-C3: errores asociados y scroll de formularios; arte D-049/Opción C protegido. */
+.b04-access:not(.b04-welcome) .b04-field-error{color:#8b1745;font-size:14px;line-height:1.5;margin:8px 0 0;text-align:left;overflow-wrap:anywhere}
+.b04-access:not(.b04-welcome) input[aria-invalid=true]{border-color:#a8244e;outline:1px solid #a8244e}
+.b04-access:not(.b04-welcome) input{scroll-margin-block:90px}
+.b04-access:not(.b04-welcome) .b04-tour p{font-size:14px;line-height:1.5;margin:0}
+.b04-access:not(.b04-welcome){padding-bottom:max(32px,env(safe-area-inset-bottom))}
+.b04-access:not(.b04-welcome) :focus-visible{outline:3px solid #185fc9;outline-offset:3px}
+
+.b04-access:not(.b04-welcome) .b04-field button,.b04-access:not(.b04-welcome) .b04-field input{min-height:44px}

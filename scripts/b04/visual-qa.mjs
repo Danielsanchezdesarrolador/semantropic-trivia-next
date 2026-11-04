@@ -78,7 +78,7 @@ try {
   await page.getByRole('status').waitFor();
   await page.getByRole('link',{name:'Crear cuenta',exact:true}).click();
   await page.getByRole('link',{name:'Ver verificación →'}).click();
-  await page.getByRole('link',{name:'Ver confirmación →'}).click();
+  await page.getByRole('link',{name:'Ver estado del acceso →'}).click();
   await page.getByRole('link',{name:'CONTINUAR',exact:true}).click();
   const openLobby=page.getByRole('link',{name:'ABRIR LOBBY LOCAL',exact:true});
   if(width<1000) await openLobby.tap(); else await openLobby.click();
@@ -113,7 +113,8 @@ try {
   await page.locator('input[name="password"]').fill('ejemplo-123');
   await page.getByLabel('Confirmar contraseña',{exact:true}).fill('diferente-123');
   await page.getByRole('button',{name:'GUARDAR CONTRASEÑA'}).click();
-  assert.match(await page.getByRole('status').innerText(),/no coinciden/);
+  assert.match(await page.locator('.b04-field-error').innerText(),/no coinciden/);
+  assert.equal(await page.getByLabel('Confirmar contraseña',{exact:true}).getAttribute('aria-invalid'),'true');
   await page.goBack();
   assert.match(page.url(),/#forgot-password$/);
   await page.close();

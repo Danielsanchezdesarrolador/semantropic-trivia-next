@@ -3,7 +3,7 @@
  * Los rótulos de botones y paneles están impresos en los PNG; no son datos reales.
  */
 export type SheetCategory = 'Marca y personajes' | 'Cristales y objetos' | 'Botones de referencia' | 'Paneles de referencia' | 'Capas de referencia';
-export type SheetState = 'candidato' | 'referencia';
+export type SheetState = 'candidato' | 'referencia' | 'legacy/provisional';
 export type SheetAsset = Readonly<{
   id: string;
   title: string;
@@ -15,9 +15,9 @@ export type SheetAsset = Readonly<{
 const base = '/assets/home/sheet/';
 export const sheetAssets: readonly SheetAsset[] = [
   { id:'logo', title:'Logotipo de la lámina', path:base+'logo-lamina.png', category:'Marca y personajes', state:'candidato',note:'Extracción transparente reconstruida; validar bordes antes de sustituir el logo final.' },
-  { id:'boy',title:'Protagonista 01',path:base+'character-boy.png',category:'Marca y personajes',state:'candidato',note:'Recorte pequeño; la ilustración fuente no incluye cuerpo completo.' },
-  { id:'girl',title:'Protagonista 02',path:base+'character-girl.png',category:'Marca y personajes',state:'candidato',note:'Recorte pequeño; revisar bordes y pelo.' },
-  { id:'robot',title:'Robot asistente',path:base+'robot.png',category:'Marca y personajes',state:'candidato',note:'Mascota ilustrativa; no implica modo CPU.' },
+  { id:'boy',title:'Protagonista 01',path:base+'character-boy.png',category:'Marca y personajes',state:'legacy/provisional',note:'Histórico protegido; sustituido por protagonist-male-v1. Recorte pequeño; la ilustración fuente no incluye cuerpo completo.' },
+  { id:'girl',title:'Protagonista 02',path:base+'character-girl.png',category:'Marca y personajes',state:'legacy/provisional',note:'Histórico protegido; sustituido por protagonist-female-v1. Recorte pequeño; revisar bordes y pelo.' },
+  { id:'robot',title:'Robot asistente',path:base+'robot.png',category:'Marca y personajes',state:'legacy/provisional',note:'Histórico protegido; sustituido por mascot-robot-v1. Mascota ilustrativa; no implica modo CPU.' },
   { id:'crystal-blue',title:'Cristal azul',path:base+'crystal-blue.png',category:'Cristales y objetos',state:'candidato' },
   { id:'crystal-violet',title:'Cristal violeta',path:base+'crystal-violet.png',category:'Cristales y objetos',state:'candidato' },
   { id:'crystal-gold',title:'Cristal dorado',path:base+'crystal-gold.png',category:'Cristales y objetos',state:'candidato' },

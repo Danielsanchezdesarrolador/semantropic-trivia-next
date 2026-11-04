@@ -1,0 +1,435 @@
+{
+  "status": "PASS",
+  "base": "http://127.0.0.1:40505/",
+  "baselineCompared": true,
+  "views": 54,
+  "flows": [
+    {
+      "viewport": "small",
+      "status": "PASS",
+      "keyboardHeightEmulated": true
+    },
+    {
+      "viewport": "mobile",
+      "status": "PASS",
+      "keyboardHeightEmulated": true
+    },
+    {
+      "viewport": "landscape",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "tablet",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "desktop",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "wide",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    }
+  ],
+  "results": [
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "home",
+      "status": "PASS"
+    }
+  ],
+  "comparisons": [
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "5b0c4c0edb2e4652c4ecc6b1698cddbbda23907c10827c619110651d1880efdb",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "ddf3b092935e5ee9f9e8f28fdb6b37d9d997ac4fcb397fa0199de0a1d8a0ce01",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "small",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "101521b51bf54dd9c4ae7de46662210ab1967694bcd6abc582415d6aa4ccb622",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "abc68324f59c9c9394591a9b3ec28a5dc38b1c78ffbb36c32d19238db4d6028b",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "8d9b7ae64ccf370035f20a5b9656e5fbc37012ab5ee2c504d8a36cc27c89171e",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "66d4b13e2ea26ec6c42fd61a2ee57c425d9210b9fa0ccbfd2faecd16a3f6de96",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "landscape",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "tablet",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "cd3ab200116a41a7bea12b8a8a2e4138788d5f89e2607f3312b021350fb6f30c",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "tablet",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "cadef146d36a5fa8f94a5a26a8695c7142c3862b488f1bd0fe634d5267c8bb97",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "tablet",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "56b7ff4a788738b2f7c4787cba51962371a5302fa4fcdc52436072fbe9594b69",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "d67aee7e3754ce1cc4169d1f57e12fd42528500f108518d050d8135ac05f3c65",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "status": "PASS",
+      "sha256": "aea89c87007959dc0b71ce9838803e0e2dcdd2caf956248c4b43916e2d8240df",
+      "comparison": "Píxeles idénticos salvo texto/enlace de demostración, oculto solo en comparación"
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "sha256": "da262309b9c4bbe3ae68d9cdb092360cbf61971a4b23977d53a8c79251b89499",
+      "comparison": "Píxeles idénticos completos"
+    },
+    {
+      "viewport": "wide",
+      "route": "home",
+      "status": "PASS",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "mutations": []
+}

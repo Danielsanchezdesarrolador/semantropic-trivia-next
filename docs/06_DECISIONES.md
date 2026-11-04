@@ -93,3 +93,12 @@ Producción se conserva en `main` y `semantropic-trivia-next-web`; integración 
 ## Orden del Director — B04-C2 Opción C (04/11/2026)
 
 Implementar solo #lobby-transition con fondos desktop/móvil que ya contienen el portal y tres personajes oficiales transparentes del paquete entregado. Logo canónico del repo sin alteración; la copia con SHA distinto no se promueve. Textos/CTA HTML real, acceso #home sin sesión. Publicación autorizada solo en staging tras CI completo y PR a staging, usando semantropic-trivia-dev existente. Aprobación artística del montaje y prueba Android física pendientes del Director. No inicia backend ni otro bloque. Evidencia y auditoría en docs/design/B04/B04_C2_ENTREGA.md y B04_C2_ASSETS.json.
+
+
+## B04-C3 — navegación y canon, orden del Director 04/11/2026
+
+El Director declara aprobación de la composición C2 probada en Android físico/web y de protagonist-male-v1, protagonist-female-v1 y mascot-robot-v1 como canon permanente. No rediseñar C2 ni D-049. Acceso existente se consolida con errores asociados a campos, validación exclusivamente local y enlaces separados «Recorrido visual de prueba». Los envíos no autentican ni registran, no cambian contraseñas ni generan/envían códigos. Mensaje explícito de cuentas no habilitadas. Entrada de demostración pasa por C2 al lobby/práctica, sin decidir modo Invitado comercial.
+
+Catálogo tipado enlazado al registro con dimensiones, alfa, SHA, aprobación y procedencia. Los tres recortes históricos se conservan como legacy/provisional; solo se sustituyen sus referencias en B02 preservando estructura. Portal incrustado en ambos fondos, sin duplicación. Prohibido reinterpretar/generar los personajes sin nueva aprobación. Másteres respaldados localmente fuera del repo, no versionados ni publicados; respaldo externo permanente pendiente del Director.
+
+Publicación autorizada exclusivamente staging/Render DEV existente después de PR y CI verde; no main/producción, backend, Q03/Q04, audio, 42 SVG o motor. C4 se entrega solo como propuesta que necesita nueva orden. [Checkpoint](design/B04/B04_C3_ENTREGA.md), [guía canónica](design/B04/B04_C3_IDENTIDAD.md), [propuesta futura](design/B04/B04_C4_PROPUESTA_NO_EJECUTAR.md). La prueba C3 será automatizada/emulada; no se atribuye prueba física propia.
