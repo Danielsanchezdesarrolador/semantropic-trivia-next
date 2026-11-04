@@ -67,6 +67,18 @@ try {
     for (let attempt = 0; attempt < (publicUrl ? 26 : 5); attempt++) {
       try {
         response = await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+        assert.equal(response?.status(), 200, 'Bienvenida HTTP 200');
+        await page.getByRole('heading', { name: '¡Bienvenido a' }).waitFor();
+        assert.equal(await page.locator('.b04-portal .b04-logo').count(), 1);
+        await page.getByRole('link', { name: 'INICIAR SESIÓN', exact: false }).click();
+        await page.getByRole('heading', { name: 'Iniciar sesión', exact: true }).waitFor();
+        await page.getByRole('link', { name: 'Volver a bienvenida', exact: false }).click();
+        await page.getByRole('link', { name: 'CREAR CUENTA', exact: false }).click();
+        await page.getByRole('heading', { name: 'Crear cuenta', exact: true }).waitFor();
+        await page.getByRole('link', { name: 'Volver a bienvenida', exact: false }).click();
+        await page.getByRole('link', { name: 'Ir al lobby actual · práctica local' }).click();
+        assert.equal(new URL(page.url()).hash, '#home');
+        await page.locator('.st-preview-page--official').waitFor({ state: 'visible' });
         isOfficial = response?.status() === 200 && await page.locator('.st-preview-page--official').count() === 1;
         if (isOfficial) break;
       } catch (error) {

@@ -1,18 +1,22 @@
-const { chromium } = await import(process.env.B04_PLAYWRIGHT_MODULE || '/tmp/b04-browser/node_modules/playwright/index.mjs');
-import { writeFile } from 'node:fs/promises';
+const { chromium } = await import(process.env.B04_PLAYWRIGHT_MODULE || 'playwright');
+import { mkdir, writeFile } from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const browser = await chromium.launch({headless:true,args:['--no-sandbox']});
-const evidence='docs/design/B04/evidencias';
+const evidence=process.env.B04_EVIDENCE_DIR || 'artifacts/b04';
+const baseUrl=new URL(process.env.B04_BASE_URL || 'http://localhost:5173/');
+const routeUrl=route => { const url=new URL(baseUrl); url.hash=route; return url.href; };
+await mkdir(evidence, {recursive:true});
 const routes=['welcome','sign-in','register','verify','forgot-password','reset-password','auth-status','lobby-transition'];
 const sizes=[['desktop',1600,900],['mobile',390,844],['small',320,740],['landscape',844,390],['wide',1920,1080]];
 const errors=[]; const requests=[]; const results=[];
 try {
  for(const [name,width,height] of sizes){
-  const page=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'});
+  const page=await browser.newPage({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,reducedMotion:'reduce'});
+  assert.equal((await page.request.get(baseUrl.href)).status(),200);
   page.on('pageerror',e=>errors.push(e.message));
   page.on('request',r=>{if(['POST','PUT','PATCH'].includes(r.method()))requests.push(r.url());});
   for(const route of routes){
-   await page.goto('http://localhost:5173/#'+route);await page.locator('h1').waitFor();await page.evaluate(()=>document.fonts.ready);
+   const response=await page.goto(routeUrl(route)); if(response) assert.equal(response.status(),200);await page.locator('h1').waitFor();await page.evaluate(()=>document.fonts.ready);
    await page.locator('.b04-logo').evaluate(i=>i.decode());
    assert.equal(await page.locator('.b04-logo').count(),1);
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
@@ -20,7 +24,7 @@ try {
    if(['desktop','mobile'].includes(name))await page.screenshot({path:`${evidence}/${name}-${route}.png`,fullPage:true});
    results.push({viewport:name,route,overflow:false});
   }
-  await page.goto('http://localhost:5173/#welcome');
+  await page.goto(routeUrl('welcome'));
   await page.getByRole('link',{name:'INICIAR SESIÓN',exact:false}).click();
   await page.getByLabel('Correo electrónico').fill('qa@example.invalid');
   await page.getByLabel('Contraseña',{exact:true}).fill('local-example');
@@ -38,7 +42,7 @@ try {
   await page.locator('button.b03-answer').first().click();
   await page.getByRole('button',{name:'Siguiente pregunta'}).waitFor();
   await page.screenshot({path:`${evidence}/${name}-arena.png`,fullPage:true});
-  await page.goto('http://localhost:5173/#forgot-password');
+  await page.goto(routeUrl('forgot-password'));
   await page.getByRole('link',{name:'Ver nueva contraseña →'}).click();
   await page.locator('input[name="password"]').fill('ejemplo-123');
   await page.getByLabel('Confirmar contraseña',{exact:true}).fill('diferente-123');

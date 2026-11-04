@@ -3,7 +3,9 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { chromium } from 'playwright';
 import catalog from '../../docs/audio/SFX02_CATALOGO.json' with { type: 'json' };
 const release = process.env.ST_AUDIO_RELEASE === '1';
-const url = process.env.ST_OFFICIAL_URL || 'http://localhost:5173/';
+const lobbyUrl = new URL(process.env.ST_OFFICIAL_URL || 'http://localhost:5173/');
+lobbyUrl.hash = 'home';
+const url = lobbyUrl.href;
 const browser = await chromium.launch({ ...(process.env.CI ? {} : { channel: 'chrome' }), headless: true });
 await mkdir('artifacts/sfx02-qa', { recursive: true });
 try {

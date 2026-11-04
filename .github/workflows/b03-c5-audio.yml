@@ -1,7 +1,7 @@
 name: B03-C5 - Audio de producción
 on:
   push:
-    branches: [main, 'feat/**', 'release/**']
+    branches: [main, staging, 'feat/**', 'release/**']
   pull_request:
     branches: [main]
 permissions:

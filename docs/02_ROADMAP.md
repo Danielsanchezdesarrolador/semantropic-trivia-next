@@ -1,5 +1,12 @@
 # ROADMAP CENTRAL — Semantropic Trivia (nuevo proyecto)
 
+## Estado vigente — B04-C1 y entorno permanente de revisión, 04/11/2026
+
+El Director autoriza reparar el QA de entrada de B04-C1 y publicar el bloque limpio en la rama permanente `staging` y un sitio separado `semantropic-trivia-dev`. El enlace fijo sustituye las previews manuales de PR y los puertos locales para revisión del Director. Solo llevar commits con CI verde a staging; verificar deploy y navegación pública antes de entregar URL. Producción `semantropic-trivia-next-web`/`main` permanece preservada y requiere aprobación expresa antes de integrar cada bloque. PR #20 no se fusiona a main. Publicación de revisión no equivale a aprobación del diseño ni autoriza otro bloque. Se conservan los registros anteriores como historia.
+
+[Procedimiento permanente y evidencia](design/B04/STAGING_Y_PRODUCCION.md).
+
+
 ## Estado vigente — B03-C5 cerrado y publicado, 29-10-2026
 
 D-047: recuperación terminada sin descarte de trabajo. PR #18 integrado a main,
