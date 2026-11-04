@@ -1,0 +1,79 @@
+ M AGENTS.md
+ M docs/02_ROADMAP.md
+ M docs/06_DECISIONES.md
+ M package.json
+ M src/ui/quiz/QuizPreview.tsx
+ M src/ui/quiz/useLocalPractice.ts
+ M vite.config.ts
+?? B04_DISENOS_APROBADOS.zip
+?? SEMANTROPIC_Q03_CE01_AUDITORIA_INDEPENDIENTE_20261103.zip
+?? SEMANTROPIC_TRIVIA_1_0_BIBLIOTECA_OFICIAL_CP01_20261104.zip
+?? SEMANTROPIC_TRIVIA_B04_CODEX_OPCION_C_IMPLEMENTACION_20261104.zip
+?? SEMANTROPIC_TRIVIA_Q03_1B_AUDITORIA_INDEPENDIENTE_2026-10-30.md
+?? SEMANTROPIC_TRIVIA_Q03_1B_RESULTADO.zip
+?? SEMANTROPIC_TRIVIA_Q03_1C_RESULTADO.zip
+?? SEMANTROPIC_TRIVIA_Q03_1D_RESULTADO.zip
+?? SEMANTROPIC_TRIVIA_Q03_ENTREGA_MASIVA_2026-10-29.zip
+?? docs/Q04_M1_MOTOR_B.md
+?? docs/Q04_M2_MOTOR_C.md
+?? docs/Q04_M3_VALIDADOR_SEMANTICO.md
+?? docs/Q04_M4_ADAPTADOR_EDITORIAL.md
+?? docs/editorial/Q03_2B_2C_REVISION_LOCAL.md
+?? docs/editorial/Q03_CE01_CONTINUIDAD_AUDITORIA_20261103.md
+?? docs/editorial/Q03_CIERRE_1250.md
+?? docs/editorial/Q03_CONSOLIDACION_EDITORIAL.md
+?? docs/editorial/Q03_PRODUCCION_DEV_1250.md
+?? docs/editorial/Q03_REANUDACION_20261103.md
+?? package-lock.json
+?? scripts/editorial/experimental-dev-plugin.d.mts
+?? scripts/editorial/experimental-dev-plugin.mjs
+?? scripts/editorial/guard-production.mjs
+?? scripts/editorial/review-dev-plugin.d.mts
+?? scripts/editorial/review-dev-plugin.mjs
+?? scripts/editorial/review-gate.mjs
+?? scripts/q04-editorial/adapter.mjs
+?? scripts/q04-editorial/browser-qa.mjs
+?? scripts/q04-editorial/dev-plugin.d.mts
+?? scripts/q04-editorial/dev-plugin.mjs
+?? scripts/q04-editorial/fixtures.mjs
+?? scripts/q04-editorial/report.mjs
+?? scripts/q04-editorial/selection.mjs
+?? scripts/q04-editorial/source.mjs
+?? scripts/q04-editorial/taxonomy.mjs
+?? scripts/q04-m1-browser-qa.mjs
+?? scripts/q04-m1-guard.mjs
+?? scripts/q04-m2-browser-qa.mjs
+?? scripts/semantic/arena-regression.mjs
+?? scripts/semantic/fixtures.mjs
+?? scripts/semantic/guard-private.mjs
+?? scripts/semantic/load-engine.mjs
+?? scripts/semantic/measure.mjs
+?? scripts/semantic/run.mjs
+?? src/editorial/devReviewSource.ts
+?? src/editorial/q04/contracts.ts
+?? src/editorial/q04/virtual.d.ts
+?? src/editorial/virtual-review.d.ts
+?? src/game/selection/balanceContracts.ts
+?? src/game/selection/contracts.ts
+?? src/game/selection/dev/syntheticCatalog.ts
+?? src/game/selection/dev/syntheticMetadataCatalog.ts
+?? src/game/selection/history.ts
+?? src/game/selection/practice.ts
+?? src/game/selection/selectBalanced.ts
+?? src/game/selection/selectWithHistory.ts
+?? src/game/selection/storage.ts
+?? src/game/selection/taxonomy.ts
+?? src/semantic/canonical.ts
+?? src/semantic/contracts.ts
+?? src/semantic/export.ts
+?? src/semantic/normalize.ts
+?? src/semantic/review.ts
+?? src/semantic/validator.ts
+?? src/ui/quiz/practiceSource.ts
+?? tests/q03-experimental-dev.test.mjs
+?? tests/q03-review-gate.test.mjs
+?? tests/q04-m1-memory.test.mjs
+?? tests/q04-m2-balance.test.mjs
+?? tests/q04-m3-semantic.test.mjs
+?? tests/q04-m4-editorial.test.mjs
+?? transferencia-editorial/SEMANTROPIC_TRANSFERENCIA_CODESPACES.zip

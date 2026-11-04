@@ -1,0 +1,20 @@
+[
+  {
+    "original": "/workspaces/semantropic-trivia-next/B04_DISENOS_APROBADOS.zip",
+    "backup": "backups/B04/B04_DISENOS_APROBADOS.zip",
+    "bytes": 10699879,
+    "sha256": "aa4c69995670b03994affc7ac93b080888e576ba8ff0c22137ed434ca3539c71"
+  },
+  {
+    "original": "/workspaces/semantropic-trivia-next/SEMANTROPIC_TRIVIA_B04_CODEX_OPCION_C_IMPLEMENTACION_20261104.zip",
+    "backup": "backups/B04/SEMANTROPIC_TRIVIA_B04_CODEX_OPCION_C_IMPLEMENTACION_20261104.zip",
+    "bytes": 43201624,
+    "sha256": "5cb9ddc146274dc96c582be85f47e870124464ace1b2cfdd2a0694329e9eb63f"
+  },
+  {
+    "original": "/workspaces/semantropic-trivia-next/SEMANTROPIC_TRIVIA_1_0_BIBLIOTECA_OFICIAL_CP01_20261104.zip",
+    "backup": "backups/B04/SEMANTROPIC_TRIVIA_1_0_BIBLIOTECA_OFICIAL_CP01_20261104.zip",
+    "bytes": 29264269,
+    "sha256": "bbb5c7b8cf0f5e5cbc0e02f05721bc815bbdb3f9679caf95fa7b3a711c4d0b4a"
+  }
+]
