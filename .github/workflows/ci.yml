@@ -1,7 +1,7 @@
 name: B01 - validacion
 on:
   push:
-    branches: [main, 'feat/**']
+    branches: [main, staging, 'feat/**']
   pull_request:
     branches: [main]
 jobs:

@@ -1,6 +1,14 @@
 import HomePreview from './ui/home/HomePreview';
+import { useEffect, useState } from 'react';
+import AccessPortal, { isAccessRoute } from './ui/access/AccessPortal';
 
-/** Inicio oficial B02: mismo lobby aprobado, sin galería técnica ni partidas ficticias. */
+/** B04-C1: entrada visual; las rutas del lobby y Arena conservan su implementación. */
 export default function App() {
-  return <HomePreview official showLibrary={false} />;
+  const [route, setRoute] = useState(() => window.location.hash.slice(1));
+  useEffect(() => {
+    const sync = () => setRoute(window.location.hash.slice(1));
+    window.addEventListener('hashchange', sync);
+    return () => window.removeEventListener('hashchange', sync);
+  }, []);
+  return isAccessRoute(route) ? <AccessPortal route={route} /> : <HomePreview official showLibrary={false} />;
 }

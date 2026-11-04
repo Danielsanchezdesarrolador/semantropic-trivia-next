@@ -1,0 +1,209 @@
+{
+  "status": "PASS",
+  "routes": 40,
+  "flowViewports": 5,
+  "errors": [],
+  "mutationRequests": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "overflow": false
+    }
+  ]
+}

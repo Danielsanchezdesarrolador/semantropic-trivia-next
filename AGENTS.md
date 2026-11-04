@@ -1,6 +1,19 @@
 # AGENTS.md — SEMANTROPIC TRIVIA / NUEVA ETAPA
 **Autoridad de dirección:** Director del juego (usuario). **Corte:** 2026-10-29. **Estado:** núcleo local B03 aprobado para continuar; cierre B03-C4 y preparación de publicación, sin juego online terminado.
 
+## Directriz permanente vigente — staging y producción (04/11/2026)
+
+Esta orden expresa del Director prevalece sobre las autorizaciones históricas de merge/publicación automática de los apartados siguientes.
+
+- Producción: `semantropic-trivia-next-web`, rama `main`, URL oficial preservada. Solo integrar después de aprobación expresa del Director, con CI y protecciones cumplidas. No fusionar PR #20 a main por aprobar su revisión técnica o publicar staging.
+- Desarrollo/revisión: rama permanente `staging`, sitio estático independiente `semantropic-trivia-dev`, build `npm install && npm run build`, publish `dist`. Reutilizar siempre el mismo sitio y su URL HTTPS; no crear uno por bloque ni requerir previews manuales de PR o puertos de Codespaces al Director.
+- Ciclo autorizado por microbloque: DESARROLLAR → VERIFICAR (tipos, tests, build, guards, CI y navegador) → ACTUALIZAR STAGING → RENDER → ENTREGAR URL COMPROBADA → REVISIÓN DEL DIRECTOR.
+- Solo actualizar staging con el bloque autorizado, limpio y con CI verde. Auto-Deploy preferentemente After CI Checks Pass; si el conector solo admite On Commit, mantener el requisito de CI verde antes de actualizar staging y comunicar el ajuste real.
+- Publicado en staging significa disponible para pruebas, nunca aprobación artística/funcional ni autorización de producción. No iniciar otro bloque sin autorización.
+- Proteger trabajo sin confirmar, preguntas privadas, Q03/Q04, credenciales, contenido pendiente y materiales restringidos. Sin force push ni operaciones destructivas.
+- B04-C1: corregir pruebas para bienvenida en `/`/`#welcome`, lobby auténtico en `#home`, audio dentro del lobby y Arena/navegación anterior; conservar todas las aserciones y funcionalidades aprobadas. Sin autenticación real, backend ni base de datos.
+
+
 ## 1. Mandato innegociable
 Construir Semantropic Trivia como videojuego de preguntas **social, familiar y competitivo**, para Android e iOS, con pruebas web desde PC y teléfono. Debe ser inclusivo para diversas edades, amigable, fácil de comprender, divertido, justo y respetuoso del tiempo del jugador. Las referencias a Preguntados son inspiración de categoría de producto, **no permiso para copiar** interfaz, arte, propiedad intelectual ni dinámicas invasivas.
 

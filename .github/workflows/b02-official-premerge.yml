@@ -1,7 +1,7 @@
 name: B02 - validar lobby oficial antes de fusionar
 on:
   push:
-    branches: [release/b02-home-oficial, feat/b02-lobby-navegable, feat/b02-fullscreen-pc-mobile]
+    branches: [staging, release/b02-home-oficial, feat/b02-lobby-navegable, feat/b02-fullscreen-pc-mobile]
   pull_request:
     branches: [main]
 jobs:
@@ -33,6 +33,10 @@ jobs:
         run: node scripts/b03-c3-browser-smoke.mjs
       - name: Conservar laboratorio visual y geometría aprobada
         run: node scripts/b03-b02-browser-smoke.mjs
+      - name: B04 bienvenida y acceso en escritorio y móvil emulado
+        env:
+          B04_EVIDENCE_DIR: artifacts/b04
+        run: node scripts/b04/visual-qa.mjs
       - name: Guardar capturas de prueba
         if: always()
         uses: actions/upload-artifact@v4
@@ -42,4 +46,5 @@ jobs:
             artifacts/b02-official/
             artifacts/b03-c3/
             artifacts/b03-b02/
+            artifacts/b04/
           if-no-files-found: ignore
