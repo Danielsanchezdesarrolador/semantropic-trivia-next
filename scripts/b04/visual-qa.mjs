@@ -1,15 +1,36 @@
 const { chromium } = await import(process.env.B04_PLAYWRIGHT_MODULE || 'playwright');
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:http';
+import { extname, resolve, sep } from 'node:path';
 import assert from 'node:assert/strict';
-const browser = await chromium.launch({headless:true,args:['--no-sandbox']});
+let server;
+let localBase;
+if (!process.env.B04_BASE_URL) {
+  const root=resolve('dist');
+  const types={'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.svg':'image/svg+xml', '.png':'image/png', '.webp':'image/webp', '.mp3':'audio/mpeg', '.json':'application/json', '.webmanifest':'application/manifest+json'};
+  server=createServer(async (request,response) => {
+    try {
+      const path=decodeURIComponent(new URL(request.url || '/', 'http://localhost').pathname);
+      const file=resolve(root, '.'+(path==='/' ? '/index.html' : path));
+      if (!file.startsWith(root+sep)) {response.writeHead(403);response.end();return;}
+      const body=await readFile(file);
+      response.writeHead(200, {'Content-Type':types[extname(file)] || 'application/octet-stream'});
+      response.end(body);
+    } catch {response.writeHead(404);response.end();}
+  });
+  await new Promise((done,reject) => {server.once('error',reject);server.listen(0,'127.0.0.1',done);});
+  localBase='http://127.0.0.1:'+server.address().port+'/';
+}
+let browser;
 const evidence=process.env.B04_EVIDENCE_DIR || 'artifacts/b04';
-const baseUrl=new URL(process.env.B04_BASE_URL || 'http://localhost:5173/');
+const baseUrl=new URL(process.env.B04_BASE_URL || localBase);
 const routeUrl=route => { const url=new URL(baseUrl); url.hash=route; return url.href; };
 await mkdir(evidence, {recursive:true});
 const routes=['welcome','sign-in','register','verify','forgot-password','reset-password','auth-status','lobby-transition'];
 const sizes=[['desktop',1600,900],['mobile',390,844],['small',320,740],['landscape',844,390],['wide',1920,1080]];
 const errors=[]; const requests=[]; const results=[];
 try {
+ browser=await chromium.launch({headless:true,args:['--no-sandbox']});
  for(const [name,width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,reducedMotion:'reduce'});
   assert.equal((await page.request.get(baseUrl.href)).status(),200);
@@ -55,4 +76,4 @@ try {
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[]);
  await writeFile(`${evidence}/qa.json`,JSON.stringify({status:'PASS',routes:results.length,flowViewports:sizes.length,errors,mutationRequests:requests,results},null,2));
  console.log('PASS: 40 vistas, 5 recorridos hasta Arena, sin overflow, errores JS ni solicitudes de autenticación.');
-} finally {await browser.close();}
+} finally {if(browser) await browser.close();if(server) await new Promise(done=>server.close(done));}
