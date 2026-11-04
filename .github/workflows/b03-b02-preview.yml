@@ -3,7 +3,7 @@ on:
   push:
     branches: [staging, feat/b03-b02-arena-preview, feat/b03-b02-hf1-pulido-visual, feat/b03-b02-hf2-cabecera-precisa]
   pull_request:
-    branches: [main]
+    branches: [main, staging]
 jobs:
   b03-visual:
     runs-on: ubuntu-latest
@@ -21,6 +21,8 @@ jobs:
         run: npm test
       - name: Compilar Vite
         run: npm run build
+      - name: Guard editorial y assets B04-C2
+        run: node scripts/b04/guard-option-c.mjs
       - name: Confirmar las tres entradas
         run: |
           test -f dist/index.html

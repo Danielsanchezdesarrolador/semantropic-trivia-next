@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import './access-portal.css';
+import LobbyTransitionOptionC from './LobbyTransitionOptionC';
 
 const routes = ['', 'welcome', 'sign-in', 'register', 'verify', 'forgot-password', 'reset-password', 'auth-status', 'lobby-transition'] as const;
 type AccessRoute = typeof routes[number];
@@ -39,6 +40,7 @@ export default function AccessPortal({ route }: { route: string }) {
     if (data.has('confirm') && data.get('password') !== data.get('confirm')) { setMessage('Las contraseñas no coinciden.'); return; }
     setMessage('Vista previa: no se han enviado datos ni creado una sesión. Usa los enlaces de recorrido para revisar la siguiente pantalla.');
   }
+  if (route === 'lobby-transition') return <LobbyTransitionOptionC />;
   const content = titles[route] || titles['sign-in'];
   return <main className={'b04-access' + (welcome ? ' b04-welcome' : '')}>
     <div className="b04-environment" aria-hidden="true" />
