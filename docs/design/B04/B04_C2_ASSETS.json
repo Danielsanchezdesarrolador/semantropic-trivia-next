@@ -1,0 +1,146 @@
+{
+  "block": "B04-C2",
+  "zip": "SEMANTROPIC_TRIVIA_B04_CODEX_OPCION_C_IMPLEMENTACION_20261104.zip",
+  "zipSha256": "5cb9ddc146274dc96c582be85f47e870124464ace1b2cfdd2a0694329e9eb63f",
+  "verifiedManifestEntries": 36,
+  "verifiedChecksumEntries": 37,
+  "assets": [
+    {
+      "path": "public/assets/access/b04-option-c/mascot-robot-v1-web.webp",
+      "source": "assets/characters/mascot-robot-v1-web.webp",
+      "bytes": 169120,
+      "sha256": "0f739713da23a632589d6ffc6eb4e7aff89bbf90fe7f02b71b0d01aafecddc58",
+      "dimensions": [
+        1100,
+        1044
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "public/assets/access/b04-option-c/protagonist-female-v1-web.webp",
+      "source": "assets/characters/protagonist-female-v1-web.webp",
+      "bytes": 142876,
+      "sha256": "e7562cbf1512c5a51cbdb7f2ca01446bb01c5689dc364601d742d35334c1d160",
+      "dimensions": [
+        653,
+        1100
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "public/assets/access/b04-option-c/protagonist-male-v1-web.webp",
+      "source": "assets/characters/protagonist-male-v1-web.webp",
+      "bytes": 127600,
+      "sha256": "38c8f594a33cae63cc7b84c3c98d7ddf5e1e8208923184a1b8b60c512b03e115",
+      "dimensions": [
+        704,
+        1100
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ]
+    },
+    {
+      "path": "public/assets/access/b04-option-c/lobby-option-c-desktop-2560x1440.webp",
+      "source": "assets/environment/lobby-option-c-desktop-2560x1440.webp",
+      "bytes": 583580,
+      "sha256": "36e13c1af4a129c46d5090f9e4ec0b1b10f3fc1ddeec400c2296b470c8826d9c",
+      "dimensions": [
+        2560,
+        1440
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    },
+    {
+      "path": "public/assets/access/b04-option-c/lobby-option-c-mobile-1080x1920.webp",
+      "source": "assets/environment/lobby-option-c-mobile-1080x1920.webp",
+      "bytes": 348838,
+      "sha256": "b57d0c968ca95a7c0a6f5d7e71ebc39b0a1aacc6436e181f5d4a220c443c1db3",
+      "dimensions": [
+        1080,
+        1920
+      ],
+      "mode": "RGB",
+      "alphaExtrema": null
+    }
+  ],
+  "canonicalLogo": {
+    "path": "public/assets/home/brand/semantropic-trivia-logo-v1.png",
+    "sha256": "1e404c4ea2e64d1629a80a247bcd6c66fc455bcbf7d2e1515e0d9a152aa8463b"
+  },
+  "nativeAudit": {
+    "protagonist-male-v1": {
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "fullyTransparentPixels": 1054871,
+      "bbox": [
+        53,
+        0,
+        1102,
+        1402
+      ],
+      "declaredTransparentPixels": 1054871,
+      "declaredBbox": [
+        144,
+        0,
+        992,
+        1396
+      ]
+    },
+    "protagonist-female-v1": {
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "fullyTransparentPixels": 1066722,
+      "bbox": [
+        0,
+        0,
+        1098,
+        1402
+      ],
+      "declaredTransparentPixels": 1066722,
+      "declaredBbox": [
+        145,
+        7,
+        914,
+        1389
+      ]
+    },
+    "mascot-robot-v1": {
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "fullyTransparentPixels": 945111,
+      "bbox": [
+        0,
+        23,
+        1240,
+        1254
+      ],
+      "declaredTransparentPixels": 945111,
+      "declaredBbox": [
+        53,
+        29,
+        1218,
+        1130
+      ]
+    }
+  },
+  "logoReferenceSha256": "78671693df5adec2d8c6bcc2733e63e1eae289c36064ce7c9a35d8053fcc904d",
+  "nativeBboxNote": "Las cajas declaradas no equivalen al soporte alfa > 0 medido. Se registran ambos valores sin retocar fuentes. Conteos transparentes y SHA de los masters coinciden."
+}

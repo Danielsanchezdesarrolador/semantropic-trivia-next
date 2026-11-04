@@ -88,3 +88,8 @@ No interpretar la creación local de una estructura como repositorio existente, 
 ## Directriz permanente del Director — publicación y pruebas, 04/11/2026
 
 Producción se conserva en `main` y `semantropic-trivia-next-web`; integración exclusivamente tras aprobación expresa y CI. Se autoriza crear `staging` con un sitio estático independiente `semantropic-trivia-dev` y una URL fija reutilizable. Ciclo de cada bloque: desarrollar → verificar → staging → Render → URL comprobada → revisión. Sustituye previews manuales por PR y la obligación de configurar puertos al Director. Publicar en staging no aprueba arte ni funcionalidad. PR #20 permanece abierto, sin merge a main. Se autoriza reparar su QA de bienvenida/lobby/audio conservando aserciones y luego publicar únicamente B04-C1 limpio, sin Q03/Q04 privado. Detalles en `docs/design/B04/STAGING_Y_PRODUCCION.md`.
+
+
+## Orden del Director — B04-C2 Opción C (04/11/2026)
+
+Implementar solo #lobby-transition con fondos desktop/móvil que ya contienen el portal y tres personajes oficiales transparentes del paquete entregado. Logo canónico del repo sin alteración; la copia con SHA distinto no se promueve. Textos/CTA HTML real, acceso #home sin sesión. Publicación autorizada solo en staging tras CI completo y PR a staging, usando semantropic-trivia-dev existente. Aprobación artística del montaje y prueba Android física pendientes del Director. No inicia backend ni otro bloque. Evidencia y auditoría en docs/design/B04/B04_C2_ENTREGA.md y B04_C2_ASSETS.json.

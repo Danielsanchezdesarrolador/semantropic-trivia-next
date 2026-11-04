@@ -1,0 +1,276 @@
+{
+  "status": "PASS",
+  "routes": 48,
+  "flowViewports": 6,
+  "cancelledMedia": [
+    {
+      "url": "blob:http://127.0.0.1:43641/acbf068a-f6ec-4ec0-9b22-173475ff59a0",
+      "reason": "net::ERR_ABORTED"
+    },
+    {
+      "url": "blob:http://127.0.0.1:43641/ed7b2c9d-2162-41a1-9401-d26b9343f112",
+      "reason": "net::ERR_ABORTED"
+    },
+    {
+      "url": "blob:http://127.0.0.1:43641/71e27276-7cfa-4793-b6fc-a1e02fec3550",
+      "reason": "net::ERR_ABORTED"
+    },
+    {
+      "url": "blob:http://127.0.0.1:43641/9cabcdc1-3520-4c61-bd65-f621eebb7fde",
+      "reason": "net::ERR_ABORTED"
+    },
+    {
+      "url": "blob:http://127.0.0.1:43641/23e1347f-302f-4521-9b24-67423da09aa9",
+      "reason": "net::ERR_ABORTED"
+    },
+    {
+      "url": "blob:http://127.0.0.1:43641/7d3cad43-0d5d-43cc-bb74-1d0e3a3d4590",
+      "reason": "net::ERR_ABORTED"
+    }
+  ],
+  "failed": [],
+  "errors": [],
+  "mutationRequests": [],
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "welcome",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "sign-in",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "register",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "verify",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "forgot-password",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "reset-password",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "auth-status",
+      "overflow": false
+    },
+    {
+      "viewport": "tablet",
+      "route": "lobby-transition",
+      "overflow": false
+    }
+  ]
+}
