@@ -1,0 +1,3 @@
+PASS SFX02 RELEASE 1366x900: M1/V1, A1/X3, músicas excluyentes/ducking, 10 preguntas, reloj, resultados sin victoria/derrota implícita, preferencias y responsive
+PASS SFX02 RELEASE 390x844: M1/V1, A1/X3, músicas excluyentes/ducking, 2 preguntas, reloj, resultados sin victoria/derrota implícita, preferencias y responsive
+PASS SFX02 RELEASE 320x740: M1/V1, A1/X3, músicas excluyentes/ducking, 2 preguntas, reloj, resultados sin victoria/derrota implícita, preferencias y responsive

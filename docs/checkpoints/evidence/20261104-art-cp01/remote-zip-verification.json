@@ -1,0 +1,27 @@
+{
+  "verifiedCommit": "99b9ca12bce7be21c607d5c1e323774688335ded",
+  "branch": "backup/b04-art-cp01-pausa-20261104",
+  "implementationCommit": "abffb9c8213cf50d805d0d0ada39e9a0861d95b2",
+  "zipBlobsVerifiedOnGitHub": [
+    {
+      "path": "backups/B04/B04_DISENOS_APROBADOS.zip",
+      "githubBlob": "ee21181fa103c3ca22f87aacbc9c8a07eef126ce",
+      "bytes": 10699879,
+      "sha256": "aa4c69995670b03994affc7ac93b080888e576ba8ff0c22137ed434ca3539c71"
+    },
+    {
+      "path": "backups/B04/SEMANTROPIC_TRIVIA_B04_CODEX_OPCION_C_IMPLEMENTACION_20261104.zip",
+      "githubBlob": "896f1430cbd1250513cec3d781b99739ad84710d",
+      "bytes": 43201624,
+      "sha256": "5cb9ddc146274dc96c582be85f47e870124464ace1b2cfdd2a0694329e9eb63f"
+    },
+    {
+      "path": "backups/B04/SEMANTROPIC_TRIVIA_1_0_BIBLIOTECA_OFICIAL_CP01_20261104.zip",
+      "githubBlob": "a0fd8e6c76f4e785fa1d9dc80e07e1d0c7d87434",
+      "bytes": 29264269,
+      "sha256": "bbb5c7b8cf0f5e5cbc0e02f05721bc815bbdb3f9679caf95fa7b3a711c4d0b4a"
+    }
+  ],
+  "workspacePendingPathsUnchanged": 79,
+  "privateEditorialContentsUploaded": false
+}

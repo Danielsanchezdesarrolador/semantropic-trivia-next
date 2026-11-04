@@ -7,6 +7,7 @@
 - Rama de trabajo ART-CP01: feat/art-cp01-official.
 - Último commit de implementación, ya confirmado en GitHub: abffb9c8213cf50d805d0d0ada39e9a0861d95b2 (80 archivos, fuentes oficiales y capturas incluidas).
 - Rama activa de este worktree para el respaldo: backup/b04-art-cp01-pausa-20261104. Parte exactamente de abffb9c; solo añade este checkpoint, evidencia y ZIP originales. El SHA del commit que contiene el checkpoint se verifica con `git log -1 --format=%H -- docs/checkpoints/B04_PAUSA_SEGURA_20261104.md` y se entrega al Director tras el push.
+- Primer commit de respaldo ya verificado en GitHub: 99b9ca12bce7be21c607d5c1e323774688335ded. Contiene los tres ZIP originales y este checkpoint. Un commit posterior de evidencia conserva los logs en TXT (las reglas existentes ignoran *.log); el HEAD remoto final se entrega al Director.
 - Worktree propio: /tmp/semantropic-art-cp01. Sin cambios de implementación sin confirmar antes del respaldo.
 - Raíz compartida: /workspaces/semantropic-trivia-next; rama feat/b04-c1-portal-social; HEAD 7660b4015a12fb583c3b199e478ebf2198a76e28. Tiene trabajo ajeno sin confirmar, que no se toca ni incorpora al respaldo B04.
 - PR #23: https://github.com/Danielsanchezdesarrolador/semantropic-trivia-next/pull/23 ; destino staging, ABIERTO EN BORRADOR por la pausa, autoMergeRequest=null. No fusionado.
@@ -167,5 +168,7 @@ Si el directorio o rama resume ya existen, inspeccionarlos y elegir un nombre li
 ## Mensaje exacto de reanudación
 
 > Reanuda ART-CP01 desde el respaldo `backup/b04-art-cp01-pausa-20261104`. Lee `docs/checkpoints/B04_PAUSA_SEGURA_20261104.md`; conserva Q03/Q04 y la raíz sin confirmar. Corrige primero el error YAML de la línea 49 del workflow official-home, retoma el PR #23 desde `feat/art-cp01-official` y verifica todos los checks. Solo con CI completa en verde continúa hacia staging y el mismo Render DEV; no main ni producción. No rediseñes los originales ni inicies otro bloque.
+
+Verificación de integridad local: las 79 rutas pendientes de la raíz mantienen exactamente sus bytes y estado después de esta operación. Verificación remota: los tres blobs ZIP en GitHub coinciden con los Git OID locales, tamaños y SHA-256 documentados; evidencia en remote-zip-verification.json. Los contenidos Q03/Q04 no se subieron.
 
 No se inicia ninguna implementación después de asegurar este respaldo.

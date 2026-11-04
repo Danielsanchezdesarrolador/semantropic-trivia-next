@@ -1,0 +1,33 @@
+
+> semantropic-trivia-next@0.0.1 build
+> node scripts/audio/guard-ds01.mjs --sources && tsc --noEmit && vite build && node scripts/audio/prune-historical.mjs && node scripts/audio/guard-ds01.mjs
+
+PASS guard audio: 367 archivos revisados; solo originales SFX-02 autorizados, sin binarios QA ni panel en producción
+vite v7.1.0 building for production...
+transforming...
+✓ 83 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/release.json                                                          0.12 kB │ gzip:  0.12 kB
+dist/b03-preview.html                                                      0.78 kB │ gzip:  0.46 kB
+dist/b02-preview.html                                                      0.87 kB │ gzip:  0.44 kB
+dist/index.html                                                            1.34 kB │ gzip:  0.57 kB
+dist/assets/freesound_gamestudio-menu-back-384929-BUgEQGev.mp3             8.36 kB
+dist/assets/floraphonic-casual-click-pop-ui-2-262119-tYnbk7Ui.mp3         11.52 kB
+dist/assets/tuomas_data-the-correct-answer-33-183620-DDTk7p2P.mp3         23.41 kB
+dist/assets/freesound_community-clock-tick-tik-tak-76043-D2qEN3TP.mp3     41.28 kB
+dist/assets/universfield-negative-notification-132470-Bc9bYTtu.mp3        57.68 kB
+dist/assets/kaden_cook-videogame-queue-music-274211-DEkTYlOQ.mp3       1,729.52 kB
+dist/assets/moodmode-fun-amp-quirky-upbeat-retro-233935-CosaDrig.mp3   3,795.07 kB
+dist/assets/index-C33B6rx7.css                                            12.59 kB │ gzip:  3.82 kB
+dist/assets/QuizPreview-CX_mVTj6.css                                      20.68 kB │ gzip:  4.93 kB
+dist/assets/HomePreview-CEedqXJe.css                                      21.25 kB │ gzip:  5.38 kB
+dist/assets/b03-preview-CCpo5cIy.js                                        0.22 kB │ gzip:  0.20 kB
+dist/assets/b02-preview-CRFb6ARZ.js                                        0.27 kB │ gzip:  0.22 kB
+dist/assets/ClockControl-t0CG66z3.js                                       0.56 kB │ gzip:  0.38 kB
+dist/assets/loadProduction-CV3BJjlQ.js                                     9.01 kB │ gzip:  2.88 kB
+dist/assets/index-BNrrx83i.js                                             12.89 kB │ gzip:  4.58 kB
+dist/assets/HomePreview-33dzkeGD.js                                       28.97 kB │ gzip:  8.95 kB
+dist/assets/QuizPreview-ChGuRf2q.js                                      228.71 kB │ gzip: 71.96 kB
+✓ built in 1.77s
+PASS guard audio: 476 archivos revisados; solo originales SFX-02 autorizados, sin binarios QA ni panel en producción

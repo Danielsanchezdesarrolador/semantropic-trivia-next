@@ -1,0 +1,1 @@
+PASS: 48 vistas, 6 recorridos transición/lobby/Arena, sin overflow, errores JS ni solicitudes de autenticación.

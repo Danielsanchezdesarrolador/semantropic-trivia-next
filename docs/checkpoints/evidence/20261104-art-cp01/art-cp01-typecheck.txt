@@ -1,0 +1,4 @@
+
+> semantropic-trivia-next@0.0.1 check
+> tsc --noEmit
+

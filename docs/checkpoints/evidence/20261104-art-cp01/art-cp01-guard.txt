@@ -1,0 +1,1 @@
+PASS ART-CP01: 28 SHA/dimensiones, 13 assets web, históricos archivados; guard editorial/semantic 109 archivos públicos.

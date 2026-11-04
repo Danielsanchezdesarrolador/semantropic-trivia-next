@@ -1,0 +1,7 @@
+PASS recorrido y regresión small
+PASS recorrido y regresión mobile
+PASS recorrido y regresión landscape
+PASS recorrido y regresión tablet
+PASS recorrido y regresión desktop
+PASS recorrido y regresión wide
+PASS B04-C3: 54 vistas, 6 recorridos, 18 comparaciones, sin errores JS/HTTP/mutaciones.
