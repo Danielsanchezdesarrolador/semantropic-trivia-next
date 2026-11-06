@@ -50,13 +50,13 @@ export default function AccessPortal({ route }: { route: string }) {
   }
   if (route === 'lobby-transition') return <LobbyTransitionOptionC />;
   const content = titles[route] || titles['sign-in'];
-  return <main className={'b04-access' + (welcome ? ' b04-welcome' : '')}>
+  return <main className={'b04-access' + (welcome ? ' b04-welcome' : ['sign-in', 'register'].includes(route) ? ' b04-refined' : '')}>
     <div className="b04-environment" aria-hidden="true" />
     {!welcome && <header className="b04-top"><Link to="welcome">‹ Volver a bienvenida</Link><span>PORTAL SOCIAL</span></header>}
     {welcome ? <section className="b04-portal" aria-labelledby="welcome-title">
       <svg className="b04-portal-gem" viewBox="0 0 70 90" aria-hidden="true"><path d="m35 2 32 39-32 47L3 41Z" fill="#db72ff" stroke="#ffe2ff" strokeWidth="3"/><path d="m35 2 12 39-12 47-12-47Z" fill="#f9c7ff"/><path d="M3 41h64" stroke="#ffe2ff" strokeWidth="2"/></svg>
       <h1 id="welcome-title" ref={heading} tabIndex={-1}>¡Bienvenido a</h1>
-      <img className="b04-logo" src={logo} alt="Semantropic Trivia" width="585" height="370" />
+      <img className="b04-logo" src={logo} alt="Semantropic Trivia" width="1536" height="1024" />
       <p className="b04-tagline">El videojuego social de<br/>preguntas y conocimientos</p>
       <div className="b04-actions"><Link className="b04-cta" to="sign-in"><UserIcon/> INICIAR SESIÓN</Link><Link className="b04-cta b04-coral" to="register"><UserIcon add/> CREAR CUENTA</Link></div>
       <p className="b04-guest">Explorar como invitado <span>Por evaluar</span></p>
@@ -65,9 +65,13 @@ export default function AccessPortal({ route }: { route: string }) {
       <img className="b04-crystal b04-crystal-left" src="/assets/home/sheet/crystal-blue.png" alt=""/>
       <img className="b04-crystal b04-crystal-right" src="/assets/home/sheet/crystal-violet.png" alt=""/>
     </section> : <div className="b04-layout">
-      <aside className="b04-story"><h2>TU AVENTURA CONTINÚA</h2><p>Vuelve para seguir jugando.</p><Ornament/><h3>SEMANTROPIC POP</h3><p>Fantasía Social</p></aside>
+      <aside className="b04-story"><h2>TU AVENTURA CONTINÚA</h2><p>Vuelve para seguir jugando.</p><div className="b04-story-scene" aria-hidden="true"><Ornament/></div><h3>SEMANTROPIC POP</h3><p>Fantasía Social</p></aside>
       <section className={'b04-card b04-card--' + route} aria-labelledby="access-title" key={route}>
-        <img className="b04-logo" src={logo} alt="Semantropic Trivia" width="585" height="370"/>
+        <img className="b04-logo" src={logo} alt="Semantropic Trivia" width="1536" height="1024"/>
+        {['sign-in', 'register'].includes(route) && <div className="b04-card-gems" aria-hidden="true">
+          <img src="/assets/official/ornaments/crystal-cyan-v1.webp" alt="" width="463" height="517"/>
+          <img src="/assets/official/ornaments/crystal-violet-v1.webp" alt="" width="448" height="457"/>
+        </div>}
         <div className="b04-card-content"><h1 id="access-title" ref={heading} tabIndex={-1}>{content[0]}</h1><p className="b04-subtitle">{content[1]}</p>
           <p className="b04-preview-note">Vista previa · sin cuentas ni envíos reales</p>
           <form onSubmit={submit} noValidate onChange={() => { setErrors({}); setMessage(''); }}>

@@ -128,7 +128,7 @@ try {
       };
     });
     assert.ok(state.background?.complete && state.background.width === 1672 && state.background.height === 941, 'Fondo aprobado cargado: ' + JSON.stringify(state));
-    assert.ok(state.logo?.complete && state.logo.width === 585 && state.logo.height === 370, 'Logo oficial cargado: ' + JSON.stringify(state));
+    assert.ok(state.logo?.complete && state.logo.width === 1536 && state.logo.height === 1024, 'Logo oficial cargado: ' + JSON.stringify(state));
     assert.equal(state.background.fit, 'cover');
     assert.ok(Math.abs(state.background.renderedHeight - state.sceneHeight) <= 2, 'Fondo debe cubrir todo el lobby: ' + JSON.stringify(state));
     assert.equal(state.heading, 'SEMANTROPIC TRIVIA');

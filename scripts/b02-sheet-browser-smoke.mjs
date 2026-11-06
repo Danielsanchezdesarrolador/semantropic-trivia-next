@@ -37,8 +37,8 @@ try{
     assert.ok(imageData.some(x=>x.src?.includes('semantropic-pop-bg-v1.webp')));
     assert.ok(imageData.some(x=>x.src?.includes('logo-lamina.png')), 'Logo pequeño conservado solo en galería');
     const logo=page.locator('.st-home__official-logo');
-    assert.ok((await logo.getAttribute('src'))?.includes('semantropic-trivia-logo-v1.png'));
-    assert.equal(await logo.evaluate(img=>img.naturalWidth),585,'Logotipo aprobado en alta definición');
+    assert.ok((await logo.getAttribute('src'))?.includes('semantropic-trivia-logo-1_0-v2.png'));
+    assert.equal(await logo.evaluate(img=>img.naturalWidth),1536,'Logotipo aprobado en alta definición');
     assert.equal(await page.locator('.st-sheet-action svg').count(),2,'Iconos de botones vectoriales');
     assert.equal(await page.locator('.st-sheet-action img').count(),0,'No ampliar botones rasterizados pequeños');
     assert.equal(await actions.nth(0).innerText().then(s=>s.includes('ONLINE')),true);
@@ -59,7 +59,7 @@ try{
     assert.ok(geometry.scrollWidth<=geometry.viewport+1,'Horizontal overflow: '+JSON.stringify(geometry));
     assert.deepEqual(errors,[],'JS errors '+d.name);
     await page.screenshot({path:`artifacts/b02-sheet/${d.name}.png`,fullPage:true});
-    console.log('PASS B02-SHEET',d.name,'HTTP',r.status(),JSON.stringify(geometry),'bg-height',stageBackground.bgHeight,'stage-height',stageBackground.stageHeight,'logo',585,'svg-buttons',2,'loadedImages',imageData.length);
+    console.log('PASS B02-SHEET',d.name,'HTTP',r.status(),JSON.stringify(geometry),'bg-height',stageBackground.bgHeight,'stage-height',stageBackground.stageHeight,'logo',1536,'svg-buttons',2,'loadedImages',imageData.length);
     await ctx.close();
   }
 }catch(e){console.error('FAIL B02-SHEET:',e);process.exitCode=1;}

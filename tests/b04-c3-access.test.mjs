@@ -37,20 +37,20 @@ test('código solo valida forma de ejemplo y no promete autenticación', () => {
   assert.deepEqual(validatePreview('verify', {code:'012345'}), {});
   assert.equal(accountsUnavailable, 'Vista previa: las cuentas todavía no están habilitadas');
 });
-test('canon aprobado enlaza exactamente los cinco WebP inmutables de B04-C2', async () => {
-  const manifest = JSON.parse(await readFile('docs/design/B04/B04_C2_ASSETS.json', 'utf8'));
-  assert.equal(Object.keys(officialArtAssets).length,5);
-  for (const asset of manifest.assets) {
-    const canonical = Object.values(officialArtAssets).find(x => 'public' + x.src === asset.path);
-    assert.ok(canonical, asset.path);
+test('canon CP01 enlaza logo, tres identidades y dos fondos con SHA de fuentes inmutables', async () => {
+  const manifest = JSON.parse(await readFile('docs/art/ASSET_MANIFEST.json', 'utf8'));
+  assert.equal(Object.keys(officialArtAssets).length,6);
+  for (const canonical of Object.values(officialArtAssets)) {
+    const asset=manifest.files.find(x=>x.path==='public'+canonical.src);
+    assert.ok(asset, canonical.src);
     assert.equal(canonical.sha256, createHash('sha256').update(await readFile(asset.path)).digest('hex'));
     assert.equal(canonical.sha256, asset.sha256);
-    assert.deepEqual([canonical.width,canonical.height],asset.dimensions);
-    assert.equal(canonical.transparent,asset.mode === 'RGBA');
+    assert.deepEqual([canonical.width,canonical.height],[asset.width,asset.height]);
+    assert.equal(canonical.transparent,asset.alpha_min<255);
     assert.equal(canonical.state,'approved');
     assert.equal(canonical.approvedOn,'2026-11-04');
-    assert.equal(canonical.source,asset.source);
-    assert.equal(canonical.sourcePackageSha256,manifest.zipSha256);
+    assert.equal(canonical.source,asset.derived_from);
+    assert.equal(canonical.sourceSha256,manifest.files.find(x=>x.path===asset.derived_from).sha256);
   }
   for(const id of ['protagonist-male-v1','protagonist-female-v1','mascot-robot-v1']) assert.equal(getOfficialAsset(id).kind,'character');
   assert.equal(embeddedPortal.representation,'embedded-in-background');

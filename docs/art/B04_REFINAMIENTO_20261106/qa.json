@@ -1,0 +1,491 @@
+{
+  "status": "PASS",
+  "base": "http://127.0.0.1:39661/",
+  "baselineCompared": true,
+  "comparisonDeviceScaleFactor": 2,
+  "flowDeviceScaleFactor": 1,
+  "views": 54,
+  "flows": [
+    {
+      "viewport": "small",
+      "status": "PASS",
+      "keyboardHeightEmulated": true
+    },
+    {
+      "viewport": "mobile",
+      "status": "PASS",
+      "keyboardHeightEmulated": true
+    },
+    {
+      "viewport": "landscape",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "tablet",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "desktop",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    },
+    {
+      "viewport": "wide",
+      "status": "PASS",
+      "keyboardHeightEmulated": false
+    }
+  ],
+  "results": [
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "small",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "landscape",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "tablet",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "sign-in",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "register",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "verify",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "forgot-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "reset-password",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "auth-status",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "status": "PASS"
+    },
+    {
+      "viewport": "wide",
+      "route": "home",
+      "status": "PASS"
+    }
+  ],
+  "comparisons": [
+    {
+      "viewport": "small",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "326755496c224f59817020602e013ce538cc483ba65b9f98bc922145ee63cb82",
+      "actualSha256": "326755496c224f59817020602e013ce538cc483ba65b9f98bc922145ee63cb82",
+      "sha256": "326755496c224f59817020602e013ce538cc483ba65b9f98bc922145ee63cb82",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "small",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "895802b1750d3c06d55d55e21d7408f2c17938e6e6814a15559f1c8054ce667e",
+      "actualSha256": "b0e2427b11a03401a59b280a68454d7ac847e6e554e62a845aac3b7125cab11e",
+      "sha256": "b0e2427b11a03401a59b280a68454d7ac847e6e554e62a845aac3b7125cab11e",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "small",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "1bdfd055f0c3c340bfedb9d9a6938522aa1f39ec90d446339b5f4e301be1fd11",
+      "actualSha256": "56130bf3d1b015e976cb4107e883542afe577614ab3aa00edf450408b87bc148",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "mobile",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "9961ad043d3514f379b2f3fd4cd23c5e3d611cb03c47f0305075979a6802a53c",
+      "actualSha256": "9961ad043d3514f379b2f3fd4cd23c5e3d611cb03c47f0305075979a6802a53c",
+      "sha256": "9961ad043d3514f379b2f3fd4cd23c5e3d611cb03c47f0305075979a6802a53c",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "mobile",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "c68bfd5074c27af914252f285c54e27031d3d6e71f4c7a1600296f1b8e118511",
+      "actualSha256": "340af11ddd8c43a9af10443244cce95fae5b3f192237bacb4eb92c2cf8db390d",
+      "sha256": "340af11ddd8c43a9af10443244cce95fae5b3f192237bacb4eb92c2cf8db390d",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "mobile",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "8e2b58cb1780b19cc796aa417e9a2c7c0b610f08ef073865bd95eb3e0e2bd9e4",
+      "actualSha256": "3a5db12f2b6325dc02be962d8fd3ab72e402ef7a363bc63acf92b34b9eddb5b5",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "landscape",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "b95b7447f68da8de4d8aee1f1423a9d4ee1f3fbf9f81b11c5242d93f71f9e568",
+      "actualSha256": "b95b7447f68da8de4d8aee1f1423a9d4ee1f3fbf9f81b11c5242d93f71f9e568",
+      "sha256": "b95b7447f68da8de4d8aee1f1423a9d4ee1f3fbf9f81b11c5242d93f71f9e568",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "landscape",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "e906135bf50d92327b5d70b7c73eea9ebc6bfbe66cdfb6c01835bb8b5bfd44e6",
+      "actualSha256": "c0c3ed1c872589f744e57499ea40f4a8267cdd993dbedb69d820b28b8a75ee86",
+      "sha256": "c0c3ed1c872589f744e57499ea40f4a8267cdd993dbedb69d820b28b8a75ee86",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "landscape",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "728394ec7e06b0ab9e27b95f6bf010da32c1f066d5eaaa665061ba8bfa43577a",
+      "actualSha256": "f46698ecf53e757be1cfd39563678415cfbb7b5951cd0c94484da3376651405e",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "tablet",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "c1b15ece0a7145b6689825f73316ac858f43f707f5b7727af669ce558277eb5e",
+      "actualSha256": "c1b15ece0a7145b6689825f73316ac858f43f707f5b7727af669ce558277eb5e",
+      "sha256": "c1b15ece0a7145b6689825f73316ac858f43f707f5b7727af669ce558277eb5e",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "tablet",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "b30f57710af6d466aaab0510a2cfdafadbdf14df1721f43468c2a2bc8f3cb741",
+      "actualSha256": "28279318b659d0d4eef467c7a93b60b8b7394b5ac69aca628fd73d4978d0d228",
+      "sha256": "28279318b659d0d4eef467c7a93b60b8b7394b5ac69aca628fd73d4978d0d228",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "tablet",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "88a93e3712aa9427e3867794a138c4fe297b9aed463eac2621263a5afde7d512",
+      "actualSha256": "3659bfcd34edfc5a5ab11f46f4964172d4943f7565eb9f44ff473c73aabf93c1",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "desktop",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "69ea84b14bb5508e49c7fc1fcfd9ec199f6e3ce03b0c8e8eace20168bd58f539",
+      "actualSha256": "69ea84b14bb5508e49c7fc1fcfd9ec199f6e3ce03b0c8e8eace20168bd58f539",
+      "sha256": "69ea84b14bb5508e49c7fc1fcfd9ec199f6e3ce03b0c8e8eace20168bd58f539",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "desktop",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "bd5c6072fd4b1d1b0f2ad1c4257e0ce016570e3b0d864ae3c966ada429e0713e",
+      "actualSha256": "dc0ddfc1edf011f1f0e63bdbd91f408cbadba2ee88abae924daf274edbc5fe1b",
+      "sha256": "dc0ddfc1edf011f1f0e63bdbd91f408cbadba2ee88abae924daf274edbc5fe1b",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "desktop",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "49ee41145ebccbd6fcc9bfcac6876d13a9e114a7bceaf216f98d8234a4d695af",
+      "actualSha256": "a66ca7b0a48e70e0bdbcb61185df00de40d96b27c6c301a484ccf155950b66e8",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    },
+    {
+      "viewport": "wide",
+      "route": "welcome",
+      "status": "PASS",
+      "pixelEqualityRequired": true,
+      "baselineSha256": "3ecd89c036d257b30dc71351e8e2f2ea774d4474a9c2364117f966847e17e55b",
+      "actualSha256": "3ecd89c036d257b30dc71351e8e2f2ea774d4474a9c2364117f966847e17e55b",
+      "sha256": "3ecd89c036d257b30dc71351e8e2f2ea774d4474a9c2364117f966847e17e55b",
+      "comparison": "Píxeles idénticos salvo logo CP01, oculto solo en comparación"
+    },
+    {
+      "viewport": "wide",
+      "route": "lobby-transition",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "57863d8656caba7c631646db49af9cd804532e5b093d41e6ea48a4f590eaede6",
+      "actualSha256": "d1cf766f28fc203fdcc29e0ffc46089091e3c8d1ec91c0853541fc0d1c2e3c55",
+      "sha256": "d1cf766f28fc203fdcc29e0ffc46089091e3c8d1ec91c0853541fc0d1c2e3c55",
+      "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
+    },
+    {
+      "viewport": "wide",
+      "route": "home",
+      "status": "PASS",
+      "pixelEqualityRequired": false,
+      "baselineSha256": "1707fdcad6b544cb10c587a4c7ffedbcef8bb2164df7bb6ab52e8926e4fa33db",
+      "actualSha256": "d5b7de111febad573ccd24b4695f996e5909a96ae0a4eb84e7ebc6779241ecbc",
+      "comparison": "Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas"
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "mutations": []
+}

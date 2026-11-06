@@ -32,7 +32,7 @@ const failed=[];
 const cancelledMedia=[];
 const errors=[]; const requests=[]; const results=[];
 try {
- browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.B04_CHROMIUM_EXECUTABLE || undefined});
  for(const [name,width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,reducedMotion:'reduce'});
   assert.equal((await page.request.get(baseUrl.href)).status(),200);
@@ -62,7 +62,7 @@ try {
     assert.ok(geometry.actors.every(r=>r.x>=0 && r.right<=width && r.y>=0 && r.bottom<=geometry.stage.height),'Personajes íntegros dentro de la escena');
     assert.ok(geometry.actors[0].x<geometry.actors[2].x && geometry.actors[2].x<geometry.actors[1].x,'Masculino izquierda, robot centro, femenina derecha');
     assert.ok(geometry.cta.height>=44 && geometry.cta.width>=44,'CTA táctil');
-    assert.match(geometry.background,width/height<=.8 ? /mobile-1080x1920/ : /desktop-2560x1440/);
+    assert.match(geometry.background,width/height<=.8 ? /lobby-option-c-mobile-v2/ : /lobby-option-c-desktop-v2/);
     assert.equal(await page.getByRole('heading',{name:'¡Bienvenido/a!',exact:true}).count(),1);
     assert.equal(await page.getByText('Preparando tu entrada al lobby',{exact:true}).count(),1);
    }

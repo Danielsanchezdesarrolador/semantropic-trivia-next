@@ -1,0 +1,56 @@
+[
+  {
+    "previousPath": "public/assets/home/brand/semantropic-trivia-logo-v1.png",
+    "archivePath": "art/legacy/home/brand/semantropic-trivia-logo-v1.png",
+    "sha256": "1e404c4ea2e64d1629a80a247bcd6c66fc455bcbf7d2e1515e0d9a152aa8463b",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/home/sheet/character-boy.png",
+    "archivePath": "art/legacy/home/sheet/character-boy.png",
+    "sha256": "a7439fc611588b6ffa477c386b7e9a40c440f38cd8bf057f3237b3865b2b248b",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/home/sheet/character-girl.png",
+    "archivePath": "art/legacy/home/sheet/character-girl.png",
+    "sha256": "3b5a25dbee739277f5b1645f76299ee6d1cefaf216f8dec43e5769a1cf8cc28b",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/home/sheet/robot.png",
+    "archivePath": "art/legacy/home/sheet/robot.png",
+    "sha256": "073e84bc08ee860ecfaec2b08282d1025c2fda84ab66eda3664c30a3c72a4cca",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/access/b04-option-c/lobby-option-c-mobile-1080x1920.webp",
+    "archivePath": "art/legacy/access/b04-option-c/lobby-option-c-mobile-1080x1920.webp",
+    "sha256": "b57d0c968ca95a7c0a6f5d7e71ebc39b0a1aacc6436e181f5d4a220c443c1db3",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/access/b04-option-c/protagonist-male-v1-web.webp",
+    "archivePath": "art/legacy/access/b04-option-c/protagonist-male-v1-web.webp",
+    "sha256": "38c8f594a33cae63cc7b84c3c98d7ddf5e1e8208923184a1b8b60c512b03e115",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/access/b04-option-c/protagonist-female-v1-web.webp",
+    "archivePath": "art/legacy/access/b04-option-c/protagonist-female-v1-web.webp",
+    "sha256": "e7562cbf1512c5a51cbdb7f2ca01446bb01c5689dc364601d742d35334c1d160",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/access/b04-option-c/lobby-option-c-desktop-2560x1440.webp",
+    "archivePath": "art/legacy/access/b04-option-c/lobby-option-c-desktop-2560x1440.webp",
+    "sha256": "36e13c1af4a129c46d5090f9e4ec0b1b10f3fc1ddeec400c2296b470c8826d9c",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  },
+  {
+    "previousPath": "public/assets/access/b04-option-c/mascot-robot-v1-web.webp",
+    "archivePath": "art/legacy/access/b04-option-c/mascot-robot-v1-web.webp",
+    "sha256": "0f739713da23a632589d6ffc6eb4e7aff89bbf90fe7f02b71b0d01aafecddc58",
+    "reason": "ART-CP01 reemplaza el runtime; fuente hist\u00f3rica, no se publica"
+  }
+]
