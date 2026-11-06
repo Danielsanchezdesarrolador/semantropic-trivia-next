@@ -394,3 +394,6 @@ html:fullscreen .st-preview-page--official .st-home__content {
 .st-home__portrait .st-home__character{top:0;bottom:auto;left:50%;right:auto;width:auto;height:190%;max-height:none;max-width:none;transform:translateX(-50%);object-fit:contain;object-position:center top}
 .st-home__portrait--robot{left:35%;width:30%;height:80%;bottom:2%;z-index:3}
 .st-home__portrait--robot .st-home__character{left:0;top:0;width:100%;height:100%;transform:none;object-position:center bottom}
+
+/* CP01: dar aire al robot central sin desplazar los menús ni recortar el original. */
+.st-home__portrait--robot{left:33%;width:34%;height:88%;bottom:2%}

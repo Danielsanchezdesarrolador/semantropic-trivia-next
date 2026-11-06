@@ -32,7 +32,7 @@ const failed=[];
 const cancelledMedia=[];
 const errors=[]; const requests=[]; const results=[];
 try {
- browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.B04_CHROMIUM_EXECUTABLE || undefined});
  for(const [name,width,height] of sizes){
   const page=await browser.newPage({viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,reducedMotion:'reduce'});
   assert.equal((await page.request.get(baseUrl.href)).status(),200);

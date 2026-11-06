@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { chromium } from 'playwright';
+const { chromium } = await import(process.env.B04_PLAYWRIGHT_MODULE || 'playwright');
 import { createServer } from 'node:http';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve, sep, extname } from 'node:path';
@@ -35,7 +35,7 @@ try {
  await mkdir(output,{recursive:true});
  const base=process.env.B04_BASE_URL || await serve('dist');
  const baseline=process.env.B04_C3_BASE_DIR ? await serve(process.env.B04_C3_BASE_DIR) : null;
- browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ browser=await chromium.launch({headless:true,args:['--no-sandbox'],executablePath:process.env.B04_CHROMIUM_EXECUTABLE || undefined});
  for(const [name,width,height] of sizes) {
   const options={viewport:{width,height},hasTouch:width<1000,isMobile:width<1000,reducedMotion:'reduce'};
   const page=await browser.newPage(options);
@@ -47,6 +47,17 @@ try {
    await page.goto(base+'#'+route);await decoded(page);
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false,name+' '+route+' overflow');
    if(['desktop','mobile'].includes(name)||['welcome','lobby-transition','home'].includes(route))await page.screenshot({path:`${output}/${name}-${route}.png`,fullPage:true});
+   if(route==='lobby-transition'){
+    const box=await page.locator('.b04-option-c__stage').boundingBox();
+    const copy=await page.locator('.b04-option-c__copy').boundingBox();
+    const cta=await page.locator('.b04-option-c__cta').boundingBox();
+    const robot=await page.locator('.b04-option-c__robot').boundingBox();
+    assert.ok(copy.y+copy.height<=cta.y, name+' texto separado del CTA');
+    assert.ok(robot.y+robot.height<=copy.y, name+' robot separado del texto');
+    assert.ok(cta.x>=0&&cta.x+cta.width<=width&&cta.y+cta.height<=box.y+box.height,name+' CTA visible');
+    assert.equal(await page.locator('.b04-option-c__logo').count(),1,'Un solo logo');
+    assert.equal(await page.locator('.b04-option-c__character').count(),3,'Tres identidades canónicas');
+   }
    if(route==='home'){
     const actors=await page.locator('.st-home__character').evaluateAll(nodes=>nodes.map(n=>({src:n.getAttribute('src'),complete:n.complete,w:n.naturalWidth,rect:{x:n.getBoundingClientRect().x,right:n.getBoundingClientRect().right}})));
     assert.equal(actors.length,3);
@@ -66,21 +77,21 @@ try {
     await comparison.goto(url+'#'+route);await decoded(comparison);
     await comparison.evaluate(()=>window.scrollTo(0,0));
     await comparison.screenshot({path:`${output}/${name}-${route}${suffix}.png`,fullPage:true});
-    const geometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage, .b04-option-c__logo, .b04-option-c__character, .b04-option-c__copy, .b04-option-c__cta').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    const geometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
     if(route==='welcome'){
      // CP01 permite únicamente sustituir el logo de D-049; textos/enlaces se comparan íntegros.
      await comparison.addStyleTag({content:'.b04-portal .b04-logo{visibility:hidden!important}'});
     }
     await comparison.evaluate(()=>new Promise(done=>requestAnimationFrame(()=>requestAnimationFrame(done))));
     const pixels=await comparison.screenshot({path:`${output}/${name}-${route}-protected${suffix}.png`,fullPage:true});
-    const protectedGeometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage, .b04-option-c__logo, .b04-option-c__character, .b04-option-c__copy, .b04-option-c__cta').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
+    const protectedGeometry=await comparison.locator(route==='home'?'.st-home__actions button, .st-home__sidebar, .st-home__characters':'.b04-portal, .b04-actions > a, .b04-option-c__stage').evaluateAll(nodes=>nodes.map(n=>{const r=n.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height};}));
     assert.deepEqual(protectedGeometry,geometry,'Excluir logo no mueve arte '+name);
     return {geometry,sha256:digest(pixels)};
    }
    const before=await capture(baseline,'-before'),after=await capture(base,'');
    assert.deepEqual(after.geometry,before.geometry,'Sin desplazar composición/acciones '+name+' '+route);
    if(route==='welcome')assert.equal(after.sha256,before.sha256,name+' '+route+' arte protegido idéntico');
-   comparisons.push({viewport:name,route,status:'PASS',pixelEqualityRequired:route==='welcome',baselineSha256:before.sha256,actualSha256:after.sha256,...(route==='home'?{}:{sha256:after.sha256}),comparison:route==='home'?'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas':route==='welcome'?'Píxeles idénticos salvo logo CP01, oculto solo en comparación':'Geometría de escena, personajes, textos y CTA conservada; assets CP01 autorizados'});
+   comparisons.push({viewport:name,route,status:'PASS',pixelEqualityRequired:route==='welcome',baselineSha256:before.sha256,actualSha256:after.sha256,...(route==='home'?{}:{sha256:after.sha256}),comparison:route==='home'?'Slots, botones y sidebar sin desplazamiento; imágenes oficiales sustituidas':route==='welcome'?'Píxeles idénticos salvo logo CP01, oculto solo en comparación':'Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11'});
    await comparison.close();
   }
   await page.goto(base+'#welcome');

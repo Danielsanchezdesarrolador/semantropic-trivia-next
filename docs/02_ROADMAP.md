@@ -257,3 +257,7 @@ molestos o repetitivos. B04 permanece pendiente y no se inicia.
 
 ## Gestión del esfuerzo y prevención del agotamiento
 Un bloque/PR cada vez, no rework artístico interminable. Aprobar antes de producir 100 assets. Reusar componentes, no simplificar mockups aprobados, sin multiplicar sistemas antes de que se pruebe lo central. «MVP» significa producto que funciona, no todo el catálogo futuro.
+
+## Continuación actual — 06/11/2026
+
+Refinamiento visual B04 autorizado sobre ART-CP01/PR #23: login/registro ilustrados, ajuste de Opción C y encuadre del robot B02. [Recuperación, comparativas y límites](art/B04_REFINAMIENTO_20261106.md). Solo revisión/staging; no main/producción. B04-C4 sigue sin iniciar. La inaccesibilidad del Codespace no demuestra pérdida de sus cambios locales.

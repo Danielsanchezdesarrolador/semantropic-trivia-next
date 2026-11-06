@@ -50,7 +50,7 @@ export default function AccessPortal({ route }: { route: string }) {
   }
   if (route === 'lobby-transition') return <LobbyTransitionOptionC />;
   const content = titles[route] || titles['sign-in'];
-  return <main className={'b04-access' + (welcome ? ' b04-welcome' : '')}>
+  return <main className={'b04-access' + (welcome ? ' b04-welcome' : ['sign-in', 'register'].includes(route) ? ' b04-refined' : '')}>
     <div className="b04-environment" aria-hidden="true" />
     {!welcome && <header className="b04-top"><Link to="welcome">‹ Volver a bienvenida</Link><span>PORTAL SOCIAL</span></header>}
     {welcome ? <section className="b04-portal" aria-labelledby="welcome-title">
@@ -65,9 +65,13 @@ export default function AccessPortal({ route }: { route: string }) {
       <img className="b04-crystal b04-crystal-left" src="/assets/home/sheet/crystal-blue.png" alt=""/>
       <img className="b04-crystal b04-crystal-right" src="/assets/home/sheet/crystal-violet.png" alt=""/>
     </section> : <div className="b04-layout">
-      <aside className="b04-story"><h2>TU AVENTURA CONTINÚA</h2><p>Vuelve para seguir jugando.</p><Ornament/><h3>SEMANTROPIC POP</h3><p>Fantasía Social</p></aside>
+      <aside className="b04-story"><h2>TU AVENTURA CONTINÚA</h2><p>Vuelve para seguir jugando.</p><div className="b04-story-scene" aria-hidden="true"><Ornament/></div><h3>SEMANTROPIC POP</h3><p>Fantasía Social</p></aside>
       <section className={'b04-card b04-card--' + route} aria-labelledby="access-title" key={route}>
         <img className="b04-logo" src={logo} alt="Semantropic Trivia" width="1536" height="1024"/>
+        {['sign-in', 'register'].includes(route) && <div className="b04-card-gems" aria-hidden="true">
+          <img src="/assets/official/ornaments/crystal-cyan-v1.webp" alt="" width="463" height="517"/>
+          <img src="/assets/official/ornaments/crystal-violet-v1.webp" alt="" width="448" height="457"/>
+        </div>}
         <div className="b04-card-content"><h1 id="access-title" ref={heading} tabIndex={-1}>{content[0]}</h1><p className="b04-subtitle">{content[1]}</p>
           <p className="b04-preview-note">Vista previa · sin cuentas ni envíos reales</p>
           <form onSubmit={submit} noValidate onChange={() => { setErrors({}); setMessage(''); }}>
