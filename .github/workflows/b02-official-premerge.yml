@@ -46,7 +46,7 @@ jobs:
           ln -s "$GITHUB_WORKSPACE/node_modules" "$RUNNER_TEMP/b04-c3-baseline/node_modules"
           cd "$RUNNER_TEMP/b04-c3-baseline"
           npm run build
-      - name: Acceso y ART-CP01: navegación, canon y regresión visual protegida
+      - name: "Acceso y ART-CP01: navegación, canon y regresión visual protegida"
         env:
           B04_C3_BASE_DIR: ${{ runner.temp }}/b04-c3-baseline/dist
         run: node scripts/b04/c3-qa.mjs
