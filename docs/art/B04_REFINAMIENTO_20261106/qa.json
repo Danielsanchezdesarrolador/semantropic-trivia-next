@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "base": "http://127.0.0.1:42313/",
+  "base": "http://127.0.0.1:39661/",
   "baselineCompared": true,
   "comparisonDeviceScaleFactor": 2,
   "flowDeviceScaleFactor": 1,
@@ -326,8 +326,8 @@
       "status": "PASS",
       "pixelEqualityRequired": false,
       "baselineSha256": "895802b1750d3c06d55d55e21d7408f2c17938e6e6814a15559f1c8054ce667e",
-      "actualSha256": "19fcecfdda9a7d4b780f834ba51387331d02b0186eaf676ccb08a207a1297d6f",
-      "sha256": "19fcecfdda9a7d4b780f834ba51387331d02b0186eaf676ccb08a207a1297d6f",
+      "actualSha256": "b0e2427b11a03401a59b280a68454d7ac847e6e554e62a845aac3b7125cab11e",
+      "sha256": "b0e2427b11a03401a59b280a68454d7ac847e6e554e62a845aac3b7125cab11e",
       "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
     },
     {
@@ -355,8 +355,8 @@
       "status": "PASS",
       "pixelEqualityRequired": false,
       "baselineSha256": "c68bfd5074c27af914252f285c54e27031d3d6e71f4c7a1600296f1b8e118511",
-      "actualSha256": "b3d7ae82716f5149def78f89d638de07abb60912e862820db2f4d4a84907f680",
-      "sha256": "b3d7ae82716f5149def78f89d638de07abb60912e862820db2f4d4a84907f680",
+      "actualSha256": "340af11ddd8c43a9af10443244cce95fae5b3f192237bacb4eb92c2cf8db390d",
+      "sha256": "340af11ddd8c43a9af10443244cce95fae5b3f192237bacb4eb92c2cf8db390d",
       "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
     },
     {
@@ -413,8 +413,8 @@
       "status": "PASS",
       "pixelEqualityRequired": false,
       "baselineSha256": "b30f57710af6d466aaab0510a2cfdafadbdf14df1721f43468c2a2bc8f3cb741",
-      "actualSha256": "a53ae4f126e07d909ef6e3c73b4686f8bf121020b49c13e92ded04e0b5c6ee5a",
-      "sha256": "a53ae4f126e07d909ef6e3c73b4686f8bf121020b49c13e92ded04e0b5c6ee5a",
+      "actualSha256": "28279318b659d0d4eef467c7a93b60b8b7394b5ac69aca628fd73d4978d0d228",
+      "sha256": "28279318b659d0d4eef467c7a93b60b8b7394b5ac69aca628fd73d4978d0d228",
       "comparison": "Escena conservada; proporciones de personajes/logo/textos/CTA ajustadas por orden del 06/11"
     },
     {

@@ -24,7 +24,7 @@ Arranque en Codex Cloud: desde `/workspace/semantropic-trivia-next`, `npm run de
 
 ## Integración y límites externos
 
-Destino permanente de revisión: PR #23 → staging → Render DEV existente. Main y producción quedan intactos. API GitHub/GraphQL responde Forbidden; Render DEV devuelve CONNECT 403 por política de red. No se afirma CI remoto, merge ni publicación sin verificarlos. El enlace DEV conocido no demuestra que este refinamiento esté desplegado. No se crean servicios ni se modifican políticas de red o credenciales.
+Destino permanente de revisión: PR #23 → staging → Render DEV existente. Main y producción quedan intactos. API GitHub/GraphQL responde Forbidden; Render DEV devuelve CONNECT 403 por política de red. Se observó el inicio de los seis jobs remotos tras corregir el YAML; el HEAD final debe completar sus propios checks. No se afirma CI completa, merge ni publicación sin verificarlos. El enlace DEV conocido no demuestra que este refinamiento esté desplegado. No se crean servicios ni se modifican políticas de red o credenciales.
 
 ## Validación ejecutada en Codex Cloud
 
@@ -33,3 +33,14 @@ Destino permanente de revisión: PR #23 → staging → Render DEV existente. Ma
 - Chromium B04-C3: 54 vistas, seis recorridos, 18 comparaciones en 320×740, 390×844, 844×390, 768×1024, 1366×900 y 1920×1080. Cero errores JS/HTTP y cero solicitudes de mutación/autenticación. D-049 con píxeles protegidos idénticos; botones/sidebar/slots B02 sin desplazamiento. Validación, teclado, contraseñas y altura de teclado emulado comprobados. Resultado JSON adjunto en la carpeta de comparativas.
 - Smoke B02: diez preguntas, seis categorías, resultado/reinicio y navegación PASS en escritorio, 390 y 320. No se confunde con partida online.
 - Herramientas QA externas al manifiesto del proyecto; Chromium del sistema, sin desactivar TLS ni modificar dependencias versionadas. Versión local Node 24.19.0; CI del repositorio conserva Node 22.16.0 y debe aprobar su propio HEAD antes de integrar.
+
+
+## Controles de cierre adicionales
+
+Smoke Arena B03-C3/HF1 PASS en 1366×900, 390×844, 320×740 y 844×390: reloj/arco, teclado/tacto emulado, diez respuestas, agotamiento, pausa/reanudación, duplicados, reinicio y regreso. No se modifica su implementación.
+
+Se detectó y corrigió un error YAML heredado de CP01: el nombre del paso «Acceso y ART-CP01: navegación…» necesitaba comillas para poder ejecutar el workflow obligatorio. Parser YAML PASS y GitHub confirma que el job official-home ahora se inicia. No se eliminan checks ni se relajan protecciones. La interfaz web permite observar ejecuciones; la API necesaria para administrar el PR sigue Forbidden.
+
+El QA de acceso detectó cajas de personajes móviles parcialmente fuera de la escena después del ajuste inicial; se corrigieron sus márgenes a cero sin modificar imágenes ni reducir el control existente. Las capturas y pruebas finales corresponden a esa corrección.
+
+QA visual de acceso adicional PASS: 48 vistas y seis recorridos transición/lobby/Arena; personajes dentro de escena, un logo, tres identidades, CTA táctil, fondo por breakpoint, sin overflow, errores JS ni solicitudes de autenticación.

@@ -137,8 +137,8 @@
 @media(max-aspect-ratio:4/5){
  .b04-option-c .b04-option-c__logo{width:76%;height:24%;top:max(4px,env(safe-area-inset-top))}
  .b04-option-c__character{width:62%;height:55%;bottom:32%}
- .b04-option-c__male{left:-5%}
- .b04-option-c__female{right:-5%;width:58%}
+ .b04-option-c__male{left:0}
+ .b04-option-c__female{right:0;width:58%}
  .b04-option-c__robot{left:27%;width:46%;height:30%;bottom:40%}
  .b04-option-c__copy{bottom:21%;left:3%;width:94%}
  .b04-option-c__copy h1{font-size:clamp(30px,9.5vw,48px)}
